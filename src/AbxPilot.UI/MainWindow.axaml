@@ -1,0 +1,113 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:auto="using:Avalonia.Automation"
+        xmlns:loc="using:AbxPilot.UI.Localization"
+        xmlns:vm="using:AbxPilot.UI.ViewModels"
+        xmlns:views="using:AbxPilot.UI.Views"
+        xmlns:ctl="using:AbxPilot.UI.Controls"
+        x:Class="AbxPilot.UI.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="AbxPilot"
+        MinWidth="{StaticResource WindowMinWidth}"
+        MinHeight="{StaticResource WindowMinHeight}"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        TransparencyLevelHint="Transparent"
+        ExtendClientAreaToDecorationsHint="True"
+        WindowDecorations="BorderOnly"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        FontFamily="{StaticResource FontSans}"
+        Foreground="{StaticResource TextBody}">
+
+  <Border x:Name="WindowShell"
+          Background="{StaticResource AppBg}"
+          BorderBrush="{StaticResource BorderDefault}"
+          BorderThickness="{StaticResource BorderWidth}"
+          CornerRadius="{StaticResource WindowRadius}"
+          ClipToBounds="True"
+          UseLayoutRounding="True">
+    <Panel>
+      <Panel Classes="appbg"/>
+      <DockPanel>
+
+        <Border x:Name="TitleBar"
+                DockPanel.Dock="Top"
+                Height="{StaticResource TitleBarHeightMin}"
+                Background="{StaticResource Surface}"
+                BorderBrush="{StaticResource BorderDecorative}"
+                BorderThickness="0,0,0,1">
+          <Grid ColumnDefinitions="Auto,*,Auto">
+
+            <StackPanel x:Name="TitleBrand" Grid.Column="0" IsHitTestVisible="False"
+                        Orientation="Horizontal" VerticalAlignment="Center"
+                        Margin="{StaticResource InputPadding}" Spacing="{StaticResource Space2}">
+              <Panel Width="{StaticResource IconSize3}" Height="{StaticResource IconSize3}" VerticalAlignment="Center">
+                <Path Stretch="Uniform" Data="{StaticResource IconLogoLeft}" Fill="{StaticResource NeonBlue}"/>
+                <Path Stretch="Uniform" Data="{StaticResource IconLogoRight}" Fill="{StaticResource NeonPink}"/>
+              </Panel>
+              <TextBlock Theme="{StaticResource H3}" VerticalAlignment="Center">
+                <Run Text="{loc:Text app.name.first}" Foreground="{StaticResource NeonBlue}"/><Run Text="{loc:Text app.name.second}" Foreground="{StaticResource PinkText}"/>
+              </TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Stretch" Spacing="{StaticResource Space2}">
+              <Border VerticalAlignment="Center"
+                      BorderBrush="{StaticResource BorderDecorative}"
+                      BorderThickness="{StaticResource BorderWidth}"
+                      CornerRadius="{StaticResource Radius}"
+                      Padding="{StaticResource InputPadding}"
+                      MinHeight="{StaticResource TargetMin}">
+                <TextBlock Text="{Binding DataVersion}" VerticalAlignment="Center"
+                           FontFamily="{StaticResource FontMono}" FontSize="{StaticResource FontSize1}"
+                           Foreground="{StaticResource TextBody}"/>
+              </Border>
+
+              <ItemsControl ItemsSource="{Binding Languages}" VerticalAlignment="Center"
+                            auto:AutomationProperties.Name="{loc:Text titlebar.language}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" Spacing="{StaticResource Space1}"/>
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="vm:LanguageOption">
+                    <Button Theme="{StaticResource HeaderButton}"
+                            Content="{Binding Label}"
+                            Classes.selected="{Binding IsSelected}"
+                            Command="{Binding $parent[ItemsControl].((vm:MainViewModel)DataContext).SelectLanguageCommand}"
+                            CommandParameter="{Binding Code}"/>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+
+              <ctl:SignatureBlock VerticalAlignment="Center"/>
+
+              <StackPanel x:Name="WindowButtons" Orientation="Horizontal" VerticalAlignment="Stretch">
+                <Button x:Name="BtnMinimize" Theme="{StaticResource WindowControlButton}"
+                        ToolTip.Tip="{loc:Text window.minimize}"
+                        auto:AutomationProperties.Name="{loc:Text window.minimize}" Click="OnMinimize">
+                  <Path Width="{StaticResource IconSize2}" Height="{StaticResource IconSize2}" Stretch="Uniform"
+                        Data="{StaticResource IconMinimize}" Fill="{Binding $parent[Button].Foreground}"/>
+                </Button>
+                <Button x:Name="BtnMaximize" Theme="{StaticResource WindowControlButton}"
+                        ToolTip.Tip="{loc:Text window.maximize}"
+                        auto:AutomationProperties.Name="{loc:Text window.maximize}" Click="OnMaximizeRestore">
+                  <Path x:Name="MaximizeGlyph" Width="{StaticResource IconSize2}" Height="{StaticResource IconSize2}" Stretch="Uniform"
+                        Data="{StaticResource IconMaximize}" Fill="{Binding $parent[Button].Foreground}"/>
+                </Button>
+                <Button x:Name="BtnClose" Theme="{StaticResource CloseWindowButton}"
+                        ToolTip.Tip="{loc:Text window.close}"
+                        auto:AutomationProperties.Name="{loc:Text window.close}" Click="OnClose">
+                  <Path Width="{StaticResource IconSize2}" Height="{StaticResource IconSize2}" Stretch="Uniform"
+                        Data="{StaticResource IconClose}" Fill="{Binding $parent[Button].Foreground}"/>
+                </Button>
+              </StackPanel>
+            </StackPanel>
+          </Grid>
+        </Border>
+
+        <views:MainView/>
+      </DockPanel>
+    </Panel>
+  </Border>
+</Window>

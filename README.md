@@ -1,0 +1,110 @@
+<!-- lang -->
+
+[<img src="assets/badge-lang.svg" alt="English selected, switch to Türkçe" width="124" height="44">](README.tr.md)
+
+# AbxPilot
+
+Empiric antibiotic guideline navigator.
+
+## What it is
+
+AbxPilot helps a clinician find what the current guideline says about empiric antibiotic
+choice for a syndrome. You pick a syndrome, answer a few questions, and the program shows the
+guideline's first choice, alternatives, dose, route and duration, with the source section.
+
+It is a guideline navigator and an educational tool. It is not a medical device and it does
+not write prescriptions. Every result needs clinical judgement. The baseline patient is a
+healthy 70 kg adult.
+
+## "Doesn't the guideline already do this?"
+
+It does: the guideline is the source and AbxPilot adds no medical knowledge of its own.
+What it adds:
+
+- The decision path is walked for you, one question at a time, instead of across pages.
+- Every line carries its source, section, source date and review date.
+- Hard constraints (allergy, pregnancy, renal function) remove regimens and say why.
+- Turkish first, English next, same data behind both.
+
+## Features
+
+- **Guideline summary card**: regimen, dose, route and duration in one place.
+- **Spectrum strip**: what the chosen regimen covers, drawn from the same record.
+- **Question panel**: only the questions that change the answer.
+- **Knowledge base as data**: records live in `kb/`, never in code.
+- **Custom title bar**: drag, double-click to maximize, Aero Snap and Alt+F4 work.
+
+## What it does not do
+
+- It does not diagnose.
+- It does not score or rank with a model; there is no LLM and no machine learning.
+- It does not replace local antibiograms or infectious disease consultation.
+- It does not dose for children, pregnancy or renal failure beyond what the guideline states.
+
+## Installation
+
+The program is at stage A0: the shell runs, the knowledge base is empty.
+
+Windows, from a USB stick prepared with the installer:
+
+```
+Kur.bat
+```
+
+From source, with the .NET 9 SDK:
+
+```
+dotnet run --project src/AbxPilot.Desktop
+```
+
+## How it works
+
+The engine is a guideline decision table plus hard constraints. The knowledge base is JSON in
+`kb/`, embedded into `AbxPilot.Data` at build time. The UI reads it through `AbxPilot.Core`
+interfaces and never holds medical content itself.
+
+## What the program shows
+
+![Main window: syndrome rail on the left, guideline summary, spectrum strip and question panel on the right, disclaimer at the bottom.](assets/main-window.png)
+
+The main window at stage A0: syndrome rail, guideline summary card, spectrum strip, question
+panel and the permanent disclaimer strip.
+
+## Development
+
+```
+dotnet build AbxPilot.sln -c Debug
+```
+
+```
+dotnet test AbxPilot.sln
+```
+
+| Path | Role |
+|---|---|
+| `src/AbxPilot.Core` | Engine contracts and records |
+| `src/AbxPilot.Data` | Embedded knowledge base and strings |
+| `src/AbxPilot.UI` | Avalonia views, view models, theme, title bar |
+| `src/AbxPilot.Desktop` | Windows executable |
+| `src/AbxPilot.Android` | Android head, built only from `AbxPilot.Android.sln` |
+| `tools/AbxPilot.KbCompiler` | Knowledge base compiler |
+| `tests/AbxPilot.Tests` | xunit tests, including the shell standard |
+
+## Contributing
+
+Open an issue first, then send a small pull request. The repository language is English.
+Contributions are accepted under the project license. There is no CLA and no DCO.
+If the project helps you, sponsoring keeps it going.
+
+## License
+
+[AGPL-3.0-or-later](LICENSE)
+
+<!-- signature -->
+<div align="center">
+
+<a href="https://github.com/sponsors/Teknesyum"><img src="assets/badge-sponsor.svg" alt="Support Teknesyum" height="38"></a>
+&nbsp;
+<a href="LICENSE"><img src="assets/badge-license.svg" alt="License AGPL-3.0" height="38"></a>
+
+</div>

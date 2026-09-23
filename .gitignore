@@ -1,0 +1,13 @@
+tmp/
+bin/
+obj/
+*.user
+.vs/
+TestResults/
+trash/
+.claude/jobs.md
+.claude/acik.md
+.claude/kapali.md
+.claude/sonra.md
+.claude/worktrees/
+.claude/agent-memory/

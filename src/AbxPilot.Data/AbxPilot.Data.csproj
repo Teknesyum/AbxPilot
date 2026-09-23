@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Kb\*.json" LogicalName="AbxPilot.Data.Kb.%(Filename)%(Extension)" />
+    <EmbeddedResource Include="..\..\kb\i18n\*.json" LogicalName="AbxPilot.Data.I18n.%(Filename)%(Extension)" Link="I18n\%(Filename)%(Extension)" />
+  </ItemGroup>
+
+</Project>

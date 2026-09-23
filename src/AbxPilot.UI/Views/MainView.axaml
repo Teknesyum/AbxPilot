@@ -1,0 +1,87 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="using:AbxPilot.UI.Localization"
+             xmlns:vm="using:AbxPilot.UI.ViewModels"
+             x:Class="AbxPilot.UI.Views.MainView"
+             x:DataType="vm:MainViewModel"
+             FontFamily="{StaticResource FontSans}"
+             Foreground="{StaticResource TextBody}">
+
+  <DockPanel>
+
+    <Border x:Name="Disclaimer"
+            DockPanel.Dock="Bottom"
+            Background="{StaticResource Surface}"
+            BorderBrush="{StaticResource BorderDecorative}"
+            BorderThickness="0,1,0,0"
+            Padding="{StaticResource InputPadding}"
+            MinHeight="{StaticResource TitleBarHeightMin}">
+      <TextBlock Theme="{StaticResource Hint}" VerticalAlignment="Center"
+                 Text="{loc:Text footer.disclaimer}"/>
+    </Border>
+
+    <Grid ColumnDefinitions="Auto,*" Margin="{StaticResource PanelPadding}" ColumnSpacing="{StaticResource SectionGap}">
+
+      <Border x:Name="SyndromeRail" Grid.Column="0" Classes="enter"
+              Theme="{StaticResource Panel}" Width="{StaticResource SidebarWidth}">
+        <DockPanel VerticalSpacing="{StaticResource FieldStack}">
+          <TextBlock DockPanel.Dock="Top" Theme="{StaticResource H3}" Text="{loc:Text rail.title}"/>
+          <TextBlock DockPanel.Dock="Top" Theme="{StaticResource Hint}" Text="{loc:Text rail.empty}"
+                     IsVisible="{Binding NoSyndromes}"/>
+          <ItemsControl ItemsSource="{Binding Syndromes}"/>
+        </DockPanel>
+      </Border>
+
+      <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Spacing="{StaticResource SectionGap}">
+
+          <Border x:Name="SummaryCard" Classes="enter" Theme="{StaticResource Panel}">
+            <StackPanel Spacing="{StaticResource FieldStack}">
+              <TextBlock Theme="{StaticResource H2}" Text="{loc:Text card.title}"/>
+              <UniformGrid Columns="4" ColumnSpacing="{StaticResource RowGap}">
+                <StackPanel Spacing="{StaticResource FieldGap}">
+                  <TextBlock Theme="{StaticResource Label}" Text="{loc:Text card.regimen}"/>
+                  <Border Theme="{StaticResource Skeleton}"/>
+                </StackPanel>
+                <StackPanel Spacing="{StaticResource FieldGap}">
+                  <TextBlock Theme="{StaticResource Label}" Text="{loc:Text card.dose}"/>
+                  <Border Theme="{StaticResource Skeleton}"/>
+                </StackPanel>
+                <StackPanel Spacing="{StaticResource FieldGap}">
+                  <TextBlock Theme="{StaticResource Label}" Text="{loc:Text card.route}"/>
+                  <Border Theme="{StaticResource Skeleton}"/>
+                </StackPanel>
+                <StackPanel Spacing="{StaticResource FieldGap}">
+                  <TextBlock Theme="{StaticResource Label}" Text="{loc:Text card.duration}"/>
+                  <Border Theme="{StaticResource Skeleton}"/>
+                </StackPanel>
+              </UniformGrid>
+            </StackPanel>
+          </Border>
+
+          <Border x:Name="SpectrumStrip" Classes="enter" Theme="{StaticResource Panel}">
+            <StackPanel Spacing="{StaticResource RowGap}">
+              <TextBlock Theme="{StaticResource H3}" Text="{loc:Text spectrum.title}"/>
+              <Border Theme="{StaticResource SkeletonBar}"/>
+              <Border Theme="{StaticResource SkeletonBar}"/>
+              <Border Theme="{StaticResource SkeletonBar}"/>
+            </StackPanel>
+          </Border>
+
+          <Border x:Name="QuestionPanel" Classes="enter" Theme="{StaticResource Panel}">
+            <StackPanel Spacing="{StaticResource FieldStack}">
+              <TextBlock Theme="{StaticResource H3}" Text="{loc:Text questions.title}"/>
+              <TextBlock Theme="{StaticResource Hint}" Text="{loc:Text questions.empty}"/>
+              <UniformGrid Columns="3" ColumnSpacing="{StaticResource RowGap}" RowSpacing="{StaticResource RowGap}">
+                <Border Theme="{StaticResource Skeleton}"/>
+                <Border Theme="{StaticResource Skeleton}"/>
+                <Border Theme="{StaticResource Skeleton}"/>
+              </UniformGrid>
+            </StackPanel>
+          </Border>
+
+        </StackPanel>
+      </ScrollViewer>
+    </Grid>
+  </DockPanel>
+</UserControl>

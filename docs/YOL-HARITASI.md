@@ -1,0 +1,15 @@
+# AbxPilot Yol Haritası
+
+Aşamaların ayrıntısı `plan.md` içinde. Biten silinmez, işaretlenir.
+
+- [x] Plan ve Fable danışması (2026-09-21)
+- [ ] A0 İskele
+- [ ] A1 Bilgi tabanı çekirdeği
+- [ ] A2 Motor
+- [ ] A3 Ekran
+- [ ] A4 Hareket
+- [ ] A5 İkinci sendrom: selülit
+- [ ] A6 İdrar yolu, intraabdominal
+- [ ] A7 İngilizce ve bölge katmanı
+- [ ] A8 Android
+- [ ] A9 Uzman gözden geçirmesi ve ilk yayın

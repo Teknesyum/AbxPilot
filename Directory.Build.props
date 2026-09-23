@@ -1,0 +1,34 @@
+<Project>
+
+  <PropertyGroup>
+    <Version>0.0.1</Version>
+    <AvaloniaVersion>12.1.2</AvaloniaVersion>
+    <CommunityToolkitMvvmVersion>8.4.0</CommunityToolkitMvvmVersion>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Company>Teknesyum</Company>
+    <Product>AbxPilot</Product>
+    <Authors>Teknesyum</Authors>
+    <Copyright>Copyright (c) Teknesyum</Copyright>
+    <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
+    <SourceRevisionLength>7</SourceRevisionLength>
+  </PropertyGroup>
+
+  <Target Name="ShortenSourceRevisionId"
+          DependsOnTargets="InitializeSourceControlInformation"
+          BeforeTargets="AddSourceRevisionToInformationalVersion"
+          Condition="'$(IncludeSourceRevisionInInformationalVersion)' == 'true'">
+    <PropertyGroup Condition="'$(SourceRevisionId)' != '' And $(SourceRevisionId.Length) &gt; $(SourceRevisionLength)">
+      <SourceRevisionId>$(SourceRevisionId.Substring(0, $(SourceRevisionLength)))</SourceRevisionId>
+    </PropertyGroup>
+  </Target>
+
+</Project>
