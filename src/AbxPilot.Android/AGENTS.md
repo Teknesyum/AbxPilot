@@ -1,6 +1,6 @@
 # AbxPilot.Android
 
-Android head, net9.0-android. Not in `AbxPilot.sln`; built from `AbxPilot.Android.sln`.
+Android head, net10.0-android. Not in `AbxPilot.sln`; built from `AbxPilot.Android.sln`.
 
-- Blocked: Avalonia.Android 12.1.2 targets net10.0-android36.0 only (NU1202).
-- Unblocks with the .NET 10 SDK, or by pinning the whole solution to an Avalonia line that ships net9 Android.
+- Blocked: Android SDK and JDK not installed (XA5300); workload android is installed.
+- Unblocks with `dotnet build -t:InstallAndroidDependencies` after the SDK licences are accepted.

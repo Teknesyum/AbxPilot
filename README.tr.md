@@ -49,7 +49,7 @@ Windows, kurucuyla hazırlanmış USB bellekten:
 Kur.bat
 ```
 
-Kaynaktan, .NET 9 SDK ile:
+Kaynaktan, .NET 10 SDK ile:
 
 ```
 dotnet run --project src/AbxPilot.Desktop

@@ -1,6 +1,6 @@
 # AbxPilot
 
-Cross-platform empiric antibiotic selection aid (Avalonia, .NET 9, Android later).
+Cross-platform empiric antibiotic selection aid (Avalonia, .NET 10, Android later).
 Baseline patient: healthy 70 kg adult. Turkish first, then worldwide.
 
 - Plan: `docs/plan.md` (Turkish). Roadmap: `docs/YOL-HARITASI.md`.

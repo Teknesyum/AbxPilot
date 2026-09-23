@@ -55,7 +55,7 @@ AbxPilot.sln
 └─ tests/                 motor, şema, altın vaka, kabuk standardı testleri
 ```
 
-- Yığın: .NET 9 + Avalonia 11.2+, CommunityToolkit.Mvvm. Görsel tema kitaplığı yok.
+- Yığın: .NET 10 + Avalonia 12, CommunityToolkit.Mvvm. Görsel tema kitaplığı yok.
 - Veri `AvaloniaResource` olarak gömülü; dosya yolu varsayımı yok, Android'de de çalışır.
 - YAML çalışma anında okunmaz: derleyici JSON üretir, source-generated `System.Text.Json`
   okur. AOT ve trimming güvenli.

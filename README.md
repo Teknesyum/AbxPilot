@@ -51,7 +51,7 @@ Windows, from a USB stick prepared with the installer:
 Kur.bat
 ```
 
-From source, with the .NET 9 SDK:
+From source, with the .NET 10 SDK:
 
 ```
 dotnet run --project src/AbxPilot.Desktop
