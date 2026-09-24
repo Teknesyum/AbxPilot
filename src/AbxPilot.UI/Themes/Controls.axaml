@@ -1,5 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ch="using:AbxPilot.UI.Choreography">
 
   <Styles.Resources>
 
@@ -119,6 +120,165 @@
       </Style>
     </ControlTheme>
 
+    <ControlTheme x:Key="{x:Type ScrollBar}" TargetType="ScrollBar">
+      <Setter Property="Background" Value="Transparent"/>
+      <Style Selector="^:vertical">
+        <Setter Property="Width" Value="{StaticResource ScrollbarWidth}"/>
+        <Setter Property="Template">
+          <ControlTemplate>
+            <Track Name="PART_Track"
+                   Minimum="{TemplateBinding Minimum}"
+                   Maximum="{TemplateBinding Maximum}"
+                   Value="{TemplateBinding Value, Mode=TwoWay}"
+                   ViewportSize="{TemplateBinding ViewportSize}"
+                   Orientation="{TemplateBinding Orientation}"
+                   IsDirectionReversed="True">
+              <Thumb Name="thumb"/>
+            </Track>
+          </ControlTemplate>
+        </Setter>
+      </Style>
+      <Style Selector="^:horizontal">
+        <Setter Property="Height" Value="{StaticResource ScrollbarWidth}"/>
+        <Setter Property="Template">
+          <ControlTemplate>
+            <Track Name="PART_Track"
+                   Minimum="{TemplateBinding Minimum}"
+                   Maximum="{TemplateBinding Maximum}"
+                   Value="{TemplateBinding Value, Mode=TwoWay}"
+                   ViewportSize="{TemplateBinding ViewportSize}"
+                   Orientation="{TemplateBinding Orientation}">
+              <Thumb Name="thumb"/>
+            </Track>
+          </ControlTemplate>
+        </Setter>
+      </Style>
+      <Style Selector="^ /template/ Thumb#thumb">
+        <Setter Property="Template">
+          <ControlTemplate>
+            <Border Background="{TemplateBinding Background}" CornerRadius="{StaticResource Radius}"/>
+          </ControlTemplate>
+        </Setter>
+        <Setter Property="Background" Value="{StaticResource NeonBlue30}"/>
+      </Style>
+      <Style Selector="^ /template/ Thumb#thumb:pointerover">
+        <Setter Property="Background" Value="{StaticResource NeonBlue50}"/>
+      </Style>
+    </ControlTheme>
+
+    <StaticResource x:Key="ToolTipBackground" ResourceKey="AppBg"/>
+    <StaticResource x:Key="ToolTipForeground" ResourceKey="TextBody"/>
+    <StaticResource x:Key="ToolTipBorderBrush" ResourceKey="BorderDefault"/>
+
+    <ControlTheme x:Key="RailItem" TargetType="Button" BasedOn="{StaticResource HeaderButton}">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="HorizontalContentAlignment" Value="Left"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="MinHeight" Value="{StaticResource InputHeight}"/>
+      <Setter Property="Template">
+        <ControlTemplate TargetType="Button">
+          <Border Name="bd"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  CornerRadius="{TemplateBinding CornerRadius}"
+                  Padding="{TemplateBinding Padding}">
+            <Border.Transitions>
+              <Transitions>
+                <BrushTransition Property="BorderBrush" Duration="{StaticResource TInstant}"/>
+              </Transitions>
+            </Border.Transitions>
+            <ContentPresenter Name="PART_ContentPresenter"
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              Foreground="{TemplateBinding Foreground}"
+                              TextWrapping="Wrap"
+                              HorizontalContentAlignment="Left"
+                              VerticalContentAlignment="Center"/>
+          </Border>
+        </ControlTemplate>
+      </Setter>
+      <Style Selector="^.selected">
+        <Setter Property="Background" Value="{StaticResource NeonBlue10}"/>
+        <Setter Property="Foreground" Value="{StaticResource OnBlue10}"/>
+      </Style>
+      <Style Selector="^.selected:pointerover">
+        <Setter Property="Foreground" Value="{StaticResource OnBlue10}"/>
+      </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="Badge" TargetType="Border">
+      <Setter Property="BorderBrush" Value="{StaticResource BorderDefault}"/>
+      <Setter Property="BorderThickness" Value="{StaticResource BorderWidth}"/>
+      <Setter Property="CornerRadius" Value="{StaticResource Radius}"/>
+      <Setter Property="Padding" Value="{Binding Source={StaticResource Space2}, Converter={x:Static ch:Converters.Inset}}"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+    </ControlTheme>
+
+    <ControlTheme x:Key="WarningBadge" TargetType="Border" BasedOn="{StaticResource Badge}">
+      <Setter Property="BorderBrush" Value="{StaticResource Warning50}"/>
+    </ControlTheme>
+
+    <ControlTheme x:Key="Switch" TargetType="ToggleButton">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Foreground" Value="{StaticResource TextBody}"/>
+      <Setter Property="FontFamily" Value="{StaticResource FontSans}"/>
+      <Setter Property="FontSize" Value="{StaticResource FontSize1}"/>
+      <Setter Property="MinHeight" Value="{StaticResource TargetMin}"/>
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template">
+        <ControlTemplate TargetType="ToggleButton">
+          <Border Name="bd" Background="Transparent" BorderBrush="Transparent"
+                  BorderThickness="{StaticResource BorderWidth}" CornerRadius="{StaticResource Radius}">
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="{StaticResource RowGap}">
+            <ContentPresenter Name="PART_ContentPresenter" Grid.Column="0"
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              Foreground="{TemplateBinding Foreground}"
+                              VerticalAlignment="Center"/>
+            <Border Name="track" Grid.Column="1"
+                    Width="{StaticResource InputHeight}" Height="{StaticResource TargetMin}"
+                    CornerRadius="{StaticResource Radius}"
+                    BorderBrush="{StaticResource BorderDefault}"
+                    BorderThickness="{StaticResource BorderWidth}"
+                    Background="Transparent"
+                    Padding="{Binding Source={StaticResource Space1}, Converter={x:Static ch:Converters.Inset}}">
+              <Ellipse Name="knob" Width="{StaticResource Space4}" Height="{StaticResource Space4}"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Fill="{StaticResource NeonBlue}">
+                <Ellipse.Transitions>
+                  <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform"
+                                                   Duration="{StaticResource TFast}"
+                                                   Easing="{StaticResource EOut}"/>
+                  </Transitions>
+                </Ellipse.Transitions>
+              </Ellipse>
+            </Border>
+          </Grid>
+          </Border>
+        </ControlTemplate>
+      </Setter>
+      <Style Selector="^:pointerover">
+        <Setter Property="Foreground" Value="{StaticResource PinkText}"/>
+      </Style>
+      <Style Selector="^:pointerover /template/ Border#track">
+        <Setter Property="BorderBrush" Value="{StaticResource BorderStrong}"/>
+      </Style>
+      <Style Selector="^:focus-visible /template/ Border#bd">
+        <Setter Property="BorderBrush" Value="{StaticResource NeonBlue}"/>
+      </Style>
+      <Style Selector="^:checked /template/ Border#track">
+        <Setter Property="Background" Value="{StaticResource NeonBlue}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource NeonBlue}"/>
+      </Style>
+      <Style Selector="^:checked /template/ Ellipse#knob">
+        <Setter Property="Fill" Value="{StaticResource OnBlue}"/>
+        <Setter Property="RenderTransform" Value="translateX(16px)"/>
+      </Style>
+    </ControlTheme>
+
     <ControlTheme x:Key="Skeleton" TargetType="Border">
       <Setter Property="Background" Value="{StaticResource NeonBlue10}"/>
       <Setter Property="CornerRadius" Value="{StaticResource Radius}"/>
@@ -130,6 +290,61 @@
     </ControlTheme>
 
   </Styles.Resources>
+
+  <Style Selector="Border.consult">
+    <Setter Property="BorderBrush" Value="{StaticResource Warning}"/>
+  </Style>
+
+  <Style Selector="Border.qcard">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderBrush" Value="{StaticResource BorderDecorative}"/>
+    <Setter Property="BorderThickness" Value="{StaticResource BorderWidth}"/>
+    <Setter Property="CornerRadius" Value="{StaticResource Radius}"/>
+    <Setter Property="Padding" Value="{Binding Source={StaticResource Space3}, Converter={x:Static ch:Converters.Inset}}"/>
+    <Setter Property="RenderTransformOrigin" Value="50%,0%"/>
+  </Style>
+
+  <Style Selector="Border.qcard.answered">
+    <Setter Property="BorderBrush" Value="{StaticResource NeonBlue}"/>
+  </Style>
+
+  <Style Selector="Border.fill.variable">
+    <Setter Property="Background" Value="{StaticResource NeonBlue50}"/>
+  </Style>
+
+  <Style Selector=".anim Border.alt">
+    <Setter Property="Transitions">
+      <Transitions>
+        <DoubleTransition Property="Opacity" Duration="{StaticResource TFast}" Easing="{StaticResource EIn}"/>
+      </Transitions>
+    </Setter>
+  </Style>
+
+  <Style Selector="Border.alt.leaving">
+    <Setter Property="Opacity" Value="0"/>
+  </Style>
+
+  <Style Selector="Border.fill">
+    <Setter Property="RenderTransformOrigin" Value="0%,50%"/>
+    <Setter Property="Background" Value="{StaticResource NeonBlue}"/>
+  </Style>
+
+  <Style Selector=".anim Border.fill">
+    <Setter Property="Transitions">
+      <Transitions>
+        <TransformOperationsTransition Property="RenderTransform" Duration="{StaticResource TBase}" Easing="{StaticResource EOut}"/>
+      </Transitions>
+    </Setter>
+  </Style>
+
+  <Style Selector="Border.flash">
+    <Setter Property="Opacity" Value="0"/>
+    <Setter Property="IsHitTestVisible" Value="False"/>
+    <Setter Property="BorderBrush" Value="{StaticResource NeonBlue}"/>
+    <Setter Property="BorderThickness" Value="{StaticResource BorderWidth}"/>
+    <Setter Property="CornerRadius" Value="{StaticResource Radius}"/>
+    <Setter Property="Effect" Value="{StaticResource HeroGlow}"/>
+  </Style>
 
   <Style Selector=".anim Border.enter">
     <Style.Animations>

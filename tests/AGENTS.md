@@ -10,3 +10,6 @@
   region leaf, consult status, translated message keys.
 - `Golden/cap/*.yaml`: clinical vignettes run on every guideline set (`expect_by_set` overrides);
   each under 50 ms. `ReportIsWritten` writes `tmp/golden-report.md`.
+- `AbxPilot.UiTests` (headless Avalonia): `KontrastTests` checks 7:1 on every text pair;
+  `EkranTests` renders the designed states to `docs/ui-denetim/2026-09-24/` and runs the contrast
+  walk on each, and proves evaluation leaves the UI thread free.
