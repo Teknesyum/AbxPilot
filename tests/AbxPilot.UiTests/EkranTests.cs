@@ -116,6 +116,78 @@ public class EkranTests
     }
 
     [AvaloniaFact]
+    public void CapturesTheNewSyndromes()
+    {
+        var olcumler = Olcumler();
+
+        var (pencere, vm) = Ac(1280, 800);
+        Bitir(vm.SelectSyndromeAsync("cap"));
+        Assert.Equal("ttd-2021", vm.GuidelineSet);
+
+        Bitir(vm.SelectSyndromeAsync("ssti"));
+        Assert.Equal("idsa-2014", vm.GuidelineSet);
+        Assert.Equal(["idsa-2014", "nice-ng141-2019"], vm.GuidelineSets.Select(item => item.Code));
+        Assert.True(vm.IsReady, vm.State.ToString());
+        Kaydet(pencere, "a5-ssti-varsayilan");
+        Olc(pencere, "ssti", olcumler);
+
+        Bitir(vm.AnswerAsync("ssti_type", "purulent"));
+        Assert.True(vm.IsNoAntibiotic, vm.State.ToString());
+        Kaydet(pencere, "a5-ssti-antibiyotik-yok");
+        Olc(pencere, "antibiyotik-yok", olcumler);
+
+        Bitir(vm.ClearAsync("ssti_type"));
+        Bitir(vm.AnswerAsync("necrotizing_signs", "yes"));
+        Bitir(vm.AnswerAsync("systemic_signs", "yes"));
+        Assert.True(vm.IsReferral, vm.State.ToString());
+        Assert.True(vm.HasFirstChoice);
+        Kaydet(pencere, "a5-ssti-sevk");
+        Olc(pencere, "sevk", olcumler);
+
+        vm.SelectGuidelineSetCommand.Execute(vm.GuidelineSets.First(item => item.Code == "nice-ng141-2019"));
+        Bitir(vm.Idle);
+        Bitir(vm.SelectSyndromeAsync("uti"));
+        Assert.Equal("eau-2026", vm.GuidelineSet);
+        Assert.True(vm.IsReady, vm.State.ToString());
+        Kaydet(pencere, "a6-uti-varsayilan");
+        Olc(pencere, "uti", olcumler);
+
+        Bitir(vm.SelectSyndromeAsync("iai"));
+        Assert.Equal("ekmud-2016", vm.GuidelineSet);
+        Assert.True(vm.IsReady, vm.State.ToString());
+        Kaydet(pencere, "a6-iai-varsayilan");
+        Olc(pencere, "iai", olcumler);
+
+        Bitir(vm.AnswerAsync("sepsis", "yes"));
+        Assert.True(vm.IsReferral, vm.State.ToString());
+        Assert.False(vm.HasFirstChoice);
+        Kaydet(pencere, "a6-iai-sevk-rejimsiz");
+        Olc(pencere, "sevk-rejimsiz", olcumler);
+
+        vm.ToggleSettingsCommand.Execute(null);
+        Bekle();
+        Kaydet(pencere, "a6-ayarlar-set");
+        Olc(pencere, "ayarlar-set", olcumler);
+        vm.CloseSettingsCommand.Execute(null);
+
+        Bitir(vm.SelectSyndromeAsync("ssti"));
+        Assert.Equal("nice-ng141-2019", vm.GuidelineSet);
+        pencere.Close();
+
+        var tvm = new MainViewModel(KbResources.Knowledge, new MemorySettingsStore());
+        var telefon = new Window { Width = 390, Height = 844, Content = new MainView { DataContext = tvm } };
+        telefon.Show();
+        Bitir(tvm.Idle);
+        Assert.True(tvm.IsEmpty);
+        Kaydet(telefon, "a5-telefon-bos");
+        Olc(telefon, "telefon-bos", olcumler);
+        telefon.Close();
+
+        var hatalar = Hatalar(olcumler);
+        Assert.True(hatalar.Count == 0, string.Join("\n", hatalar));
+    }
+
+    [AvaloniaFact]
     public void EvaluationLeavesTheUiThreadFree()
     {
         var vm = new MainViewModel(KbResources.Knowledge, new MemorySettingsStore());

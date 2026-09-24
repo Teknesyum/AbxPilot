@@ -19,6 +19,8 @@ public enum ScreenState
     Empty,
     Ready,
     Consult,
+    Referral,
+    NoAntibiotic,
     Error
 }
 
@@ -41,7 +43,7 @@ public sealed record RationalePage(MainViewModel Owner);
 
 public sealed partial class MainViewModel : ObservableObject
 {
-    public const string Region = "tr";
+    public const string DefaultRegion = "tr";
 
     private readonly Func<KnowledgeBase> _load;
     private readonly ISettingsStore _store;
@@ -52,6 +54,9 @@ public sealed partial class MainViewModel : ObservableObject
     private Recommendation? _current;
     private int _generation;
     private string? _errorKey;
+    private string _region = DefaultRegion;
+    private string _set = "";
+    private Dictionary<string, string[]> _setsBySyndrome = new(StringComparer.Ordinal);
 
     public MainViewModel() : this(KbResources.Knowledge, FileSettingsStore.ForUser())
     {
@@ -120,7 +125,8 @@ public sealed partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsLoading), nameof(IsEmpty), nameof(IsReady), nameof(IsConsult), nameof(IsError),
-        nameof(HasCard), nameof(HasResult), nameof(ShowQuestionHint))]
+        nameof(IsReferral), nameof(IsNoAntibiotic), nameof(IsCaution), nameof(HasCard), nameof(HasResult),
+        nameof(ShowQuestionHint))]
     private ScreenState state = ScreenState.Loading;
 
     [ObservableProperty]
@@ -156,6 +162,18 @@ public sealed partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     private string errorText = "";
+
+    [ObservableProperty]
+    private string outcomeText = "";
+
+    [ObservableProperty]
+    private string referralNote = "";
+
+    [ObservableProperty]
+    private bool hasFirstChoice;
+
+    [ObservableProperty]
+    private string guidelineSettingLabel = "";
 
     [ObservableProperty]
     private string sourceLinkText = "";
@@ -204,7 +222,17 @@ public sealed partial class MainViewModel : ObservableObject
 
     public bool IsError => State == ScreenState.Error;
 
-    public bool HasCard => IsReady || IsConsult;
+    public bool IsReferral => State == ScreenState.Referral;
+
+    public bool IsNoAntibiotic => State == ScreenState.NoAntibiotic;
+
+    public bool IsCaution => IsConsult || IsReferral;
+
+    public bool HasCard => IsReady || IsConsult || IsReferral || IsNoAntibiotic;
+
+    public bool HasSetChoices => GuidelineSets.Count > 0;
+
+    public bool NoSetChoices => GuidelineSets.Count == 0;
 
     public bool HasResult => HasCard;
 
@@ -233,7 +261,9 @@ public sealed partial class MainViewModel : ObservableObject
     public string DataVersion =>
         Localizer.Format("titlebar.dataVersion", ("version", _knowledge?.Version ?? "…"));
 
-    public string GuidelineSet => _settings.GuidelineSet ?? "";
+    public string GuidelineSet => _set;
+
+    public string RegionId => _region;
 
     private async Task LoadAsync()
     {
@@ -256,14 +286,17 @@ public sealed partial class MainViewModel : ObservableObject
         foreach (var syndrome in knowledge.Syndromes)
             Syndromes.Add(new SyndromeItem(syndrome.Id));
 
+        _setsBySyndrome = knowledge.Syndromes.ToDictionary(
+            syndrome => syndrome.Id,
+            syndrome => knowledge.GuidelineSets
+                .Where(set => knowledge.GuidelineRows.Any(row => row.Set == set.Id && row.Syndrome == syndrome.Id))
+                .Select(set => set.Id)
+                .ToArray(),
+            StringComparer.Ordinal);
+        _region = knowledge.Regions.Any(region => region.Id == _settings.Region) ? _settings.Region! : DefaultRegion;
+        _set = "";
         GuidelineSets.Clear();
-        foreach (var set in knowledge.GuidelineSets)
-            GuidelineSets.Add(new ChoiceOption("set", set.Id));
-
-        var chosen = knowledge.GuidelineSets.Any(set => set.Id == _settings.GuidelineSet)
-            ? _settings.GuidelineSet!
-            : knowledge.GuidelineSets.FirstOrDefault()?.Id ?? "";
-        _settings = _settings with { GuidelineSet = chosen };
+        OnSetsChanged();
 
         Relabel();
         State = ScreenState.Empty;
@@ -301,6 +334,7 @@ public sealed partial class MainViewModel : ObservableObject
         foreach (var syndrome in Syndromes)
             syndrome.IsSelected = ReferenceEquals(syndrome, item);
         SelectedSyndrome = item;
+        ChooseSet(item.Id);
         _answers.Clear();
         _current = null;
         BuildQuestions(item.Id);
@@ -343,10 +377,15 @@ public sealed partial class MainViewModel : ObservableObject
     [RelayCommand]
     private void SelectGuidelineSet(ChoiceOption option)
     {
-        if (option.Code == _settings.GuidelineSet) return;
-        Persist(_settings with { GuidelineSet = option.Code });
+        if (SelectedSyndrome is not { } syndrome || option.Code == _set) return;
+        _set = option.Code;
+        var chosen = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var pair in _settings.GuidelineSets ?? new Dictionary<string, string>())
+            chosen[pair.Key] = pair.Value;
+        chosen[syndrome.Id] = option.Code;
+        Persist(_settings with { GuidelineSets = chosen });
         Relabel();
-        if (SelectedSyndrome is not null) Evaluate(null);
+        Evaluate(null);
     }
 
     [RelayCommand]
@@ -433,6 +472,35 @@ public sealed partial class MainViewModel : ObservableObject
         OnPropertyChanged(nameof(GuidelineSet));
     }
 
+    private void ChooseSet(string syndromeId)
+    {
+        var available = _setsBySyndrome.GetValueOrDefault(syndromeId) ?? [];
+        var saved = _settings.GuidelineSets?.GetValueOrDefault(syndromeId);
+        _set = saved is not null && available.Contains(saved) ? saved : DefaultSet(available);
+        GuidelineSets.Clear();
+        foreach (var id in available)
+            GuidelineSets.Add(new ChoiceOption("set", id));
+        OnSetsChanged();
+    }
+
+    private string DefaultSet(IReadOnlyList<string> available)
+    {
+        var sets = available
+            .Select(id => _knowledge!.GuidelineSets.First(set => set.Id == id))
+            .ToArray();
+        var chosen = sets.FirstOrDefault(set => string.Equals(set.Region, _region, StringComparison.OrdinalIgnoreCase))
+                     ?? sets.FirstOrDefault(set => set.Region is null)
+                     ?? sets.FirstOrDefault();
+        return chosen?.Id ?? "";
+    }
+
+    private void OnSetsChanged()
+    {
+        OnPropertyChanged(nameof(GuidelineSet));
+        OnPropertyChanged(nameof(HasSetChoices));
+        OnPropertyChanged(nameof(NoSetChoices));
+    }
+
     private void Filter()
     {
         var query = SearchText.Trim();
@@ -451,8 +519,8 @@ public sealed partial class MainViewModel : ObservableObject
         var context = new GuidelineContext(
             SelectedSyndrome.Id,
             new Dictionary<string, IReadOnlyList<string>>(_answers, StringComparer.Ordinal),
-            Region,
-            _settings.GuidelineSet ?? "");
+            _region,
+            _set);
         Idle = EvaluateAsync(_engine, context, trigger, ++_generation);
         return Idle;
     }
@@ -524,7 +592,7 @@ public sealed partial class MainViewModel : ObservableObject
         foreach (var option in GuidelineSets)
         {
             option.Label = Localizer.Get($"guideline.{option.Code}.name");
-            option.IsSelected = option.Code == _settings.GuidelineSet;
+            option.IsSelected = option.Code == _set;
         }
 
         foreach (var card in Questions)
@@ -534,8 +602,13 @@ public sealed partial class MainViewModel : ObservableObject
                 option.Label = Localizer.Get($"question.{card.Id}.option.{option.Code}");
         }
 
-        GuidelineName = Localizer.Get($"guideline.{_settings.GuidelineSet}.name");
+        GuidelineName = _set.Length > 0
+            ? Localizer.Get($"guideline.{_set}.name")
+            : Localizer.Format("appbar.region", ("name", Localizer.Get($"region.{_region}.name")));
         SyndromeTitle = SelectedSyndrome?.Name ?? Localizer.Get("appbar.noSyndrome");
+        GuidelineSettingLabel = SelectedSyndrome is { } selected
+            ? Localizer.Format("settings.guidelineFor", ("syndrome", selected.Name))
+            : Localizer.Get("settings.guideline");
         AlternativesHeader = Localizer.Get("card.tab.alternatives");
         RationaleHeader = Localizer.Get("card.tab.rationale");
         SettingsPath = _store is FileSettingsStore file
@@ -551,7 +624,7 @@ public sealed partial class MainViewModel : ObservableObject
 
     private void UpdateSource()
     {
-        var set = _knowledge?.GuidelineSets.FirstOrDefault(item => item.Id == _settings.GuidelineSet);
+        var set = _knowledge?.GuidelineSets.FirstOrDefault(item => item.Id == _set);
         var source = set is null ? null : _knowledge!.Sources.FirstOrDefault(item => item.Id == set.Source);
         SourceUrl = source?.Url;
         SourceLinkText = set is null
@@ -585,7 +658,20 @@ public sealed partial class MainViewModel : ObservableObject
             _ => ""
         };
 
-        State = result.ConsultSpecialist ? ScreenState.Consult : ScreenState.Ready;
+        HasFirstChoice = result.FirstChoice is not null &&
+                         result.Status is RecommendationStatus.Selected or RecommendationStatus.Referral;
+        OutcomeText = result.Status is RecommendationStatus.Referral or RecommendationStatus.NoAntibiotic &&
+                      result.Rationale.Count > 0
+            ? Localizer.Get(result.Rationale[0].MessageKey)
+            : "";
+        ReferralNote = Localizer.Get(HasFirstChoice ? "card.referral.withRegimen" : "card.referral.noRegimen");
+        State = result.Status switch
+        {
+            RecommendationStatus.Selected => ScreenState.Ready,
+            RecommendationStatus.Referral => ScreenState.Referral,
+            RecommendationStatus.NoAntibiotic => ScreenState.NoAntibiotic,
+            _ => ScreenState.Consult
+        };
         OnPropertyChanged(nameof(HasWarnings));
         OnPropertyChanged(nameof(HasExcluded));
         OnPropertyChanged(nameof(NoAlternatives));
@@ -662,7 +748,7 @@ public sealed partial class MainViewModel : ObservableObject
         }
 
         Licenses.Clear();
-        var region = _knowledge?.Regions.FirstOrDefault(item => item.Id == Region);
+        var region = _knowledge?.Regions.FirstOrDefault(item => item.Id == _region);
         foreach (var component in components)
         {
             var status = region?.Licensing.FirstOrDefault(item => item.Drug == component.DrugId)?.Status ?? "unknown";

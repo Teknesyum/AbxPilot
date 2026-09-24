@@ -10,6 +10,7 @@ Knowledge base as data. Never put medical content in code. Sources map: `docs/kb
 - Row stage `base` selects; `modifier` acts: `add` appends, `replace` swaps the component with `role`
   (if the regimen lacks the role, the candidate is added), `note` shows text only.
 - `extends: <set>` inherits the parent rows; same id replaces in place, new ids append.
+- `region: <id>` on a set marks it national; the app offers it first in that region.
 - `i18n/<lang>/*.json`: flat keys merged per language. Missing tr key = error, missing en = warning.
 - mg/kg doses keep `amount_70kg`. Baseline patient: healthy 70 kg adult.
 - `constraints.yaml`: hard exclusions in precedence order (`when` + drug `exclude` selector + reason key).

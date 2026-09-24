@@ -98,6 +98,7 @@ public sealed record DrugSelector
 public sealed record GuidelineSet : KbRecord
 {
     public string? Extends { get; init; }
+    public string? Region { get; init; }
 }
 
 public sealed record GuidelineRow : KbRecord

@@ -57,7 +57,8 @@
 
           <ScrollViewer x:Name="CardScroll" Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
             <Border x:Name="SummaryCard" Theme="{StaticResource Panel}"
-                    Classes.consult="{Binding IsConsult}">
+                    Classes.consult="{Binding IsCaution}"
+                    Classes.clear="{Binding IsNoAntibiotic}">
               <Panel>
                 <Border x:Name="CardGlow" Classes="flash"/>
 
@@ -100,7 +101,7 @@
                             IsVisible="{Binding HasCard}">
                   <WrapPanel ItemSpacing="{StaticResource RowGap}" LineSpacing="{StaticResource FieldGap}">
                     <TextBlock Theme="{StaticResource H2}" VerticalAlignment="Center" Text="{loc:Text card.title}"/>
-                    <Panel IsVisible="{Binding IsReady}" VerticalAlignment="Center">
+                    <Panel IsVisible="{Binding HasFirstChoice}" VerticalAlignment="Center">
                       <Border Theme="{StaticResource WarningBadge}" IsVisible="{Binding IsUnreviewed}">
                         <TextBlock Theme="{StaticResource WarningBody}" Text="{Binding ReviewText}"/>
                       </Border>
@@ -117,7 +118,21 @@
                     <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{loc:Text card.consult.body}"/>
                   </StackPanel>
 
-                  <StackPanel x:Name="FirstChoice" Spacing="{StaticResource RowGap}" IsVisible="{Binding IsReady}">
+                  <StackPanel x:Name="ReferralBlock" Spacing="{StaticResource FieldGap}" IsVisible="{Binding IsReferral}">
+                    <TextBlock Theme="{StaticResource H3}" Foreground="{StaticResource Warning}"
+                               Text="{loc:Text card.referral.title}"/>
+                    <TextBlock Theme="{StaticResource WarningBody}" TextWrapping="Wrap" Text="{Binding OutcomeText}"/>
+                    <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{Binding ReferralNote}"/>
+                  </StackPanel>
+
+                  <StackPanel x:Name="NoAntibioticBlock" Spacing="{StaticResource FieldGap}" IsVisible="{Binding IsNoAntibiotic}">
+                    <TextBlock Theme="{StaticResource H3}" Foreground="{StaticResource Success}"
+                               Text="{loc:Text card.noAntibiotic.title}"/>
+                    <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{Binding OutcomeText}"/>
+                    <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{loc:Text card.noAntibiotic.body}"/>
+                  </StackPanel>
+
+                  <StackPanel x:Name="FirstChoice" Spacing="{StaticResource RowGap}" IsVisible="{Binding HasFirstChoice}">
                     <WrapPanel ItemSpacing="{StaticResource RowGap}" LineSpacing="{StaticResource FieldGap}">
                       <TextBlock Theme="{StaticResource Label}" VerticalAlignment="Center" Text="{loc:Text card.firstChoice}"/>
                       <Border x:Name="DurationBadge" Theme="{StaticResource Badge}">
@@ -507,8 +522,10 @@
               <TextBlock Theme="{StaticResource H3}" VerticalAlignment="Center" Text="{loc:Text settings.title}"/>
             </DockPanel>
             <StackPanel Spacing="{StaticResource FieldGap}">
-              <TextBlock Theme="{StaticResource Label}" Text="{loc:Text settings.guideline}"/>
-              <ItemsControl ItemsSource="{Binding GuidelineSets}">
+              <TextBlock Theme="{StaticResource Label}" Text="{Binding GuidelineSettingLabel}"/>
+              <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" IsVisible="{Binding NoSetChoices}"
+                         Text="{loc:Text settings.guidelineNone}"/>
+              <ItemsControl ItemsSource="{Binding GuidelineSets}" IsVisible="{Binding HasSetChoices}">
                 <ItemsControl.ItemsPanel>
                   <ItemsPanelTemplate>
                     <WrapPanel ItemSpacing="{StaticResource FieldGap}" LineSpacing="{StaticResource FieldGap}"/>
@@ -524,6 +541,8 @@
                   </DataTemplate>
                 </ItemsControl.ItemTemplate>
               </ItemsControl>
+              <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" IsVisible="{Binding HasSetChoices}"
+                         Text="{loc:Text settings.guidelineHint}"/>
             </StackPanel>
             <StackPanel Spacing="{StaticResource FieldGap}">
               <TextBlock Theme="{StaticResource Label}" Text="{loc:Text settings.language}"/>

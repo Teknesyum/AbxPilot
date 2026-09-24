@@ -7,4 +7,5 @@ reviewed_at: null
 review_status: unreviewed
 note: Carries only the rows where the TTD 2021 consensus differs from IDSA/ATS 2019. Replaces the former ttd-2009 set;
   the 2009 report stays in sources.yaml as a historical record.
+region: tr
 extends: idsa-ats-2019

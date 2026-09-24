@@ -295,6 +295,10 @@
     <Setter Property="BorderBrush" Value="{StaticResource Warning}"/>
   </Style>
 
+  <Style Selector="Border.clear">
+    <Setter Property="BorderBrush" Value="{StaticResource Success}"/>
+  </Style>
+
   <Style Selector="Border.qcard">
     <Setter Property="Background" Value="Transparent"/>
     <Setter Property="BorderBrush" Value="{StaticResource BorderDecorative}"/>

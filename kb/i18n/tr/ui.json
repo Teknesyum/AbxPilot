@@ -52,7 +52,7 @@
   "card.consult.title": "Uzmana danışın",
   "card.consult.body": "Bu cevaplar için kılavuzda güvenli bir seçenek kalmadı. Enfeksiyon hastalıkları uzmanına danışın; cevapları değiştirerek gerekçeyi aşağıda inceleyebilirsiniz.",
   "card.empty.title": "Bir sendrom seçin",
-  "card.empty.body": "Soldaki listeden bir sendrom seçince kılavuzun birinci seçeneği burada açılır. Sorular isteğe bağlıdır.",
+  "card.empty.body": "Sendrom listesinden bir sendrom seçince kılavuzun birinci seçeneği burada açılır. Sorular isteğe bağlıdır.",
   "card.empty.action": "Sendrom listesini aç",
   "card.error.title": "Öneri hesaplanamadı",
   "card.retry": "Yeniden dene",
@@ -80,5 +80,14 @@
   "settings.stored": "Ayarlar bu dosyada tutulur, hasta verisi saklanmaz: {path}",
   "settings.storedMemory": "Ayarlar yalnız bu oturumda tutulur, hasta verisi saklanmaz.",
   "settings.close": "Kapat",
-  "footer.source": "Kaynak: {name}"
+  "footer.source": "Kaynak: {name}",
+  "card.referral.title": "Sevk ve uzman değerlendirmesi",
+  "card.referral.withRegimen": "Kılavuz sevk sırasında aşağıdaki rejimi veriyor; tedaviyi uzmanla birlikte planlayın.",
+  "card.referral.noRegimen": "Kılavuz bu durum için rejim vermiyor; hastayı sevk edin ya da uzmana danışın.",
+  "card.noAntibiotic.title": "Antibiyotik önerilmiyor",
+  "card.noAntibiotic.body": "Kılavuz bu durumu girişimle yönetiyor (ör. drenaj). Cevaplar değişirse özet yeniden hesaplanır.",
+  "settings.guidelineFor": "Kılavuz seti: {syndrome}",
+  "settings.guidelineNone": "Kılavuz setleri bir sendrom seçilince listelenir.",
+  "settings.guidelineHint": "Seçim bu sendrom için saklanır.",
+  "appbar.region": "Bölge: {name}"
 }

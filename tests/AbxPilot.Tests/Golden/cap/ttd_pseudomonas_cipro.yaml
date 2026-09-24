@@ -11,6 +11,9 @@ expect:
   first_choice: tzp_azm_iv
   drugs: [piperacillin_tazobactam, azithromycin]
   excluded: []
+  no_line_with:
+  - [doxycycline, ciprofloxacin]
+  - [azithromycin, ciprofloxacin]
 expect_by_set:
   ttd-2021:
     first_choice: tzp_cip_iv

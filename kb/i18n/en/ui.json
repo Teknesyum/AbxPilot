@@ -52,7 +52,7 @@
   "card.consult.title": "Consult a specialist",
   "card.consult.body": "No safe option is left in the guideline for these answers. Consult an infectious diseases specialist; the rationale below shows why.",
   "card.empty.title": "Choose a syndrome",
-  "card.empty.body": "Pick a syndrome from the list and the guideline's first choice opens here. Every question is optional.",
+  "card.empty.body": "Choose a syndrome from the syndrome list and the guideline's first choice opens here. All questions are optional.",
   "card.empty.action": "Open the syndrome list",
   "card.error.title": "The recommendation could not be computed",
   "card.retry": "Try again",
@@ -80,5 +80,14 @@
   "settings.stored": "Settings are kept in this file, no patient data is stored: {path}",
   "settings.storedMemory": "Settings are kept for this session only, no patient data is stored.",
   "settings.close": "Close",
-  "footer.source": "Source: {name}"
+  "footer.source": "Source: {name}",
+  "card.referral.title": "Referral and specialist review",
+  "card.referral.withRegimen": "The guideline gives the regimen below while referring; plan treatment together with the specialist.",
+  "card.referral.noRegimen": "The guideline gives no regimen for this situation; refer the patient or consult a specialist.",
+  "card.noAntibiotic.title": "No antibiotic recommended",
+  "card.noAntibiotic.body": "The guideline manages this with a procedure (for example drainage). The summary is recalculated if the answers change.",
+  "settings.guidelineFor": "Guideline set: {syndrome}",
+  "settings.guidelineNone": "Guideline sets are listed once a syndrome is chosen.",
+  "settings.guidelineHint": "The choice is kept for this syndrome.",
+  "appbar.region": "Region: {name}"
 }

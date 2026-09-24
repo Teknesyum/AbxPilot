@@ -7,7 +7,8 @@ Avalonia shared UI: App, MainWindow, MainView, view models, theme, title bar.
 - `Themes/Controls.axaml`: control themes and state styles (qcard, alt, fill, flash).
 - `Views/MainView`: rail, summary card, questions, spectrum, settings; layout switch in `Arrange`, motion in `Choreograph` (driven by `RecommendationDiff`).
 - `Choreography/`: token access (`Tokens`), dose counter, drug-name nudge, converters.
-- `Settings/`: local settings file (guideline set, language, score toggle; no patient data).
+- `Settings/`: local settings file (guideline set per syndrome, language, region, score toggle; no patient data).
+- Guideline set: only sets with rows for the syndrome; saved choice, else the region's national set, else the first international one.
 - Engine runs off the UI thread (`Task.Run`); never call it synchronously from a view.
 - Custom title bar: `WindowDecorations="BorderOnly"`, BeginMoveDrag, double-click toggles maximize.
 - Visible text only via `{loc:Text key}`; keys in `kb/i18n/<lang>/ui.json`, sentence case.

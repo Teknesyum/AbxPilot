@@ -31,7 +31,7 @@ internal sealed class CrossReferences(
         var questionIds = Unique(questions, item => item.Id, "question");
         Unique(syndromes, item => item.Id, "syndrome");
         Unique(sets, item => item.Id, "guideline set");
-        Unique(regions, item => item.Id, "region");
+        var regionIds = Unique(regions, item => item.Id, "region");
         Unique(spectrum, item => item.Syndrome + "/" + item.Drug, "spectrum row");
         Unique(constraints, item => item.Id, "constraint");
         UniqueRows();
@@ -49,6 +49,9 @@ internal sealed class CrossReferences(
         CheckRows(regimenIds, questionById, flagsBySyndrome);
         CheckSpectrum(drugIds);
         CheckRegions(drugIds, pathogenIds);
+        foreach (var (set, at) in sets)
+            if (set.Region is { } region && !regionIds.Contains(region))
+                Unknown(Codes.UnknownReference, at, "/region", $"unknown region '{region}'");
         CheckScoring();
         CheckConstraints(questionById, resistanceIds, flagsBySyndrome.Values.SelectMany(item => item).ToHashSet(StringComparer.Ordinal));
         CheckStrings();

@@ -13,6 +13,10 @@
     "extends": {
       "$ref": "common.schema.json#/$defs/id",
       "description": "Parent set. Its rows are inherited; a row with the same id replaces the inherited row in place, new rows are appended."
+    },
+    "region": {
+      "$ref": "common.schema.json#/$defs/id",
+      "description": "Region whose national set this is. With that region selected, the app offers it first for the syndromes it covers; a set without a region is international."
     }
   },
   "unevaluatedProperties": false
