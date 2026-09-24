@@ -38,7 +38,7 @@
   "card.review.unreviewed": "Gözden geçirilmedi",
   "card.review.reviewed": "Gözden geçirildi {date}",
   "card.license": "{drug}: {status}",
-  "card.licenses": "Ruhsat (Türkiye)",
+  "card.licenses": "Ruhsat ({region})",
   "card.warnings": "Uyarılar",
   "card.tier": "Basamak {tier}",
   "card.tab.alternatives": "Alternatifler",
@@ -89,5 +89,8 @@
   "settings.guidelineFor": "Kılavuz seti: {syndrome}",
   "settings.guidelineNone": "Kılavuz setleri bir sendrom seçilince listelenir.",
   "settings.guidelineHint": "Seçim bu sendrom için saklanır.",
-  "appbar.region": "Bölge: {name}"
+  "appbar.region": "Bölge: {name}",
+  "card.regionNoData": "Bu bölge için direnç verisi yok (DSÖ AWaRe varsayılanı). Direnç soruları temkinli varsayılanla işlenir; yerel oranı biliyorsanız soruyu yanıtlayın.",
+  "settings.region": "Bölge",
+  "settings.regionHint": "Bölge direnç varsayılanlarını, ruhsat satırlarını ve önerilen ulusal kılavuzu değiştirir."
 }

@@ -44,8 +44,8 @@
   "spectrum.none": "None",
   "review.unreviewed": "Awaiting expert review",
   "review.reviewed": "Expert reviewed",
-  "license.licensed": "Licensed in Turkey",
-  "license.not_licensed": "Not licensed in Turkey",
+  "license.licensed": "Licensed",
+  "license.not_licensed": "Not licensed",
   "license.unknown": "Licensing unknown",
   "indication.cap": "Community-acquired pneumonia",
   "indication.influenza": "Influenza",
@@ -174,5 +174,8 @@
   "guideline.eau-2026.name": "EAU 2026",
   "guideline.sis-idsa-2010.name": "SIS/IDSA 2010",
   "guideline.sis-2017.name": "SIS 2017",
-  "guideline.ekmud-2016.name": "EKMUD IAI Consensus 2016"
+  "guideline.ekmud-2016.name": "EKMUD IAI Consensus 2016",
+  "region.eu.name": "European Union",
+  "region.us.name": "United States",
+  "region.other.name": "Other"
 }

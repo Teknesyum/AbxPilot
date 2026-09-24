@@ -44,8 +44,8 @@
   "spectrum.none": "Yok",
   "review.unreviewed": "Uzman incelemesi bekliyor",
   "review.reviewed": "Uzman incelemesinden geçti",
-  "license.licensed": "Türkiye'de ruhsatlı",
-  "license.not_licensed": "Türkiye'de ruhsatsız",
+  "license.licensed": "Ruhsatlı",
+  "license.not_licensed": "Ruhsatsız",
   "license.unknown": "Ruhsat durumu belirsiz",
   "indication.cap": "Toplum kökenli pnömoni",
   "indication.influenza": "İnfluenza",
@@ -174,5 +174,8 @@
   "guideline.eau-2026.name": "EAU 2026",
   "guideline.sis-idsa-2010.name": "SIS/IDSA 2010",
   "guideline.sis-2017.name": "SIS 2017",
-  "guideline.ekmud-2016.name": "EKMUD İAİ Uzlaşı Raporu 2016"
+  "guideline.ekmud-2016.name": "EKMUD İAİ Uzlaşı Raporu 2016",
+  "region.eu.name": "Avrupa Birliği",
+  "region.us.name": "ABD",
+  "region.other.name": "Diğer"
 }

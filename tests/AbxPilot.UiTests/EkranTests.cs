@@ -188,6 +188,63 @@ public class EkranTests
     }
 
     [AvaloniaFact]
+    public void CapturesTheRegionLayer()
+    {
+        var olcumler = Olcumler();
+        var (pencere, vm) = Ac(1280, 800);
+        try
+        {
+            Assert.Equal(["tr", "eu", "us", "other"], vm.Regions.Select(item => item.Code));
+            Bitir(vm.SelectSyndromeAsync("cap"));
+            Assert.Equal("ttd-2021", vm.GuidelineSet);
+            Assert.False(vm.NoRegionData);
+
+            Bolge(vm, "eu");
+            Assert.Equal("idsa-ats-2019", vm.GuidelineSet);
+            Bitir(vm.AnswerAsync("setting", "outpatient"));
+            Assert.True(vm.IsReady, vm.State.ToString());
+            Assert.False(vm.NoRegionData);
+            Assert.DoesNotContain(vm.Current!.Excluded, item => item.RegimenId == "azm_po");
+            Kaydet(pencere, "a7-bolge-eu");
+            Olc(pencere, "bolge-eu", olcumler);
+
+            Bolge(vm, "other");
+            Assert.True(vm.NoRegionData);
+            Assert.Contains(vm.Current!.Excluded, item => item.RegimenId == "azm_po");
+            Kaydet(pencere, "a7-bolge-diger");
+            Olc(pencere, "bolge-diger", olcumler);
+
+            vm.ToggleSettingsCommand.Execute(null);
+            Bekle();
+            Kaydet(pencere, "a7-ayarlar-bolge");
+            Olc(pencere, "ayarlar-bolge", olcumler);
+            vm.CloseSettingsCommand.Execute(null);
+
+            Bolge(vm, "us");
+            vm.SelectLanguageCommand.Execute("en");
+            Bekle();
+            Assert.Equal("Licence (United States)", vm.LicensesTitle);
+            Kaydet(pencere, "a7-en");
+            Olc(pencere, "en", olcumler);
+        }
+        finally
+        {
+            vm.SelectLanguageCommand.Execute("tr");
+            Bolge(vm, "tr");
+            pencere.Close();
+        }
+
+        var hatalar = Hatalar(olcumler);
+        Assert.True(hatalar.Count == 0, string.Join("\n", hatalar));
+    }
+
+    private static void Bolge(MainViewModel vm, string code)
+    {
+        vm.SelectRegionCommand.Execute(vm.Regions.First(item => item.Code == code));
+        Bitir(vm.Idle);
+    }
+
+    [AvaloniaFact]
     public void EvaluationLeavesTheUiThreadFree()
     {
         var vm = new MainViewModel(KbResources.Knowledge, new MemorySettingsStore());

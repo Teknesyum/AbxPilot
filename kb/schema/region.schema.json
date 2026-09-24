@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schema.abxpilot.teknesyum.dev/region.schema.json",
-  "title": "Region (kb/regions/<country>.yaml)",
+  "title": "Region (kb/regions/<country>.yaml; OTHER.yaml is the fallback without resistance data)",
   "type": "object",
   "allOf": [
     {
@@ -16,7 +16,7 @@
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^[a-z]{2}$"
+      "pattern": "^([a-z]{2}|other)$"
     },
     "resistance": {
       "type": "array",

@@ -10,6 +10,6 @@ Aşamaların ayrıntısı `plan.md` içinde. Biten silinmez, işaretlenir.
 - [x] A4 Hareket
 - [x] A5 İkinci sendrom: selülit
 - [x] A6 İdrar yolu, intraabdominal
-- [ ] A7 İngilizce ve bölge katmanı
+- [x] A7 İngilizce ve bölge katmanı
 - [x] A8 Android — imza anahtarı kullanıcıda
 - [ ] A9 Uzman gözden geçirmesi ve ilk yayın

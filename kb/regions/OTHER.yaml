@@ -1,0 +1,102 @@
+id: other
+version: 1
+source: who-aware-2023
+section: Fallback profile for a region without a file
+source_date: '2023-07-01'
+reviewed_at: null
+review_status: unreviewed
+note: 'No resistance data: every resistance question keeps its conservative static default, and the card says so. Drugs are
+  ordered by the WHO AWaRe group through the comparison score only. Licensing is unknown everywhere.'
+resistance: []
+thresholds: []
+licensing:
+- drug: amoxicillin
+  status: unknown
+- drug: amoxicillin_clavulanate
+  status: unknown
+- drug: ampicillin_sulbactam
+  status: unknown
+- drug: cefuroxime_axetil
+  status: unknown
+- drug: ceftriaxone
+  status: unknown
+- drug: cefepime
+  status: unknown
+- drug: ceftazidime
+  status: unknown
+- drug: piperacillin_tazobactam
+  status: unknown
+- drug: meropenem
+  status: unknown
+- drug: imipenem_cilastatin
+  status: unknown
+- drug: azithromycin
+  status: unknown
+- drug: clarithromycin
+  status: unknown
+- drug: doxycycline
+  status: unknown
+- drug: levofloxacin
+  status: unknown
+- drug: moxifloxacin
+  status: unknown
+- drug: ciprofloxacin
+  status: unknown
+- drug: vancomycin
+  status: unknown
+- drug: linezolid
+  status: unknown
+- drug: oseltamivir
+  status: unknown
+- drug: ceftaroline
+  status: unknown
+- drug: cefpodoxime
+  status: unknown
+- drug: cefotaxime
+  status: unknown
+- drug: aztreonam
+  status: unknown
+- drug: penicillin_v
+  status: unknown
+- drug: benzylpenicillin
+  status: unknown
+- drug: flucloxacillin
+  status: unknown
+- drug: dicloxacillin
+  status: unknown
+- drug: ampicillin
+  status: unknown
+- drug: pivmecillinam
+  status: unknown
+- drug: cefazolin
+  status: unknown
+- drug: cephalexin
+  status: unknown
+- drug: cefadroxil
+  status: unknown
+- drug: cefuroxime
+  status: unknown
+- drug: cefoxitin
+  status: unknown
+- drug: ertapenem
+  status: unknown
+- drug: clindamycin
+  status: unknown
+- drug: tmp_smx
+  status: unknown
+- drug: nitrofurantoin
+  status: unknown
+- drug: fosfomycin
+  status: unknown
+- drug: gentamicin
+  status: unknown
+- drug: amikacin
+  status: unknown
+- drug: metronidazole
+  status: unknown
+- drug: tigecycline
+  status: unknown
+- drug: teicoplanin
+  status: unknown
+- drug: erythromycin
+  status: unknown

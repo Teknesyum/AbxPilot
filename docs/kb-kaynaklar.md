@@ -35,6 +35,13 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `sis-2024` | SIS intraabdominal enfeksiyon kılavuzu 2024 güncellemesi; okunmadı, yalnız kayıt | Ay |
 | `ekmud-iai-2016` | EKMUD/TCD komplike intraabdominal enfeksiyon rehberi, Ulus Cerrahi Derg 2016 | Yıl |
 | `cinislioglu-2024` | Cinislioğlu AE ve ark., Türkiye üropatojen direnç verisi, Mikrobiyol Bul 2024 | Ay |
+| `ecdc-ears-net-2024` | ECDC EARS-Net yıllık epidemiyolojik rapor, 2024 verisi (yayın 18.11.2025), Tablo 9b | Gün |
+| `ema-authorisation` | EMA, ilaç ruhsatlandırma yolları (merkezi ve ulusal) | Gün |
+| `cdc-abcs-spn-2024` | CDC ABCs S. pneumoniae sürveyans raporu 2024 | Ay |
+| `cdc-nhsn-2018-2021` | CDC NHSN HAI patojen ve direnç raporu 2018-2021 | Yıl |
+| `weiner-lastinger-2020` | Weiner-Lastinger ve ark., NHSN 2015-2017, ICHE 2020;41(1):1-18 | Ay |
+| `kaye-2021` | Kaye ve ark., ABD ayaktan idrar E. coli direnci 2011-2019, CID 2021;73(11):1992-1999 | Ay |
+| `fda-drugsfda-2026` | Drugs@FDA, openFDA sorgusu 24.09.2026 (`docs/danisma/2026-09-24-openfda-sorgusu.txt`) | Gün |
 | `abxpilot-draft` | Proje taslağı, birincil kaynak yok | Gün |
 
 ## Kayıt Türüne Göre Kaynak
@@ -62,6 +69,9 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `spectrum/{ssti,uti,iai}.csv` | 22×6, 19×6, 21×8 | `eucast-expected-2023` ile uyumlu; diğer hücreler `abxpilot-draft` |
 | `regions/TR.yaml` v3 | TMP-SMX, FQ, GSBL eşik bayrakları; yeni ruhsat satırları | `cinislioglu-2024`, `who-caesar`; ruhsat `titck-2026` |
 | `scoring.yaml` | Karşılaştırma puanı ağırlıkları | `abxpilot-draft` |
+| `regions/EU.yaml` | Direnç: makrolid %19,0, MRSA %14,2, E. coli 3. kuşak sefalosporin %16,0, FQ %22,5, K. pneumoniae karbapenem %11,3; ruhsat hep `unknown` | `ecdc-ears-net-2024`; ruhsat notu `ema-authorisation` |
+| `regions/US.yaml` | Direnç: pnömokok eritromisin %23,9; MRSA %44,9 (YBÜ CLABSI); E. coli FQ %21,1, TMP-SMX %25,4, GSBL %6,4; Klebsiella karbapenem %6,9; ruhsat FDA | `cdc-abcs-spn-2024`, `cdc-nhsn-2018-2021`, `kaye-2021`, `weiner-lastinger-2020`; ruhsat `fda-drugsfda-2026` |
+| `regions/OTHER.yaml` | Direnç verisi yok, ruhsat hep `unknown`; kartta görünür uyarı | `who-aware-2023` |
 
 ## Belirsiz Noktalar
 
@@ -127,3 +137,12 @@ işlendi; yine de A9 uzman onayı bekler. "Açık" maddeler belirsiz kalır.
 36. **Açık (A6):** IDSA 2025 cUTI DOI ve sayfa numaraları; web sürümü kullanıldı.
 37. **Açık (A6):** IDSA setinde GSBL riski yalnız not; ilk seçim seftriakson kalır. EAU setinde karbapeneme geçer.
 38. **Açık (A5):** NICE MRSA eki oral hafif selülite de IV vankomisin ekler; NICE oral MRSA seçeneği vermiyor.
+39. **Açık (A7):** AB oranları invaziv izolatlardan; TKP, İYE ve İAE'ye özgü değil. Ülke aralığı geniş (makrolid %4,0-44,2).
+40. **Açık (A7):** EARS-Net E. coli TMP-SMX direncini raporlamıyor; AB'de soru temkinli statik varsayılanla (≥%20) işlenir.
+41. **Açık (A7):** AB ruhsatı ülkeye göre değişir; bütün ilaçlar `unknown`, ulusal liste doğrulanmadı.
+42. **Açık (A7):** ABD pnömokok makrolid direnci %23,9, eşiğin hemen altında ve invaziv izolatlardan; IDSA/ATS 2019'un ABD oranı ifadesiyle karşılaştırılmadı.
+43. **Açık (A7):** ABD toplum kökenli MRSA oranı bulunamadı; kayıt yalnız hastane (NHSN) verisi, tetikleyici değil.
+44. **Açık (A7):** ABD E. coli oranları CDC değil, Kaye 2021 (BD veritabanı, 2011-2019); daha yeni ulusal oran bulunamadı.
+45. **Açık (A7):** ABD'de 2017 sonrası tür düzeyinde karbapenem direnci bulunamadı.
+46. **Açık (A7):** Sefotaksim ABD'de yalnız Claforan ile listeli, diğerleri piyasadan çekilmiş; `unknown` bırakıldı.
+47. **Açık (A7):** Bölge dosyası olmayan ülke için "Diğer" profili direnç verisi taşımaz; yerel veri eklenene dek sorular statik varsayılanla işlenir.

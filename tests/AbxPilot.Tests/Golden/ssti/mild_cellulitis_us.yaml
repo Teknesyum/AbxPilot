@@ -1,0 +1,16 @@
+id: mild_cellulitis_us
+title: "Mild non-purulent cellulitis in the United States: dicloxacillin is licensed, flucloxacillin is not"
+source: fda-drugsfda-2026
+section: 'Region licensing list'
+region: us
+answers: {}
+expect:
+  status: selected
+  first_choice: ssti_pnv_po
+  drugs: [penicillin_v]
+  excluded: []
+expect_by_set:
+  nice-ng141-2019:
+    first_choice: ssti_clr_po
+    drugs: [clarithromycin]
+    excluded: [ssti_flx_po]

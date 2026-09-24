@@ -1,0 +1,12 @@
+id: out_healthy_other
+title: "Healthy outpatient, region without resistance data: the cautious static default excludes macrolides"
+source: idsa-ats-2019
+section: 'Q7; Table 2'
+region: other
+answers:
+  setting: outpatient
+expect:
+  status: selected
+  first_choice: amx_po
+  drugs: [amoxicillin]
+  excluded: [azm_po, clr_po]

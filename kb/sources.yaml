@@ -181,3 +181,60 @@
   url: https://mikrobiyolbul.org/managete/fu_folder/2024-04/366_379_Ahmet_Emre_Cinislio%C4%9Flu.pdf
   published: '2024-10-01'
   date_precision: month
+- id: ecdc-ears-net-2024
+  version: 1
+  kind: surveillance
+  citation: 'European Centre for Disease Prevention and Control. Antimicrobial resistance in the EU/EEA (EARS-Net) - Annual
+    Epidemiological Report for 2024. Stockholm: ECDC; 2025.'
+  url: https://www.ecdc.europa.eu/sites/default/files/documents/antimicrobial-resistance-eu-annual-epidemiological-report-2024.pdf
+  published: '2025-11-18'
+  date_precision: day
+  note: Table 9b, population-weighted EU/EEA means, invasive isolates, data year 2024.
+- id: ema-authorisation
+  version: 1
+  kind: reference
+  citation: European Medicines Agency. Authorisation of medicines.
+  url: https://www.ema.europa.eu/en/about-us/what-we-do/authorisation-medicines
+  published: '2026-09-24'
+  date_precision: day
+  note: Central versus national authorisation; older antibiotics are mostly nationally authorised.
+- id: cdc-abcs-spn-2024
+  version: 1
+  kind: surveillance
+  citation: 'Centers for Disease Control and Prevention. Active Bacterial Core Surveillance Report, Emerging Infections
+    Program Network, Streptococcus pneumoniae, 2024.'
+  url: https://www.cdc.gov/abcs/media/pdfs/2026/04/SPN_Surveillance_Report_2024.pdf
+  published: '2026-04-01'
+  date_precision: month
+- id: cdc-nhsn-2018-2021
+  version: 1
+  kind: surveillance
+  citation: Centers for Disease Control and Prevention. NHSN HAI Pathogens and Antimicrobial Resistance Report, 2018-2021.
+  url: https://www.cdc.gov/nhsn/hai-report/narrative-commentary.html
+  published: '2024-01-01'
+  date_precision: year
+- id: weiner-lastinger-2020
+  version: 1
+  kind: surveillance
+  citation: 'Weiner-Lastinger LM, Abner S, Edwards JR, et al. Antimicrobial-resistant pathogens associated with adult
+    healthcare-associated infections: summary of data reported to the National Healthcare Safety Network, 2015-2017. Infect
+    Control Hosp Epidemiol. 2020;41(1):1-18.'
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8276252/
+  published: '2020-01-01'
+  date_precision: month
+- id: kaye-2021
+  version: 1
+  kind: surveillance
+  citation: Kaye KS, Gupta V, Mulgirigama A, et al. Antimicrobial resistance trends in urine Escherichia coli isolates from
+    adult and adolescent females in the United States from 2011 to 2019. Clin Infect Dis. 2021;73(11):1992-1999.
+  url: https://pubmed.ncbi.nlm.nih.gov/34143881/
+  published: '2021-12-01'
+  date_precision: month
+- id: fda-drugsfda-2026
+  version: 1
+  kind: reference
+  citation: U.S. Food and Drug Administration. Drugs@FDA, queried through openFDA drugsfda on 24.09.2026 (marketing status
+    Prescription).
+  url: https://api.fda.gov/drug/drugsfda.json
+  published: '2026-09-24'
+  date_precision: day

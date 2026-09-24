@@ -1,0 +1,12 @@
+id: out_healthy_us
+title: "Healthy outpatient, US macrolide resistance below 25%: macrolides stay in the table, unlike Turkey"
+source: idsa-ats-2019
+section: 'Q7; Table 2'
+region: us
+answers:
+  setting: outpatient
+expect:
+  status: selected
+  first_choice: amx_po
+  drugs: [amoxicillin]
+  excluded: []

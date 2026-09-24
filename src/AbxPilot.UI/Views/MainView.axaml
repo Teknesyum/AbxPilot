@@ -111,6 +111,9 @@
                     </Panel>
                   </WrapPanel>
 
+                  <TextBlock x:Name="RegionNotice" Theme="{StaticResource WarningBody}" TextWrapping="Wrap"
+                             IsVisible="{Binding NoRegionData}" Text="{loc:Text card.regionNoData}"/>
+
                   <StackPanel x:Name="ConsultBlock" Spacing="{StaticResource FieldGap}" IsVisible="{Binding IsConsult}">
                     <TextBlock Theme="{StaticResource H3}" Foreground="{StaticResource Warning}"
                                Text="{loc:Text card.consult.title}"/>
@@ -195,7 +198,7 @@
                     </StackPanel>
 
                     <StackPanel Spacing="{StaticResource Space1}">
-                      <TextBlock Theme="{StaticResource Label}" Text="{loc:Text card.licenses}"/>
+                      <TextBlock Theme="{StaticResource Label}" Text="{Binding LicensesTitle}"/>
                       <ItemsControl ItemsSource="{Binding Licenses}">
                         <ItemsControl.ItemTemplate>
                           <DataTemplate x:DataType="vm:TextRow">
@@ -543,6 +546,26 @@
               </ItemsControl>
               <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" IsVisible="{Binding HasSetChoices}"
                          Text="{loc:Text settings.guidelineHint}"/>
+            </StackPanel>
+            <StackPanel Spacing="{StaticResource FieldGap}">
+              <TextBlock Theme="{StaticResource Label}" Text="{loc:Text settings.region}"/>
+              <ItemsControl ItemsSource="{Binding Regions}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <WrapPanel ItemSpacing="{StaticResource FieldGap}" LineSpacing="{StaticResource FieldGap}"/>
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="vm:ChoiceOption">
+                    <Button Theme="{StaticResource HeaderButton}"
+                            Classes.selected="{Binding IsSelected}"
+                            Content="{Binding Label}"
+                            Command="{Binding #Root.((vm:MainViewModel)DataContext).SelectRegionCommand}"
+                            CommandParameter="{Binding}"/>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+              <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{loc:Text settings.regionHint}"/>
             </StackPanel>
             <StackPanel Spacing="{StaticResource FieldGap}">
               <TextBlock Theme="{StaticResource Label}" Text="{loc:Text settings.language}"/>

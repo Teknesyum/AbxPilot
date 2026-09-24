@@ -38,7 +38,7 @@
   "card.review.unreviewed": "Not reviewed",
   "card.review.reviewed": "Reviewed {date}",
   "card.license": "{drug}: {status}",
-  "card.licenses": "Licence (Turkey)",
+  "card.licenses": "Licence ({region})",
   "card.warnings": "Warnings",
   "card.tier": "Tier {tier}",
   "card.tab.alternatives": "Alternatives",
@@ -89,5 +89,8 @@
   "settings.guidelineFor": "Guideline set: {syndrome}",
   "settings.guidelineNone": "Guideline sets are listed once a syndrome is chosen.",
   "settings.guidelineHint": "The choice is kept for this syndrome.",
-  "appbar.region": "Region: {name}"
+  "appbar.region": "Region: {name}",
+  "card.regionNoData": "No resistance data for this region (WHO AWaRe default). Resistance questions use the cautious default; answer them if you know the local rate.",
+  "settings.region": "Region",
+  "settings.regionHint": "The region sets resistance defaults, licence lines and the national guideline offered first."
 }

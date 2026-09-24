@@ -45,6 +45,8 @@ public sealed partial class MainViewModel : ObservableObject
 {
     public const string DefaultRegion = "tr";
 
+    public const string OtherRegion = "other";
+
     private readonly Func<KnowledgeBase> _load;
     private readonly ISettingsStore _store;
     private readonly Dictionary<string, IReadOnlyList<string>> _answers = new(StringComparer.Ordinal);
@@ -100,6 +102,8 @@ public sealed partial class MainViewModel : ObservableObject
     public ObservableCollection<SyndromeItem> Syndromes { get; } = [];
 
     public ObservableCollection<ChoiceOption> GuidelineSets { get; } = [];
+
+    public ObservableCollection<ChoiceOption> Regions { get; } = [];
 
     public ObservableCollection<ComponentSlot> Slots { get; } = [];
 
@@ -174,6 +178,12 @@ public sealed partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     private string guidelineSettingLabel = "";
+
+    [ObservableProperty]
+    private string licensesTitle = "";
+
+    [ObservableProperty]
+    private bool noRegionData;
 
     [ObservableProperty]
     private string sourceLinkText = "";
@@ -294,6 +304,12 @@ public sealed partial class MainViewModel : ObservableObject
                 .ToArray(),
             StringComparer.Ordinal);
         _region = knowledge.Regions.Any(region => region.Id == _settings.Region) ? _settings.Region! : DefaultRegion;
+        Regions.Clear();
+        foreach (var region in knowledge.Regions
+                     .OrderBy(region => region.Id == DefaultRegion ? 0 : region.Id == OtherRegion ? 2 : 1)
+                     .ThenBy(region => region.Id, StringComparer.Ordinal))
+            Regions.Add(new ChoiceOption("region", region.Id));
+        NoRegionData = knowledge.Regions.FirstOrDefault(region => region.Id == _region)?.Resistance.Count is null or 0;
         _set = "";
         GuidelineSets.Clear();
         OnSetsChanged();
@@ -386,6 +402,20 @@ public sealed partial class MainViewModel : ObservableObject
         Persist(_settings with { GuidelineSets = chosen });
         Relabel();
         Evaluate(null);
+    }
+
+    [RelayCommand]
+    private void SelectRegion(ChoiceOption option)
+    {
+        if (_knowledge is null || option.Code == _region) return;
+        _region = option.Code;
+        NoRegionData = _knowledge.Regions.FirstOrDefault(region => region.Id == _region)?.Resistance.Count is null or 0;
+        Persist(_settings with { Region = option.Code });
+        if (SelectedSyndrome is { } syndrome)
+            ChooseSet(syndrome.Id);
+        Relabel();
+        if (SelectedSyndrome is not null)
+            Evaluate(null);
     }
 
     [RelayCommand]
@@ -595,6 +625,12 @@ public sealed partial class MainViewModel : ObservableObject
             option.IsSelected = option.Code == _set;
         }
 
+        foreach (var option in Regions)
+        {
+            option.Label = Localizer.Get($"region.{option.Code}.name");
+            option.IsSelected = option.Code == _region;
+        }
+
         foreach (var card in Questions)
         {
             card.Label = Localizer.Get($"question.{card.Id}.label");
@@ -609,6 +645,7 @@ public sealed partial class MainViewModel : ObservableObject
         GuidelineSettingLabel = SelectedSyndrome is { } selected
             ? Localizer.Format("settings.guidelineFor", ("syndrome", selected.Name))
             : Localizer.Get("settings.guideline");
+        LicensesTitle = Localizer.Format("card.licenses", ("region", Localizer.Get($"region.{_region}.name")));
         AlternativesHeader = Localizer.Get("card.tab.alternatives");
         RationaleHeader = Localizer.Get("card.tab.rationale");
         SettingsPath = _store is FileSettingsStore file

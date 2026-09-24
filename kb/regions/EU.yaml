@@ -1,0 +1,171 @@
+id: eu
+version: 1
+source: ecdc-ears-net-2024
+section: EU/EEA region profile
+source_date: '2024-12-31'
+reviewed_at: null
+review_status: unreviewed
+note: Resistance from EARS-Net 2024 (invasive isolates, EU/EEA means; national rates differ widely). Licensing is central
+  or national in the EU, so availability varies by country and every drug stays unknown (ema-authorisation).
+resistance:
+- id: spn_macrolide
+  version: 1
+  source: ecdc-ears-net-2024
+  section: Table 9b, EU/EEA population-weighted mean, invasive isolates, 2024
+  source_date: '2024-12-31'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 19.0% (country range 4.0-44.2%, n=20372). Invasive isolates, not CAP-specific; in a country above 25% answer the question.
+  pathogen: s_pneumoniae
+  drug_class: macrolide
+  category: lt25
+  estimate: 0.19
+- id: sau_methicillin
+  version: 1
+  source: ecdc-ears-net-2024
+  section: Table 9b, EU/EEA population-weighted mean, invasive isolates, 2024
+  source_date: '2024-12-31'
+  reviewed_at: null
+  review_status: unreviewed
+  note: MRSA 14.2% (range 1.9-46.0%). Information only, never a trigger.
+  pathogen: mrsa
+  drug_class: beta_lactam
+  category: lt25
+  estimate: 0.142
+- id: eco_fq
+  version: 1
+  source: ecdc-ears-net-2024
+  section: Table 9b, EU/EEA population-weighted mean, invasive isolates, 2024
+  source_date: '2024-12-31'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 22.5% (range 9.9-49.3%). Invasive isolates stand in for urinary and IAI rates.
+  pathogen: e_coli
+  drug_class: fluoroquinolone
+  category: ge10
+  estimate: 0.225
+- id: eco_esbl
+  version: 1
+  source: ecdc-ears-net-2024
+  section: Table 9b, EU/EEA population-weighted mean, invasive isolates, 2024
+  source_date: '2024-12-31'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Third-generation cephalosporin resistance 16.0% (range 6.8-38.7%) stands in for the ESBL rate.
+  pathogen: e_coli
+  drug_class: cephalosporin
+  category: ge10
+  estimate: 0.16
+- id: kpn_carbapenem
+  version: 1
+  source: ecdc-ears-net-2024
+  section: Table 9b, EU/EEA population-weighted mean, invasive isolates, 2024
+  source_date: '2024-12-31'
+  reviewed_at: null
+  review_status: unreviewed
+  note: K. pneumoniae carbapenem resistance 11.3% (range 0.0-67.6%). Information only.
+  pathogen: enterobacterales
+  drug_class: carbapenem
+  category: ge10
+  estimate: 0.113
+thresholds:
+- id: macrolide_resistance_cutoff
+  version: 1
+  source: idsa-ats-2019
+  section: Q7
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  value: 0.25
+  unit: fraction
+licensing:
+- drug: amoxicillin
+  status: unknown
+- drug: amoxicillin_clavulanate
+  status: unknown
+- drug: ampicillin_sulbactam
+  status: unknown
+- drug: cefuroxime_axetil
+  status: unknown
+- drug: ceftriaxone
+  status: unknown
+- drug: cefepime
+  status: unknown
+- drug: ceftazidime
+  status: unknown
+- drug: piperacillin_tazobactam
+  status: unknown
+- drug: meropenem
+  status: unknown
+- drug: imipenem_cilastatin
+  status: unknown
+- drug: azithromycin
+  status: unknown
+- drug: clarithromycin
+  status: unknown
+- drug: doxycycline
+  status: unknown
+- drug: levofloxacin
+  status: unknown
+- drug: moxifloxacin
+  status: unknown
+- drug: ciprofloxacin
+  status: unknown
+- drug: vancomycin
+  status: unknown
+- drug: linezolid
+  status: unknown
+- drug: oseltamivir
+  status: unknown
+- drug: ceftaroline
+  status: unknown
+- drug: cefpodoxime
+  status: unknown
+- drug: cefotaxime
+  status: unknown
+- drug: aztreonam
+  status: unknown
+- drug: penicillin_v
+  status: unknown
+- drug: benzylpenicillin
+  status: unknown
+- drug: flucloxacillin
+  status: unknown
+- drug: dicloxacillin
+  status: unknown
+- drug: ampicillin
+  status: unknown
+- drug: pivmecillinam
+  status: unknown
+- drug: cefazolin
+  status: unknown
+- drug: cephalexin
+  status: unknown
+- drug: cefadroxil
+  status: unknown
+- drug: cefuroxime
+  status: unknown
+- drug: cefoxitin
+  status: unknown
+- drug: ertapenem
+  status: unknown
+- drug: clindamycin
+  status: unknown
+- drug: tmp_smx
+  status: unknown
+- drug: nitrofurantoin
+  status: unknown
+- drug: fosfomycin
+  status: unknown
+- drug: gentamicin
+  status: unknown
+- drug: amikacin
+  status: unknown
+- drug: metronidazole
+  status: unknown
+- drug: tigecycline
+  status: unknown
+- drug: teicoplanin
+  status: unknown
+- drug: erythromycin
+  status: unknown
