@@ -8,6 +8,7 @@
         x:Class="AbxPilot.UI.MainWindow"
         x:DataType="vm:MainViewModel"
         Title="AbxPilot"
+        Icon="avares://AbxPilot.UI/Assets/abxpilot.ico"
         MinWidth="{StaticResource WindowMinWidth}"
         MinHeight="{StaticResource WindowMinHeight}"
         WindowStartupLocation="CenterScreen"

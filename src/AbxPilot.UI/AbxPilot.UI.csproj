@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Fonts\*.ttf" />
+    <AvaloniaResource Include="Assets\*.ico" />
     <None Update="Fonts\OFL.txt" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
