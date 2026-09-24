@@ -16,9 +16,16 @@ namespace AbxPilot.UI.Views;
 
 public partial class MainView : UserControl
 {
+    private static readonly TimeSpan HoldDelay = TimeSpan.FromMilliseconds(450);
+    private static readonly TimeSpan HoldAutoClose = TimeSpan.FromSeconds(3.5);
+    private const double HoldMoveTolerance = 12;
+
     private MainViewModel? _vm;
     private readonly Dictionary<object, Point> _flip = [];
     private CancellationTokenSource? _sweep;
+    private DispatcherTimer? _holdTimer;
+    private Border? _holdTarget;
+    private Point _holdOrigin;
 
     public MainView()
     {
@@ -28,6 +35,10 @@ public partial class MainView : UserControl
         EmptyAction.Click += OnEmptyAction;
         SourceLink.Click += OnSourceLink;
         DrawerScrim.PointerPressed += (_, _) => _vm?.CloseDrawerCommand.Execute(null);
+        AddHandler(PointerPressedEvent, OnScorePointerPressed);
+        AddHandler(PointerMovedEvent, OnScorePointerMoved);
+        AddHandler(PointerReleasedEvent, OnScorePointerReleased);
+        AddHandler(PointerCaptureLostEvent, OnScorePointerCaptureLost);
         AttachedToVisualTree += (_, _) =>
         {
             CardGlow.Margin = Negate(Resource<Thickness>("PanelPadding"));
@@ -36,6 +47,52 @@ public partial class MainView : UserControl
         };
         DetachedFromVisualTree += (_, _) => _sweep?.Cancel();
     }
+
+    private void OnScorePointerPressed(object? sender, PointerPressedEventArgs e)
+    {
+        CancelHold();
+        if (FindScoreCard(e.Source) is not { } card) return;
+        if (card.DataContext is not AlternativeRow { HasScore: true }) return;
+        _holdTarget = card;
+        _holdOrigin = e.GetPosition(this);
+        _holdTimer = new DispatcherTimer { Interval = HoldDelay };
+        _holdTimer.Tick += OnHoldElapsed;
+        _holdTimer.Start();
+    }
+
+    private void OnScorePointerMoved(object? sender, PointerEventArgs e)
+    {
+        if (_holdTarget is null) return;
+        var now = e.GetPosition(this);
+        if (Math.Abs(now.X - _holdOrigin.X) > HoldMoveTolerance || Math.Abs(now.Y - _holdOrigin.Y) > HoldMoveTolerance)
+            CancelHold();
+    }
+
+    private void OnScorePointerReleased(object? sender, PointerEventArgs e) => CancelHold();
+
+    private void OnScorePointerCaptureLost(object? sender, PointerCaptureLostEventArgs e) => CancelHold();
+
+    private void OnHoldElapsed(object? sender, EventArgs e)
+    {
+        CancelHold();
+        if (_holdTarget is not { } card) return;
+        ToolTip.SetIsOpen(card, true);
+        DispatcherTimer.RunOnce(() => ToolTip.SetIsOpen(card, false), HoldAutoClose);
+    }
+
+    private void CancelHold()
+    {
+        if (_holdTimer is { } timer)
+        {
+            timer.Stop();
+            timer.Tick -= OnHoldElapsed;
+        }
+        _holdTimer = null;
+        _holdTarget = null;
+    }
+
+    private Border? FindScoreCard(object? source) =>
+        (source as Visual)?.GetSelfAndVisualAncestors().OfType<Border>().FirstOrDefault(border => border.Classes.Contains("alt"));
 
     private void Attach(MainViewModel? vm)
     {

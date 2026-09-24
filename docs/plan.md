@@ -155,5 +155,5 @@ TİTCK aynı çerçeveyi uygular. "Reçete değildir" yazısı sınıfı düşü
 - [ ] **A5 İkinci sendrom:** selülit; motorun genellendiği kanıtlanır
 - [ ] **A6 Üçüncü ve dördüncü sendrom:** idrar yolu, intraabdominal
 - [ ] **A7 İngilizce ve bölge katmanı:** `en`, `regions/EU`, `regions/US`, kılavuz seti seçimi
-- [ ] **A8 Android:** duyarlı düzen, dokunmatik, APK imzalı yayın
+- [x] **A8 Android:** duyarlı düzen, dokunmatik, APK — imza anahtarı kullanıcıda
 - [ ] **A9 Uzman gözden geçirmesi ve ilk yayın**

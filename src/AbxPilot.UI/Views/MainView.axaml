@@ -7,7 +7,8 @@
              x:DataType="vm:MainViewModel"
              x:Name="Root"
              FontFamily="{StaticResource FontSans}"
-             Foreground="{StaticResource TextBody}">
+             Foreground="{StaticResource TextBody}"
+             TopLevel.AutoSafeAreaPadding="True">
 
   <Panel x:Name="Stage">
 

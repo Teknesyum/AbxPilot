@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.teknesyum.abxpilot">
+  <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="36" />
+  <application android:label="AbxPilot"
+               android:icon="@mipmap/ic_launcher"
+               android:theme="@style/MainTheme"
+               android:allowBackup="true"
+               android:supportsRtl="true">
+  </application>
+</manifest>

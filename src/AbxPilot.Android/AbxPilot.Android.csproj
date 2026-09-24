@@ -10,6 +10,17 @@
     <AndroidPackageFormat>apk</AndroidPackageFormat>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <AndroidSigningKeyStore Condition="'$(AndroidSigningKeyStore)' == '' and '$(ANDROID_SIGNING_KEY_STORE)' != ''">$(ANDROID_SIGNING_KEY_STORE)</AndroidSigningKeyStore>
+    <AndroidSigningKeyAlias Condition="'$(AndroidSigningKeyAlias)' == '' and '$(ANDROID_SIGNING_KEY_ALIAS)' != ''">$(ANDROID_SIGNING_KEY_ALIAS)</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass Condition="'$(AndroidSigningKeyPass)' == '' and '$(ANDROID_SIGNING_KEY_PASS)' != ''">$(ANDROID_SIGNING_KEY_PASS)</AndroidSigningKeyPass>
+    <AndroidSigningStorePass Condition="'$(AndroidSigningStorePass)' == '' and '$(ANDROID_SIGNING_STORE_PASS)' != ''">$(ANDROID_SIGNING_STORE_PASS)</AndroidSigningStorePass>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(AndroidSigningKeyStore)' != ''">
+    <AndroidKeyStore>true</AndroidKeyStore>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\AbxPilot.UI\AbxPilot.UI.csproj" />
   </ItemGroup>

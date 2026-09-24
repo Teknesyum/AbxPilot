@@ -8,11 +8,14 @@ namespace AbxPilot.UI;
 
 public partial class App : Application
 {
+    public static MainViewModel? CurrentModel { get; private set; }
+
     public override void Initialize() => AvaloniaXamlLoader.Load(this);
 
     public override void OnFrameworkInitializationCompleted()
     {
         var model = new MainViewModel();
+        CurrentModel = model;
 
         switch (ApplicationLifetime)
         {
