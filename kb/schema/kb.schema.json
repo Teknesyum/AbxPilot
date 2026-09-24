@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.abxpilot.teknesyum.dev/kb.schema.json",
+  "title": "Knowledge base manifest (kb/kb.yaml)",
+  "type": "object",
+  "required": [
+    "schema",
+    "version"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    }
+  },
+  "additionalProperties": false
+}

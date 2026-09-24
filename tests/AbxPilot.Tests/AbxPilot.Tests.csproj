@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\src\AbxPilot.Core\AbxPilot.Core.csproj" />
     <ProjectReference Include="..\..\src\AbxPilot.Data\AbxPilot.Data.csproj" />
     <ProjectReference Include="..\..\src\AbxPilot.UI\AbxPilot.UI.csproj" />
+    <ProjectReference Include="..\..\tools\AbxPilot.KbCompiler\AbxPilot.KbCompiler.csproj" />
   </ItemGroup>
 
 </Project>

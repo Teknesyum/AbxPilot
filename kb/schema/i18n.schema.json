@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.abxpilot.teknesyum.dev/i18n.schema.json",
+  "title": "String table part (kb/i18n/<lang>/*.json): flat keys, non-empty text",
+  "type": "object",
+  "propertyNames": {
+    "$ref": "common.schema.json#/$defs/i18nKey"
+  },
+  "additionalProperties": {
+    "type": "string",
+    "minLength": 1
+  }
+}

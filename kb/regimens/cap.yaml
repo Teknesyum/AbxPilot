@@ -1,0 +1,573 @@
+- id: amx_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: amoxicillin
+    dose: cap_po
+    role: beta_lactam
+- id: dox_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline
+- id: azm_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: azithromycin
+    dose: cap_po_out
+    role: macrolide
+- id: clr_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clarithromycin
+    dose: cap_po
+    role: macrolide
+- id: amc_azm_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: amoxicillin_clavulanate
+    dose: cap_po_875
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_po_out
+    role: macrolide
+- id: amc_clr_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: amoxicillin_clavulanate
+    dose: cap_po_875
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_po
+    role: macrolide
+- id: amc_dox_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: amoxicillin_clavulanate
+    dose: cap_po_875
+    role: beta_lactam
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline
+- id: cpd_azm_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefpodoxime
+    dose: cap_po
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_po_out
+    role: macrolide
+- id: cpd_clr_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefpodoxime
+    dose: cap_po
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_po
+    role: macrolide
+- id: cpd_dox_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefpodoxime
+    dose: cap_po
+    role: beta_lactam
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline
+- id: cxm_azm_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefuroxime_axetil
+    dose: cap_po
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_po_out
+    role: macrolide
+- id: cxm_clr_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefuroxime_axetil
+    dose: cap_po
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_po
+    role: macrolide
+- id: cxm_dox_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefuroxime_axetil
+    dose: cap_po
+    role: beta_lactam
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline
+- id: lvx_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: levofloxacin
+    dose: cap_po
+    role: fluoroquinolone
+- id: mxf_po
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: moxifloxacin
+    dose: cap_po
+    role: fluoroquinolone
+- id: sam_azm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ampicillin_sulbactam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_iv
+    role: macrolide
+- id: sam_clr_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ampicillin_sulbactam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_iv
+    role: macrolide
+- id: sam_lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4 (severe)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ampicillin_sulbactam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: sam_mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4 (severe)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ampicillin_sulbactam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: cro_azm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: cap_iv
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_iv
+    role: macrolide
+- id: cro_clr_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: cap_iv
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_iv
+    role: macrolide
+- id: cro_lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4 (severe)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: cap_iv
+    role: beta_lactam
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: cro_mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4 (severe)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: cap_iv
+    role: beta_lactam
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: ctx_azm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefotaxime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_iv
+    role: macrolide
+- id: ctx_clr_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefotaxime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_iv
+    role: macrolide
+- id: ctx_lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4 (severe)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefotaxime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: ctx_mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4 (severe)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefotaxime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: cpt_azm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftaroline
+    dose: cap_iv
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_iv
+    role: macrolide
+- id: cpt_clr_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftaroline
+    dose: cap_iv
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_iv
+    role: macrolide
+- id: cpt_lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4 (severe)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftaroline
+    dose: cap_iv
+    role: beta_lactam
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: cpt_mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4 (severe)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftaroline
+    dose: cap_iv
+    role: beta_lactam
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: cro_dox
+  version: 1
+  source: idsa-ats-2019
+  section: Q8; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: cap_iv
+    role: beta_lactam
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline
+- id: van_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: vancomycin
+    dose: cap_iv
+    role: anti_mrsa
+- id: lzd_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: linezolid
+    dose: cap_iv
+    role: anti_mrsa
+- id: osv_po
+  version: 1
+  source: product-labels
+  section: Q12
+  source_date: '2024-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: oseltamivir
+    dose: flu_po
+    role: antiviral
+- id: tzp_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: cap_iv
+    role: beta_lactam
+- id: fep_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: cap_iv
+    role: beta_lactam
+- id: caz_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftazidime
+    dose: cap_iv
+    role: beta_lactam
+- id: ipm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: imipenem_cilastatin
+    dose: cap_iv
+    role: beta_lactam
+- id: mem_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: cap_iv
+    role: beta_lactam
+- id: atm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 4
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: aztreonam
+    dose: cap_iv
+    role: beta_lactam
+- id: sam_iv
+  version: 1
+  source: abxpilot-draft
+  section: Q9
+  source_date: '2026-09-24'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ampicillin_sulbactam
+    dose: cap_iv
+    role: beta_lactam
+- id: amc_po
+  version: 1
+  source: abxpilot-draft
+  section: Q9
+  source_date: '2026-09-24'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: amoxicillin_clavulanate
+    dose: cap_po_875
+    role: beta_lactam

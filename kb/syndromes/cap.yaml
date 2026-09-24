@@ -1,0 +1,54 @@
+id: cap
+version: 1
+source: idsa-ats-2019
+section: 'Scope: adults, outpatient and inpatient CAP'
+source_date: '2019-10-01'
+reviewed_at: null
+review_status: unreviewed
+note: 'Baseline patient: healthy 70 kg adult with normal renal function.'
+pathogens:
+- s_pneumoniae
+- h_influenzae
+- m_catarrhalis
+- m_pneumoniae
+- c_pneumoniae
+- legionella
+- mssa
+- mrsa
+- p_aeruginosa
+- enterobacterales
+- anaerobes
+- influenza
+questions:
+- setting
+- severe_vasopressor
+- severe_ventilation
+- severe_minor
+- comorbidity
+- recent_hosp_iv
+- prior_mrsa
+- prior_pseudomonas
+- pen_allergy
+- pregnancy
+- qt_risk
+- aspiration
+- influenza
+- recent_abx_class
+- macrolide_resistance
+derived:
+- id: severe
+  when:
+    any:
+    - question: setting
+      eq: icu
+    - question: severe_vasopressor
+      eq: 'yes'
+    - question: severe_ventilation
+      eq: 'yes'
+    - question: severe_minor
+      eq: ge3
+- id: comorbid
+  when:
+    not:
+      question: comorbidity
+      empty: true

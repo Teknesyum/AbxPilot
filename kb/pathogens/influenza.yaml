@@ -1,0 +1,12 @@
+id: influenza
+version: 1
+source: abxpilot-draft
+section: Pathogen list for CAP; scope follows IDSA/ATS 2019
+source_date: '2026-09-24'
+reviewed_at: null
+review_status: unreviewed
+kind: virus
+gram: not_applicable
+group: virus
+resistance_mechanisms:
+- neuraminidase_mutation

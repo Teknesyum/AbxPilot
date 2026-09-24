@@ -1,0 +1,56 @@
+id: amoxicillin_clavulanate
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+note: An IV formulation exists in some countries; IDSA/ATS 2019 gives only oral doses.
+class: penicillin
+class_group: beta_lactam
+subclass: aminopenicillin_bli
+aware: access
+routes:
+- po
+oral_bioavailability: high
+beta_lactam:
+  core: penicillin
+  r1_group: aminopenicillin
+  r1_similar: []
+doses:
+- id: cap_po_875
+  indication: cap
+  route: po
+  renal_band: normal
+  amount: 875/125 mg
+  interval_hours: 12
+  source: idsa-ats-2019
+  section: Q7; Table 3
+- id: cap_po_500
+  indication: cap
+  route: po
+  renal_band: normal
+  amount: 500/125 mg
+  interval_hours: 8
+  source: idsa-ats-2019
+  section: Q7; Table 3
+- id: cap_po_2000
+  indication: cap
+  route: po
+  renal_band: normal
+  amount: 2000/125 mg
+  interval_hours: 12
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  note: Extended-release formulation.
+adverse_effects:
+- hypersensitivity
+- gi_upset
+- hepatotoxicity
+- c_difficile
+interactions:
+- warfarin
+- methotrexate
+pregnancy:
+  category: compatible
+qt_risk: none

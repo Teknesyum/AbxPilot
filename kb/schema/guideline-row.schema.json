@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.abxpilot.teknesyum.dev/guideline-row.schema.json",
+  "title": "Decision table row (kb/guidelines/<set>/<syndrome>.csv)",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/provenance"
+    },
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": "base"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "action": {
+            "const": "select"
+          }
+        },
+        "required": [
+          "duration_days"
+        ]
+      },
+      "else": {
+        "properties": {
+          "action": {
+            "enum": [
+              "add",
+              "replace",
+              "note"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "replace"
+          }
+        },
+        "required": [
+          "action"
+        ]
+      },
+      "then": {
+        "required": [
+          "role"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "note"
+          }
+        },
+        "required": [
+          "action"
+        ]
+      },
+      "then": {
+        "properties": {
+          "candidates": {
+            "maxItems": 0
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "candidates": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "set",
+    "syndrome",
+    "order",
+    "stage",
+    "action",
+    "conditions",
+    "candidates",
+    "rationale_key"
+  ],
+  "properties": {
+    "set": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "syndrome": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "stage": {
+      "enum": [
+        "base",
+        "modifier"
+      ]
+    },
+    "action": {
+      "enum": [
+        "select",
+        "add",
+        "replace",
+        "note"
+      ]
+    },
+    "role": {
+      "$ref": "common.schema.json#/$defs/role"
+    },
+    "conditions": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "common.schema.json#/$defs/id"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    },
+    "duration_days": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 42
+    },
+    "rationale_key": {
+      "$ref": "common.schema.json#/$defs/i18nKey"
+    }
+  },
+  "unevaluatedProperties": false,
+  "description": "Base rows: the first matching row selects the candidate tiers. Modifier rows: every matching row applies (add a component, replace the component with the given role, or attach a note). In the CSV, candidates are tiers separated by ';' and options inside a tier by '|'. A condition cell of '*' matches anything; 'a|b' matches either."
+}

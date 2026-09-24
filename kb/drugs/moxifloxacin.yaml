@@ -1,0 +1,52 @@
+id: moxifloxacin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: fluoroquinolone
+class_group: fluoroquinolone
+subclass: respiratory
+aware: watch
+routes:
+- po
+- iv
+oral_bioavailability: high
+beta_lactam: null
+doses:
+- id: cap_po
+  indication: cap
+  route: po
+  renal_band: normal
+  amount: 400 mg
+  interval_hours: 24
+  source: idsa-ats-2019
+  section: Q7; Table 3
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: normal
+  amount: 400 mg
+  interval_hours: 24
+  source: idsa-ats-2019
+  section: Q8; Table 4
+adverse_effects:
+- tendinopathy
+- aortic_aneurysm
+- dysglycemia
+- cns_effects
+- peripheral_neuropathy
+- qt_prolongation
+- hepatotoxicity
+- c_difficile
+interactions:
+- qt_drugs
+- polyvalent_cations
+- corticosteroids
+- antidiabetics
+- warfarin
+pregnancy:
+  category: avoid
+  note_key: pregnancy.note.fluoroquinolone
+qt_risk: known

@@ -1,0 +1,32 @@
+id: oseltamivir
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: neuraminidase_inhibitor
+class_group: antiviral
+aware: not_applicable
+routes:
+- po
+oral_bioavailability: high
+beta_lactam: null
+doses:
+- id: flu_po
+  indication: influenza
+  route: po
+  renal_band: normal
+  amount: 75 mg
+  interval_hours: 12
+  source: product-labels
+  section: SmPC 4.2
+  note: Five days of treatment.
+adverse_effects:
+- gi_upset
+- neuropsychiatric
+interactions:
+- live_influenza_vaccine
+pregnancy:
+  category: compatible
+qt_risk: none

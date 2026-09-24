@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.abxpilot.teknesyum.dev/source.schema.json",
+  "title": "Bibliographic source (kb/sources.yaml)",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "kind",
+    "citation",
+    "published",
+    "date_precision"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "kind": {
+      "enum": [
+        "guideline",
+        "classification",
+        "reference",
+        "surveillance",
+        "draft"
+      ]
+    },
+    "citation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "published": {
+      "$ref": "common.schema.json#/$defs/date"
+    },
+    "date_precision": {
+      "enum": [
+        "day",
+        "month",
+        "year"
+      ]
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

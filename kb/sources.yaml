@@ -1,0 +1,60 @@
+- id: idsa-ats-2019
+  version: 1
+  kind: guideline
+  citation: Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia.
+    An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of
+    America. Am J Respir Crit Care Med. 2019;200(7):e45-e67.
+  url: https://doi.org/10.1164/rccm.201908-1581ST
+  published: '2019-10-01'
+  date_precision: day
+- id: ttd-2009
+  version: 1
+  kind: guideline
+  citation: Turkish Thoracic Society. Consensus report on the diagnosis and treatment of community-acquired pneumonia
+    in adults. Toraks Dergisi 2009;10(Suppl 9).
+  published: '2009-01-01'
+  date_precision: year
+  note: Newest edition known to the author. Whether a later edition exists, and the exact section and table numbers,
+    must be checked in A9.
+- id: who-aware-2023
+  version: 1
+  kind: classification
+  citation: 'World Health Organization. AWaRe classification of antibiotics for evaluation and monitoring of use,
+    2023. Geneva: WHO; 2023.'
+  published: '2023-07-01'
+  date_precision: month
+- id: credible-meds
+  version: 1
+  kind: reference
+  citation: CredibleMeds QTdrugs List. AZCERT, Inc.
+  url: https://crediblemeds.org
+  published: '2024-01-01'
+  date_precision: year
+  note: Continuously updated list; the consult date is approximate and must be refreshed in A9.
+- id: zagursky-2018
+  version: 1
+  kind: reference
+  citation: Zagursky RJ, Pichichero ME. Cross-reactivity in beta-lactam allergy. J Allergy Clin Immunol Pract. 2018;6(1):72-81.
+  published: '2018-01-01'
+  date_precision: month
+- id: product-labels
+  version: 1
+  kind: reference
+  citation: Product labels (SmPC / prescribing information) of each active substance.
+  published: '2024-01-01'
+  date_precision: year
+  note: Generic reference; per-label versions are not yet recorded.
+- id: who-caesar
+  version: 1
+  kind: surveillance
+  citation: WHO Regional Office for Europe. Central Asian and European Surveillance of Antimicrobial Resistance
+    (CAESAR), annual report.
+  published: '2020-01-01'
+  date_precision: year
+  note: Edition and the Turkish figure are uncertain; placeholder until A9.
+- id: abxpilot-draft
+  version: 1
+  kind: draft
+  citation: AbxPilot project draft, written without a primary source and awaiting expert review in A9.
+  published: '2026-09-24'
+  date_precision: day

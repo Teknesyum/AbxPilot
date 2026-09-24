@@ -70,15 +70,20 @@ Kod bilgiyi taşımaz; bilgi `kb/` altındadır ve her kayıt izlenebilirdir.
 |---|---|
 | `drugs/*.yaml` | INN ad, sınıf, spektrum, doz nesnesi, yol, biyoyararlanım, yan etki, etkileşim, gebelik |
 | `pathogens/*.yaml` | Patojen, Gram, tipik direnç mekanizmaları |
+| `regimens/*.yaml` | Rejim: ilaç, doz, rol bileşenleri |
 | `syndromes/*.yaml` | Sendrom, olası patojenler, soru listesi |
 | `questions/*.yaml` | Soru, seçenekler, varsayılan, görünürlük koşulu |
-| `guidelines/<set>/*.csv` | Karar tabloları; klinisyen Excel'de düzenler |
+| `guidelines/<set>/set.yaml` + `*.csv` | Karar tabloları; klinisyen Excel'de düzenler; `extends` ile başka seti devralır |
+| `spectrum/*.csv` | İlaç × patojen kapsam matrisi |
 | `regions/<ülke>.yaml` | Direnç oranları, eşikler, ruhsatlı ilaçlar, ticari adlar |
-| `i18n/<dil>.json` | Tüm görünür metinler anahtarla |
+| `i18n/<dil>/*.json` | Tüm görünür metinler anahtarla; derleyici birleştirir |
+| `schema/*.schema.json` | JSON Schema 2020-12 doğrulama |
+| `sources.yaml`, `scoring.yaml`, `kb.yaml` | Kaynaklar, puan ağırlıkları, sürüm |
 
 - Doz nesnesi: `endikasyon × yol × renal bant`. İlk sürüm yalnız normal renal bandı doldurur.
 - Penisilin alerjisi üç tip: IgE aracılı, gecikmiş, ağır deri reaksiyonu.
 - Her kayıtta zorunlu: `id`, `version`, `source`, `section`, `source_date`, `reviewed_at`.
+- `tools/AbxPilot.KbCompiler` `AbxPilot.Data` derlemesinde çalışır, tek `kb.json` üretir ve gömer; hata derlemeyi dosya ve satırla durdurur. Kaynak eşlemesi: `docs/kb-kaynaklar.md`.
 - Gözden geçirme tarihi eskiyen kural kartta uyarı bandı taşır.
 - Kılavuz metni kopyalanmaz; kural çıkarılır, kaynak bölüm numarası tutulur.
 
@@ -143,7 +148,7 @@ TİTCK aynı çerçeveyi uygular. "Reçete değildir" yazısı sınıfı düşü
 ## Aşamalar
 
 - [x] **A0 İskele:** çözüm, beş proje, palet, üst çubuk, Kur penceresi, Android başı derlenir, AGPL lisansı
-- [ ] **A1 Bilgi tabanı çekirdeği:** şemalar, KbCompiler, TKP için ilaç, patojen, soru ve TTD/IDSA tabloları
+- [x] **A1 Bilgi tabanı çekirdeği:** şemalar, KbCompiler, TKP için ilaç, patojen, soru ve TTD/IDSA tabloları
 - [ ] **A2 Motor:** bağlam, risk bayrakları, tablo eşleme, kısıtlar, gerekçe izi, altın vakalar
 - [ ] **A3 Ekran:** sendrom rayı, soru kartları, öneri kartı, spektrum şeridi, statik
 - [ ] **A4 Hareket:** öneri farkı, neden izi, eleme, spektrum, soru açılması

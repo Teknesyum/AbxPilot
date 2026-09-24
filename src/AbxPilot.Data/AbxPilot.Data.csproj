@@ -3,11 +3,47 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <IsAotCompatible>true</IsAotCompatible>
+    <KbSourceDir>$([MSBuild]::NormalizeDirectory('$(MSBuildThisFileDirectory)', '..', '..', 'kb'))</KbSourceDir>
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Kb\*.json" LogicalName="AbxPilot.Data.Kb.%(Filename)%(Extension)" />
-    <EmbeddedResource Include="..\..\kb\i18n\*.json" LogicalName="AbxPilot.Data.I18n.%(Filename)%(Extension)" Link="I18n\%(Filename)%(Extension)" />
+    <ProjectReference Include="..\AbxPilot.Core\AbxPilot.Core.csproj" />
+    <ProjectReference Include="..\..\tools\AbxPilot.KbCompiler\AbxPilot.KbCompiler.csproj"
+                      ReferenceOutputAssembly="false" Private="false" />
   </ItemGroup>
+
+  <Target Name="SetKbOutputDir" BeforeTargets="CompileKnowledgeBase">
+    <PropertyGroup>
+      <KbOutputDir>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', '$(IntermediateOutputPath)', 'kb'))</KbOutputDir>
+    </PropertyGroup>
+  </Target>
+
+  <ItemGroup>
+    <KbSource Include="$(KbSourceDir)**\*.yaml;$(KbSourceDir)**\*.csv;$(KbSourceDir)**\*.json" />
+    <UpToDateCheckInput Include="@(KbSource)" />
+  </ItemGroup>
+
+  <Target Name="CompileKnowledgeBase" BeforeTargets="PrepareResourceNames" DependsOnTargets="ResolveProjectReferences"
+          Inputs="@(KbSource)" Outputs="$(IntermediateOutputPath)kb\kb.stamp">
+    <MSBuild Projects="..\..\tools\AbxPilot.KbCompiler\AbxPilot.KbCompiler.csproj" Targets="GetTargetPath"
+             Properties="Configuration=$(Configuration)">
+      <Output TaskParameter="TargetOutputs" PropertyName="KbCompilerPath" />
+    </MSBuild>
+    <PropertyGroup>
+      <KbDotnet Condition="'$(DOTNET_HOST_PATH)' != ''">$(DOTNET_HOST_PATH)</KbDotnet>
+      <KbDotnet Condition="'$(KbDotnet)' == ''">dotnet</KbDotnet>
+    </PropertyGroup>
+    <Exec Command="&quot;$(KbDotnet)&quot; &quot;$(KbCompilerPath)&quot; &quot;$(KbSourceDir.TrimEnd('\'))&quot; &quot;$(KbOutputDir.TrimEnd('\'))&quot;" />
+    <Touch Files="$(KbOutputDir)kb.stamp" AlwaysCreate="true" />
+  </Target>
+
+  <Target Name="EmbedKnowledgeBase" AfterTargets="CompileKnowledgeBase" BeforeTargets="PrepareResourceNames" DependsOnTargets="SetKbOutputDir">
+    <ItemGroup>
+      <EmbeddedResource Include="$(KbOutputDir)kb.json" LogicalName="AbxPilot.Data.Kb.kb.json" WithCulture="false" Type="Non-Resx" />
+      <KbStrings Include="$(KbOutputDir)i18n\*.json" />
+      <EmbeddedResource Include="@(KbStrings)" LogicalName="AbxPilot.Data.I18n.%(Filename)%(Extension)" WithCulture="false" Type="Non-Resx" />
+      <FileWrites Include="$(KbOutputDir)kb.json;$(KbOutputDir)kb.stamp;@(KbStrings)" />
+    </ItemGroup>
+  </Target>
 
 </Project>

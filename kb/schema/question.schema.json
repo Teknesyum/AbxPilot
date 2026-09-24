@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.abxpilot.teknesyum.dev/question.schema.json",
+  "title": "Question (kb/questions/*.yaml). Every question is optional; an unanswered question takes its default.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/provenance"
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "multi"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "default": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "default": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "boolean"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "options": {
+            "const": [
+              "yes",
+              "no"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "type",
+    "options",
+    "default"
+  ],
+  "properties": {
+    "type": {
+      "enum": [
+        "single",
+        "multi",
+        "boolean"
+      ]
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/id"
+      },
+      "minItems": 2,
+      "uniqueItems": true
+    },
+    "default": true,
+    "default_from": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "visible_when": {
+      "$ref": "common.schema.json#/$defs/condition"
+    }
+  },
+  "unevaluatedProperties": false
+}

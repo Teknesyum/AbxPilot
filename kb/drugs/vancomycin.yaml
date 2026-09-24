@@ -1,0 +1,37 @@
+id: vancomycin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+note: Oral vancomycin is not absorbed and is not used for pneumonia.
+class: glycopeptide
+class_group: glycopeptide
+aware: watch
+routes:
+- iv
+oral_bioavailability: none
+beta_lactam: null
+doses:
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: normal
+  amount: 15 mg/kg
+  amount_70kg: 1050 mg (about 1 g)
+  interval_hours: 12
+  source: idsa-ats-2019
+  section: Q10; Table 4
+  note: Adjust by serum levels.
+adverse_effects:
+- nephrotoxicity
+- infusion_reaction
+- ototoxicity
+interactions:
+- nephrotoxic_drugs
+- vancomycin_combo
+pregnancy:
+  category: caution
+  note_key: pregnancy.note.limited_data
+qt_risk: none

@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.abxpilot.teknesyum.dev/region.schema.json",
+  "title": "Region (kb/regions/<country>.yaml)",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/provenance"
+    }
+  ],
+  "required": [
+    "resistance",
+    "thresholds",
+    "licensing"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z]{2}$"
+    },
+    "resistance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/provenance"
+          }
+        ],
+        "required": [
+          "pathogen",
+          "drug_class",
+          "category"
+        ],
+        "properties": {
+          "pathogen": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "drug_class": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "category": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "estimate": {
+            "oneOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "unevaluatedProperties": false
+      }
+    },
+    "thresholds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "common.schema.json#/$defs/provenance"
+          }
+        ],
+        "required": [
+          "value",
+          "unit"
+        ],
+        "properties": {
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "enum": [
+              "fraction",
+              "days",
+              "count"
+            ]
+          }
+        },
+        "unevaluatedProperties": false
+      }
+    },
+    "licensing": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "drug",
+          "status"
+        ],
+        "properties": {
+          "drug": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "status": {
+            "enum": [
+              "licensed",
+              "not_licensed",
+              "unknown"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

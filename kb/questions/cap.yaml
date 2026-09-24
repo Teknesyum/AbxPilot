@@ -1,0 +1,158 @@
+- id: setting
+  version: 1
+  source: idsa-ats-2019
+  section: Q6-Q8
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - outpatient
+  - ward
+  - icu
+  default: outpatient
+- id: severe_vasopressor
+  version: 1
+  source: idsa-ats-2019
+  section: Table 1 (major criteria)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options: &id001
+  - 'yes'
+  - 'no'
+  default: 'no'
+  visible_when: &id002
+    question: setting
+    in:
+    - ward
+    - icu
+- id: severe_ventilation
+  version: 1
+  source: idsa-ats-2019
+  section: Table 1 (major criteria)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options: *id001
+  default: 'no'
+  visible_when: *id002
+- id: severe_minor
+  version: 1
+  source: idsa-ats-2019
+  section: Table 1 (minor criteria)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - lt3
+  - ge3
+  default: lt3
+  visible_when: *id002
+- id: comorbidity
+  version: 1
+  source: idsa-ats-2019
+  section: Q7; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: multi
+  options:
+  - heart
+  - lung
+  - liver
+  - renal
+  - diabetes
+  - alcoholism
+  - malignancy
+  - asplenia
+  default: []
+- id: recent_hosp_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options: *id001
+  default: 'no'
+  visible_when: *id002
+- id: prior_mrsa
+  version: 1
+  source: idsa-ats-2019
+  section: Q10
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options: *id001
+  default: 'no'
+- id: prior_pseudomonas
+  version: 1
+  source: idsa-ats-2019
+  section: Q10
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options: *id001
+  default: 'no'
+- id: aspiration
+  version: 1
+  source: idsa-ats-2019
+  section: Q9
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - none
+  - suspected
+  - abscess_or_empyema
+  default: none
+- id: influenza
+  version: 1
+  source: idsa-ats-2019
+  section: Q12-Q13
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options: *id001
+  default: 'no'
+- id: recent_abx_class
+  version: 1
+  source: idsa-ats-2019
+  section: Q7 (recent antibiotic exposure)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Used by the engine to prefer another class; the guideline wording must be checked in A9.
+  type: multi
+  options:
+  - beta_lactam
+  - macrolide
+  - fluoroquinolone
+  - tetracycline
+  default: []
+- id: macrolide_resistance
+  version: 1
+  source: idsa-ats-2019
+  section: Q7
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Default comes from the region file; the static default is the conservative option.
+  type: single
+  options:
+  - lt25
+  - ge25
+  default: ge25
+  default_from: spn_macrolide
+  visible_when:
+    question: setting
+    eq: outpatient

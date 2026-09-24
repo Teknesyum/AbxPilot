@@ -1,0 +1,35 @@
+id: scoring
+version: 1
+source: abxpilot-draft
+section: Comparison score weights
+source_date: '2026-09-24'
+reviewed_at: null
+review_status: unreviewed
+note: Weights are a project draft. The score only orders options inside one tier.
+components:
+- id: spectrum_fit
+  weight: 0.3
+  rationale: Covers the likely pathogens of the selected answers (spectrum matrix).
+- id: breadth_penalty
+  weight: 0.2
+  rationale: Prefers narrower spectrum and the AWaRe Access group (WHO AWaRe 2023).
+- id: adverse_effects
+  weight: 0.15
+  rationale: Counts label adverse effects and QT risk against the answers.
+- id: dosing_convenience
+  weight: 0.1
+  rationale: Fewer daily doses.
+- id: oral_switch
+  weight: 0.1
+  rationale: High oral bioavailability allows early IV-to-oral switch.
+- id: regional_resistance
+  weight: 0.15
+  rationale: Penalises classes with high local resistance (region file).
+- id: cost
+  weight: 0.0
+  rationale: No cost data yet; kept at zero.
+aware_penalty:
+  access: 0.0
+  watch: 0.5
+  reserve: 1.0
+  not_applicable: 0.0

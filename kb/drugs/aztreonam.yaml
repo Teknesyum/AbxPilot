@@ -1,0 +1,36 @@
+id: aztreonam
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+note: AWaRe group recorded from memory; check against the 2023 list in A9.
+class: monobactam
+class_group: beta_lactam
+aware: reserve
+routes:
+- iv
+- im
+oral_bioavailability: none
+beta_lactam:
+  core: monobactam
+  r1_group: ceftazidime_aztreonam
+  r1_similar: []
+doses:
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: normal
+  amount: 2 g
+  interval_hours: 8
+  source: idsa-ats-2019
+  section: Q10; Table 4
+adverse_effects:
+- hypersensitivity
+- c_difficile
+interactions: []
+pregnancy:
+  category: caution
+  note_key: pregnancy.note.limited_data
+qt_risk: none

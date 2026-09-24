@@ -24,8 +24,9 @@ public sealed record TraceLine(string RuleId, string MessageKey, SourceRef Sourc
 
 public sealed record SourceRef(
     string Id,
-    string Version,
+    int Version,
     string Source,
     string Section,
     DateOnly SourceDate,
-    DateOnly ReviewedAt);
+    DateOnly? ReviewedAt,
+    string ReviewStatus);

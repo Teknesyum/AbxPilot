@@ -7,3 +7,7 @@
 | Avalonia | NuGet | MIT |
 | CommunityToolkit.Mvvm | NuGet | MIT |
 | xunit | NuGet, tests only | Apache-2.0 |
+| JsonSchema.Net 8.0.5 | NuGet, `tools/AbxPilot.KbCompiler` | MIT; pinned below 9.x, which ships under the OSMF EULA |
+| JsonPointer.Net 6.0.1 | NuGet, dependency of JsonSchema.Net | MIT |
+| Json.More.Net 2.2.0 | NuGet, dependency of JsonSchema.Net | MIT |
+| YamlDotNet 18.1.0 | NuGet, `tools/AbxPilot.KbCompiler` | MIT |

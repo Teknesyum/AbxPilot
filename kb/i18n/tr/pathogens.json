@@ -1,0 +1,14 @@
+{
+  "pathogen.s_pneumoniae.name": "Streptococcus pneumoniae",
+  "pathogen.h_influenzae.name": "Haemophilus influenzae",
+  "pathogen.m_catarrhalis.name": "Moraxella catarrhalis",
+  "pathogen.m_pneumoniae.name": "Mycoplasma pneumoniae",
+  "pathogen.c_pneumoniae.name": "Chlamydia pneumoniae",
+  "pathogen.legionella.name": "Legionella türleri",
+  "pathogen.mssa.name": "Metisiline duyarlı S. aureus (MSSA)",
+  "pathogen.mrsa.name": "Metisiline dirençli S. aureus (MRSA)",
+  "pathogen.p_aeruginosa.name": "Pseudomonas aeruginosa",
+  "pathogen.enterobacterales.name": "Enterobacterales",
+  "pathogen.anaerobes.name": "Anaeroplar",
+  "pathogen.influenza.name": "İnfluenza virüsü"
+}

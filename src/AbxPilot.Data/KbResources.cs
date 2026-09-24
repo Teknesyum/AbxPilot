@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using AbxPilot.Core.Knowledge;
 
 namespace AbxPilot.Data;
 
@@ -8,6 +9,8 @@ public static class KbResources
 {
     private const string KbPrefix = "AbxPilot.Data.Kb.";
     private const string I18nPrefix = "AbxPilot.Data.I18n.";
+
+    private static readonly Lazy<KnowledgeBase> Cached = new(Load);
 
     private static Assembly Assembly => typeof(KbResources).Assembly;
 
@@ -26,20 +29,21 @@ public static class KbResources
                ?? new Dictionary<string, string>();
     }
 
-    public static KbManifest Manifest()
+    public static KnowledgeBase Knowledge() => Cached.Value;
+
+    public static KnowledgeBase Read(Stream stream) =>
+        JsonSerializer.Deserialize(stream, KbJsonContext.Default.KnowledgeBase)
+        ?? throw new InvalidOperationException("kb.json is empty");
+
+    private static KnowledgeBase Load()
     {
         using var stream = Assembly.GetManifestResourceStream(KbPrefix + "kb.json")
                            ?? throw new InvalidOperationException("kb.json is not embedded");
-        return JsonSerializer.Deserialize(stream, KbJsonContext.Default.KbManifest)
-               ?? throw new InvalidOperationException("kb.json is empty");
+        return Read(stream);
     }
 }
 
-public sealed record KbManifest(
-    [property: JsonPropertyName("schema")] int Schema,
-    [property: JsonPropertyName("version")] string Version,
-    [property: JsonPropertyName("syndromes")] IReadOnlyList<string> Syndromes);
-
+[JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.SnakeCaseLower)]
 [JsonSerializable(typeof(Dictionary<string, string>))]
-[JsonSerializable(typeof(KbManifest))]
+[JsonSerializable(typeof(KnowledgeBase))]
 internal sealed partial class KbJsonContext : JsonSerializerContext;

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.abxpilot.teknesyum.dev/scoring.schema.json",
+  "title": "Comparison score weights (kb/scoring.yaml). The score only compares options in the same tier; it never changes the table's choice.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/provenance"
+    }
+  ],
+  "required": [
+    "components",
+    "aware_penalty"
+  ],
+  "properties": {
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "weight",
+          "rationale"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "spectrum_fit",
+              "breadth_penalty",
+              "adverse_effects",
+              "dosing_convenience",
+              "oral_switch",
+              "regional_resistance",
+              "cost"
+            ]
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "aware_penalty": {
+      "type": "object",
+      "required": [
+        "access",
+        "watch",
+        "reserve",
+        "not_applicable"
+      ],
+      "properties": {
+        "access": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "watch": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reserve": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "not_applicable": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "unevaluatedProperties": false
+}

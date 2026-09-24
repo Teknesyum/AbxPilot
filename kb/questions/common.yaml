@@ -1,0 +1,36 @@
+- id: pen_allergy
+  version: 1
+  source: zagursky-2018
+  section: Beta-lactam cross-reactivity by side chain
+  source_date: '2018-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - none
+  - ige
+  - delayed
+  - scar
+  default: none
+- id: pregnancy
+  version: 1
+  source: abxpilot-draft
+  section: Drug pregnancy notes
+  source_date: '2026-09-24'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options: &id001
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: qt_risk
+  version: 1
+  source: credible-meds
+  section: QT-prolonging drug list
+  source_date: '2024-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options: *id001
+  default: 'no'

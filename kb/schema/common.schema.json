@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.abxpilot.teknesyum.dev/common.schema.json",
+  "title": "Shared definitions",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_.-]*$"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "i18nKey": {
+      "type": "string",
+      "pattern": "^[a-z0-9][A-Za-z0-9_.-]*$"
+    },
+    "idList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "source",
+        "section",
+        "source_date",
+        "reviewed_at",
+        "review_status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "source": {
+          "$ref": "#/$defs/id"
+        },
+        "section": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_date": {
+          "$ref": "#/$defs/date"
+        },
+        "reviewed_at": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "review_status": {
+          "enum": [
+            "unreviewed",
+            "reviewed"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "renalBand": {
+      "enum": [
+        "normal",
+        "crcl_30_59",
+        "crcl_15_29",
+        "crcl_lt15",
+        "hemodialysis",
+        "crrt"
+      ]
+    },
+    "route": {
+      "enum": [
+        "po",
+        "iv",
+        "im"
+      ]
+    },
+    "role": {
+      "enum": [
+        "beta_lactam",
+        "macrolide",
+        "tetracycline",
+        "fluoroquinolone",
+        "anti_mrsa",
+        "antipseudomonal",
+        "anaerobe",
+        "antiviral"
+      ]
+    },
+    "condition": {
+      "type": "object",
+      "description": "Leaf: question plus one of eq, in, contains_any, empty. Branch: exactly one of all, any, not.",
+      "properties": {
+        "question": {
+          "$ref": "#/$defs/id"
+        },
+        "eq": {
+          "type": "string"
+        },
+        "in": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "contains_any": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "empty": {
+          "type": "boolean"
+        },
+        "all": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          },
+          "minItems": 1
+        },
+        "any": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          },
+          "minItems": 1
+        },
+        "not": {
+          "$ref": "#/$defs/condition"
+        }
+      },
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "question"
+          ],
+          "oneOf": [
+            {
+              "required": [
+                "eq"
+              ]
+            },
+            {
+              "required": [
+                "in"
+              ]
+            },
+            {
+              "required": [
+                "contains_any"
+              ]
+            },
+            {
+              "required": [
+                "empty"
+              ]
+            }
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "all"
+                ]
+              },
+              {
+                "required": [
+                  "any"
+                ]
+              },
+              {
+                "required": [
+                  "not"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "required": [
+            "all"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "question"
+                ]
+              },
+              {
+                "required": [
+                  "any"
+                ]
+              },
+              {
+                "required": [
+                  "not"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "required": [
+            "any"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "question"
+                ]
+              },
+              {
+                "required": [
+                  "all"
+                ]
+              },
+              {
+                "required": [
+                  "not"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "required": [
+            "not"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "question"
+                ]
+              },
+              {
+                "required": [
+                  "all"
+                ]
+              },
+              {
+                "required": [
+                  "any"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

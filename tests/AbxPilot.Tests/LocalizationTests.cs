@@ -21,12 +21,4 @@ public sealed class LocalizationTests
             "Klinik değerlendirme gerektirir. Bu program bir kılavuz gezgini ve eğitim aracıdır.",
             KbResources.Strings("tr")["footer.disclaimer"]);
     }
-
-    [Fact]
-    public void ManifestLoads()
-    {
-        var manifest = KbResources.Manifest();
-        Assert.Equal(1, manifest.Schema);
-        Assert.Empty(manifest.Syndromes);
-    }
 }

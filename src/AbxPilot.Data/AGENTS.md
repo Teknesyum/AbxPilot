@@ -2,6 +2,9 @@
 
 Embedded knowledge base and UI strings.
 
-- `Kb/*.json` embeds as `AbxPilot.Data.Kb.<file>`; `../../kb/i18n/*.json` as `AbxPilot.Data.I18n.<lang>.json`.
-- `KbResources`: `Languages`, `Strings(lang)`, `Manifest()`. Source-generated JSON context, AOT safe.
+- Build hook: `CompileKnowledgeBase` runs `AbxPilot.KbCompiler` on `../../kb` into `obj/<cfg>/<tfm>/kb/`,
+  incremental by a stamp file. A kb error fails the build with file and line. Output is never committed.
+- Embeds `AbxPilot.Data.Kb.kb.json` and `AbxPilot.Data.I18n.<lang>.json`.
+- `KbResources`: `Languages`, `Strings(lang)`, `Knowledge()` (cached), `Read(stream)`.
+  Source-generated snake_case JSON context, AOT safe.
 - Medical content never lives in code; add records to `kb/`.

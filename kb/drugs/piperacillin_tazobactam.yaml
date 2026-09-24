@@ -1,0 +1,37 @@
+id: piperacillin_tazobactam
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: penicillin
+class_group: beta_lactam
+subclass: ureidopenicillin_bli
+aware: watch
+routes:
+- iv
+oral_bioavailability: none
+beta_lactam:
+  core: penicillin
+  r1_group: ureidopenicillin
+  r1_similar: []
+doses:
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: normal
+  amount: 4.5 g
+  interval_hours: 6
+  source: idsa-ats-2019
+  section: Q10; Table 4
+adverse_effects:
+- hypersensitivity
+- c_difficile
+- nephrotoxicity
+interactions:
+- vancomycin_combo
+- methotrexate
+pregnancy:
+  category: compatible
+qt_risk: none

@@ -10,7 +10,6 @@ internal static class Program
             return 2;
         }
 
-        Console.Error.WriteLine("Not implemented yet: the compiler arrives in stage A1.");
-        return 1;
+        return KbCompilation.Run(args[0], args[1], Console.Out, Console.Error);
     }
 }

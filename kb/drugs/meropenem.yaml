@@ -1,0 +1,36 @@
+id: meropenem
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: carbapenem
+class_group: beta_lactam
+aware: watch
+routes:
+- iv
+oral_bioavailability: none
+beta_lactam:
+  core: carbapenem
+  r1_group: carbapenem
+  r1_similar: []
+doses:
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: normal
+  amount: 1 g
+  interval_hours: 8
+  source: idsa-ats-2019
+  section: Q10; Table 4
+adverse_effects:
+- hypersensitivity
+- c_difficile
+- seizures
+interactions:
+- valproate
+pregnancy:
+  category: caution
+  note_key: pregnancy.note.limited_data
+qt_risk: none

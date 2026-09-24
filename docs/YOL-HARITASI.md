@@ -4,7 +4,7 @@ Aşamaların ayrıntısı `plan.md` içinde. Biten silinmez, işaretlenir.
 
 - [x] Plan ve Fable danışması (2026-09-21)
 - [x] A0 İskele (2026-09-24)
-- [ ] A1 Bilgi tabanı çekirdeği
+- [x] A1 Bilgi tabanı çekirdeği
 - [ ] A2 Motor
 - [ ] A3 Ekran
 - [ ] A4 Hareket

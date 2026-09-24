@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.abxpilot.teknesyum.dev/drug.schema.json",
+  "title": "Drug (kb/drugs/*.yaml)",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/provenance"
+    }
+  ],
+  "required": [
+    "class",
+    "class_group",
+    "aware",
+    "routes",
+    "oral_bioavailability",
+    "beta_lactam",
+    "doses",
+    "adverse_effects",
+    "interactions",
+    "pregnancy",
+    "qt_risk"
+  ],
+  "properties": {
+    "class": {
+      "enum": [
+        "penicillin",
+        "cephalosporin",
+        "carbapenem",
+        "monobactam",
+        "macrolide",
+        "tetracycline",
+        "fluoroquinolone",
+        "glycopeptide",
+        "oxazolidinone",
+        "neuraminidase_inhibitor"
+      ]
+    },
+    "class_group": {
+      "enum": [
+        "beta_lactam",
+        "macrolide",
+        "tetracycline",
+        "fluoroquinolone",
+        "glycopeptide",
+        "oxazolidinone",
+        "antiviral"
+      ]
+    },
+    "subclass": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "aware": {
+      "enum": [
+        "access",
+        "watch",
+        "reserve",
+        "not_applicable"
+      ]
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/route"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "oral_bioavailability": {
+      "enum": [
+        "high",
+        "moderate",
+        "low",
+        "none"
+      ]
+    },
+    "beta_lactam": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "core",
+            "r1_group"
+          ],
+          "properties": {
+            "core": {
+              "enum": [
+                "penicillin",
+                "cephalosporin",
+                "carbapenem",
+                "monobactam"
+              ]
+            },
+            "r1_group": {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            "r1_similar": {
+              "$ref": "common.schema.json#/$defs/idList"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "doses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/dose"
+      },
+      "minItems": 1
+    },
+    "adverse_effects": {
+      "$ref": "common.schema.json#/$defs/idList"
+    },
+    "interactions": {
+      "$ref": "common.schema.json#/$defs/idList"
+    },
+    "pregnancy": {
+      "type": "object",
+      "required": [
+        "category"
+      ],
+      "properties": {
+        "category": {
+          "enum": [
+            "compatible",
+            "caution",
+            "avoid"
+          ]
+        },
+        "note_key": {
+          "$ref": "common.schema.json#/$defs/i18nKey"
+        }
+      },
+      "additionalProperties": false
+    },
+    "qt_risk": {
+      "enum": [
+        "none",
+        "possible",
+        "conditional",
+        "known"
+      ]
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "dose": {
+      "type": "object",
+      "description": "One cell of indication x route x renal_band. The guideline dose as written; a mg/kg dose also carries its 70 kg equivalent.",
+      "required": [
+        "id",
+        "indication",
+        "route",
+        "renal_band",
+        "amount",
+        "interval_hours",
+        "source",
+        "section"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "indication": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "route": {
+          "$ref": "common.schema.json#/$defs/route"
+        },
+        "renal_band": {
+          "$ref": "common.schema.json#/$defs/renalBand"
+        },
+        "amount": {
+          "type": "string",
+          "minLength": 1
+        },
+        "amount_70kg": {
+          "type": "string",
+          "minLength": 1
+        },
+        "loading": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interval_hours": {
+          "enum": [
+            4,
+            6,
+            8,
+            12,
+            24,
+            48
+          ]
+        },
+        "source": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "section": {
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "if": {
+        "properties": {
+          "amount": {
+            "pattern": "/kg"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "amount_70kg"
+        ]
+      },
+      "additionalProperties": false
+    }
+  }
+}
