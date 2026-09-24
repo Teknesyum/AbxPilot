@@ -1,0 +1,18 @@
+id: pregnant_ige
+title: "Mild cellulitis in pregnancy with IgE penicillin allergy"
+source: nice-ng141-2019
+section: 'Table 1'
+region: tr
+answers:
+  pregnancy: 'yes'
+  pen_allergy: ige
+expect:
+  status: selected
+  first_choice: ssti_cli_po
+  drugs: [clindamycin]
+  excluded: [ssti_dcx_po, ssti_lex_po, ssti_pnv_po]
+expect_by_set:
+  nice-ng141-2019:
+    first_choice: ssti_ery_po
+    drugs: [erythromycin]
+    excluded: [ssti_clr_po, ssti_dox_nice_po, ssti_flx_po]

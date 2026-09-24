@@ -32,5 +32,7 @@
   "warn.allergy_ige_other_beta_lactam": "Warning: IgE-mediated penicillin allergy; 3rd/4th generation cephalosporins, carbapenems and aztreonam with a dissimilar side chain may be given without testing (AAAAI/ACAAI 2022)",
   "engine.warning": "Candidate kept with a warning",
   "engine.demoted": "Candidate moved back within its tier",
-  "engine.regimen_rewritten": "Regimen name updated to the drugs actually given after a guideline change"
+  "engine.regimen_rewritten": "Regimen name updated to the drugs actually given after a guideline change",
+  "engine.no_antibiotic": "The guideline does not recommend an antibiotic; treatment is procedural (e.g. drainage)",
+  "engine.referral": "The guideline manages this case by referral and specialist review"
 }

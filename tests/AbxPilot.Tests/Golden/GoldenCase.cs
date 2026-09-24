@@ -1,4 +1,5 @@
 using AbxPilot.Core;
+using AbxPilot.Data;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -10,6 +11,7 @@ public sealed class GoldenExpectation
     public string? FirstChoice { get; set; }
     public List<string>? Drugs { get; set; }
     public List<string>? Excluded { get; set; }
+    public List<List<string>>? NoLineWith { get; set; }
 
     public GoldenExpectation Over(GoldenExpectation? other) => other is null
         ? this
@@ -18,15 +20,14 @@ public sealed class GoldenExpectation
             Status = other.Status ?? Status,
             FirstChoice = other.FirstChoice ?? FirstChoice,
             Drugs = other.Drugs ?? Drugs,
-            Excluded = other.Excluded ?? Excluded
+            Excluded = other.Excluded ?? Excluded,
+            NoLineWith = other.NoLineWith ?? NoLineWith
         };
 }
 
 public sealed class GoldenCase
 {
-    public const string Syndrome = "cap";
-    public static readonly string[] Sets = ["idsa-ats-2019", "ttd-2021"];
-
+    public string Syndrome { get; set; } = "";
     public string Id { get; set; } = "";
     public string Title { get; set; } = "";
     public string Source { get; set; } = "";
@@ -36,20 +37,39 @@ public sealed class GoldenCase
     public GoldenExpectation Expect { get; set; } = new();
     public Dictionary<string, GoldenExpectation> ExpectBySet { get; set; } = [];
 
-    public static string Folder => Path.Combine(RepoPaths.Root, "tests", "AbxPilot.Tests", "Golden", Syndrome);
+    public string Key => $"{Syndrome}/{Id}";
+
+    public static string Root => Path.Combine(RepoPaths.Root, "tests", "AbxPilot.Tests", "Golden");
+
+    public static IReadOnlyList<string> Syndromes() =>
+        Directory.GetDirectories(Root).Select(Path.GetFileName).Order(StringComparer.Ordinal).ToArray()!;
+
+    public static IReadOnlyList<string> SetsFor(string syndrome) =>
+        KbResources.Knowledge().GuidelineRows
+            .Where(row => row.Syndrome == syndrome)
+            .Select(row => row.Set)
+            .Distinct(StringComparer.Ordinal)
+            .Order(StringComparer.Ordinal)
+            .ToArray();
 
     private static readonly IDeserializer Reader = new DeserializerBuilder()
         .WithNamingConvention(UnderscoredNamingConvention.Instance)
         .Build();
 
     public static IReadOnlyList<GoldenCase> All() =>
-        Directory.GetFiles(Folder, "*.yaml")
-            .OrderBy(path => path, StringComparer.Ordinal)
-            .Select(path => Reader.Deserialize<GoldenCase>(File.ReadAllText(path)))
+        Syndromes().SelectMany(syndrome =>
+                Directory.GetFiles(Path.Combine(Root, syndrome), "*.yaml")
+                    .OrderBy(path => path, StringComparer.Ordinal)
+                    .Select(path =>
+                    {
+                        var item = Reader.Deserialize<GoldenCase>(File.ReadAllText(path));
+                        item.Syndrome = syndrome;
+                        return item;
+                    }))
             .ToArray();
 
     public static IEnumerable<object[]> Runs() =>
-        All().SelectMany(item => Sets.Select(set => new object[] { item.Id, set }));
+        All().SelectMany(item => SetsFor(item.Syndrome).Select(set => new object[] { item.Key, set }));
 
     public GoldenExpectation ExpectFor(string set) => Expect.Over(ExpectBySet.GetValueOrDefault(set));
 

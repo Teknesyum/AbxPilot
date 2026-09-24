@@ -1,0 +1,15 @@
+id: community_apache15
+title: "Community infection with APACHE II 15"
+source: sis-idsa-2010
+section: 'Recommendation 38'
+region: tr
+answers:
+  apache_ii: ge15
+expect:
+  status: selected
+  first_choice: iai_tzp_iv
+  drugs: [piperacillin_tazobactam]
+  excluded: []
+expect_by_set:
+  sis-2017:
+    excluded: [iai_azt_mtz_van_iv]

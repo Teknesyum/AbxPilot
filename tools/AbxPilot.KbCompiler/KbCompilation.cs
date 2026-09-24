@@ -331,6 +331,9 @@ public static class KbCompilation
                             case "candidates":
                                 node[column] = Tiers(cell);
                                 break;
+                            case "role":
+                                if (cell.Length > 0) node["roles"] = List(cell, '|');
+                                break;
                             case "version" or "duration_days":
                                 if (cell.Length > 0) node[column] = Number(cell);
                                 break;
@@ -363,10 +366,11 @@ public static class KbCompilation
 
         foreach (var csv in Directory.GetFiles(directory, "*.csv").OrderBy(path => path, StringComparer.Ordinal))
         {
+            var syndrome = Path.GetFileNameWithoutExtension(csv);
             var (_, csvRows) = CsvLoader.Load(csv, bag);
             foreach (var row in csvRows)
             {
-                var node = new JsonObject();
+                var node = new JsonObject { ["syndrome"] = syndrome };
                 var coverage = new JsonObject();
                 foreach (var (column, cell) in row.Cells)
                 {
@@ -390,7 +394,7 @@ public static class KbCompilation
                     }
                 }
 
-                if (node["drug"] is JsonValue drug) node["id"] = drug.GetValue<string>();
+                if (node["drug"] is JsonValue drug) node["id"] = syndrome + "." + drug.GetValue<string>();
                 node["coverage"] = coverage;
                 var record = new SourceRecord(node, csv, row.Line, new Dictionary<string, int> { [""] = row.Line });
                 if (!schemas.Validate("spectrum-row", record, bag)) continue;

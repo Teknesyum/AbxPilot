@@ -10,5 +10,11 @@
   "pathogen.p_aeruginosa.name": "Pseudomonas aeruginosa",
   "pathogen.enterobacterales.name": "Enterobacterales",
   "pathogen.anaerobes.name": "Anaeroplar",
-  "pathogen.influenza.name": "İnfluenza virüsü"
+  "pathogen.influenza.name": "İnfluenza virüsü",
+  "pathogen.beta_strep.name": "Beta-hemolitik streptokoklar",
+  "pathogen.e_coli.name": "Escherichia coli",
+  "pathogen.s_saprophyticus.name": "Staphylococcus saprophyticus",
+  "pathogen.enterococcus.name": "Enterokoklar",
+  "pathogen.esbl_enterobacterales.name": "GSBL üreten Enterobacterales",
+  "pathogen.viridans_strep.name": "Viridans streptokoklar"
 }

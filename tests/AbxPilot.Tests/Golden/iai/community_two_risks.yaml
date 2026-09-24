@@ -1,0 +1,15 @@
+id: community_two_risks
+title: "Community infection with two risk factors"
+source: sis-2017
+section: 'Table 6'
+region: tr
+answers:
+  risk_factors: two_or_more
+expect:
+  status: selected
+  first_choice: iai_tzp_iv
+  drugs: [piperacillin_tazobactam]
+  excluded: []
+expect_by_set:
+  sis-2017:
+    excluded: [iai_azt_mtz_van_iv]

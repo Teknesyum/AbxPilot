@@ -1,0 +1,16 @@
+id: mild_cellulitis
+title: "Mild non-purulent cellulitis, no systemic signs"
+source: idsa-ssti-2014
+section: 'Figure 1'
+region: tr
+answers: {}
+expect:
+  status: selected
+  first_choice: ssti_pnv_po
+  drugs: [penicillin_v]
+  excluded: [ssti_dcx_po]
+expect_by_set:
+  nice-ng141-2019:
+    first_choice: ssti_flx_po
+    drugs: [flucloxacillin]
+    excluded: []

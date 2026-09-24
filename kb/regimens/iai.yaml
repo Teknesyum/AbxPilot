@@ -1,0 +1,358 @@
+- id: iai_etp_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ertapenem
+    dose: iai_iv
+    role: beta_lactam
+- id: iai_mxf_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: moxifloxacin
+    dose: iai_iv
+    role: fluoroquinolone
+- id: iai_fox_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefoxitin
+    dose: iai_iv
+    role: beta_lactam
+- id: iai_tgc_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: tigecycline
+    dose: iai_iv
+    role: tetracycline
+- id: iai_tzp_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: iai_iv
+    role: beta_lactam
+- id: iai_mem_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: iai_iv
+    role: beta_lactam
+- id: iai_ipm_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: imipenem_cilastatin
+    dose: iai_iv
+    role: beta_lactam
+- id: iai_cfz_mtz_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefazolin
+    dose: iai_iv
+    role: beta_lactam
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+- id: iai_cxm_mtz_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefuroxime
+    dose: iai_iv
+    role: beta_lactam
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+- id: iai_cro_mtz_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: iai_iv
+    role: beta_lactam
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+- id: iai_ctx_mtz_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefotaxime
+    dose: iai_iv
+    role: beta_lactam
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+- id: iai_cip_mtz_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ciprofloxacin
+    dose: iai_iv
+    role: fluoroquinolone
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+- id: iai_lvx_mtz_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: levofloxacin
+    dose: iai_iv
+    role: fluoroquinolone
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+- id: iai_fep_mtz_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: iai_iv
+    role: beta_lactam
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+- id: iai_caz_mtz_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 30, 38; Tables 2, 6
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftazidime
+    dose: iai_iv
+    role: beta_lactam
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+- id: iai_mem_amp_iv
+  version: 1
+  source: sis-2017
+  section: Section 6B; Table 9 footnote f
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: iai_iv
+    role: beta_lactam
+  - drug: ampicillin
+    dose: iai_iv
+    role: anti_enterococcal
+- id: iai_fep_mtz_amp_iv
+  version: 1
+  source: sis-2017
+  section: Section 6B; Table 10
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: iai_iv
+    role: beta_lactam
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+  - drug: ampicillin
+    dose: iai_iv
+    role: anti_enterococcal
+- id: iai_caz_mtz_amp_iv
+  version: 1
+  source: sis-2017
+  section: Section 6B; Table 10
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftazidime
+    dose: iai_iv
+    role: beta_lactam
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+  - drug: ampicillin
+    dose: iai_iv
+    role: anti_enterococcal
+- id: iai_cip_mtz_amp_iv
+  version: 1
+  source: sis-2017
+  section: Section 6B; Table 10
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ciprofloxacin
+    dose: iai_iv
+    role: fluoroquinolone
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+  - drug: ampicillin
+    dose: iai_iv
+    role: anti_enterococcal
+- id: iai_lvx_mtz_amp_iv
+  version: 1
+  source: sis-2017
+  section: Section 6B; Table 10
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: levofloxacin
+    dose: iai_iv
+    role: fluoroquinolone
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+  - drug: ampicillin
+    dose: iai_iv
+    role: anti_enterococcal
+- id: iai_cip_mtz_vane_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 42, 56
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Vancomycin covers E. faecalis in beta-lactam allergy.
+  components:
+  - drug: ciprofloxacin
+    dose: iai_iv
+    role: fluoroquinolone
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+  - drug: vancomycin
+    dose: iai_iv
+    role: anti_enterococcal
+- id: iai_lvx_mtz_vane_iv
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 42, 56
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Vancomycin covers E. faecalis in beta-lactam allergy.
+  components:
+  - drug: levofloxacin
+    dose: iai_iv
+    role: fluoroquinolone
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+  - drug: vancomycin
+    dose: iai_iv
+    role: anti_enterococcal
+- id: iai_azt_mtz_van_iv
+  version: 1
+  source: sis-2017
+  section: Section 4E; Table 9
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Mainly for severe beta-lactam allergy.
+  components:
+  - drug: aztreonam
+    dose: iai_iv
+    role: beta_lactam
+  - drug: metronidazole
+    dose: iai_iv
+    role: anaerobe
+  - drug: vancomycin
+    dose: iai_iv
+    role: anti_mrsa
+- id: iai_add_van
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 58-59
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: vancomycin
+    dose: iai_iv
+    role: anti_mrsa
+- id: iai_add_tei
+  version: 1
+  source: sis-2017
+  section: Section 7 (MRSA)
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: teicoplanin
+    dose: iai_iv
+    role: anti_mrsa
+- id: iai_add_lzd
+  version: 1
+  source: sis-2017
+  section: Section 7 (MRSA)
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: linezolid
+    dose: iai_iv
+    role: anti_mrsa

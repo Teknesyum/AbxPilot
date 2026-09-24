@@ -1,0 +1,16 @@
+id: moderate_cellulitis
+title: "Cellulitis with systemic signs"
+source: idsa-ssti-2014
+section: 'Figure 1; Table 2'
+region: tr
+answers:
+  systemic_signs: 'yes'
+expect:
+  status: selected
+  first_choice: ssti_pen_iv
+  drugs: [benzylpenicillin]
+  excluded: []
+expect_by_set:
+  nice-ng141-2019:
+    first_choice: ssti_flx_iv
+    drugs: [flucloxacillin]

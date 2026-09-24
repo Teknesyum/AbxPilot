@@ -25,6 +25,16 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `aaaai-acaai-2022` | Khan DA ve ark., ilaç alerjisi uygulama parametresi, JACI 2022;150(6):1333-1393 | Ay |
 | `eucast-expected-2023` | EUCAST Expected Resistant Phenotypes v1.2 | Yıl |
 | `ashp-vanco-2020` | Rybak ve ark., vankomisin konsensüsü, AJHP 2020;77(11):835-864 | Ay |
+| `idsa-ssti-2014` | Stevens DL ve ark. IDSA deri ve yumuşak doku enfeksiyonu kılavuzu, CID 2014;59(2):e10-e52 | Gün |
+| `nice-ng141-2019` | NICE NG141, selülit ve erizipel: antimikrobiyal reçeteleme, 2019 | Gün |
+| `idsa-uti-2011` | Gupta K ve ark. IDSA/ESCMID akut komplike olmayan sistit ve piyelonefrit, CID 2011;52(5):e103-e120 | Ay |
+| `idsa-cuti-2025` | IDSA komplike idrar yolu enfeksiyonu kılavuzu, 2025 | Gün |
+| `eau-uti-2026` | EAU Ürolojik Enfeksiyonlar kılavuzu 2026 | Yıl |
+| `sis-idsa-2010` | Solomkin JS ve ark. SIS/IDSA komplike intraabdominal enfeksiyon, CID 2010;50(2):133-164 | Gün |
+| `sis-2017` | Mazuski JE ve ark. SIS intraabdominal enfeksiyon kılavuzu revizyonu, Surg Infect 2017;18(1):1-76 | Ay |
+| `sis-2024` | SIS intraabdominal enfeksiyon kılavuzu 2024 güncellemesi; okunmadı, yalnız kayıt | Ay |
+| `ekmud-iai-2016` | EKMUD/TCD komplike intraabdominal enfeksiyon rehberi, Ulus Cerrahi Derg 2016 | Yıl |
+| `cinislioglu-2024` | Cinislioğlu AE ve ark., Türkiye üropatojen direnç verisi, Mikrobiyol Bul 2024 | Ay |
 | `abxpilot-draft` | Proje taslağı, birincil kaynak yok | Gün |
 
 ## Kayıt Türüne Göre Kaynak
@@ -45,6 +55,12 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `spectrum/cap.csv` | 23 ilaç × 12 patojen | `abxpilot-draft`; üç `none` hücresi `eucast-expected-2023` |
 | `regions/TR.yaml` | Direnç, eşikler, ruhsat | Direnç `who-caesar`; eşikler `ttd-2021`; ruhsat `titck-2026` |
 | `constraints.yaml` | Sert ve yumuşak kısıtlar | Alerji `aaaai-acaai-2022`; son 3 ay sınıf kuralı `ttd-2021` Tablo 5 |
+| `drugs/*.yaml` | A5/A6 ile 22 yeni ilaç (toplam 45); sendrom dozları `ssti_*`, `uti_*`, `iai_*` kimlikli | İlgili kılavuz tabloları; tabloda yoksa `product-labels` |
+| `guidelines/idsa-2014`, `nice-ng141-2019` / `ssti.csv` | 19 satır | `idsa-ssti-2014` Şekil 1, Tablo 1-2; `nice-ng141-2019` Tablo 1 |
+| `guidelines/idsa-2011-2025`, `eau-2026` / `uti.csv` | 22 satır | `idsa-uti-2011` Tablo 4, `idsa-cuti-2025`; `eau-uti-2026` Bölüm 3.4-3.7 |
+| `guidelines/ekmud-2016`, `sis-2017`, `sis-idsa-2010` / `iai.csv` | 30 satır | `ekmud-iai-2016`, `sis-2017`, `sis-idsa-2010` |
+| `spectrum/{ssti,uti,iai}.csv` | 22×6, 19×6, 21×8 | `eucast-expected-2023` ile uyumlu; diğer hücreler `abxpilot-draft` |
+| `regions/TR.yaml` v3 | TMP-SMX, FQ, GSBL eşik bayrakları; yeni ruhsat satırları | `cinislioglu-2024`, `who-caesar`; ruhsat `titck-2026` |
 | `scoring.yaml` | Karşılaştırma puanı ağırlıkları | `abxpilot-draft` |
 
 ## Belirsiz Noktalar
@@ -99,3 +115,15 @@ işlendi; yine de A9 uzman onayı bekler. "Açık" maddeler belirsiz kalır.
 23. **Açık:** Oral linezolid dozu; IDSA Tablo 3 satırı doğrulanmadan kaynak değişmedi.
 25. **Açık:** Patojen kayıtları taslak.
 26. **Açık:** Karşılaştırma puanı ağırlıkları taslak.
+27. **Açık (A6):** IDSA 2011 Tablo 4 amoksisilin-klavulanat, sefpodoksim, siprofloksasin ve levofloksasin sistit dozları ikincil okumadan.
+28. **Açık (A6):** EAU levofloksasin IV rejimi için TR IV ruhsatı ve etiket dozu.
+29. **Açık (A5):** Pürülan DYDE'de 5 günlük süre IDSA'da açık yazmıyor; taslak.
+30. **Açık (A6):** SIS 2024 güncellemesi okunmadı; SIS setleri 2017 ve 2010'a dayanır.
+31. **Açık (A6):** TR TMP-SMX direnci 394/1503 hesabı %26,2, makalede %26,9.
+32. **Açık (A6):** Pivmesilinam AWaRe grubu doğrulanmadı.
+33. **Açık (A6):** Teikoplanin ve linezolid İAE dozları ürün bilgisinden, kılavuzdan değil.
+34. **Açık (A6):** İAE için GSBL ve FQ eşikleri üriner veriden aktarıldı; İAE'ye özgü TR verisi yok.
+35. **Açık (A6):** EKMUD madde 20 okuması (hafif toplum kökenli İAE'de ertapenem öncelliği).
+36. **Açık (A6):** IDSA 2025 cUTI DOI ve sayfa numaraları; web sürümü kullanıldı.
+37. **Açık (A6):** IDSA setinde GSBL riski yalnız not; ilk seçim seftriakson kalır. EAU setinde karbapeneme geçer.
+38. **Açık (A5):** NICE MRSA eki oral hafif selülite de IV vankomisin ekler; NICE oral MRSA seçeneği vermiyor.

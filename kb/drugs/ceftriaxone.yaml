@@ -1,5 +1,5 @@
 id: ceftriaxone
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -26,6 +26,59 @@ doses:
   interval_hours: 24
   source: idsa-ats-2019
   section: Q8; Table 3
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 1 g
+  interval_hours: 24
+  source: idsa-ssti-2014
+  section: Table 3
+  note: Table 2 has no ceftriaxone row.
+- id: ssti_iv_nice
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 2 g
+  interval_hours: 24
+  source: nice-ng141-2019
+  section: Table 1
+  note: Ambulatory care only.
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: normal
+  amount: 1-2 g
+  interval_hours: 24
+  source: idsa-cuti-2025
+  section: Table 2.1
+- id: uti_iv_single
+  indication: uti
+  route: iv
+  renal_band: normal
+  amount: 1 g (single initial dose)
+  interval_hours: 24
+  source: idsa-uti-2011
+  section: Recommendations 9, 11, 12
+  note: One dose before an oral agent when susceptibility is unknown or local resistance is high.
+- id: uti_iv_eau
+  indication: uti
+  route: iv
+  renal_band: normal
+  amount: 2 g
+  interval_hours: 24
+  source: eau-uti-2026
+  section: Table 6 (section 3.6.3)
+  note: High dose 2 g twice daily.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 1-2 g
+  interval_hours: 24
+  source: sis-idsa-2010
+  section: Table 6
+  note: Table 6 gives every 12-24 h.
 adverse_effects:
 - hypersensitivity
 - biliary_sludge

@@ -1,0 +1,13 @@
+id: abscess_pregnant
+title: "Abscess with systemic signs in pregnancy"
+source: idsa-ssti-2014
+section: 'Table 2'
+region: tr
+answers:
+  ssti_type: purulent
+  systemic_signs: 'yes'
+  pregnancy: 'yes'
+expect:
+  status: no_candidate
+  first_choice: null
+  excluded: [ssti_dox_po, ssti_sxt_po]

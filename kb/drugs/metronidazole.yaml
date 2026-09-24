@@ -1,0 +1,61 @@
+id: metronidazole
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: nitroimidazole
+class_group: nitroimidazole
+aware: access
+routes:
+- po
+- iv
+oral_bioavailability: high
+beta_lactam: null
+doses:
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 8
+  source: sis-idsa-2010
+  section: Table 6
+  note: Table 6 gives every 8-12 h, or 1500 mg once daily.
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 8
+  source: idsa-ssti-2014
+  section: Table 3
+- id: ssti_po_nice
+  indication: ssti
+  route: po
+  renal_band: normal
+  amount: 400 mg
+  interval_hours: 8
+  source: nice-ng141-2019
+  section: Table 1
+- id: ssti_iv_nice
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 8
+  source: nice-ng141-2019
+  section: Table 1
+adverse_effects:
+- gi_upset
+- taste_disturbance
+- peripheral_neuropathy
+- disulfiram_reaction
+interactions:
+- warfarin
+- alcohol
+pregnancy:
+  category: caution
+  note_key: pregnancy.note.limited_data
+qt_risk: none

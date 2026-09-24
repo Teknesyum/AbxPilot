@@ -1,0 +1,11 @@
+id: diabetic_foot
+title: "Diabetic foot infection"
+source: idsa-ssti-2014
+section: 'Recommendation 13'
+region: tr
+answers:
+  special_exposure: diabetic_foot
+expect:
+  status: referral
+  first_choice: null
+  excluded: []

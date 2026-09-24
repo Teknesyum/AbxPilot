@@ -1,0 +1,46 @@
+id: teicoplanin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: glycopeptide
+class_group: glycopeptide
+aware: watch
+routes:
+- iv
+- im
+oral_bioavailability: none
+beta_lactam: null
+doses:
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 6 mg/kg
+  amount_70kg: 420 mg
+  interval_hours: 24
+  source: nice-ng141-2019
+  section: Table 1
+  loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 6 mg/kg
+  amount_70kg: 420 mg
+  interval_hours: 24
+  source: product-labels
+  section: SmPC 4.2 (complicated skin and intra-abdominal)
+  loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+  note: SIS 2017 and EKMUD 2016 name teicoplanin without a dose; the label dose is used.
+adverse_effects:
+- hypersensitivity
+- nephrotoxicity
+interactions:
+- nephrotoxic_drugs
+pregnancy:
+  category: caution
+  note_key: pregnancy.note.limited_data
+qt_risk: none

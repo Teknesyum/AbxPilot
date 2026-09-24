@@ -1,0 +1,17 @@
+id: pyelo_pregnant
+title: "Pyelonephritis in pregnancy"
+source: eau-uti-2026
+section: 'Section 3.6.3'
+region: tr
+answers:
+  uti_site: systemic
+  pregnancy: 'yes'
+expect:
+  status: referral
+  first_choice: null
+  excluded: []
+expect_by_set:
+  eau-2026:
+    status: selected
+    first_choice: uti_cro_eau_iv
+    drugs: [ceftriaxone]

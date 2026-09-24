@@ -1,0 +1,19 @@
+id: pyelo_out_recent_fq
+title: "Outpatient pyelonephritis after a fluoroquinolone 3 months ago"
+source: eau-uti-2026
+section: 'Section 3.7.3'
+region: tr
+answers:
+  uti_site: systemic
+  local_fq_resistance: lt10
+  uti_recent_fq: within_6m
+expect:
+  status: selected
+  first_choice: uti_cro1_cpd_eau_po
+  drugs: [ceftriaxone, cefpodoxime]
+  excluded: [uti_cip_eau_po, uti_cro1_sxt_eau_po, uti_lvx_eau_po]
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_cro1_amc_po
+    drugs: [ceftriaxone, amoxicillin_clavulanate]
+    excluded: [uti_cip7_po, uti_cro1_sxt_po, uti_lvx5_po]

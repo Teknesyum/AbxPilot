@@ -1,0 +1,9 @@
+id: nice-ng141-2019
+version: 1
+source: nice-ng141-2019
+section: Recommendations 1.1-1.2; Table 1
+source_date: '2019-09-27'
+reviewed_at: null
+review_status: unreviewed
+note: Covers cellulitis and erysipelas only; purulent rows are inherited from IDSA 2014.
+extends: idsa-2014

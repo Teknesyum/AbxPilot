@@ -1,0 +1,18 @@
+id: moderate_mrsa
+title: "Cellulitis with systemic signs and nasal MRSA"
+source: idsa-ssti-2014
+section: 'Recommendation 14'
+region: tr
+answers:
+  systemic_signs: 'yes'
+  mrsa_risk: [mrsa_nasal]
+expect:
+  status: selected
+  first_choice: ssti_van_iv
+  drugs: [vancomycin]
+  excluded: [ssti_cpt_iv]
+expect_by_set:
+  nice-ng141-2019:
+    first_choice: ssti_flx_iv
+    drugs: [flucloxacillin, vancomycin]
+    excluded: []

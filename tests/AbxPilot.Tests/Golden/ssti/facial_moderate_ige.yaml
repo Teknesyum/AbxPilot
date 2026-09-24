@@ -1,0 +1,19 @@
+id: facial_moderate_ige
+title: "Periorbital cellulitis with systemic signs and IgE allergy"
+source: nice-ng141-2019
+section: 'Table 1'
+region: tr
+answers:
+  facial_site: 'yes'
+  systemic_signs: 'yes'
+  pen_allergy: ige
+expect:
+  status: selected
+  first_choice: ssti_cro_iv
+  drugs: [ceftriaxone]
+  excluded: [ssti_pen_iv]
+expect_by_set:
+  nice-ng141-2019:
+    first_choice: ssti_clr_mtz_iv
+    drugs: [clarithromycin, metronidazole]
+    excluded: [ssti_amc_iv]

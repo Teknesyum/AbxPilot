@@ -1,0 +1,12 @@
+id: esbl_enterobacterales
+version: 1
+source: abxpilot-draft
+section: Pathogen list for SSTI, UTI and IAI; scope follows the A5-A6 guidelines
+source_date: '2026-09-24'
+reviewed_at: null
+review_status: unreviewed
+kind: bacterium
+gram: negative
+group: resistant
+resistance_mechanisms:
+- esbl

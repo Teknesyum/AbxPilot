@@ -1,0 +1,17 @@
+id: facial_mild
+title: "Mild cellulitis near the eye"
+source: nice-ng141-2019
+section: 'Table 1'
+region: tr
+answers:
+  facial_site: 'yes'
+expect:
+  status: selected
+  first_choice: ssti_pnv_po
+  drugs: [penicillin_v]
+  excluded: [ssti_dcx_po]
+expect_by_set:
+  nice-ng141-2019:
+    first_choice: ssti_amc_po
+    drugs: [amoxicillin_clavulanate]
+    excluded: []

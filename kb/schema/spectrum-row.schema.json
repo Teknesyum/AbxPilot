@@ -9,10 +9,14 @@
     }
   ],
   "required": [
+    "syndrome",
     "drug",
     "coverage"
   ],
   "properties": {
+    "syndrome": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
     "drug": {
       "$ref": "common.schema.json#/$defs/id"
     },

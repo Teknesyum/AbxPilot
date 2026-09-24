@@ -12,21 +12,30 @@ public sealed class GoldenTests
     private static readonly TimeSpan Budget = TimeSpan.FromMilliseconds(50);
     private static readonly GuidelineEngine Engine = new(KbResources.Knowledge());
     private static readonly IReadOnlyDictionary<string, GoldenCase> Cases =
-        GoldenCase.All().ToDictionary(item => item.Id, StringComparer.Ordinal);
+        GoldenCase.All().ToDictionary(item => item.Key, StringComparer.Ordinal);
 
     public static IEnumerable<object[]> Runs() => GoldenCase.Runs();
 
     [Fact]
     public void EnoughCasesWithSources()
     {
-        Assert.True(Cases.Count >= MinimumCases, $"{Cases.Count} golden cases");
+        Assert.Equal(
+            Engine.Knowledge.Syndromes.Select(item => item.Id).Order(StringComparer.Ordinal),
+            GoldenCase.Syndromes());
+        foreach (var syndrome in GoldenCase.Syndromes())
+        {
+            var count = Cases.Values.Count(item => item.Syndrome == syndrome);
+            Assert.True(count >= MinimumCases, $"{syndrome}: {count} golden cases");
+            Assert.NotEmpty(GoldenCase.SetsFor(syndrome));
+            Assert.Equal(count, Directory.GetFiles(Path.Combine(GoldenCase.Root, syndrome), "*.yaml").Length);
+        }
+
         Assert.All(Cases.Values, item =>
         {
             Assert.False(string.IsNullOrWhiteSpace(item.Source), item.Id);
             Assert.False(string.IsNullOrWhiteSpace(item.Section), item.Id);
             Assert.False(string.IsNullOrWhiteSpace(item.Expect.Status), item.Id);
         });
-        Assert.Equal(Cases.Count, Directory.GetFiles(GoldenCase.Folder, "*.yaml").Length);
     }
 
     [Theory]
@@ -44,6 +53,9 @@ public sealed class GoldenTests
         Assert.Equal(
             (expect.Excluded ?? []).Order(StringComparer.Ordinal),
             result.Excluded.Select(excluded => excluded.RegimenId).Order(StringComparer.Ordinal));
+        var lines = result.FirstChoice is { } first ? result.Alternatives.Prepend(first) : result.Alternatives;
+        foreach (var forbidden in expect.NoLineWith ?? [])
+            Assert.DoesNotContain(lines, line => forbidden.All(drug => line.DrugIds.Contains(drug)));
     }
 
     [Theory]
@@ -60,7 +72,8 @@ public sealed class GoldenTests
     [Fact]
     public void ReportIsWritten()
     {
-        Engine.Evaluate(Cases.Values.First().Context(GoldenCase.Sets[0]));
+        var warm = Cases.Values.First();
+        Engine.Evaluate(warm.Context(GoldenCase.SetsFor(warm.Syndrome)[0]));
         var text = new StringBuilder();
         text.AppendLine("# Golden Report");
         text.AppendLine();
@@ -69,16 +82,16 @@ public sealed class GoldenTests
         text.AppendLine("| Case | Set | Status | First choice | Drugs | Excluded | ms |");
         text.AppendLine("|---|---|---|---|---|---|---|");
         var slowest = (Id: "", Ms: 0.0);
-        foreach (var item in Cases.Values.OrderBy(item => item.Id, StringComparer.Ordinal))
-        foreach (var set in GoldenCase.Sets)
+        foreach (var item in Cases.Values.OrderBy(item => item.Key, StringComparer.Ordinal))
+        foreach (var set in GoldenCase.SetsFor(item.Syndrome))
         {
             var watch = Stopwatch.StartNew();
             var result = Engine.Evaluate(item.Context(set));
             var ms = watch.Elapsed.TotalMilliseconds;
-            if (ms > slowest.Ms) slowest = ($"{item.Id}/{set}", ms);
+            if (ms > slowest.Ms) slowest = ($"{item.Key}/{set}", ms);
             var excluded = string.Join(", ", result.Excluded.Select(line => $"{line.RegimenId}({line.RuleId})"));
             text.AppendLine(
-                $"| {item.Id} | {set} | {Status(result.Status)} | {result.FirstChoice?.RegimenId ?? "-"} | {result.FirstChoice?.Key ?? "-"} | {excluded} | {ms:F2} |");
+                $"| {item.Key} | {set} | {Status(result.Status)} | {result.FirstChoice?.RegimenId ?? "-"} | {result.FirstChoice?.Key ?? "-"} | {excluded} | {ms:F2} |");
         }
 
         text.AppendLine();
@@ -93,6 +106,8 @@ public sealed class GoldenTests
     {
         RecommendationStatus.Selected => "selected",
         RecommendationStatus.NoGuidelineRow => "no_row",
+        RecommendationStatus.Referral => "referral",
+        RecommendationStatus.NoAntibiotic => "no_antibiotic",
         _ => "no_candidate"
     };
 }

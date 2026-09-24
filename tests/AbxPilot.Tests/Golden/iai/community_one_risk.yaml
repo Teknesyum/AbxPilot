@@ -1,0 +1,16 @@
+id: community_one_risk
+title: "Community infection in a 75-year-old"
+source: sis-idsa-2010
+section: 'Table 1'
+region: tr
+answers:
+  risk_factors: one
+expect:
+  status: selected
+  first_choice: iai_tzp_iv
+  drugs: [piperacillin_tazobactam]
+  excluded: []
+expect_by_set:
+  sis-2017:
+    first_choice: iai_cro_mtz_iv
+    drugs: [ceftriaxone, metronidazole]

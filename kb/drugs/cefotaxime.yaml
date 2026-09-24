@@ -1,5 +1,5 @@
 id: cefotaxime
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -26,6 +26,32 @@ doses:
   interval_hours: 8
   source: idsa-ats-2019
   section: Q8; Table 3
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: normal
+  amount: 1-2 g
+  interval_hours: 8
+  source: idsa-cuti-2025
+  section: Table 2.1
+- id: uti_iv_eau
+  indication: uti
+  route: iv
+  renal_band: normal
+  amount: 2 g
+  interval_hours: 8
+  source: eau-uti-2026
+  section: Table 6 (section 3.6.3)
+  note: Not studied as monotherapy.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 1-2 g
+  interval_hours: 8
+  source: sis-idsa-2010
+  section: Table 6
+  note: Table 6 gives every 6-8 h.
 adverse_effects:
 - hypersensitivity
 - c_difficile

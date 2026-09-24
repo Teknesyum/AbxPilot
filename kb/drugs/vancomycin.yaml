@@ -1,5 +1,5 @@
 id: vancomycin
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -26,6 +26,36 @@ doses:
   loading: 20-35 mg/kg in severe illness (70 kg - 1400-2450 mg)
   note: Loading dose and monitoring by AUC/MIC 400-600 (not trough) follow ashp-vanco-2020; the consensus PDF was not
     opened line by line, confirm in A9.
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 15 mg/kg
+  amount_70kg: 1050 mg
+  interval_hours: 12
+  source: idsa-ssti-2014
+  section: Table 2
+  note: Table 2 gives 30 mg/kg a day in 2 divided doses.
+- id: ssti_iv_nice
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 15-20 mg/kg
+  amount_70kg: 1050-1400 mg
+  interval_hours: 12
+  source: nice-ng141-2019
+  section: Table 1
+  note: Two or three times daily, at most 2 g per dose, adjusted by level.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 15-20 mg/kg
+  amount_70kg: 1050-1400 mg
+  interval_hours: 12
+  source: sis-idsa-2010
+  section: Table 6
+  note: Table 6 gives every 8-12 h.
 adverse_effects:
 - nephrotoxicity
 - infusion_reaction

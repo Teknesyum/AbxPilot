@@ -1,0 +1,16 @@
+id: community_high_enterococcus
+title: "High-risk community infection with enterococcal risk"
+source: sis-2017
+section: 'Section 6B'
+region: tr
+answers:
+  risk_factors: two_or_more
+  enterococcus_risk: 'yes'
+expect:
+  status: selected
+  first_choice: iai_tzp_iv
+  drugs: [piperacillin_tazobactam]
+  excluded: []
+expect_by_set:
+  sis-2017:
+    excluded: [iai_azt_mtz_van_iv]

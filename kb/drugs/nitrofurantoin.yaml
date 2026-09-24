@@ -1,0 +1,36 @@
+id: nitrofurantoin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: nitrofuran
+class_group: nitrofuran
+aware: access
+routes:
+- po
+oral_bioavailability: moderate
+beta_lactam: null
+doses:
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: normal
+  amount: 100 mg
+  interval_hours: 12
+  source: idsa-uti-2011
+  section: Table 4; recommendation 1
+  note: Monohydrate/macrocrystals.
+adverse_effects:
+- gi_upset
+- pulmonary_toxicity
+- hepatotoxicity
+- peripheral_neuropathy
+- hemolysis
+interactions:
+- polyvalent_cations
+pregnancy:
+  category: caution
+  note_key: pregnancy.note.nitrofurantoin
+qt_risk: none

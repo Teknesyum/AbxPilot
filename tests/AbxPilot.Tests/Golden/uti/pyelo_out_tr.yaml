@@ -1,0 +1,17 @@
+id: pyelo_out_tr
+title: "Outpatient pyelonephritis, Turkish fluoroquinolone resistance"
+source: idsa-uti-2011
+section: 'Recommendations 9-12'
+region: tr
+answers:
+  uti_site: systemic
+expect:
+  status: selected
+  first_choice: uti_cro1_cpd_eau_po
+  drugs: [ceftriaxone, cefpodoxime]
+  excluded: [uti_cro1_sxt_eau_po]
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_cro1_cip_po
+    drugs: [ceftriaxone, ciprofloxacin]
+    excluded: [uti_cro1_sxt_po]

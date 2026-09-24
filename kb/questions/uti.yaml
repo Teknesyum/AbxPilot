@@ -1,0 +1,80 @@
+- id: uti_site
+  version: 1
+  source: idsa-cuti-2025
+  section: Box 1; EAU 2026 section 3.1 (localised or systemic)
+  source_date: '2025-07-17'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Systemic means fever, rigors, flank pain or costovertebral tenderness.
+  type: single
+  options:
+  - cystitis
+  - systemic
+  default: cystitis
+- id: sex
+  version: 1
+  source: idsa-cuti-2025
+  section: Box 2; EAU 2026 section 3.1.1
+  source_date: '2025-07-17'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - female
+  - male
+  default: female
+- id: uti_setting
+  version: 1
+  source: idsa-uti-2011
+  section: Recommendations 9-13
+  source_date: '2011-03-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - outpatient
+  - inpatient
+  default: outpatient
+  visible_when:
+    question: uti_site
+    eq: systemic
+- id: local_tmp_smx_resistance
+  version: 1
+  source: idsa-uti-2011
+  section: Recommendation 2
+  source_date: '2011-03-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Local E. coli TMP-SMX resistance. Default comes from the region file.
+  type: single
+  options:
+  - lt20
+  - ge20
+  default: ge20
+  default_from: eco_tmp_smx
+- id: uti_recent_fq
+  version: 1
+  source: idsa-cuti-2025
+  section: Step 2-II; EAU 2026 section 3.7.3
+  source_date: '2025-07-17'
+  reviewed_at: null
+  review_status: unreviewed
+  note: IDSA 2025 uses 12 months, EAU 2026 uses 6 months.
+  type: single
+  options:
+  - none
+  - within_6m
+  - from_6_to_12m
+  default: none
+- id: urologic_obstruction
+  version: 1
+  source: eau-uti-2026
+  section: Section 3.7.3
+  source_date: '2026-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'

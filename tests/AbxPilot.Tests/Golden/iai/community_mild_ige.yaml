@@ -1,0 +1,18 @@
+id: community_mild_ige
+title: "Mild community infection with IgE penicillin allergy"
+source: sis-2017
+section: 'Section 6A'
+region: tr
+answers:
+  pen_allergy: ige
+expect:
+  status: selected
+  first_choice: iai_etp_iv
+  drugs: [ertapenem]
+  excluded: []
+expect_by_set:
+  sis-2017:
+    first_choice: iai_cro_mtz_iv
+    drugs: [ceftriaxone, metronidazole]
+  sis-idsa-2010:
+    excluded: [iai_fox_iv]

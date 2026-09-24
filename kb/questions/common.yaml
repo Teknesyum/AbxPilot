@@ -34,3 +34,42 @@
   type: boolean
   options: *id001
   default: 'no'
+- id: sepsis
+  version: 1
+  source: idsa-cuti-2025
+  section: Step 1 (Sepsis-3, SOFA 2 or more); SIS 2017 section 1
+  source_date: '2025-07-17'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: prior_esbl
+  version: 1
+  source: eau-uti-2026
+  section: Section 3.7.3 (evidence summary); SIS 2017 section 6C
+  source_date: '2026-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: ESBL-producing Enterobacterales in a previous culture or known colonisation.
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: local_fq_resistance
+  version: 1
+  source: idsa-uti-2011
+  section: Recommendations 9-10; SIS/IDSA 2010 recommendation 39
+  source_date: '2011-03-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Local E. coli fluoroquinolone resistance. Default comes from the region file.
+  type: single
+  options:
+  - lt10
+  - ge10
+  default: ge10
+  default_from: eco_fq

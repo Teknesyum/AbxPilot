@@ -1,0 +1,17 @@
+id: mild_scar
+title: "Mild cellulitis after a severe cutaneous reaction to penicillin"
+source: idsa-ssti-2014
+section: 'Table 2'
+region: tr
+answers:
+  pen_allergy: scar
+expect:
+  status: selected
+  first_choice: ssti_cli_po
+  drugs: [clindamycin]
+  excluded: [ssti_dcx_po, ssti_lex_po, ssti_pnv_po]
+expect_by_set:
+  nice-ng141-2019:
+    first_choice: ssti_clr_po
+    drugs: [clarithromycin]
+    excluded: [ssti_flx_po]

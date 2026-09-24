@@ -1,0 +1,15 @@
+id: community_prior_esbl
+title: "Mild community infection with a previous ESBL isolate"
+source: sis-2017
+section: 'Section 6C'
+region: tr
+answers:
+  prior_esbl: 'yes'
+expect:
+  status: selected
+  first_choice: iai_etp_iv
+  drugs: [ertapenem]
+  excluded: []
+expect_by_set:
+  sis-idsa-2010:
+    excluded: [iai_fox_iv]

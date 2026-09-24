@@ -18,12 +18,13 @@
       "then": {
         "properties": {
           "action": {
-            "const": "select"
+            "enum": [
+              "select",
+              "refer",
+              "withhold"
+            ]
           }
-        },
-        "required": [
-          "duration_days"
-        ]
+        }
       },
       "else": {
         "properties": {
@@ -41,6 +42,28 @@
       "if": {
         "properties": {
           "action": {
+            "const": "select"
+          }
+        },
+        "required": [
+          "action"
+        ]
+      },
+      "then": {
+        "required": [
+          "duration_days"
+        ],
+        "properties": {
+          "candidates": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
             "const": "replace"
           }
         },
@@ -50,7 +73,7 @@
       },
       "then": {
         "required": [
-          "role"
+          "roles"
         ]
       }
     },
@@ -58,7 +81,10 @@
       "if": {
         "properties": {
           "action": {
-            "const": "note"
+            "enum": [
+              "note",
+              "withhold"
+            ]
           }
         },
         "required": [
@@ -71,8 +97,23 @@
             "maxItems": 0
           }
         }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "enum": [
+              "add",
+              "replace"
+            ]
+          }
+        },
+        "required": [
+          "action"
+        ]
       },
-      "else": {
+      "then": {
         "properties": {
           "candidates": {
             "minItems": 1
@@ -111,13 +152,12 @@
     "action": {
       "enum": [
         "select",
+        "refer",
+        "withhold",
         "add",
         "replace",
         "note"
       ]
-    },
-    "role": {
-      "$ref": "common.schema.json#/$defs/role"
     },
     "conditions": {
       "type": "object",
@@ -151,8 +191,16 @@
     },
     "rationale_key": {
       "$ref": "common.schema.json#/$defs/i18nKey"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/role"
+      },
+      "minItems": 1,
+      "uniqueItems": true
     }
   },
   "unevaluatedProperties": false,
-  "description": "Base rows: the first matching row selects the candidate tiers. Modifier rows: every matching row applies (add a component, replace the component with the given role, or attach a note). In the CSV, candidates are tiers separated by ';' and options inside a tier by '|'. A condition cell of '*' matches anything; 'a|b' matches either."
+  "description": "Base rows: the first matching row selects the candidate tiers (select), sends the case to a specialist while still listing the guideline regimen (refer), or states that the guideline gives no antibiotic (withhold). Modifier rows: every matching row applies (add a component, replace the component with one of the given roles, or attach a note). In the CSV, candidates are tiers separated by ';' and options inside a tier by '|'; the role cell takes roles separated by '|'. A condition cell of '*' matches anything; 'a|b' matches either."
 }

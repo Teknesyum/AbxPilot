@@ -1,0 +1,51 @@
+id: clindamycin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: lincosamide
+class_group: lincosamide
+aware: access
+routes:
+- po
+- iv
+oral_bioavailability: high
+beta_lactam: null
+doses:
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: normal
+  amount: 300-450 mg
+  interval_hours: 6
+  source: idsa-ssti-2014
+  section: Table 2
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 600 mg
+  interval_hours: 8
+  source: idsa-ssti-2014
+  section: Table 2
+- id: ssti_iv_nice
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 600 mg
+  interval_hours: 8
+  source: nice-ng141-2019
+  section: Table 1
+  note: NICE gives 600 mg-2.7 g a day in 2-4 doses; 600 mg every 8 h lies inside that range.
+adverse_effects:
+- c_difficile
+- gi_upset
+- rash
+interactions:
+- neuromuscular_blockers
+pregnancy:
+  category: caution
+  note_key: pregnancy.note.limited_data
+qt_risk: none

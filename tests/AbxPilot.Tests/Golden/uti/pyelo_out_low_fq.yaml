@@ -1,0 +1,17 @@
+id: pyelo_out_low_fq
+title: "Outpatient pyelonephritis, fluoroquinolone resistance below 10%"
+source: idsa-uti-2011
+section: 'Recommendations 9-10'
+region: tr
+answers:
+  uti_site: systemic
+  local_fq_resistance: lt10
+expect:
+  status: selected
+  first_choice: uti_cip_eau_po
+  drugs: [ciprofloxacin]
+  excluded: [uti_cro1_sxt_eau_po]
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_cip7_po
+    excluded: [uti_cro1_sxt_po]

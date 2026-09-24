@@ -1,0 +1,18 @@
+id: pyelo_out_fq_year
+title: "Outpatient pyelonephritis after a fluoroquinolone 9 months ago"
+source: idsa-cuti-2025
+section: 'Step 2-II'
+region: tr
+answers:
+  uti_site: systemic
+  local_fq_resistance: lt10
+  uti_recent_fq: from_6_to_12m
+expect:
+  status: selected
+  first_choice: uti_cip_eau_po
+  drugs: [ciprofloxacin]
+  excluded: [uti_cro1_sxt_eau_po]
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_cip7_po
+    excluded: [uti_cro1_sxt_po]

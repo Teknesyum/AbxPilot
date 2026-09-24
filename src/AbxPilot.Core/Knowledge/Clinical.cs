@@ -13,6 +13,7 @@ public sealed record Pathogen : KbRecord
 public sealed record Regimen : KbRecord
 {
     public IReadOnlyList<RegimenComponent> Components { get; init; } = [];
+    public int? DurationDays { get; init; }
 }
 
 public sealed record RegimenComponent
@@ -83,6 +84,7 @@ public sealed record ConstraintSpare
 
 public sealed record DrugSelector
 {
+    public IReadOnlyList<string>? Drug { get; init; }
     public IReadOnlyList<string>? ClassGroup { get; init; }
     public IReadOnlyList<string>? BetaLactamCore { get; init; }
     public IReadOnlyList<string>? SharesR1WithCore { get; init; }
@@ -105,7 +107,7 @@ public sealed record GuidelineRow : KbRecord
     public int Order { get; init; }
     public string Stage { get; init; } = "";
     public string Action { get; init; } = "";
-    public string? Role { get; init; }
+    public IReadOnlyList<string> Roles { get; init; } = [];
     public IReadOnlyDictionary<string, IReadOnlyList<string>> Conditions { get; init; } =
         new Dictionary<string, IReadOnlyList<string>>();
     public IReadOnlyList<IReadOnlyList<string>> Candidates { get; init; } = [];
@@ -115,6 +117,7 @@ public sealed record GuidelineRow : KbRecord
 
 public sealed record SpectrumEntry : KbRecord
 {
+    public string Syndrome { get; init; } = "";
     public string Drug { get; init; } = "";
     public IReadOnlyDictionary<string, string> Coverage { get; init; } = new Dictionary<string, string>();
 }

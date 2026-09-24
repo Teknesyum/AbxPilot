@@ -99,3 +99,85 @@
   url: https://doi.org/10.1093/ajhp/zxaa036
   published: '2020-05-01'
   date_precision: month
+- id: idsa-ssti-2014
+  version: 1
+  kind: guideline
+  citation: 'Stevens DL, Bisno AL, Chambers HF, et al. Practice guidelines for the diagnosis and management of skin and soft
+    tissue infections: 2014 update by the Infectious Diseases Society of America. Clin Infect Dis. 2014;59(2):e10-e52. Erratum:
+    Clin Infect Dis. 2015;60(9):1448.'
+  url: https://doi.org/10.1093/cid/ciu296
+  published: '2014-07-15'
+  date_precision: day
+- id: nice-ng141-2019
+  version: 1
+  kind: guideline
+  citation: 'National Institute for Health and Care Excellence. Cellulitis and erysipelas: antimicrobial prescribing (NG141).
+    2019.'
+  url: https://www.nice.org.uk/guidance/ng141
+  published: '2019-09-27'
+  date_precision: day
+- id: idsa-uti-2011
+  version: 1
+  kind: guideline
+  citation: 'Gupta K, Hooton TM, Naber KG, et al. International clinical practice guidelines for the treatment of acute uncomplicated
+    cystitis and pyelonephritis in women: a 2010 update by IDSA and ESCMID. Clin Infect Dis. 2011;52(5):e103-e120.'
+  url: https://doi.org/10.1093/cid/ciq257
+  published: '2011-03-01'
+  date_precision: month
+- id: idsa-cuti-2025
+  version: 1
+  kind: guideline
+  citation: 'Trautner BW, Cortes-Penfield NW, Gupta K, et al. Complicated urinary tract infections (cUTI): clinical guidelines
+    for treatment and management. IDSA 2025; Clin Infect Dis. 2026;82(Suppl 3).'
+  url: https://www.idsociety.org/practice-guideline/complicated-urinary-tract-infections/
+  published: '2025-07-17'
+  date_precision: day
+- id: eau-uti-2026
+  version: 1
+  kind: guideline
+  citation: European Association of Urology. EAU Guidelines on Urological Infections. Edn. presented at the EAU Annual Congress
+    London 2026. ISBN 978-94-92671-32-5.
+  url: https://uroweb.org/guidelines/urological-infections
+  published: '2026-01-01'
+  date_precision: year
+- id: sis-idsa-2010
+  version: 1
+  kind: guideline
+  citation: 'Solomkin JS, Mazuski JE, Bradley JS, et al. Diagnosis and management of complicated intra-abdominal infection
+    in adults and children: guidelines by the Surgical Infection Society and the Infectious Diseases Society of America. Clin
+    Infect Dis. 2010;50(2):133-164.'
+  url: https://doi.org/10.1086/649554
+  published: '2010-01-15'
+  date_precision: day
+- id: sis-2017
+  version: 1
+  kind: guideline
+  citation: Mazuski JE, Tessier JM, May AK, et al. The Surgical Infection Society revised guidelines on the management of
+    intra-abdominal infection. Surg Infect. 2017;18(1):1-76.
+  url: https://doi.org/10.1089/sur.2016.261
+  published: '2017-01-01'
+  date_precision: month
+- id: sis-2024
+  version: 1
+  kind: guideline
+  citation: 'The Surgical Infection Society guidelines on the management of intra-abdominal infection: 2024 update. Surg Infect.
+    2024;25(6):419-435. Not yet read; recorded for A9.'
+  url: https://doi.org/10.1089/sur.2024.137
+  published: '2024-08-01'
+  date_precision: month
+- id: ekmud-iai-2016
+  version: 1
+  kind: guideline
+  citation: 'EKMUD, KLIMIK, Turkish Surgical Society and others. Intra-abdominal enfeksiyonlar icin oneriler: uzlasi raporu.
+    Mediterr J Infect Microb Antimicrob. 2016;5:7; Ulus Cerrahi Derg. 2016;32:306-321.'
+  url: https://doi.org/10.5152/UCD.2016.3688
+  published: '2016-01-01'
+  date_precision: year
+- id: cinislioglu-2024
+  version: 1
+  kind: surveillance
+  citation: 'Cinislioglu AE, Cinislioglu N, Ozturk MI, et al. Komplike olmayan uriner sistem enfeksiyonlarinda lokal antibiyotik
+    direncinin cok merkezli taranmasi: 37 merkezden 1850 hasta. Mikrobiyol Bul. 2024;58(4):366-379.'
+  url: https://mikrobiyolbul.org/managete/fu_folder/2024-04/366_379_Ahmet_Emre_Cinislio%C4%9Flu.pdf
+  published: '2024-10-01'
+  date_precision: month

@@ -1,5 +1,5 @@
 id: piperacillin_tazobactam
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -25,6 +25,33 @@ doses:
   interval_hours: 6
   source: idsa-ats-2019
   section: Q10; Table 3
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 3.375 g
+  interval_hours: 6
+  source: idsa-ssti-2014
+  section: Table 4
+  note: Table 4 gives every 6-8 h.
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: normal
+  amount: 4.5 g
+  interval_hours: 8
+  source: idsa-cuti-2025
+  section: Table 2.1
+  note: EAU 2026 Table 6 gives the same standard dose.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 3.375 g
+  interval_hours: 6
+  source: sis-idsa-2010
+  section: Table 6
+  note: For P. aeruginosa 3.375 g every 4 h or 4.5 g every 6 h (Table 6 footnote).
 adverse_effects:
 - hypersensitivity
 - c_difficile

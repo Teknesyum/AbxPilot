@@ -1,0 +1,36 @@
+id: uti
+version: 1
+source: idsa-cuti-2025
+section: 'Scope: adult cystitis and systemic urinary tract infection'
+source_date: '2025-07-17'
+reviewed_at: null
+review_status: unreviewed
+note: 'Baseline patient: healthy 70 kg adult with normal renal function. Asymptomatic bacteriuria, sepsis management, prostatitis
+  and catheter infection are out of scope.'
+pathogens:
+- e_coli
+- enterobacterales
+- s_saprophyticus
+- enterococcus
+- p_aeruginosa
+- esbl_enterobacterales
+questions:
+- uti_site
+- sex
+- uti_setting
+- sepsis
+- pregnancy
+- pen_allergy
+- qt_risk
+- local_tmp_smx_resistance
+- local_fq_resistance
+- uti_recent_fq
+- prior_esbl
+- urologic_obstruction
+derived:
+- id: risk_esbl
+  risk: esbl
+  pathogen: esbl_enterobacterales
+  when:
+    question: prior_esbl
+    eq: 'yes'

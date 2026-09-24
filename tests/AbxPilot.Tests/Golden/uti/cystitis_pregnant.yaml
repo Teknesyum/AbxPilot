@@ -1,0 +1,16 @@
+id: cystitis_pregnant
+title: "Cystitis in pregnancy"
+source: eau-uti-2026
+section: 'Section 3.4.4.c.1'
+region: tr
+answers:
+  pregnancy: 'yes'
+expect:
+  status: referral
+  first_choice: null
+  excluded: []
+expect_by_set:
+  eau-2026:
+    status: selected
+    first_choice: uti_fos_po
+    drugs: [fosfomycin]

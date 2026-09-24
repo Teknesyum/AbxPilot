@@ -1,0 +1,120 @@
+- id: ssti_type
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - nonpurulent
+  - purulent
+  default: nonpurulent
+- id: systemic_signs
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1 legend; recommendation 6
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Temperature over 38 C, heart rate over 90, respiratory rate over 24, or white cells over 12000 or under 4000 per microlitre
+    (erratum 2015).
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: failed_prior
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1 legend (severe)
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: immunocompromised
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1 legend (severe); recommendation 13
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: hemodynamic
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendation 18; Figure 1 legend (severe)
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Hypotension, organ dysfunction or altered mental status.
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: necrotizing_signs
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendations 27-28; Figure 1 legend
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Bullae, skin sloughing, pain out of proportion, rapid spread or gas.
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: special_exposure
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendation 13; sections VII and XI-XIV
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - none
+  - animal_bite
+  - water_exposure
+  - diabetic_foot
+  - surgical_site
+  default: none
+- id: mrsa_risk
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendation 14
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  type: multi
+  options:
+  - penetrating_trauma
+  - mrsa_elsewhere
+  - mrsa_nasal
+  - injection_drug_use
+  default: []
+- id: facial_site
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (near the eyes or nose); recommendation 1.1.14
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+  visible_when:
+    question: ssti_type
+    eq: nonpurulent

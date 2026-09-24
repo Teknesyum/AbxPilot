@@ -10,6 +10,8 @@ public sealed class GuidelineEngine : IGuidelineEngine
     private const string AddAction = "add";
     private const string ReplaceAction = "replace";
     private const string NoteAction = "note";
+    private const string ReferAction = "refer";
+    private const string WithholdAction = "withhold";
     private const string MultiType = "multi";
     private const string BaselineRenalBand = "normal";
     private const string UnknownLicense = "unknown";
@@ -24,10 +26,9 @@ public sealed class GuidelineEngine : IGuidelineEngine
     private readonly Dictionary<string, Syndrome> _syndromes;
     private readonly Dictionary<string, GuidelineSet> _sets;
     private readonly Dictionary<string, Region> _regions;
-    private readonly Dictionary<string, SpectrumEntry> _spectrum;
     private readonly Dictionary<string, KbSource> _sources;
     private readonly Dictionary<(string Set, string Syndrome), GuidelineRow[]> _rows;
-    private readonly ComparisonScorer? _scorer;
+    private readonly Dictionary<string, ComparisonScorer> _scorers;
 
     public GuidelineEngine(KnowledgeBase knowledge)
     {
@@ -38,12 +39,18 @@ public sealed class GuidelineEngine : IGuidelineEngine
         _syndromes = knowledge.Syndromes.ToDictionary(item => item.Id, StringComparer.Ordinal);
         _sets = knowledge.GuidelineSets.ToDictionary(item => item.Id, StringComparer.Ordinal);
         _regions = knowledge.Regions.ToDictionary(item => item.Id, StringComparer.OrdinalIgnoreCase);
-        _spectrum = knowledge.Spectrum.ToDictionary(item => item.Drug, StringComparer.Ordinal);
         _sources = knowledge.Sources.ToDictionary(item => item.Id, StringComparer.Ordinal);
         _rows = knowledge.GuidelineRows
             .GroupBy(row => (row.Set, row.Syndrome))
             .ToDictionary(group => group.Key, group => group.OrderBy(row => row.Order).ToArray());
-        _scorer = knowledge.Scoring is { } scoring ? new ComparisonScorer(scoring, _spectrum) : null;
+        _scorers = knowledge.Scoring is { } scoring
+            ? knowledge.Syndromes.ToDictionary(
+                item => item.Id,
+                item => new ComparisonScorer(scoring, knowledge.Spectrum
+                    .Where(entry => entry.Syndrome == item.Id)
+                    .ToDictionary(entry => entry.Drug, StringComparer.Ordinal)),
+                StringComparer.Ordinal)
+            : new Dictionary<string, ComparisonScorer>(StringComparer.Ordinal);
     }
 
     public KnowledgeBase Knowledge => _kb;
@@ -136,6 +143,7 @@ public sealed class GuidelineEngine : IGuidelineEngine
         private readonly HashSet<string> _quietPathogens = new(StringComparer.Ordinal);
         private List<Constraint> _active = [];
         private List<Constraint> _soft = [];
+        private ComparisonScorer? Scorer => engine._scorers.GetValueOrDefault(syndrome.Id);
 
         public Recommendation Execute()
         {
@@ -161,15 +169,25 @@ public sealed class GuidelineEngine : IGuidelineEngine
 
             _trace.Add(new TraceLine(baseRow.Id, "engine.row_matched", baseRow.ToSourceRef()));
             _rationale.Add(new TraceLine(baseRow.Id, baseRow.RationaleKey, baseRow.ToSourceRef()));
+            if (baseRow.Action == WithholdAction)
+            {
+                _trace.Add(new TraceLine(baseRow.Id, "engine.no_antibiotic", baseRow.ToSourceRef()));
+                return Finish(RecommendationStatus.NoAntibiotic, baseRow.Id, []);
+            }
+
+            if (baseRow.Action == ReferAction)
+                _trace.Add(new TraceLine(baseRow.Id, "engine.referral", baseRow.ToSourceRef()));
 
             var modifiers = new List<Modifier>();
             var blocked = false;
+            var noteDays = new List<int?>();
             foreach (var row in rows.Where(row => row.Stage == ModifierStage && RowMatches(row)))
             {
                 _rationale.Add(new TraceLine(row.Id, row.RationaleKey, row.ToSourceRef()));
                 if (row.Action == NoteAction)
                 {
                     _trace.Add(new TraceLine(row.Id, "engine.modifier_note", row.ToSourceRef()));
+                    noteDays.Add(row.DurationDays);
                     continue;
                 }
 
@@ -186,9 +204,12 @@ public sealed class GuidelineEngine : IGuidelineEngine
                 _trace.Add(new TraceLine(row.Id, key, row.ToSourceRef(), chosen.Id));
             }
 
-            var duration = modifiers.Select(item => item.Row.DurationDays).Append(baseRow.DurationDays).Max();
-            var lines = BuildCandidates(baseRow, modifiers, duration);
+            var extraDays = modifiers.Select(item => item.Row.DurationDays).Concat(noteDays).Max();
+            var duration = new[] { extraDays, baseRow.DurationDays }.Max();
+            var lines = BuildCandidates(baseRow, modifiers, duration, extraDays);
             if (blocked) lines.Clear();
+            if (baseRow.Action == ReferAction)
+                return Finish(RecommendationStatus.Referral, baseRow.Id, lines.Count == 0 ? [] : Score(lines));
             if (lines.Count == 0)
             {
                 _trace.Add(new TraceLine(baseRow.Id, "engine.no_candidate", baseRow.ToSourceRef()));
@@ -201,7 +222,7 @@ public sealed class GuidelineEngine : IGuidelineEngine
 
         private Recommendation Finish(RecommendationStatus status, string? ruleId, IReadOnlyList<RegimenLine> lines)
         {
-            if (status != RecommendationStatus.Selected)
+            if (status is RecommendationStatus.NoGuidelineRow or RecommendationStatus.NoCandidateLeft)
                 _rationale.Add(new TraceLine(ruleId ?? "table", "engine.consult_specialist", set.ToSourceRef()));
             var first = lines.Count > 0 ? lines[0] : null;
             return new Recommendation(
@@ -349,7 +370,8 @@ public sealed class GuidelineEngine : IGuidelineEngine
             return (demoted, warnings);
         }
 
-        private List<RegimenLine> BuildCandidates(GuidelineRow baseRow, List<Modifier> modifiers, int? duration)
+        private List<RegimenLine> BuildCandidates(GuidelineRow baseRow, List<Modifier> modifiers, int? duration,
+            int? modifierDays)
         {
             var lines = new List<RegimenLine>();
             var seen = new HashSet<string>(StringComparer.Ordinal);
@@ -389,7 +411,8 @@ public sealed class GuidelineEngine : IGuidelineEngine
                 if (demoted) demotedIds.Add(lineId);
                 foreach (var warning in warnings)
                     _trace.Add(new TraceLine(warning.RuleId, "engine.warning", warning.Source, $"{lineId}/{warning.Subject}"));
-                lines.Add(new RegimenLine(lineId, baseRow.Id, tier + 1, parts.Select(Line).ToArray(), duration, lineSource, null)
+                var days = regimen.DurationDays is { } own ? Math.Max(own, modifierDays ?? 0) : duration;
+                lines.Add(new RegimenLine(lineId, baseRow.Id, tier + 1, parts.Select(Line).ToArray(), days, lineSource, null)
                 {
                     Warnings = warnings
                 });
@@ -415,7 +438,7 @@ public sealed class GuidelineEngine : IGuidelineEngine
                     .ToList();
                 if (row.Action == ReplaceAction)
                 {
-                    var roles = incoming.Select(part => (string?)part.Component.Role).Append(row.Role).ToHashSet();
+                    var roles = incoming.Select(part => part.Component.Role).Concat(row.Roles).ToHashSet(StringComparer.Ordinal);
                     var at = parts.FindIndex(part => roles.Contains(part.Component.Role));
                     parts.RemoveAll(part => roles.Contains(part.Component.Role));
                     incoming.RemoveAll(part => parts.Any(existing => existing.Component.Drug == part.Component.Drug));
@@ -455,6 +478,7 @@ public sealed class GuidelineEngine : IGuidelineEngine
         private bool Selects(DrugSelector selector, Drug drug, bool monotherapy)
         {
             if (selector.Monotherapy == true && !monotherapy) return false;
+            if (selector.Drug is { } ids && !ids.Contains(drug.Id)) return false;
             if (selector.ClassGroup is { } groups && !groups.Contains(drug.ClassGroup)) return false;
             if (selector.BetaLactamCore is { } cores && (drug.BetaLactam is null || !cores.Contains(drug.BetaLactam.Core))) return false;
             if (selector.SharesR1WithCore is { } sharedCores)
@@ -488,13 +512,13 @@ public sealed class GuidelineEngine : IGuidelineEngine
 
         private IReadOnlyList<RegimenLine> Score(List<RegimenLine> lines)
         {
-            if (engine._scorer is null) return lines;
+            if (Scorer is not { } scorer) return lines;
             var tier = lines[0].Tier;
             var peers = lines.Where(line => line.Tier == tier).ToArray();
             if (peers.Length < 2) return lines;
 
             var relevant = syndrome.Pathogens.Where(pathogen => !_quietPathogens.Contains(pathogen)).ToArray();
-            var scores = engine._scorer.Score(peers, engine._drugs, relevant, region);
+            var scores = scorer.Score(peers, engine._drugs, relevant, syndrome.Pathogens, region);
             var result = lines.ToArray();
             for (var i = 0; i < peers.Length; i++) result[i] = result[i] with { Score = scores[i] };
             return result;
@@ -506,7 +530,7 @@ public sealed class GuidelineEngine : IGuidelineEngine
             foreach (var pathogen in syndrome.Pathogens)
             {
                 var best = line.Components
-                    .Select(component => engine._scorer?.Level(component.DrugId, pathogen) ?? ("none", 0.0))
+                    .Select(component => Scorer?.Level(component.DrugId, pathogen) ?? ("none", 0.0))
                     .MaxBy(level => level.Value);
                 bars.Add(new CoverageBar(pathogen, best.Level, best.Value, _riskPathogens.Contains(pathogen)));
             }

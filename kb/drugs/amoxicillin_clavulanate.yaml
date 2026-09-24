@@ -1,17 +1,18 @@
 id: amoxicillin_clavulanate
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
 reviewed_at: null
 review_status: unreviewed
-note: An IV formulation exists in some countries; IDSA/ATS 2019 gives only oral doses.
+note: IDSA/ATS 2019 gives only oral doses. An IV form is licensed in Turkey (Amoklavin 1000/200 mg IV, Croxilex 1.2 g IV; TITCK 18.09.2026); NICE NG141 gives the IV dose.
 class: penicillin
 class_group: beta_lactam
 subclass: aminopenicillin_bli
 aware: access
 routes:
 - po
+- iv
 oral_bioavailability: high
 beta_lactam:
   core: penicillin
@@ -43,6 +44,40 @@ doses:
   source: idsa-ats-2019
   section: Q7; Table 2
   note: Extended-release formulation.
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: normal
+  amount: 500/125 mg
+  interval_hours: 8
+  source: nice-ng141-2019
+  section: Table 1
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 1.2 g
+  interval_hours: 8
+  source: nice-ng141-2019
+  section: Table 1
+- id: uti_cys_po
+  indication: uti
+  route: po
+  renal_band: normal
+  amount: 500/125 mg
+  interval_hours: 12
+  source: idsa-uti-2011
+  section: Table 4; recommendation 6
+  note: Dose read from Table 4 with low confidence; confirm in A9.
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: normal
+  amount: 875/125 mg
+  interval_hours: 12
+  source: idsa-cuti-2025
+  section: Table 3.1
+  note: Table 3.1 gives every 8-12 h.
 adverse_effects:
 - hypersensitivity
 - gi_upset

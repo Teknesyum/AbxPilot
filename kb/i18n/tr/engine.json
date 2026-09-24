@@ -32,5 +32,7 @@
   "warn.allergy_ige_other_beta_lactam": "Uyarı: IgE aracılı penisilin alerjisi; farklı yan zincirli 3./4. kuşak sefalosporin, karbapenem ve aztreonam testsiz verilebilir (AAAAI/ACAAI 2022)",
   "engine.warning": "Aday kalır, uyarı taşır",
   "engine.demoted": "Aday aynı basamakta geriye alındı",
-  "engine.regimen_rewritten": "Kılavuz değişikliğinden sonra rejim adı verilen ilaçlara göre güncellendi"
+  "engine.regimen_rewritten": "Kılavuz değişikliğinden sonra rejim adı verilen ilaçlara göre güncellendi",
+  "engine.no_antibiotic": "Kılavuz antibiyotik önermiyor; tedavi girişimsel (ör. drenaj)",
+  "engine.referral": "Kılavuz bu durumu sevk ve uzman değerlendirmesiyle yönetiyor"
 }

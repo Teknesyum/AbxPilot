@@ -1,0 +1,16 @@
+id: severe_hypotension
+title: "Cellulitis with hypotension"
+source: idsa-ssti-2014
+section: 'Recommendation 18'
+region: tr
+answers:
+  hemodynamic: 'yes'
+  systemic_signs: 'yes'
+expect:
+  status: referral
+  first_choice: null
+  excluded: []
+expect_by_set:
+  idsa-2014:
+    first_choice: ssti_van_tzp_iv
+    drugs: [vancomycin, piperacillin_tazobactam]

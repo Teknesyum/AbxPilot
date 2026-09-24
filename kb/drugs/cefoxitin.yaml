@@ -1,0 +1,34 @@
+id: cefoxitin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: cephalosporin
+class_group: beta_lactam
+aware: watch
+routes:
+- iv
+oral_bioavailability: none
+beta_lactam:
+  core: cephalosporin
+  r1_group: thienyl
+  r1_similar:
+  - benzyl
+doses:
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 2 g
+  interval_hours: 6
+  source: sis-idsa-2010
+  section: Table 6
+adverse_effects:
+- hypersensitivity
+- c_difficile
+interactions: []
+pregnancy:
+  category: compatible
+qt_risk: none

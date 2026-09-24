@@ -1,0 +1,37 @@
+id: amikacin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: aminoglycoside
+class_group: aminoglycoside
+aware: access
+routes:
+- iv
+- im
+oral_bioavailability: none
+beta_lactam: null
+doses:
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: normal
+  amount: 25-30 mg/kg
+  amount_70kg: 1750-2100 mg
+  interval_hours: 24
+  source: eau-uti-2026
+  section: Table 6 (section 3.6.3)
+adverse_effects:
+- nephrotoxicity
+- ototoxicity
+- neuromuscular_blockade
+interactions:
+- nephrotoxic_drugs
+- loop_diuretics
+- neuromuscular_blockers
+pregnancy:
+  category: avoid
+  note_key: pregnancy.note.aminoglycoside
+qt_risk: none

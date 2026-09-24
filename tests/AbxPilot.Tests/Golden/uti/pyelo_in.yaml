@@ -1,0 +1,17 @@
+id: pyelo_in
+title: "Inpatient pyelonephritis"
+source: idsa-cuti-2025
+section: 'Table 2.1'
+region: tr
+answers:
+  uti_site: systemic
+  uti_setting: inpatient
+expect:
+  status: selected
+  first_choice: uti_ctx_eau_iv
+  drugs: [cefotaxime]
+  excluded: []
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_cro_iv
+    drugs: [ceftriaxone]

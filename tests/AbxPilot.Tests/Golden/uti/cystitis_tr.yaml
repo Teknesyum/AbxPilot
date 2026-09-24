@@ -1,0 +1,15 @@
+id: cystitis_tr
+title: "Uncomplicated cystitis in a woman, Turkish resistance defaults"
+source: idsa-uti-2011
+section: 'Recommendations 1-4'
+region: tr
+answers: {}
+expect:
+  status: selected
+  first_choice: uti_fos_po
+  drugs: [fosfomycin]
+  excluded: [uti_sxt3_po]
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_nit_po
+    drugs: [nitrofurantoin]

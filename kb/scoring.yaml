@@ -44,5 +44,9 @@ bioavailability_value:
   none: 0.0
 resistance_penalty:
   ge25: 1.0
+  ge20: 1.0
+  ge10: 1.0
+  lt20: 0.0
+  lt10: 0.0
   lt25: 0.0
   unknown: 0.0

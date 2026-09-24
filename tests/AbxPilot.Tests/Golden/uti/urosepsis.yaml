@@ -1,0 +1,16 @@
+id: urosepsis
+title: "Febrile urinary infection with sepsis"
+source: idsa-cuti-2025
+section: 'Table 1.1'
+region: tr
+answers:
+  uti_site: systemic
+  sepsis: 'yes'
+expect:
+  status: referral
+  first_choice: null
+  excluded: []
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_cro_iv
+    drugs: [ceftriaxone]

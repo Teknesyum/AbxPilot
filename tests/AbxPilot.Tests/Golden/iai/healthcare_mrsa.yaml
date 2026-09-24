@@ -1,0 +1,19 @@
+id: healthcare_mrsa
+title: "Healthcare infection in a known MRSA carrier"
+source: sis-idsa-2010
+section: 'Recommendation 58'
+region: tr
+answers:
+  iai_acquisition: healthcare
+  mrsa_colonization: 'yes'
+expect:
+  status: selected
+  first_choice: iai_tzp_iv
+  drugs: [piperacillin_tazobactam, vancomycin]
+  excluded: []
+expect_by_set:
+  sis-2017:
+    excluded: [iai_azt_mtz_van_iv]
+  sis-idsa-2010:
+    first_choice: iai_mem_iv
+    drugs: [meropenem, vancomycin]

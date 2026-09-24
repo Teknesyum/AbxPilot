@@ -1,0 +1,18 @@
+id: pyelo_obstruction
+title: "Pyelonephritis with a ureteric stone"
+source: eau-uti-2026
+section: 'Section 3.7.3'
+region: tr
+answers:
+  uti_site: systemic
+  uti_setting: inpatient
+  urologic_obstruction: 'yes'
+expect:
+  status: selected
+  first_choice: uti_ctx_eau_iv
+  drugs: [cefotaxime]
+  excluded: []
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_cro_iv
+    drugs: [ceftriaxone]

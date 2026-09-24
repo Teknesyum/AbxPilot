@@ -33,7 +33,14 @@
         "fluoroquinolone",
         "glycopeptide",
         "oxazolidinone",
-        "neuraminidase_inhibitor"
+        "neuraminidase_inhibitor",
+        "lincosamide",
+        "sulfonamide",
+        "nitrofuran",
+        "phosphonic_acid",
+        "aminoglycoside",
+        "nitroimidazole",
+        "glycylcycline"
       ]
     },
     "class_group": {
@@ -44,7 +51,13 @@
         "fluoroquinolone",
         "glycopeptide",
         "oxazolidinone",
-        "antiviral"
+        "antiviral",
+        "lincosamide",
+        "folate_antagonist",
+        "nitrofuran",
+        "phosphonic",
+        "aminoglycoside",
+        "nitroimidazole"
       ]
     },
     "subclass": {

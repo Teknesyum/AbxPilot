@@ -1,0 +1,46 @@
+id: ssti
+version: 1
+source: idsa-ssti-2014
+section: 'Scope: adult cellulitis, erysipelas and purulent skin infection'
+source_date: '2014-07-15'
+reviewed_at: null
+review_status: unreviewed
+note: 'Baseline patient: healthy 70 kg adult with normal renal function. Impetigo, bites, surgical site infection and diabetic
+  foot are referred, not modelled.'
+pathogens:
+- beta_strep
+- mssa
+- mrsa
+- enterobacterales
+- anaerobes
+- p_aeruginosa
+questions:
+- ssti_type
+- systemic_signs
+- failed_prior
+- immunocompromised
+- hemodynamic
+- necrotizing_signs
+- special_exposure
+- mrsa_risk
+- facial_site
+- pen_allergy
+- pregnancy
+- qt_risk
+derived:
+- id: ssti_severe
+  when:
+    any:
+    - question: failed_prior
+      eq: 'yes'
+    - question: immunocompromised
+      eq: 'yes'
+    - question: hemodynamic
+      eq: 'yes'
+- id: risk_mrsa
+  risk: mrsa
+  pathogen: mrsa
+  when:
+    not:
+      question: mrsa_risk
+      empty: true

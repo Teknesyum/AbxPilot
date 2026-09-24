@@ -1,0 +1,18 @@
+id: no_source_control
+title: "Community infection without planned source control"
+source: sis-2017
+section: 'Section 10'
+region: tr
+answers:
+  source_control: none_planned
+expect:
+  status: selected
+  first_choice: iai_etp_iv
+  drugs: [ertapenem]
+  excluded: []
+expect_by_set:
+  sis-2017:
+    first_choice: iai_cro_mtz_iv
+    drugs: [ceftriaxone, metronidazole]
+  sis-idsa-2010:
+    excluded: [iai_fox_iv]

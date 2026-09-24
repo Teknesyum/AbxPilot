@@ -1,0 +1,13 @@
+id: healthcare_esbl
+title: "Healthcare infection with a previous ESBL isolate"
+source: sis-2017
+section: 'Section 7D'
+region: tr
+answers:
+  iai_acquisition: healthcare
+  prior_esbl: 'yes'
+expect:
+  status: selected
+  first_choice: iai_mem_iv
+  drugs: [meropenem]
+  excluded: []

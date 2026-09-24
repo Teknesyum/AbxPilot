@@ -1,0 +1,33 @@
+id: fosfomycin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+note: AWaRe group is for the oral form.
+class: phosphonic_acid
+class_group: phosphonic
+aware: watch
+routes:
+- po
+- iv
+oral_bioavailability: low
+beta_lactam: null
+doses:
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: normal
+  amount: 3 g (single dose)
+  interval_hours: 24
+  source: idsa-uti-2011
+  section: Table 4; recommendation 3
+  note: Fosfomycin trometamol, one dose only.
+adverse_effects:
+- gi_upset
+interactions:
+- metoclopramide
+pregnancy:
+  category: compatible
+qt_risk: none

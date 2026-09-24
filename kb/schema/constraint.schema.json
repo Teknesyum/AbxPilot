@@ -44,6 +44,9 @@
       "description": "Drug selector; every given field must match.",
       "minProperties": 1,
       "properties": {
+        "drug": {
+          "$ref": "common.schema.json#/$defs/idList"
+        },
         "class_group": {
           "$ref": "common.schema.json#/$defs/idList"
         },

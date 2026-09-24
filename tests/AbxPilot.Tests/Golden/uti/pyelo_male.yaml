@@ -1,0 +1,18 @@
+id: pyelo_male
+title: "Outpatient febrile urinary infection in a man"
+source: eau-uti-2026
+section: 'Section 3.6.3'
+region: tr
+answers:
+  uti_site: systemic
+  sex: male
+  local_fq_resistance: lt10
+expect:
+  status: selected
+  first_choice: uti_cip_eau_po
+  drugs: [ciprofloxacin]
+  excluded: [uti_cro1_sxt_eau_po]
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_cip7_po
+    excluded: [uti_cro1_sxt_po]

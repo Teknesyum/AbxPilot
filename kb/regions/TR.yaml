@@ -1,5 +1,5 @@
 id: tr
-version: 2
+version: 3
 source: abxpilot-draft
 section: Region profile for Turkey
 source_date: '2026-09-24'
@@ -34,6 +34,43 @@ resistance:
   drug_class: beta_lactam
   category: ge25
   estimate: 0.307
+- id: eco_tmp_smx
+  version: 1
+  source: cinislioglu-2024
+  section: Uncomplicated UTI, 37 centres, 1503 E. coli isolates, March 2021 - August 2022
+  source_date: '2024-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 26.9% resistant.
+  pathogen: e_coli
+  drug_class: folate_antagonist
+  category: ge20
+  estimate: 0.269
+- id: eco_fq
+  version: 1
+  source: cinislioglu-2024
+  section: Uncomplicated UTI, 37 centres, 1503 E. coli isolates, March 2021 - August 2022
+  source_date: '2024-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Ciprofloxacin 37.4% resistant. Outpatient urinary isolates; used for IAI too, where EKMUD 2016 item 28 reports 54%
+    quinolone susceptibility.
+  pathogen: e_coli
+  drug_class: fluoroquinolone
+  category: ge10
+  estimate: 0.374
+- id: eco_esbl
+  version: 1
+  source: cinislioglu-2024
+  section: Uncomplicated UTI, 37 centres, 1503 E. coli isolates, March 2021 - August 2022
+  source_date: '2024-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: ESBL 14.3%. Nitrofurantoin 14.4% and fosfomycin 13.3% resistant. Urinary isolates stand in for the community IAI rate.
+  pathogen: e_coli
+  drug_class: cephalosporin
+  category: ge10
+  estimate: 0.143
 thresholds:
 - id: macrolide_resistance_cutoff
   version: 1
@@ -124,3 +161,69 @@ licensing:
 - drug: aztreonam
   status: not_licensed
   note: No plain J01DF01 product; only aztreonam-avibactam (J01DF51) is licensed (TITCK 18.09.2026).
+- drug: penicillin_v
+  status: licensed
+  note: J01CE02, 2 active products (TITCK 18.09.2026).
+- drug: benzylpenicillin
+  status: licensed
+  note: J01CE01, 8 active products (TITCK 18.09.2026).
+- drug: flucloxacillin
+  status: licensed
+  note: J01CF05, 4 active products, oral and IV (TITCK 18.09.2026).
+- drug: dicloxacillin
+  status: not_licensed
+  note: No J01CF01 product in the TITCK list of 18.09.2026.
+- drug: ampicillin
+  status: licensed
+  note: J01CA01, 39 active products, IV and oral (TITCK 18.09.2026).
+- drug: pivmecillinam
+  status: licensed
+  note: J01CA08, 1 active product (Pivmesid 400 mg, TITCK 18.09.2026).
+- drug: cefazolin
+  status: licensed
+  note: J01DB04, 59 active products (TITCK 18.09.2026).
+- drug: cephalexin
+  status: licensed
+  note: J01DB01, 18 active products (TITCK 18.09.2026).
+- drug: cefadroxil
+  status: licensed
+  note: J01DB05, 3 active products (TITCK 18.09.2026).
+- drug: cefuroxime
+  status: licensed
+  note: J01DC02, 117 active products including IV forms (TITCK 18.09.2026).
+- drug: cefoxitin
+  status: not_licensed
+  note: No J01DC01 product in the TITCK list of 18.09.2026.
+- drug: ertapenem
+  status: licensed
+  note: J01DH03, 2 active products (Invanz, Ekiperta; TITCK 18.09.2026).
+- drug: clindamycin
+  status: licensed
+  note: J01FF01, 25 active products (TITCK 18.09.2026).
+- drug: tmp_smx
+  status: licensed
+  note: J01EE01, 37 active products including 800/160 mg and IV (TITCK 18.09.2026).
+- drug: nitrofurantoin
+  status: licensed
+  note: J01XE01, 6 active products (TITCK 18.09.2026).
+- drug: fosfomycin
+  status: licensed
+  note: J01XX01, 17 active products, oral 3 g and IV (TITCK 18.09.2026).
+- drug: gentamicin
+  status: licensed
+  note: J01GB03, 42 active products (TITCK 18.09.2026).
+- drug: amikacin
+  status: licensed
+  note: J01GB06, 46 active products (TITCK 18.09.2026).
+- drug: metronidazole
+  status: licensed
+  note: J01XD01 and P01AB01, 20 active products (TITCK 18.09.2026).
+- drug: tigecycline
+  status: licensed
+  note: J01AA12, 11 active products (TITCK 18.09.2026).
+- drug: teicoplanin
+  status: licensed
+  note: J01XA02, 26 active products (TITCK 18.09.2026).
+- drug: erythromycin
+  status: licensed
+  note: J01FA01, 14 active products including 500 mg tablets (TITCK 18.09.2026).

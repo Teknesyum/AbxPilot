@@ -1,0 +1,17 @@
+id: cystitis_male
+title: "Cystitis in a man"
+source: eau-uti-2026
+section: 'Section 3.4.4.d'
+region: tr
+answers:
+  sex: male
+expect:
+  status: referral
+  first_choice: null
+  excluded: []
+expect_by_set:
+  eau-2026:
+    status: selected
+    first_choice: uti_piv_male_po
+    drugs: [pivmecillinam]
+    excluded: [uti_sxt_po]

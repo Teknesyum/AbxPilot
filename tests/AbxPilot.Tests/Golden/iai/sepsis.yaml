@@ -1,0 +1,18 @@
+id: sepsis
+title: "Faecal peritonitis with septic shock"
+source: sis-2017
+section: 'Section 1'
+region: tr
+answers:
+  sepsis: 'yes'
+expect:
+  status: referral
+  first_choice: null
+  excluded: []
+expect_by_set:
+  sis-2017:
+    first_choice: iai_tzp_iv
+    drugs: [piperacillin_tazobactam]
+  sis-idsa-2010:
+    first_choice: iai_tzp_iv
+    drugs: [piperacillin_tazobactam]

@@ -1,0 +1,16 @@
+id: mild_mrsa
+title: "Mild cellulitis in a person who injects drugs"
+source: idsa-ssti-2014
+section: 'Recommendation 14'
+region: tr
+answers:
+  mrsa_risk: [injection_drug_use]
+expect:
+  status: selected
+  first_choice: ssti_cli_po
+  drugs: [clindamycin]
+  excluded: []
+expect_by_set:
+  nice-ng141-2019:
+    first_choice: ssti_flx_po
+    drugs: [flucloxacillin, vancomycin]

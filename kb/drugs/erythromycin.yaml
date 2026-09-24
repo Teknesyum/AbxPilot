@@ -1,0 +1,37 @@
+id: erythromycin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: macrolide
+class_group: macrolide
+aware: watch
+routes:
+- po
+- iv
+oral_bioavailability: moderate
+beta_lactam: null
+doses:
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 6
+  source: nice-ng141-2019
+  section: Table 1
+  note: NICE prefers erythromycin when a macrolide is needed in pregnancy.
+adverse_effects:
+- gi_upset
+- qt_prolongation
+- hepatotoxicity
+interactions:
+- statins
+- colchicine
+- qt_drugs
+- warfarin
+pregnancy:
+  category: compatible
+qt_risk: known

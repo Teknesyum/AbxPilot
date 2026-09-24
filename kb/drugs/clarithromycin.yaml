@@ -1,5 +1,5 @@
 id: clarithromycin
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -32,6 +32,22 @@ doses:
   section: Appendix 1
   note: TTD 2021 gives 500 mg every 12 hours for both the parenteral and the oral form; IV clarithromycin is licensed
     in Turkey (TITCK 18.09.2026).
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 12
+  source: nice-ng141-2019
+  section: Table 1
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 12
+  source: nice-ng141-2019
+  section: Table 1
 adverse_effects:
 - gi_upset
 - qt_prolongation

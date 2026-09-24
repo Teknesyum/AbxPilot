@@ -1,0 +1,17 @@
+id: pyelo_no_nitrofurantoin
+title: "Systemic infection never gets a urinary-only agent"
+source: idsa-cuti-2025
+section: 'Table 1.1'
+region: tr
+answers:
+  uti_site: systemic
+  local_fq_resistance: lt10
+  pen_allergy: scar
+  uti_recent_fq: within_6m
+expect:
+  status: no_candidate
+  first_choice: null
+  excluded: [uti_cip_eau_po, uti_cro1_cpd_eau_po, uti_cro1_sxt_eau_po, uti_lvx_eau_po]
+expect_by_set:
+  idsa-2011-2025:
+    excluded: [uti_cip7_po, uti_cro1_amc_po, uti_cro1_cpd_po, uti_cro1_sxt_po, uti_lvx5_po]

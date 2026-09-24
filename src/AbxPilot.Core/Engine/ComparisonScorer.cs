@@ -16,7 +16,7 @@ public sealed class ComparisonScorer(Scoring scoring, IReadOnlyDictionary<string
     }
 
     public IReadOnlyList<ComparisonScore> Score(IReadOnlyList<RegimenLine> lines, IReadOnlyDictionary<string, Drug> catalog,
-        IReadOnlyList<string> pathogens, Region? region)
+        IReadOnlyList<string> pathogens, IReadOnlyList<string> syndromePathogens, Region? region)
     {
         var candidates = lines.Select(line => line.Components.Select(component => catalog[component.DrugId]).ToArray()).ToArray();
         var effects = candidates.Select(drugs => drugs.SelectMany(drug => drug.AdverseEffects).Distinct().Count()).ToArray();
@@ -37,7 +37,7 @@ public sealed class ComparisonScorer(Scoring scoring, IReadOnlyDictionary<string
                 ["adverse_effects"] = maxEffects == 0 ? 1 : 1 - (double)effects[i] / maxEffects,
                 ["dosing_convenience"] = dosesPerDay[i] <= 0 ? 0 : fewestDoses / dosesPerDay[i],
                 ["oral_switch"] = drugs.Min(drug => scoring.BioavailabilityValue.GetValueOrDefault(drug.OralBioavailability)),
-                ["regional_resistance"] = 1 - drugs.Max(drug => ResistancePenalty(drug, region))
+                ["regional_resistance"] = 1 - drugs.Max(drug => ResistancePenalty(drug, syndromePathogens, region))
             };
 
             var components = scoring.Components
@@ -49,9 +49,9 @@ public sealed class ComparisonScorer(Scoring scoring, IReadOnlyDictionary<string
         return result;
     }
 
-    private double ResistancePenalty(Drug drug, Region? region) =>
+    private double ResistancePenalty(Drug drug, IReadOnlyList<string> pathogens, Region? region) =>
         region?.Resistance
-            .Where(entry => entry.DrugClass == drug.ClassGroup)
+            .Where(entry => entry.DrugClass == drug.ClassGroup && pathogens.Contains(entry.Pathogen))
             .Select(entry => scoring.ResistancePenalty.GetValueOrDefault(entry.Category))
             .DefaultIfEmpty()
             .Max() ?? 0;

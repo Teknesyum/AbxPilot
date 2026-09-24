@@ -98,7 +98,12 @@
         "anti_mrsa",
         "antipseudomonal",
         "anaerobe",
-        "antiviral"
+        "antiviral",
+        "aminoglycoside",
+        "lincosamide",
+        "folate_antagonist",
+        "urinary_agent",
+        "anti_enterococcal"
       ]
     },
     "condition": {

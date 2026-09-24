@@ -1,0 +1,33 @@
+id: cefadroxil
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: cephalosporin
+class_group: beta_lactam
+aware: access
+routes:
+- po
+oral_bioavailability: high
+beta_lactam:
+  core: cephalosporin
+  r1_group: aminopenicillin
+  r1_similar: []
+doses:
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 12
+  source: eau-uti-2026
+  section: Table 3 (section 3.4.4)
+adverse_effects:
+- hypersensitivity
+- gi_upset
+interactions: []
+pregnancy:
+  category: compatible
+qt_risk: none

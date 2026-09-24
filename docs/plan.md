@@ -152,8 +152,8 @@ TİTCK aynı çerçeveyi uygular. "Reçete değildir" yazısı sınıfı düşü
 - [x] **A2 Motor:** bağlam, risk bayrakları, tablo eşleme, kısıtlar, gerekçe izi, altın vakalar
 - [x] **A3 Ekran:** sendrom rayı, soru kartları, öneri kartı, spektrum şeridi, statik
 - [x] **A4 Hareket:** öneri farkı, neden izi, eleme, spektrum, soru açılması
-- [ ] **A5 İkinci sendrom:** selülit; motorun genellendiği kanıtlanır
-- [ ] **A6 Üçüncü ve dördüncü sendrom:** idrar yolu, intraabdominal
+- [x] **A5 İkinci sendrom:** selülit; motorun genellendiği kanıtlanır
+- [x] **A6 Üçüncü ve dördüncü sendrom:** idrar yolu, intraabdominal
 - [ ] **A7 İngilizce ve bölge katmanı:** `en`, `regions/EU`, `regions/US`, kılavuz seti seçimi
 - [x] **A8 Android:** duyarlı düzen, dokunmatik, APK — imza anahtarı kullanıcıda
 - [ ] **A9 Uzman gözden geçirmesi ve ilk yayın**

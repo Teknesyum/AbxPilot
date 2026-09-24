@@ -1,0 +1,423 @@
+- id: ssti_pnv_po
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: penicillin_v
+    dose: ssti_po
+    role: beta_lactam
+- id: ssti_lex_po
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cephalexin
+    dose: ssti_po
+    role: beta_lactam
+- id: ssti_dcx_po
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: dicloxacillin
+    dose: ssti_po
+    role: beta_lactam
+- id: ssti_cli_po
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clindamycin
+    dose: ssti_po
+    role: lincosamide
+- id: ssti_sxt_lex_po
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendation 14 (evidence summary)
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: tmp_smx
+    dose: ssti_po
+    role: folate_antagonist
+  - drug: cephalexin
+    dose: ssti_po
+    role: beta_lactam
+- id: ssti_dox_lex_po
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendation 14 (evidence summary)
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: doxycycline
+    dose: ssti_po
+    role: tetracycline
+  - drug: cephalexin
+    dose: ssti_po
+    role: beta_lactam
+- id: ssti_pen_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: benzylpenicillin
+    dose: ssti_iv
+    role: beta_lactam
+- id: ssti_cro_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 3
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: ssti_iv
+    role: beta_lactam
+- id: ssti_cfz_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefazolin
+    dose: ssti_iv
+    role: beta_lactam
+- id: ssti_cli_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clindamycin
+    dose: ssti_iv
+    role: lincosamide
+- id: ssti_van_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendation 14; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: vancomycin
+    dose: ssti_iv
+    role: anti_mrsa
+- id: ssti_lzd_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: linezolid
+    dose: ssti_iv
+    role: anti_mrsa
+- id: ssti_cpt_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftaroline
+    dose: ssti_iv
+    role: anti_mrsa
+- id: ssti_sxt_po
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: tmp_smx
+    dose: ssti_po
+    role: folate_antagonist
+- id: ssti_dox_po
+  version: 1
+  source: idsa-ssti-2014
+  section: Figure 1; Table 2
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: doxycycline
+    dose: ssti_po
+    role: tetracycline
+- id: ssti_van_tzp_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendations 14, 28; Table 4
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: vancomycin
+    dose: ssti_iv
+    role: anti_mrsa
+  - drug: piperacillin_tazobactam
+    dose: ssti_iv
+    role: beta_lactam
+- id: ssti_lzd_tzp_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendation 28; Table 4
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: linezolid
+    dose: ssti_iv
+    role: anti_mrsa
+  - drug: piperacillin_tazobactam
+    dose: ssti_iv
+    role: beta_lactam
+- id: ssti_van_mem_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendations 14, 28; Table 4
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: vancomycin
+    dose: ssti_iv
+    role: anti_mrsa
+  - drug: meropenem
+    dose: ssti_iv
+    role: beta_lactam
+- id: ssti_van_ipm_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendation 14
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: vancomycin
+    dose: ssti_iv
+    role: anti_mrsa
+  - drug: imipenem_cilastatin
+    dose: ssti_iv
+    role: beta_lactam
+- id: ssti_van_cro_mtz_iv
+  version: 1
+  source: idsa-ssti-2014
+  section: Recommendation 28; Table 4
+  source_date: '2014-07-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: vancomycin
+    dose: ssti_iv
+    role: anti_mrsa
+  - drug: ceftriaxone
+    dose: ssti_iv
+    role: beta_lactam
+  - drug: metronidazole
+    dose: ssti_iv
+    role: anaerobe
+- id: ssti_flx_po
+  version: 1
+  source: nice-ng141-2019
+  section: Recommendation 1.2.1; Table 1
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: flucloxacillin
+    dose: ssti_po
+    role: beta_lactam
+- id: ssti_flx_iv
+  version: 1
+  source: nice-ng141-2019
+  section: Recommendation 1.2.1; Table 1
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: flucloxacillin
+    dose: ssti_iv
+    role: beta_lactam
+- id: ssti_clr_po
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (penicillin allergy)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clarithromycin
+    dose: ssti_po
+    role: macrolide
+- id: ssti_ery_po
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (penicillin allergy in pregnancy)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: erythromycin
+    dose: ssti_po
+    role: macrolide
+- id: ssti_dox_nice_po
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (penicillin allergy)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: doxycycline
+    dose: ssti_po_nice
+    role: tetracycline
+- id: ssti_amc_iv
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (severe infection)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: amoxicillin_clavulanate
+    dose: ssti_iv
+    role: beta_lactam
+  duration_days: 7
+- id: ssti_cxm_iv
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (severe infection)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefuroxime
+    dose: ssti_iv
+    role: beta_lactam
+  duration_days: 7
+- id: ssti_cli_nice_iv
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (severe infection)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clindamycin
+    dose: ssti_iv_nice
+    role: lincosamide
+  duration_days: 7
+- id: ssti_cro_nice_iv
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (severe infection)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Ambulatory care only.
+  components:
+  - drug: ceftriaxone
+    dose: ssti_iv_nice
+    role: beta_lactam
+  duration_days: 7
+- id: ssti_amc_po
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (near the eyes or nose)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: amoxicillin_clavulanate
+    dose: ssti_po
+    role: beta_lactam
+  duration_days: 7
+- id: ssti_clr_mtz_po
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (near the eyes or nose, penicillin allergy)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clarithromycin
+    dose: ssti_po
+    role: macrolide
+  - drug: metronidazole
+    dose: ssti_po_nice
+    role: anaerobe
+  duration_days: 7
+- id: ssti_clr_mtz_iv
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (near the eyes or nose, penicillin allergy)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clarithromycin
+    dose: ssti_iv
+    role: macrolide
+  - drug: metronidazole
+    dose: ssti_iv_nice
+    role: anaerobe
+  duration_days: 7
+- id: ssti_add_van
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (MRSA)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: vancomycin
+    dose: ssti_iv_nice
+    role: anti_mrsa
+- id: ssti_add_tei
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (MRSA)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: teicoplanin
+    dose: ssti_iv
+    role: anti_mrsa
+- id: ssti_add_lzd
+  version: 1
+  source: nice-ng141-2019
+  section: Table 1 (MRSA; only when vancomycin and teicoplanin cannot be used)
+  source_date: '2019-09-27'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: linezolid
+    dose: ssti_iv
+    role: anti_mrsa

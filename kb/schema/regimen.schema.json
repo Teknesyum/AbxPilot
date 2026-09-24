@@ -35,6 +35,12 @@
         },
         "additionalProperties": false
       }
+    },
+    "duration_days": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 42,
+      "description": "Course length for this regimen when the guideline gives one per agent; overrides the row duration, and a longer modifier duration still wins."
     }
   },
   "unevaluatedProperties": false

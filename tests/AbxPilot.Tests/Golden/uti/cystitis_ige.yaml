@@ -1,0 +1,17 @@
+id: cystitis_ige
+title: "Cystitis with IgE penicillin allergy"
+source: idsa-uti-2011
+section: 'Table 4'
+region: tr
+answers:
+  pen_allergy: ige
+expect:
+  status: selected
+  first_choice: uti_fos_po
+  drugs: [fosfomycin]
+  excluded: [uti_cdx_po, uti_piv_eau_po, uti_sxt3_po]
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_nit_po
+    drugs: [nitrofurantoin]
+    excluded: [uti_amc3_po, uti_piv_po, uti_sxt3_po]

@@ -1,0 +1,96 @@
+- id: iai_acquisition
+  version: 1
+  source: sis-2017
+  section: Section 1; Table 7
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Healthcare: onset over 48 h after source control, hospital stay over 48 h in 90 days, care facility, home infusion
+    or dialysis in 30 days, or 5 days of broad antibiotics in 90 days.'
+  type: single
+  options:
+  - community
+  - healthcare
+  default: community
+- id: apache_ii
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendation 38; SIS 2017 section 1
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - lt10
+  - from10to14
+  - ge15
+  default: lt10
+- id: risk_factors
+  version: 1
+  source: sis-2017
+  section: Section 1; Table 6; SIS/IDSA 2010 Table 1
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Age 70 or over, malignancy, cardiovascular, liver or renal disease, low albumin, diffuse peritonitis, delayed or inadequate
+    source control.
+  type: single
+  options:
+  - none
+  - one
+  - two_or_more
+  default: none
+- id: source_control
+  version: 1
+  source: sis-2017
+  section: Sections 2 and 10
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - adequate
+  - none_planned
+  default: adequate
+- id: mrsa_colonization
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendations 58-59; SIS 2017 section 7
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: enterococcus_risk
+  version: 1
+  source: sis-2017
+  section: Section 7 (enterococcus); SIS/IDSA 2010 recommendation 55
+  source_date: '2017-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Postoperative infection, recent cephalosporin or broad-spectrum exposure, immunosuppression, valve disease or prosthesis.
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: local_esbl
+  version: 1
+  source: ekmud-iai-2016
+  section: Item 20
+  source_date: '2016-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Local ESBL rate among E. coli; EKMUD 2016 uses 10% as the critical threshold.
+  type: single
+  options:
+  - lt10
+  - ge10
+  default: ge10
+  default_from: eco_esbl
+  visible_when:
+    question: iai_acquisition
+    eq: community

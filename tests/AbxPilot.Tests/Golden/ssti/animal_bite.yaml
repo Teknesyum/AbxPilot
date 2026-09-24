@@ -1,0 +1,11 @@
+id: animal_bite
+title: "Cellulitis after a dog bite"
+source: idsa-ssti-2014
+section: 'Recommendation 13'
+region: tr
+answers:
+  special_exposure: animal_bite
+expect:
+  status: referral
+  first_choice: null
+  excluded: []

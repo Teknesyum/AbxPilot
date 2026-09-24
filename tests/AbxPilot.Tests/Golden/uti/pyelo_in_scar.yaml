@@ -1,0 +1,19 @@
+id: pyelo_in_scar
+title: "Inpatient pyelonephritis after a severe cutaneous reaction"
+source: idsa-cuti-2025
+section: 'Table 2.1'
+region: tr
+answers:
+  uti_site: systemic
+  uti_setting: inpatient
+  pen_allergy: scar
+expect:
+  status: selected
+  first_choice: uti_gen_iv
+  drugs: [gentamicin]
+  excluded: [uti_cro_eau_iv, uti_ctx_eau_iv, uti_fep_eau_iv, uti_tzp_iv]
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_cip_iv
+    drugs: [ciprofloxacin]
+    excluded: [uti_caz_iv, uti_cro_iv, uti_ctx_iv, uti_etp_iv, uti_fep_iv, uti_ipm_iv, uti_mem_iv, uti_tzp_iv]

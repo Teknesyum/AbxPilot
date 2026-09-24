@@ -57,7 +57,7 @@ public sealed class EngineTests
     [Fact]
     public void UnknownSyndromeOrSetThrows()
     {
-        Assert.Throws<ArgumentException>(() => Engine.Evaluate(GuidelineContext.Create("uti", "tr", Idsa)));
+        Assert.Throws<ArgumentException>(() => Engine.Evaluate(GuidelineContext.Create("meningitis", "tr", Idsa)));
         Assert.Throws<ArgumentException>(() => Engine.Evaluate(GuidelineContext.Create("cap", "tr", "nope")));
     }
 
@@ -75,7 +75,7 @@ public sealed class EngineTests
         var other = new GuidelineEngine(reversed);
 
         foreach (var item in GoldenCase.All())
-        foreach (var set in GoldenCase.Sets)
+        foreach (var set in GoldenCase.SetsFor(item.Syndrome))
         {
             var context = item.Context(set);
             var baseline = Order(Engine.Evaluate(context));
@@ -160,7 +160,7 @@ public sealed class EngineTests
         {
             var strings = KbResources.Strings(language);
             foreach (var item in GoldenCase.All())
-            foreach (var set in GoldenCase.Sets)
+            foreach (var set in GoldenCase.SetsFor(item.Syndrome))
             {
                 var result = Engine.Evaluate(item.Context(set));
                 var keys = result.Trace.Concat(result.Rationale).Select(line => line.MessageKey)

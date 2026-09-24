@@ -1,0 +1,12 @@
+id,version,stage,action,role,sepsis,iai_acquisition,risk_esbl,ent_cover_2017,high_risk_2017,risk_mrsa,source_control,candidates,duration_days,rationale_key,source,section,source_date,reviewed_at,review_status,note
+sepsis,1,base,refer,,yes,*,*,*,*,*,*,iai_tzp_iv|iai_mem_iv|iai_ipm_iv|iai_fep_mtz_iv;iai_caz_mtz_iv,,iai.sepsis,sis-2017,"Sections 1, 2 and 6B",2017-01-01,,unreviewed,
+healthcare_esbl,1,base,select,,*,healthcare,yes,*,*,*,*,iai_mem_iv|iai_ipm_iv,4,iai.sis2017.esbl,sis-2017,Section 7D; Table 10,2017-01-01,,unreviewed,
+healthcare_ent,1,base,select,,*,healthcare,*,yes,*,*,*,iai_tzp_iv|iai_ipm_iv;iai_mem_amp_iv|iai_fep_mtz_amp_iv;iai_caz_mtz_amp_iv;iai_azt_mtz_van_iv,4,iai.sis2017.enterococcus,sis-2017,Section 7 (enterococcus); Table 10,2017-01-01,,unreviewed,
+healthcare,1,base,select,,*,healthcare,*,*,*,*,*,iai_tzp_iv|iai_mem_iv|iai_ipm_iv|iai_fep_mtz_iv;iai_caz_mtz_iv;iai_azt_mtz_van_iv,4,iai.sis2017.healthcare,sis-2017,Section 7; Table 10,2017-01-01,,unreviewed,
+community_high_esbl,1,base,select,,*,community,yes,*,yes,*,*,iai_mem_iv|iai_ipm_iv,4,iai.sis2017.esbl,sis-2017,Section 6C; Table 9,2017-01-01,,unreviewed,
+community_high_ent,1,base,select,,*,community,*,yes,yes,*,*,iai_tzp_iv|iai_ipm_iv;iai_mem_amp_iv|iai_fep_mtz_amp_iv;iai_caz_mtz_amp_iv;iai_azt_mtz_van_iv,4,iai.sis2017.enterococcus,sis-2017,Section 6B; Table 9 footnote f,2017-01-01,,unreviewed,
+community_high,1,base,select,,*,community,*,*,yes,*,*,iai_tzp_iv|iai_mem_iv|iai_ipm_iv|iai_fep_mtz_iv;iai_caz_mtz_iv;iai_azt_mtz_van_iv,4,iai.sis2017.community_high,sis-2017,Section 6B; Table 9,2017-01-01,,unreviewed,No aminoglycoside or quinolone is added to a beta-lactam (1-B).
+community_low_esbl,1,base,select,,*,community,yes,*,no,*,*,iai_etp_iv,4,iai.sis2017.esbl,sis-2017,Section 6C; Table 9,2017-01-01,,unreviewed,
+community_low,1,base,select,,*,community,*,*,no,*,*,iai_cro_mtz_iv|iai_ctx_mtz_iv|iai_etp_iv;iai_cxm_mtz_iv;iai_cip_mtz_iv|iai_mxf_iv;iai_lvx_mtz_iv,4,iai.sis2017.community_low,sis-2017,Section 6A; Table 9,2017-01-01,,unreviewed,Quinolones are mainly for serious beta-lactam allergy.
+mrsa,1,modifier,add,,*,healthcare,*,*,*,yes,*,iai_add_van;iai_add_tei;iai_add_lzd,,iai.mrsa,sis-2017,Section 7 (MRSA),2017-01-01,,unreviewed,
+source_control,1,modifier,note,,*,*,*,*,*,*,none_planned,,5,iai.sis2017.source_control,sis-2017,Section 10,2017-01-01,,unreviewed,5-7 days without definitive source control; 5 is the lower bound.

@@ -1,0 +1,19 @@
+id: community_mild_low_all
+title: "Mild community infection, low ESBL and quinolone resistance"
+source: sis-idsa-2010
+section: 'Recommendation 39'
+region: tr
+answers:
+  local_esbl: lt10
+  local_fq_resistance: lt10
+expect:
+  status: selected
+  first_choice: iai_etp_iv
+  drugs: [ertapenem]
+  excluded: []
+expect_by_set:
+  sis-2017:
+    first_choice: iai_cro_mtz_iv
+    drugs: [ceftriaxone, metronidazole]
+  sis-idsa-2010:
+    excluded: [iai_fox_iv]

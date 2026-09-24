@@ -1,0 +1,18 @@
+id: pyelo_in_esbl
+title: "Inpatient pyelonephritis with a previous ESBL isolate"
+source: eau-uti-2026
+section: 'Section 3.7.3'
+region: tr
+answers:
+  uti_site: systemic
+  uti_setting: inpatient
+  prior_esbl: 'yes'
+expect:
+  status: selected
+  first_choice: uti_mem_iv
+  drugs: [meropenem]
+  excluded: []
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_cro_iv
+    drugs: [ceftriaxone]

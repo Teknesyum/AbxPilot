@@ -1,0 +1,19 @@
+id: community_mild_pregnant
+title: "Mild community infection in pregnancy"
+source: sis-idsa-2010
+section: 'Table 2'
+region: tr
+answers:
+  pregnancy: 'yes'
+expect:
+  status: selected
+  first_choice: iai_etp_iv
+  drugs: [ertapenem]
+  excluded: [iai_mxf_iv, iai_tgc_iv]
+expect_by_set:
+  sis-2017:
+    first_choice: iai_cro_mtz_iv
+    drugs: [ceftriaxone, metronidazole]
+    excluded: [iai_cip_mtz_iv, iai_lvx_mtz_iv, iai_mxf_iv]
+  sis-idsa-2010:
+    excluded: [iai_cip_mtz_iv, iai_fox_iv, iai_lvx_mtz_iv, iai_mxf_iv, iai_tgc_iv]

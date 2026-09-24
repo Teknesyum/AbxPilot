@@ -1,0 +1,19 @@
+id: community_mild_scar
+title: "Mild community infection after a severe cutaneous reaction"
+source: sis-2017
+section: 'Section 6A'
+region: tr
+answers:
+  pen_allergy: scar
+expect:
+  status: selected
+  first_choice: iai_tgc_iv
+  drugs: [tigecycline]
+  excluded: [iai_etp_iv]
+expect_by_set:
+  sis-2017:
+    first_choice: iai_cip_mtz_iv
+    drugs: [ciprofloxacin, metronidazole]
+    excluded: [iai_cro_mtz_iv, iai_ctx_mtz_iv, iai_cxm_mtz_iv, iai_etp_iv]
+  sis-idsa-2010:
+    excluded: [iai_cfz_mtz_iv, iai_cro_mtz_iv, iai_ctx_mtz_iv, iai_cxm_mtz_iv, iai_etp_iv, iai_fox_iv]

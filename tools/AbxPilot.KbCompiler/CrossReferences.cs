@@ -32,7 +32,7 @@ internal sealed class CrossReferences(
         Unique(syndromes, item => item.Id, "syndrome");
         Unique(sets, item => item.Id, "guideline set");
         Unique(regions, item => item.Id, "region");
-        Unique(spectrum, item => item.Drug, "spectrum row");
+        Unique(spectrum, item => item.Syndrome + "/" + item.Drug, "spectrum row");
         Unique(constraints, item => item.Id, "constraint");
         UniqueRows();
 
@@ -47,7 +47,7 @@ internal sealed class CrossReferences(
         CheckQuestions(questionById, resistanceIds);
         var flagsBySyndrome = CheckSyndromes(pathogenIds, questionById, resistanceIds);
         CheckRows(regimenIds, questionById, flagsBySyndrome);
-        CheckSpectrum(drugIds, pathogenIds);
+        CheckSpectrum(drugIds);
         CheckRegions(drugIds, pathogenIds);
         CheckScoring();
         CheckConstraints(questionById, resistanceIds, flagsBySyndrome.Values.SelectMany(item => item).ToHashSet(StringComparer.Ordinal));
@@ -320,7 +320,7 @@ internal sealed class CrossReferences(
         foreach (var (row, at) in rows)
         {
             Require(row.RationaleKey, at);
-            if (row.Role is { } role) Require("role." + role, at);
+            foreach (var role in row.Roles) Require("role." + role, at);
             var syndrome = syndromes.FirstOrDefault(item => item.Model.Id == row.Syndrome)?.Model;
             if (syndrome is null)
             {
@@ -357,24 +357,43 @@ internal sealed class CrossReferences(
         }
     }
 
-    private void CheckSpectrum(HashSet<string> drugIds, HashSet<string> pathogenIds)
+    private void CheckSpectrum(HashSet<string> drugIds)
     {
         foreach (var (entry, at) in spectrum)
         {
+            var syndrome = syndromes.FirstOrDefault(item => item.Model.Id == entry.Syndrome)?.Model;
+            if (syndrome is null)
+                Unknown(Codes.UnknownReference, at, "", $"no syndrome '{entry.Syndrome}' for this spectrum file");
             if (!drugIds.Contains(entry.Drug))
                 Unknown(Codes.UnknownDrug, at, "", $"unknown drug '{entry.Drug}'");
             foreach (var (pathogen, level) in entry.Coverage)
             {
-                if (!pathogenIds.Contains(pathogen))
-                    Unknown(Codes.UnknownReference, at, "", $"unknown pathogen column '{pathogen}'");
+                if (syndrome is not null && !syndrome.Pathogens.Contains(pathogen))
+                    Unknown(Codes.UnknownReference, at, "", $"pathogen column '{pathogen}' is not a pathogen of '{entry.Syndrome}'");
                 Require("spectrum." + level, at);
             }
+
+            if (syndrome is not null)
+                foreach (var pathogen in syndrome.Pathogens.Where(id => !entry.Coverage.ContainsKey(id)))
+                    Unknown(Codes.Model, at, "", $"spectrum row '{entry.Drug}' has no column for '{pathogen}'");
         }
 
         var covered = spectrum.Select(item => item.Model.Drug).ToHashSet(StringComparer.Ordinal);
         foreach (var (drug, at) in drugs)
             if (!covered.Contains(drug.Id))
                 bag.Warning(Codes.Coverage, at.File, at.Line, $"drug '{drug.Id}' has no spectrum row");
+
+        var regimenById = regimens.GroupBy(item => item.Model.Id).ToDictionary(group => group.Key, group => group.First().Model);
+        var bySyndrome = spectrum.Select(item => (item.Model.Syndrome, item.Model.Drug)).ToHashSet();
+        foreach (var (row, at) in rows)
+        foreach (var id in row.Candidates.SelectMany(tier => tier))
+        {
+            if (!regimenById.TryGetValue(id, out var regimen)) continue;
+            foreach (var component in regimen.Components)
+                if (bySyndrome.Add((row.Syndrome, component.Drug)))
+                    bag.Warning(Codes.Coverage, at.File, at.Line,
+                        $"drug '{component.Drug}' of regimen '{id}' has no spectrum row for '{row.Syndrome}'");
+        }
     }
 
     private void CheckRegions(HashSet<string> drugIds, HashSet<string> pathogenIds)
@@ -433,6 +452,9 @@ internal sealed class CrossReferences(
                 CheckCondition(when, at, "/when", questionById, flags, resistanceIds);
             if (constraint.Spare?.When is { } spare)
                 CheckCondition(spare, at, "/spare/when", questionById, flags, resistanceIds);
+            foreach (var drug in constraint.Exclude.Drug ?? [])
+                if (!drugs.Any(item => item.Model.Id == drug))
+                    Unknown(Codes.UnknownDrug, at, "/exclude/drug", $"unknown drug '{drug}'");
             if (constraint.Exclude.ClassGroupInAnswer is { } answer && !questionById.ContainsKey(answer))
                 Unknown(Codes.UnknownQuestion, at, "/exclude/class_group_in_answer", $"unknown question '{answer}'");
         }

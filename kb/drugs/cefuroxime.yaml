@@ -1,0 +1,45 @@
+id: cefuroxime
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+note: Parenteral cefuroxime sodium; the oral prodrug is cefuroxime_axetil.
+class: cephalosporin
+class_group: beta_lactam
+aware: watch
+routes:
+- iv
+- im
+oral_bioavailability: none
+beta_lactam:
+  core: cephalosporin
+  r1_group: cefuroxime
+  r1_similar:
+  - methoxyimino_aminothiazolyl
+doses:
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 750 mg-1.5 g
+  interval_hours: 8
+  source: nice-ng141-2019
+  section: Table 1
+  note: Table 1 gives three or four times daily.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 1.5 g
+  interval_hours: 8
+  source: sis-idsa-2010
+  section: Table 6
+adverse_effects:
+- hypersensitivity
+- c_difficile
+interactions: []
+pregnancy:
+  category: compatible
+qt_risk: none

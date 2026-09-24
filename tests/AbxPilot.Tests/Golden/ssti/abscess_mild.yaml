@@ -1,0 +1,11 @@
+id: abscess_mild
+title: "Small abscess without systemic signs"
+source: idsa-ssti-2014
+section: 'Recommendation 5'
+region: tr
+answers:
+  ssti_type: purulent
+expect:
+  status: no_antibiotic
+  first_choice: null
+  excluded: []

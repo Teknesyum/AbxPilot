@@ -1,0 +1,37 @@
+id: ampicillin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: penicillin
+class_group: beta_lactam
+aware: access
+routes:
+- iv
+- po
+oral_bioavailability: moderate
+beta_lactam:
+  core: penicillin
+  r1_group: aminopenicillin
+  r1_similar: []
+doses:
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 1-2 g
+  interval_hours: 6
+  source: sis-2017
+  section: Table 11
+  note: Table 11 gives every 4-6 h. The 2010 guideline has no adult ampicillin dose.
+adverse_effects:
+- hypersensitivity
+- rash
+- c_difficile
+interactions:
+- methotrexate
+pregnancy:
+  category: compatible
+qt_risk: none

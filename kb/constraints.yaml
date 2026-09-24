@@ -165,3 +165,84 @@
     license:
     - unknown
   reason_key: warn.license_unknown
+- id: pyelonephritis_urinary_agents
+  version: 1
+  source: idsa-cuti-2025
+  section: Table 1.1 footnote; EAU 2026 section 3.6.3
+  source_date: '2025-07-17'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Nitrofurantoin, oral fosfomycin and pivmecillinam reach too little tissue level for a systemic urinary infection.
+  when:
+    question: uti_site
+    eq: systemic
+  exclude:
+    drug:
+    - nitrofurantoin
+    - fosfomycin
+    - pivmecillinam
+  reason_key: exclude.urinary_agent_systemic
+- id: tmp_smx_resistance
+  version: 1
+  source: idsa-uti-2011
+  section: Recommendation 2; EAU 2026 Table 3
+  source_date: '2011-03-01'
+  reviewed_at: null
+  review_status: unreviewed
+  when:
+    question: local_tmp_smx_resistance
+    eq: ge20
+  exclude:
+    class_group:
+    - folate_antagonist
+  reason_key: exclude.tmp_smx_resistance
+- id: uti_recent_fq_6m
+  version: 1
+  source: eau-uti-2026
+  section: Section 3.7.3 (fluoroquinolone in the last 6 months)
+  source_date: '2026-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  when:
+    question: uti_recent_fq
+    eq: within_6m
+  exclude:
+    class_group:
+    - fluoroquinolone
+  reason_key: exclude.recent_fq
+- id: uti_recent_fq_12m
+  version: 1
+  source: idsa-cuti-2025
+  section: Step 2-II (resistant organism risk, 12 months)
+  source_date: '2025-07-17'
+  reviewed_at: null
+  review_status: unreviewed
+  mode: warn
+  when:
+    question: uti_recent_fq
+    eq: from_6_to_12m
+  exclude:
+    class_group:
+    - fluoroquinolone
+  reason_key: warn.recent_fq
+- id: iai_fq_resistance
+  version: 1
+  source: sis-idsa-2010
+  section: Recommendation 39; EKMUD 2016 item 28
+  source_date: '2010-01-15'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Soft rule: quinolones move back in their tier when local E. coli resistance is 10% or more.'
+  mode: demote
+  when:
+    all:
+    - question: local_fq_resistance
+      eq: ge10
+    - question: iai_acquisition
+      in:
+      - community
+      - healthcare
+  exclude:
+    class_group:
+    - fluoroquinolone
+  reason_key: warn.iai_fq_resistance

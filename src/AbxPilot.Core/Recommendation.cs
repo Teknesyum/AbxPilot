@@ -4,7 +4,9 @@ public enum RecommendationStatus
 {
     Selected,
     NoGuidelineRow,
-    NoCandidateLeft
+    NoCandidateLeft,
+    Referral,
+    NoAntibiotic
 }
 
 public enum AnswerOrigin
@@ -31,7 +33,8 @@ public sealed record Recommendation(
     IReadOnlyList<QuestionState> Questions,
     IReadOnlyList<TraceLine> Trace)
 {
-    public bool ConsultSpecialist => Status != RecommendationStatus.Selected;
+    public bool ConsultSpecialist => Status is RecommendationStatus.NoGuidelineRow or RecommendationStatus.NoCandidateLeft
+        or RecommendationStatus.Referral;
 
     public IEnumerable<string> VisibleQuestions => Questions.Where(item => item.Visible).Select(item => item.QuestionId);
 }

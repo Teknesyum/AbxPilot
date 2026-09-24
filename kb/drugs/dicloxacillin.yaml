@@ -1,0 +1,35 @@
+id: dicloxacillin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: penicillin
+class_group: beta_lactam
+aware: access
+routes:
+- po
+oral_bioavailability: moderate
+beta_lactam:
+  core: penicillin
+  r1_group: isoxazolyl
+  r1_similar: []
+doses:
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 6
+  source: idsa-ssti-2014
+  section: Table 2
+adverse_effects:
+- hypersensitivity
+- gi_upset
+- hepatotoxicity
+interactions:
+- warfarin
+pregnancy:
+  category: compatible
+qt_risk: none

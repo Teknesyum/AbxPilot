@@ -1,0 +1,37 @@
+id: benzylpenicillin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: penicillin
+class_group: beta_lactam
+aware: access
+routes:
+- iv
+- im
+oral_bioavailability: none
+beta_lactam:
+  core: penicillin
+  r1_group: benzyl
+  r1_similar: []
+doses:
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 2-4 million units
+  interval_hours: 6
+  source: idsa-ssti-2014
+  section: Table 2
+  note: Table 2 gives every 4-6 h.
+adverse_effects:
+- hypersensitivity
+- seizures
+- hyperkalemia
+interactions:
+- methotrexate
+pregnancy:
+  category: compatible
+qt_risk: none

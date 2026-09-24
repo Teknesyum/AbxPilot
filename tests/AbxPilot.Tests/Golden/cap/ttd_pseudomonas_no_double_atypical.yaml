@@ -1,0 +1,21 @@
+id: ttd_pseudomonas_no_double_atypical
+title: "Ward patient with prior Pseudomonas: ciprofloxacin takes the atypical role, so no line keeps doxycycline beside it"
+source: ttd-2021
+section: 'Table 7'
+region: tr
+answers:
+  setting: ward
+  prior_pseudomonas: 'yes'
+expect:
+  status: selected
+  first_choice: tzp_azm_iv
+  drugs: [piperacillin_tazobactam, azithromycin]
+  excluded: []
+  no_line_with:
+  - [doxycycline, ciprofloxacin]
+  - [azithromycin, ciprofloxacin]
+  - [clarithromycin, ciprofloxacin]
+expect_by_set:
+  ttd-2021:
+    first_choice: tzp_cip_iv
+    drugs: [piperacillin_tazobactam, ciprofloxacin]

@@ -1,0 +1,8 @@
+id: sis-2017
+version: 1
+source: sis-2017
+section: Executive summary sections 1, 4, 6, 7, 10; Tables 6-11
+source_date: '2017-01-01'
+reviewed_at: null
+review_status: unreviewed
+note: Doses follow the 2010 Table 6 except ampicillin (2017 Table 11).

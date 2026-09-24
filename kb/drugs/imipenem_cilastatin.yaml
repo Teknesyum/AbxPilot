@@ -1,5 +1,5 @@
 id: imipenem_cilastatin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -24,6 +24,33 @@ doses:
   interval_hours: 6
   source: idsa-ats-2019
   section: Q10; Table 3
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 6
+  source: product-labels
+  section: SmPC 4.2 (complicated skin and soft tissue)
+  note: IDSA 2014 names imipenem for severe cellulitis without a dose.
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 6
+  source: idsa-cuti-2025
+  section: Table 2.1
+  note: Or 1 g every 8 h.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 6
+  source: sis-idsa-2010
+  section: Table 6
+  note: Or 1 g every 8 h.
 adverse_effects:
 - hypersensitivity
 - c_difficile

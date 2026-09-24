@@ -1,0 +1,88 @@
+id: iai
+version: 1
+source: sis-idsa-2010
+section: 'Scope: adult complicated extra-biliary intra-abdominal infection'
+source_date: '2010-01-15'
+reviewed_at: null
+review_status: unreviewed
+note: 'Baseline patient: healthy 70 kg adult with normal renal function. Biliary infection and Candida are not modelled; source
+  control is assumed.'
+pathogens:
+- e_coli
+- enterobacterales
+- viridans_strep
+- anaerobes
+- enterococcus
+- p_aeruginosa
+- esbl_enterobacterales
+- mrsa
+questions:
+- iai_acquisition
+- apache_ii
+- sepsis
+- risk_factors
+- source_control
+- mrsa_colonization
+- enterococcus_risk
+- prior_esbl
+- local_esbl
+- local_fq_resistance
+- pen_allergy
+- pregnancy
+- qt_risk
+derived:
+- id: risk_esbl
+  risk: esbl
+  pathogen: esbl_enterobacterales
+  when:
+    question: prior_esbl
+    eq: 'yes'
+- id: risk_mrsa
+  risk: mrsa
+  pathogen: mrsa
+  when:
+    question: mrsa_colonization
+    eq: 'yes'
+- id: high_severity_2010
+  when:
+    any:
+    - question: apache_ii
+      eq: ge15
+    - question: risk_factors
+      in:
+      - one
+      - two_or_more
+- id: high_risk_2017
+  when:
+    any:
+    - question: sepsis
+      eq: 'yes'
+    - question: apache_ii
+      in:
+      - from10to14
+      - ge15
+    - question: risk_factors
+      eq: two_or_more
+- id: ent_cover_2010
+  when:
+    any:
+    - all:
+      - question: iai_acquisition
+        eq: community
+      - question: high_severity_2010
+        eq: 'yes'
+    - all:
+      - question: iai_acquisition
+        eq: healthcare
+      - question: enterococcus_risk
+        eq: 'yes'
+- id: ent_cover_2017
+  when:
+    all:
+    - question: enterococcus_risk
+      eq: 'yes'
+    - any:
+      - question: iai_acquisition
+        eq: healthcare
+      - question: high_risk_2017
+        eq: 'yes'

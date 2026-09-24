@@ -16,8 +16,8 @@ public sealed class KnowledgeBaseTests
         Assert.True(result.Success);
         var kb = result.Knowledge!;
         Assert.True(kb.Drugs.Count >= 22);
-        Assert.Equal(12, kb.Pathogens.Count);
-        Assert.InRange(kb.Questions.Count, 10, 20);
+        Assert.Equal(18, kb.Pathogens.Count);
+        Assert.InRange(kb.Questions.Count, 30, 60);
         Assert.Contains(kb.GuidelineSets, set => set.Id == "idsa-ats-2019");
         Assert.Contains(kb.GuidelineSets, set => set.Id == "ttd-2021");
         Assert.Contains("tr", result.StringTables.Keys);
@@ -95,9 +95,9 @@ public sealed class KnowledgeBaseTests
         Assert.Equal(compiled.Version, embedded.Version);
         Assert.Equal(compiled.Drugs.Count, embedded.Drugs.Count);
         Assert.Equal(compiled.GuidelineRows.Count, embedded.GuidelineRows.Count);
-        Assert.Equal(["cap"], embedded.Syndromes.Select(item => item.Id));
+        Assert.Equal(["cap", "iai", "ssti", "uti"], embedded.Syndromes.Select(item => item.Id).Order());
 
-        var vancomycin = embedded.Drugs.Single(item => item.Id == "vancomycin").Doses.Single();
+        var vancomycin = embedded.Drugs.Single(item => item.Id == "vancomycin").Doses.Single(dose => dose.Id == "cap_iv");
         Assert.Equal("15 mg/kg", vancomycin.Amount);
         Assert.False(string.IsNullOrEmpty(vancomycin.Amount70Kg));
         Assert.All(embedded.Drugs, drug => Assert.Null(drug.ReviewedAt));

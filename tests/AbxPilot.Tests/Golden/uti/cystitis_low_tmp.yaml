@@ -1,0 +1,16 @@
+id: cystitis_low_tmp
+title: "Cystitis where local TMP-SMX resistance is below 20%"
+source: idsa-uti-2011
+section: 'Recommendation 2'
+region: tr
+answers:
+  local_tmp_smx_resistance: lt20
+expect:
+  status: selected
+  first_choice: uti_fos_po
+  drugs: [fosfomycin]
+  excluded: []
+expect_by_set:
+  idsa-2011-2025:
+    first_choice: uti_nit_po
+    drugs: [nitrofurantoin]

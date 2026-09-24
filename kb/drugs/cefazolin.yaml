@@ -1,0 +1,43 @@
+id: cefazolin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: cephalosporin
+class_group: beta_lactam
+aware: access
+routes:
+- iv
+- im
+oral_bioavailability: none
+beta_lactam:
+  core: cephalosporin
+  r1_group: cefazolin
+  r1_similar: []
+doses:
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: normal
+  amount: 1 g
+  interval_hours: 8
+  source: idsa-ssti-2014
+  section: Table 2
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: normal
+  amount: 1-2 g
+  interval_hours: 8
+  source: sis-idsa-2010
+  section: Table 6
+adverse_effects:
+- hypersensitivity
+- c_difficile
+interactions:
+- warfarin
+pregnancy:
+  category: compatible
+qt_risk: none

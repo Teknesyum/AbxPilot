@@ -1,0 +1,16 @@
+id: healthcare_mrsa_scar
+title: "Healthcare infection, MRSA carrier, severe beta-lactam reaction"
+source: sis-2017
+section: 'Section 4E'
+region: tr
+answers:
+  iai_acquisition: healthcare
+  mrsa_colonization: 'yes'
+  pen_allergy: scar
+expect:
+  status: no_candidate
+  first_choice: null
+  excluded: [iai_caz_mtz_iv, iai_fep_mtz_iv, iai_ipm_iv, iai_mem_iv, iai_tzp_iv]
+expect_by_set:
+  sis-2017:
+    excluded: [iai_azt_mtz_van_iv, iai_caz_mtz_iv, iai_fep_mtz_iv, iai_ipm_iv, iai_mem_iv, iai_tzp_iv]
