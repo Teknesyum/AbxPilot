@@ -1,0 +1,13 @@
+id: pregnancy_ward
+title: "Pregnant ward patient: clarithromycin, quinolones and doxycycline avoided"
+source: idsa-ats-2019
+section: 'Q8; Table 4'
+region: tr
+answers:
+  setting: ward
+  pregnancy: 'yes'
+expect:
+  status: selected
+  first_choice: sam_azm_iv
+  drugs: [ampicillin_sulbactam, azithromycin]
+  excluded: [sam_clr_iv, cro_clr_iv, ctx_clr_iv, cpt_clr_iv, lvx_iv, mxf_iv, cro_dox]

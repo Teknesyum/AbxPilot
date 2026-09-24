@@ -1,0 +1,13 @@
+id: ward_ige
+title: "Ward patient with IgE-mediated penicillin allergy"
+source: idsa-ats-2019
+section: 'Q8; Table 4'
+region: tr
+answers:
+  setting: ward
+  pen_allergy: ige
+expect:
+  status: selected
+  first_choice: cro_azm_iv
+  drugs: [ceftriaxone, azithromycin]
+  excluded: [sam_azm_iv, sam_clr_iv]

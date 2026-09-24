@@ -1,0 +1,17 @@
+id: out_comorbid
+title: "Outpatient with chronic heart disease"
+source: idsa-ats-2019
+section: 'Q7; Table 3'
+region: tr
+answers:
+  setting: outpatient
+  comorbidity: [heart]
+expect:
+  status: selected
+  first_choice: amc_azm_po
+  drugs: [amoxicillin_clavulanate, azithromycin]
+  excluded: []
+expect_by_set:
+  ttd-2009:
+    first_choice: cxm_azm_po
+    drugs: [cefuroxime_axetil, azithromycin]

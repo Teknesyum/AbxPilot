@@ -1,0 +1,127 @@
+- id: allergy_scar_beta_lactam
+  version: 1
+  source: zagursky-2018
+  section: Severe cutaneous reactions
+  source_date: '2018-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Severe cutaneous reaction to a penicillin; every beta-lactam is withheld.
+  when:
+    question: pen_allergy
+    eq: scar
+  exclude:
+    class_group:
+    - beta_lactam
+  reason_key: exclude.allergy_scar
+- id: allergy_ige_penicillin
+  version: 1
+  source: zagursky-2018
+  section: Beta-lactam cross-reactivity by side chain
+  source_date: '2018-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  when:
+    question: pen_allergy
+    eq: ige
+  exclude:
+    beta_lactam_core:
+    - penicillin
+  reason_key: exclude.allergy_ige
+- id: allergy_ige_side_chain
+  version: 1
+  source: zagursky-2018
+  section: Beta-lactam cross-reactivity by side chain
+  source_date: '2018-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Other beta-lactams stay allowed unless their R1 side chain matches a penicillin.
+  when:
+    question: pen_allergy
+    eq: ige
+  exclude:
+    shares_r1_with_core:
+    - penicillin
+  reason_key: exclude.allergy_side_chain
+- id: allergy_delayed_penicillin
+  version: 1
+  source: zagursky-2018
+  section: Beta-lactam cross-reactivity by side chain
+  source_date: '2018-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  when:
+    question: pen_allergy
+    eq: delayed
+  exclude:
+    beta_lactam_core:
+    - penicillin
+  reason_key: exclude.allergy_delayed
+- id: pregnancy_avoid
+  version: 1
+  source: product-labels
+  section: SmPC 4.6 (pregnancy)
+  source_date: '2024-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  when:
+    question: pregnancy
+    eq: 'yes'
+  exclude:
+    pregnancy:
+    - avoid
+  reason_key: exclude.pregnancy
+- id: qt_known_risk
+  version: 1
+  source: credible-meds
+  section: QT-prolonging drug list (known risk)
+  source_date: '2024-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  when:
+    question: qt_risk
+    eq: 'yes'
+  exclude:
+    qt_risk:
+    - known
+  reason_key: exclude.qt
+- id: recent_same_class
+  version: 1
+  source: idsa-ats-2019
+  section: Q7 (recent antibiotic exposure)
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: The guideline asks for a different class after recent use; the class grouping is a draft.
+  when:
+    not:
+      question: recent_abx_class
+      empty: true
+  exclude:
+    class_group_in_answer: recent_abx_class
+  reason_key: exclude.recent_class
+- id: macrolide_monotherapy_resistance
+  version: 1
+  source: idsa-ats-2019
+  section: Q7
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  when:
+    question: macrolide_resistance
+    eq: ge25
+  exclude:
+    class_group:
+    - macrolide
+    monotherapy: true
+  reason_key: exclude.macrolide_resistance
+- id: not_licensed
+  version: 1
+  source: abxpilot-draft
+  section: Region licensing list
+  source_date: '2026-09-24'
+  reviewed_at: null
+  review_status: unreviewed
+  exclude:
+    license:
+    - not_licensed
+  reason_key: exclude.not_licensed

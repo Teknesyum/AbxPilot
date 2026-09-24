@@ -32,6 +32,9 @@ public sealed record Scoring : KbRecord
 {
     public IReadOnlyList<ScoringComponent> Components { get; init; } = [];
     public IReadOnlyDictionary<string, double> AwarePenalty { get; init; } = new Dictionary<string, double>();
+    public IReadOnlyDictionary<string, double> CoverageValue { get; init; } = new Dictionary<string, double>();
+    public IReadOnlyDictionary<string, double> BioavailabilityValue { get; init; } = new Dictionary<string, double>();
+    public IReadOnlyDictionary<string, double> ResistancePenalty { get; init; } = new Dictionary<string, double>();
 }
 
 public sealed record ScoringComponent
@@ -55,5 +58,6 @@ public sealed record KnowledgeBase
     public IReadOnlyList<GuidelineRow> GuidelineRows { get; init; } = [];
     public IReadOnlyList<SpectrumEntry> Spectrum { get; init; } = [];
     public IReadOnlyList<Region> Regions { get; init; } = [];
+    public IReadOnlyList<Constraint> Constraints { get; init; } = [];
     public Scoring? Scoring { get; init; }
 }

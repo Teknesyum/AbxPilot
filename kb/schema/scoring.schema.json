@@ -10,7 +10,10 @@
   ],
   "required": [
     "components",
-    "aware_penalty"
+    "aware_penalty",
+    "coverage_value",
+    "bioavailability_value",
+    "resistance_penalty"
   ],
   "properties": {
     "components": {
@@ -79,6 +82,75 @@
         }
       },
       "additionalProperties": false
+    },
+    "coverage_value": {
+      "type": "object",
+      "description": "Numeric value of each spectrum level; used by spectrum bars and spectrum_fit.",
+      "required": [
+        "reliable",
+        "variable",
+        "none"
+      ],
+      "properties": {
+        "reliable": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "variable": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "none": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "bioavailability_value": {
+      "type": "object",
+      "description": "Numeric value of oral bioavailability; used by oral_switch.",
+      "required": [
+        "high",
+        "moderate",
+        "low",
+        "none"
+      ],
+      "properties": {
+        "high": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "moderate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "low": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "none": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "resistance_penalty": {
+      "type": "object",
+      "description": "Penalty per regional resistance category; categories not listed count as zero.",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
     }
   },
   "unevaluatedProperties": false

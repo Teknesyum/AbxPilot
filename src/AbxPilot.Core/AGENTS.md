@@ -1,10 +1,12 @@
 # AbxPilot.Core
 
-Engine contracts and immutable records. No UI, no I/O, no logic yet.
+Engine contracts, immutable records and the decision engine. No UI, no I/O.
 
-- `IGuidelineEngine`: guideline decision table plus hard constraints. No scoring, no LLM.
-- `Recommendation`, `RegimenLine`, `ExcludedRegimen`, `CoverageBar`, `TraceLine`, `SourceRef`
-  (`ReviewedAt` nullable until expert review).
-- `Knowledge/`: the compiled kb model (`KnowledgeBase`, drugs, regimens, questions, guideline sets
-  and rows, spectrum, regions, scoring). Shared by the compiler and Data.
-- `ComparisonScore` holds components only; weights live in `kb/scoring.yaml`.
+- `IGuidelineEngine.Evaluate(GuidelineContext)`; `GuidelineContext.Create/WithAnswer/WithoutAnswer`.
+- `Engine/GuidelineEngine`: context and defaults (region first), visibility, derived and risk flags,
+  first matching base row, modifiers, hard constraints from `kb/constraints.yaml`, trace per step.
+  Unknown syndrome or set throws; no row or no candidate returns a consult-specialist status.
+- `Engine/ComparisonScorer`: components and weights from `kb/scoring.yaml`, first tier only.
+- `Recommendation` (status, first choice, alternatives, excluded with reason key, spectrum,
+  rationale, questions with visibility and origin, trace). `RecommendationDiff.Between(a, b)`.
+- `Knowledge/`: the compiled kb model, shared by the compiler and Data.

@@ -1,0 +1,18 @@
+id: out_recent_fq_comorbid
+title: "Outpatient with COPD who took a fluoroquinolone in the last 3 months"
+source: idsa-ats-2019
+section: 'Q7; Table 3'
+region: tr
+answers:
+  setting: outpatient
+  comorbidity: [lung]
+  recent_abx_class: [fluoroquinolone]
+expect:
+  status: selected
+  first_choice: amc_azm_po
+  drugs: [amoxicillin_clavulanate, azithromycin]
+  excluded: [lvx_po, mxf_po]
+expect_by_set:
+  ttd-2009:
+    first_choice: cxm_azm_po
+    drugs: [cefuroxime_axetil, azithromycin]

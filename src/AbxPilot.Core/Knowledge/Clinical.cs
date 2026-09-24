@@ -34,6 +34,7 @@ public sealed record Question : KbRecord
 public sealed record Condition
 {
     public string? Question { get; init; }
+    public string? Region { get; init; }
     public string? Eq { get; init; }
     public IReadOnlyList<string>? In { get; init; }
     public IReadOnlyList<string>? ContainsAny { get; init; }
@@ -53,7 +54,28 @@ public sealed record Syndrome : KbRecord
 public sealed record DerivedFlag
 {
     public string Id { get; init; } = "";
+    public string? Risk { get; init; }
+    public string? Pathogen { get; init; }
     public Condition When { get; init; } = new();
+}
+
+public sealed record Constraint : KbRecord
+{
+    public Condition? When { get; init; }
+    public DrugSelector Exclude { get; init; } = new();
+    public string ReasonKey { get; init; } = "";
+}
+
+public sealed record DrugSelector
+{
+    public IReadOnlyList<string>? ClassGroup { get; init; }
+    public IReadOnlyList<string>? BetaLactamCore { get; init; }
+    public IReadOnlyList<string>? SharesR1WithCore { get; init; }
+    public IReadOnlyList<string>? Pregnancy { get; init; }
+    public IReadOnlyList<string>? QtRisk { get; init; }
+    public string? ClassGroupInAnswer { get; init; }
+    public IReadOnlyList<string>? License { get; init; }
+    public bool? Monotherapy { get; init; }
 }
 
 public sealed record GuidelineSet : KbRecord

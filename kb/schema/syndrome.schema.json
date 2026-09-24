@@ -46,9 +46,29 @@
           },
           "when": {
             "$ref": "common.schema.json#/$defs/condition"
+          },
+          "risk": {
+            "enum": [
+              "mrsa",
+              "pseudomonas",
+              "esbl"
+            ],
+            "description": "Marks the flag as a resistant-pathogen risk flag reported by the engine."
+          },
+          "pathogen": {
+            "$ref": "common.schema.json#/$defs/id",
+            "description": "Pathogen whose spectrum bar the risk flag highlights."
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "dependentRequired": {
+          "risk": [
+            "pathogen"
+          ],
+          "pathogen": [
+            "risk"
+          ]
+        }
       }
     }
   },

@@ -5,7 +5,7 @@ Aşamaların ayrıntısı `plan.md` içinde. Biten silinmez, işaretlenir.
 - [x] Plan ve Fable danışması (2026-09-21)
 - [x] A0 İskele (2026-09-24)
 - [x] A1 Bilgi tabanı çekirdeği
-- [ ] A2 Motor
+- [x] A2 Motor
 - [ ] A3 Ekran
 - [ ] A4 Hareket
 - [ ] A5 İkinci sendrom: selülit

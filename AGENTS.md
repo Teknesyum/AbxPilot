@@ -7,7 +7,8 @@ Baseline patient: healthy 70 kg adult. Turkish first, then worldwide.
 - Advisor records: `docs/danisma/` — kept verbatim.
 - Knowledge lives in `kb/`, never in code. Every record carries id, version, source,
   section, source_date, reviewed_at.
-- Engine is a guideline decision table plus hard constraints. No scoring, no LLM.
+- Engine is a guideline decision table plus hard constraints (`kb/constraints.yaml`). No LLM.
+  The comparison score only orders options inside one tier and never changes the choice.
 - UI rules: private shelf `ui-duzeni`, `kabuk-standardi`. No visual theme library.
 - Temp files go to `tmp/` (gitignored); finished files move to `trash/`.
 - License: AGPL-3.0-or-later via `scaffold.js license`.

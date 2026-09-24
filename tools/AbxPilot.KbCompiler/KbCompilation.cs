@@ -68,12 +68,13 @@ public static class KbCompilation
         var syndromes = LoadMany<Syndrome>(Yaml(root, "syndromes"), "syndrome", schemas, bag);
         var regions = LoadMany<Region>(Yaml(root, "regions"), "region", schemas, bag);
         var scoring = LoadSingle<Scoring>(root, "scoring.yaml", "scoring", schemas, bag);
+        var constraints = LoadMany<Constraint>(Yaml(root, "constraints.yaml"), "constraint", schemas, bag);
         var (sets, rows) = LoadGuidelines(root, schemas, bag);
         var spectrum = LoadSpectrum(root, schemas, bag);
         var strings = LoadStrings(root, schemas, bag);
 
         var checker = new CrossReferences(
-            sources, drugs, pathogens, regimens, questions, syndromes, sets, rows, spectrum, regions, scoring, strings, bag);
+            sources, drugs, pathogens, regimens, questions, syndromes, sets, rows, spectrum, regions, scoring, constraints, strings, bag);
         if (!bag.HasErrors) checker.Run();
         var resolved = bag.HasErrors ? [] : Resolve(sets, rows);
         if (!bag.HasErrors) CheckCoverage(resolved, sets, syndromes, questions, bag);
@@ -99,7 +100,8 @@ public static class KbCompilation
                 .ToArray(),
             Spectrum = Sorted(spectrum, item => item.Id),
             Regions = Sorted(regions, item => item.Id),
-            Scoring = scoring.Model
+            Scoring = scoring.Model,
+            Constraints = constraints.Select(item => item.Model).ToArray()
         };
 
         var tables = strings.ToDictionary(

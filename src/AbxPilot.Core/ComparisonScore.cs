@@ -2,11 +2,11 @@ namespace AbxPilot.Core;
 
 public sealed record ComparisonScore(
     double Total,
-    double SpectrumFit,
-    double BreadthPenalty,
-    double AdverseEffects,
-    double DosingConvenience,
-    double OralSwitch,
-    double RegionalResistance,
-    double Cost,
-    string WeightsVersion);
+    IReadOnlyList<ScoreComponent> Components,
+    string WeightsId,
+    int WeightsVersion);
+
+public sealed record ScoreComponent(string Id, double Value, double Weight)
+{
+    public double Contribution => Value * Weight;
+}

@@ -1,0 +1,13 @@
+id: abscess_ward
+title: "Ward patient with lung abscess or empyema"
+source: idsa-ats-2019
+section: 'Q9'
+region: tr
+answers:
+  setting: ward
+  aspiration: abscess_or_empyema
+expect:
+  status: selected
+  first_choice: sam_azm_iv
+  drugs: [ampicillin_sulbactam, azithromycin]
+  excluded: []

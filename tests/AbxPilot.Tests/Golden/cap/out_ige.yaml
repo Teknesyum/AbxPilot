@@ -1,0 +1,13 @@
+id: out_ige
+title: "Healthy outpatient with IgE-mediated penicillin allergy"
+source: idsa-ats-2019
+section: 'Q7; Table 3'
+region: tr
+answers:
+  setting: outpatient
+  pen_allergy: ige
+expect:
+  status: selected
+  first_choice: dox_po
+  drugs: [doxycycline]
+  excluded: [amx_po, azm_po, clr_po]

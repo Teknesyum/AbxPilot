@@ -1,0 +1,17 @@
+id: ward_ige_pseudomonas
+title: "Ward patient with IgE penicillin allergy and prior Pseudomonas"
+source: idsa-ats-2019
+section: 'Q10; Q14'
+region: tr
+answers:
+  setting: ward
+  pen_allergy: ige
+  prior_pseudomonas: 'yes'
+expect:
+  status: selected
+  first_choice: sam_azm_iv
+  drugs: [cefepime, azithromycin]
+  excluded: [tzp_iv]
+expect_by_set:
+  ttd-2009:
+    drugs: [cefepime, azithromycin, levofloxacin]

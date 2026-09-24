@@ -33,3 +33,16 @@ aware_penalty:
   watch: 0.5
   reserve: 1.0
   not_applicable: 0.0
+coverage_value:
+  reliable: 1.0
+  variable: 0.5
+  none: 0.0
+bioavailability_value:
+  high: 1.0
+  moderate: 0.66
+  low: 0.33
+  none: 0.0
+resistance_penalty:
+  ge25: 1.0
+  lt25: 0.0
+  unknown: 0.0

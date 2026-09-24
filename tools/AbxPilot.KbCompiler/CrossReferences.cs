@@ -15,6 +15,7 @@ internal sealed class CrossReferences(
     List<Mapped<SpectrumEntry>> spectrum,
     List<Mapped<Region>> regions,
     Mapped<Scoring>? scoring,
+    List<Mapped<Constraint>> constraints,
     Dictionary<string, Dictionary<string, StringEntry>> strings,
     DiagnosticBag bag)
 {
@@ -32,6 +33,7 @@ internal sealed class CrossReferences(
         Unique(sets, item => item.Id, "guideline set");
         Unique(regions, item => item.Id, "region");
         Unique(spectrum, item => item.Drug, "spectrum row");
+        Unique(constraints, item => item.Id, "constraint");
         UniqueRows();
 
         var drugById = drugs.GroupBy(item => item.Model.Id).ToDictionary(group => group.Key, group => group.First().Model);
@@ -43,11 +45,12 @@ internal sealed class CrossReferences(
         CheckPathogens();
         CheckRegimens(drugById);
         CheckQuestions(questionById, resistanceIds);
-        var flagsBySyndrome = CheckSyndromes(pathogenIds, questionById);
+        var flagsBySyndrome = CheckSyndromes(pathogenIds, questionById, resistanceIds);
         CheckRows(regimenIds, questionById, flagsBySyndrome);
         CheckSpectrum(drugIds, pathogenIds);
         CheckRegions(drugIds, pathogenIds);
         CheckScoring();
+        CheckConstraints(questionById, resistanceIds);
         CheckStrings();
     }
 
@@ -130,6 +133,7 @@ internal sealed class CrossReferences(
         }
 
         if (scoring is not null) Record(scoring.Model, scoring.Source, "");
+        foreach (var item in constraints) Record(item.Model, item.Source, "");
     }
 
     private void CheckDrugs(HashSet<string> drugIds)
@@ -230,18 +234,20 @@ internal sealed class CrossReferences(
                 Unknown(Codes.UnknownReference, at, "/default_from", $"no region resistance entry '{from}'");
 
             if (question.VisibleWhen is { } condition)
-                CheckCondition(condition, at, "/visible_when", questionById, new HashSet<string>(StringComparer.Ordinal));
+                CheckCondition(condition, at, "/visible_when", questionById, new HashSet<string>(StringComparer.Ordinal), resistanceIds);
         }
     }
 
     private void CheckCondition(Condition condition, SourceRecord at, string pointer,
-        Dictionary<string, Question> questionById, HashSet<string> flags)
+        Dictionary<string, Question> questionById, HashSet<string> flags, HashSet<string> resistanceIds)
     {
         if (condition.All is { } all)
-            for (var i = 0; i < all.Count; i++) CheckCondition(all[i], at, $"{pointer}/all/{i}", questionById, flags);
+            for (var i = 0; i < all.Count; i++) CheckCondition(all[i], at, $"{pointer}/all/{i}", questionById, flags, resistanceIds);
         if (condition.Any is { } any)
-            for (var i = 0; i < any.Count; i++) CheckCondition(any[i], at, $"{pointer}/any/{i}", questionById, flags);
-        if (condition.Not is { } not) CheckCondition(not, at, pointer + "/not", questionById, flags);
+            for (var i = 0; i < any.Count; i++) CheckCondition(any[i], at, $"{pointer}/any/{i}", questionById, flags, resistanceIds);
+        if (condition.Not is { } not) CheckCondition(not, at, pointer + "/not", questionById, flags, resistanceIds);
+        if (condition.Region is { } resistance && !resistanceIds.Contains(resistance))
+            Unknown(Codes.UnknownReference, at, pointer + "/region", $"no region lists resistance '{resistance}'");
         if (condition.Question is not { } id) return;
 
         IReadOnlyList<string> options;
@@ -262,7 +268,7 @@ internal sealed class CrossReferences(
                 Unknown(Codes.InvalidOption, at, pointer, $"'{value}' is not an option of '{id}'");
     }
 
-    private Dictionary<string, HashSet<string>> CheckSyndromes(HashSet<string> pathogenIds, Dictionary<string, Question> questionById)
+    private Dictionary<string, HashSet<string>> CheckSyndromes(HashSet<string> pathogenIds, Dictionary<string, Question> questionById, HashSet<string> resistanceIds)
     {
         var result = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
         foreach (var (syndrome, at) in syndromes)
@@ -281,7 +287,9 @@ internal sealed class CrossReferences(
                 var flag = syndrome.Derived[i];
                 if (questionById.ContainsKey(flag.Id) || !flags.Add(flag.Id))
                     Unknown(Codes.Duplicate, at, $"/derived/{i}/id", $"flag '{flag.Id}' clashes with another name");
-                CheckCondition(flag.When, at, $"/derived/{i}/when", questionById, flags);
+                CheckCondition(flag.When, at, $"/derived/{i}/when", questionById, flags, resistanceIds);
+                if (flag.Pathogen is { } pathogen && !syndrome.Pathogens.Contains(pathogen))
+                    Unknown(Codes.UnknownReference, at, $"/derived/{i}/pathogen", $"pathogen '{pathogen}' is not a pathogen of '{syndrome.Id}'");
             }
 
             result[syndrome.Id] = flags;
@@ -418,6 +426,18 @@ internal sealed class CrossReferences(
             if (!seen.Add(model.Components[i].Id))
                 Unknown(Codes.Duplicate, at, $"/components/{i}/id", $"component '{model.Components[i].Id}' is listed twice");
             Require("scoring." + model.Components[i].Id, at, $"/components/{i}/id");
+        }
+    }
+
+    private void CheckConstraints(Dictionary<string, Question> questionById, HashSet<string> resistanceIds)
+    {
+        foreach (var (constraint, at) in constraints)
+        {
+            Require(constraint.ReasonKey, at, "/reason_key");
+            if (constraint.When is { } when)
+                CheckCondition(when, at, "/when", questionById, new HashSet<string>(StringComparer.Ordinal), resistanceIds);
+            if (constraint.Exclude.ClassGroupInAnswer is { } answer && !questionById.ContainsKey(answer))
+                Unknown(Codes.UnknownQuestion, at, "/exclude/class_group_in_answer", $"unknown question '{answer}'");
         }
     }
 

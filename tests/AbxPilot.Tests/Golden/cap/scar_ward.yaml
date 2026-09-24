@@ -1,0 +1,13 @@
+id: scar_ward
+title: "Ward patient with a severe cutaneous reaction to penicillin"
+source: idsa-ats-2019
+section: 'Q8; Table 4'
+region: tr
+answers:
+  setting: ward
+  pen_allergy: scar
+expect:
+  status: selected
+  first_choice: lvx_iv
+  drugs: [levofloxacin]
+  excluded: [sam_azm_iv, sam_clr_iv, cro_azm_iv, cro_clr_iv, ctx_azm_iv, ctx_clr_iv, cpt_azm_iv, cpt_clr_iv, cro_dox]

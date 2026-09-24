@@ -1,0 +1,13 @@
+id: ward_qt_pregnancy
+title: "Pregnant ward patient with QT prolongation: no guideline option left"
+source: idsa-ats-2019
+section: 'Q8; Table 4'
+region: tr
+answers:
+  setting: ward
+  qt_risk: 'yes'
+  pregnancy: 'yes'
+expect:
+  status: no_candidate
+  first_choice: null
+  excluded: [sam_azm_iv, sam_clr_iv, cro_azm_iv, cro_clr_iv, ctx_azm_iv, ctx_clr_iv, cpt_azm_iv, cpt_clr_iv, lvx_iv, mxf_iv, cro_dox]

@@ -103,9 +103,12 @@
     },
     "condition": {
       "type": "object",
-      "description": "Leaf: question plus one of eq, in, contains_any, empty. Branch: exactly one of all, any, not.",
+      "description": "Leaf: question plus one of eq, in, contains_any, empty; or region (a resistance id of the active region) plus in (its categories). Branch: exactly one of all, any, not.",
       "properties": {
         "question": {
+          "$ref": "#/$defs/id"
+        },
+        "region": {
           "$ref": "#/$defs/id"
         },
         "eq": {
@@ -190,6 +193,11 @@
                 "required": [
                   "not"
                 ]
+              },
+              {
+                "required": [
+                  "region"
+                ]
               }
             ]
           }
@@ -213,6 +221,11 @@
               {
                 "required": [
                   "not"
+                ]
+              },
+              {
+                "required": [
+                  "region"
                 ]
               }
             ]
@@ -238,6 +251,11 @@
                 "required": [
                   "not"
                 ]
+              },
+              {
+                "required": [
+                  "region"
+                ]
               }
             ]
           }
@@ -261,6 +279,56 @@
               {
                 "required": [
                   "any"
+                ]
+              },
+              {
+                "required": [
+                  "region"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "required": [
+            "region",
+            "in"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "question"
+                ]
+              },
+              {
+                "required": [
+                  "eq"
+                ]
+              },
+              {
+                "required": [
+                  "contains_any"
+                ]
+              },
+              {
+                "required": [
+                  "empty"
+                ]
+              },
+              {
+                "required": [
+                  "all"
+                ]
+              },
+              {
+                "required": [
+                  "any"
+                ]
+              },
+              {
+                "required": [
+                  "not"
                 ]
               }
             ]

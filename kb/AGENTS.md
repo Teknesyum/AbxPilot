@@ -12,4 +12,8 @@ Knowledge base as data. Never put medical content in code. Sources map: `docs/kb
 - `extends: <set>` inherits the parent rows; same id replaces in place, new ids append.
 - `i18n/<lang>/*.json`: flat keys merged per language. Missing tr key = error, missing en = warning.
 - mg/kg doses keep `amount_70kg`. Baseline patient: healthy 70 kg adult.
+- `constraints.yaml`: hard exclusions in precedence order (`when` + drug `exclude` selector + reason key).
+- Derived flags with `risk`/`pathogen` are risk flags (spectrum bars). A condition leaf `region: <id>`
+  tests the region resistance category.
+- `scoring.yaml`: weights plus coverage, bioavailability and resistance value maps.
 - Compiled by `tools/AbxPilot.KbCompiler` on every `AbxPilot.Data` build.

@@ -52,3 +52,27 @@ derived:
     not:
       question: comorbidity
       empty: true
+- id: risk_mrsa
+  risk: mrsa
+  pathogen: mrsa
+  when:
+    any:
+    - question: prior_mrsa
+      eq: 'yes'
+    - all:
+      - question: recent_hosp_iv
+        eq: 'yes'
+      - question: severe
+        eq: 'yes'
+- id: risk_pseudomonas
+  risk: pseudomonas
+  pathogen: p_aeruginosa
+  when:
+    any:
+    - question: prior_pseudomonas
+      eq: 'yes'
+    - all:
+      - question: recent_hosp_iv
+        eq: 'yes'
+      - question: severe
+        eq: 'yes'

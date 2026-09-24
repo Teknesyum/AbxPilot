@@ -1,0 +1,18 @@
+id: out_comorbid_delayed
+title: "Outpatient with diabetes and a delayed non-severe penicillin reaction"
+source: idsa-ats-2019
+section: 'Q7; Table 3'
+region: tr
+answers:
+  setting: outpatient
+  comorbidity: [diabetes]
+  pen_allergy: delayed
+expect:
+  status: selected
+  first_choice: cpd_azm_po
+  drugs: [cefpodoxime, azithromycin]
+  excluded: [amc_azm_po, amc_clr_po, amc_dox_po]
+expect_by_set:
+  ttd-2009:
+    first_choice: cxm_azm_po
+    drugs: [cefuroxime_axetil, azithromycin]

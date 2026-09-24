@@ -1,0 +1,13 @@
+id: hidden_answer_ignored
+title: "Outpatient whose vasopressor answer is hidden and ignored"
+source: idsa-ats-2019
+section: 'Q7; Table 3'
+region: tr
+answers:
+  setting: outpatient
+  severe_vasopressor: 'yes'
+expect:
+  status: selected
+  first_choice: amx_po
+  drugs: [amoxicillin]
+  excluded: [azm_po, clr_po]

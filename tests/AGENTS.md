@@ -6,3 +6,7 @@
 - `LocalizationTests` keeps language key sets equal and the disclaimer exact.
 - `KnowledgeBaseTests`: clean kb compiles; broken copies (missing field, unknown regimen, missing
   tr key) fail with file and line; the embedded kb.json matches the sources.
+- `EngineTests`, `RecommendationDiffTests`: visibility, region defaults, score never reorders,
+  region leaf, consult status, translated message keys.
+- `Golden/cap/*.yaml`: clinical vignettes run on every guideline set (`expect_by_set` overrides);
+  each under 50 ms. `ReportIsWritten` writes `tmp/golden-report.md`.

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.abxpilot.teknesyum.dev/constraint.schema.json",
+  "title": "Hard constraint (kb/constraints.yaml). Removes every candidate that holds a matching drug; file order is precedence.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/provenance"
+    }
+  ],
+  "required": [
+    "exclude",
+    "reason_key"
+  ],
+  "properties": {
+    "when": {
+      "$ref": "common.schema.json#/$defs/condition"
+    },
+    "exclude": {
+      "type": "object",
+      "description": "Drug selector; every given field must match.",
+      "minProperties": 1,
+      "properties": {
+        "class_group": {
+          "$ref": "common.schema.json#/$defs/idList"
+        },
+        "beta_lactam_core": {
+          "$ref": "common.schema.json#/$defs/idList"
+        },
+        "shares_r1_with_core": {
+          "$ref": "common.schema.json#/$defs/idList"
+        },
+        "pregnancy": {
+          "$ref": "common.schema.json#/$defs/idList"
+        },
+        "qt_risk": {
+          "$ref": "common.schema.json#/$defs/idList"
+        },
+        "class_group_in_answer": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "license": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "licensed",
+              "not_licensed",
+              "unknown"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "monotherapy": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "reason_key": {
+      "$ref": "common.schema.json#/$defs/i18nKey"
+    }
+  },
+  "unevaluatedProperties": false
+}

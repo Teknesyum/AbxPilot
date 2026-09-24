@@ -42,7 +42,7 @@ public sealed class KnowledgeBaseTests
     public void UnknownRegimenInTableFails()
     {
         using var copy = new KbCopy();
-        copy.Edit("guidelines/idsa-ats-2019/cap.csv", text => text.Replace("amx_po;dox_po|azm_po", "missing_regimen;dox_po|azm_po"));
+        copy.Edit("guidelines/idsa-ats-2019/cap.csv", text => text.Replace("lt25,*,*,*,*,*,amx_po;", "lt25,*,*,*,*,*,missing_regimen;"));
 
         var errors = KbCompilation.Compile(copy.Root).Errors.ToArray();
 

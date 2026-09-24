@@ -1,0 +1,16 @@
+id: ward_prior_pseudomonas
+title: "Ward patient with prior respiratory Pseudomonas isolation"
+source: idsa-ats-2019
+section: 'Q10; Q14'
+region: tr
+answers:
+  setting: ward
+  prior_pseudomonas: 'yes'
+expect:
+  status: selected
+  first_choice: sam_azm_iv
+  drugs: [piperacillin_tazobactam, azithromycin]
+  excluded: []
+expect_by_set:
+  ttd-2009:
+    drugs: [piperacillin_tazobactam, azithromycin, levofloxacin]

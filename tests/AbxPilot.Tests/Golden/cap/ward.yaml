@@ -1,0 +1,12 @@
+id: ward
+title: "Non-severe inpatient on the ward"
+source: idsa-ats-2019
+section: 'Q8; Table 4'
+region: tr
+answers:
+  setting: ward
+expect:
+  status: selected
+  first_choice: sam_azm_iv
+  drugs: [ampicillin_sulbactam, azithromycin]
+  excluded: []

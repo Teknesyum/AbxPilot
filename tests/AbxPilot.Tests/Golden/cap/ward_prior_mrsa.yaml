@@ -1,0 +1,13 @@
+id: ward_prior_mrsa
+title: "Ward patient with prior respiratory MRSA isolation"
+source: idsa-ats-2019
+section: 'Q10; Q14'
+region: tr
+answers:
+  setting: ward
+  prior_mrsa: 'yes'
+expect:
+  status: selected
+  first_choice: sam_azm_iv
+  drugs: [ampicillin_sulbactam, azithromycin, vancomycin]
+  excluded: []

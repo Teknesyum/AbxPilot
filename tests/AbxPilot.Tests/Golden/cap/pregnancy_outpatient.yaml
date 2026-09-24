@@ -1,0 +1,13 @@
+id: pregnancy_outpatient
+title: "Pregnant healthy outpatient"
+source: idsa-ats-2019
+section: 'Q7; Table 3'
+region: tr
+answers:
+  setting: outpatient
+  pregnancy: 'yes'
+expect:
+  status: selected
+  first_choice: amx_po
+  drugs: [amoxicillin]
+  excluded: [dox_po, azm_po, clr_po]

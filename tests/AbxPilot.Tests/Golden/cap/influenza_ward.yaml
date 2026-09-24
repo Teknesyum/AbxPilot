@@ -1,0 +1,13 @@
+id: influenza_ward
+title: "Ward patient with positive influenza test"
+source: idsa-ats-2019
+section: 'Q12; Q13'
+region: tr
+answers:
+  setting: ward
+  influenza: 'yes'
+expect:
+  status: selected
+  first_choice: sam_azm_iv
+  drugs: [ampicillin_sulbactam, azithromycin, oseltamivir]
+  excluded: []

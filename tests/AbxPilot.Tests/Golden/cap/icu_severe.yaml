@@ -1,0 +1,13 @@
+id: icu_severe
+title: "Severe pneumonia in the ICU on vasopressors"
+source: idsa-ats-2019
+section: 'Q8; Table 4'
+region: tr
+answers:
+  setting: icu
+  severe_vasopressor: 'yes'
+expect:
+  status: selected
+  first_choice: sam_azm_iv
+  drugs: [ampicillin_sulbactam, azithromycin]
+  excluded: []

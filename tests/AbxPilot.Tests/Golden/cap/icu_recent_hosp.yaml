@@ -1,0 +1,14 @@
+id: icu_recent_hosp
+title: "Severe ICU patient hospitalised with IV antibiotics in the last 90 days"
+source: idsa-ats-2019
+section: 'Q10; Q14'
+region: tr
+answers:
+  setting: icu
+  severe_vasopressor: 'yes'
+  recent_hosp_iv: 'yes'
+expect:
+  status: selected
+  first_choice: sam_azm_iv
+  drugs: [piperacillin_tazobactam, azithromycin, vancomycin]
+  excluded: []
