@@ -31,15 +31,19 @@ public class EkranTests
 
         var kapi = new ManualResetEventSlim();
         var (yukleme, yvm) = Ac(1280, 800, () => { kapi.Wait(); return KbResources.Knowledge(); });
-        Kaydet(yukleme, "a3-yukleniyor");
+        Kaydet(yukleme, "b1-yukleniyor");
         kapi.Set();
         Bitir(yvm.Idle);
-        Kaydet(yukleme, "a3-bos");
-        Olc(yukleme, "bos", olcumler);
+        Assert.Equal("cap", yvm.SelectedSyndrome?.Id);
+        Assert.True(yvm.IsReady, yvm.State.ToString());
+        Assert.True(yvm.HasFirstChoice);
+        Assert.All(yvm.Questions.Where(item => item.IsVisible && !item.IsMulti), item => Assert.Contains(item.Options, option => option.IsSelected));
+        Kaydet(yukleme, "b1-baslangic-varsayilan");
+        Olc(yukleme, "baslangic", olcumler);
         yukleme.Close();
 
         var (hata, _) = Ac(1280, 800, () => throw new InvalidDataException("kb"));
-        Kaydet(hata, "a3-hata");
+        Kaydet(hata, "b1-hata");
         Olc(hata, "hata", olcumler);
         hata.Close();
 
@@ -47,19 +51,19 @@ public class EkranTests
         Bitir(vm.SelectSyndromeAsync("cap"));
         Assert.True(vm.IsReady);
         Assert.True(vm.EvaluatedOffUiThread);
-        Kaydet(pencere, "a3-tkp-varsayilan");
+        Kaydet(pencere, "b1-tkp-varsayilan");
         Olc(pencere, "tkp", olcumler);
 
-        Kaydet(pencere, "a4-iz-0-once");
-        Kareler(pencere, vm.AnswerAsync("setting", "icu"), "a4-iz");
+        Kaydet(pencere, "b1-iz-0-once");
+        Kareler(pencere, vm.AnswerAsync("setting", "icu"), "b1-iz");
         Bitir(vm.AnswerAsync("prior_mrsa", "yes"));
-        Kaydet(pencere, "a3-yogun-bakim-mrsa");
+        Kaydet(pencere, "b1-secimler");
         Olc(pencere, "icu-mrsa", olcumler);
 
         vm.ShowScore = true;
         vm.ToggleSettingsCommand.Execute(null);
         Bekle();
-        Kaydet(pencere, "a3-ayarlar-puan");
+        Kaydet(pencere, "b1-ayarlar-puan");
         Olc(pencere, "ayarlar", olcumler);
         vm.CloseSettingsCommand.Execute(null);
         vm.ShowScore = false;
@@ -71,29 +75,29 @@ public class EkranTests
         Bekle();
         ToolTip.SetIsOpen(satir, true);
         Bekle();
-        KaydetIpucu(pencere, satir, "a3-puan-ipucu");
+        KaydetIpucu(pencere, satir, "b1-puan-ipucu");
         ToolTip.SetIsOpen(satir, false);
         pencere.Close();
 
         var (alerji, avm) = Ac(1280, 800);
         Bitir(avm.SelectSyndromeAsync("cap"));
         Bitir(avm.AnswerAsync("setting", "ward"));
-        Kaydet(alerji, "a4-eleme-0-once");
-        Kareler(alerji, avm.AnswerAsync("pen_allergy", "ige"), "a4-eleme");
-        Kaydet(alerji, "a3-penisilin-ige");
+        Kaydet(alerji, "b1-eleme-0-once");
+        Kareler(alerji, avm.AnswerAsync("pen_allergy", "ige"), "b1-eleme");
+        Kaydet(alerji, "b1-penisilin-ige");
         Olc(alerji, "ige", olcumler);
         Assert.NotEmpty(avm.Excluded);
 
         Bitir(avm.AnswerAsync("qt_risk", "yes"));
         Bitir(avm.AnswerAsync("pregnancy", "yes"));
-        Kaydet(alerji, "a3-uzmana-danisin");
+        Kaydet(alerji, "b1-uzmana-danisin");
         Olc(alerji, "danis", olcumler);
         Assert.True(avm.IsConsult, avm.State.ToString());
         alerji.Close();
 
         var (kucuk, kvm) = Ac(Sayi("WindowMinWidth"), Sayi("WindowMinHeight"));
         Bitir(kvm.SelectSyndromeAsync("cap"));
-        Kaydet(kucuk, "a3-en-kucuk");
+        Kaydet(kucuk, "b1-en-kucuk");
         Olc(kucuk, "en-kucuk", olcumler);
         kucuk.Close();
 
@@ -103,11 +107,11 @@ public class EkranTests
         Bitir(tvm.Idle);
         Bitir(tvm.SelectSyndromeAsync("cap"));
         Assert.True(tvm.IsCompact);
-        Kaydet(telefon, "a3-telefon");
+        Kaydet(telefon, "b1-telefon");
         Olc(telefon, "telefon", olcumler);
         tvm.ToggleDrawerCommand.Execute(null);
         Bekle();
-        Kaydet(telefon, "a3-telefon-cekmece");
+        Kaydet(telefon, "b1-telefon-cekmece");
         Olc(telefon, "cekmece", olcumler);
         telefon.Close();
 
@@ -128,12 +132,12 @@ public class EkranTests
         Assert.Equal("idsa-2014", vm.GuidelineSet);
         Assert.Equal(["idsa-2014", "nice-ng141-2019"], vm.GuidelineSets.Select(item => item.Code));
         Assert.True(vm.IsReady, vm.State.ToString());
-        Kaydet(pencere, "a5-ssti-varsayilan");
+        Kaydet(pencere, "b1-ssti-varsayilan");
         Olc(pencere, "ssti", olcumler);
 
         Bitir(vm.AnswerAsync("ssti_type", "purulent"));
         Assert.True(vm.IsNoAntibiotic, vm.State.ToString());
-        Kaydet(pencere, "a5-ssti-antibiyotik-yok");
+        Kaydet(pencere, "b1-ssti-antibiyotik-yok");
         Olc(pencere, "antibiyotik-yok", olcumler);
 
         Bitir(vm.ClearAsync("ssti_type"));
@@ -141,7 +145,7 @@ public class EkranTests
         Bitir(vm.AnswerAsync("systemic_signs", "yes"));
         Assert.True(vm.IsReferral, vm.State.ToString());
         Assert.True(vm.HasFirstChoice);
-        Kaydet(pencere, "a5-ssti-sevk");
+        Kaydet(pencere, "b1-ssti-sevk");
         Olc(pencere, "sevk", olcumler);
 
         vm.SelectGuidelineSetCommand.Execute(vm.GuidelineSets.First(item => item.Code == "nice-ng141-2019"));
@@ -149,24 +153,24 @@ public class EkranTests
         Bitir(vm.SelectSyndromeAsync("uti"));
         Assert.Equal("eau-2026", vm.GuidelineSet);
         Assert.True(vm.IsReady, vm.State.ToString());
-        Kaydet(pencere, "a6-uti-varsayilan");
+        Kaydet(pencere, "b1-uti-varsayilan");
         Olc(pencere, "uti", olcumler);
 
         Bitir(vm.SelectSyndromeAsync("iai"));
         Assert.Equal("ekmud-2016", vm.GuidelineSet);
         Assert.True(vm.IsReady, vm.State.ToString());
-        Kaydet(pencere, "a6-iai-varsayilan");
+        Kaydet(pencere, "b1-iai-varsayilan");
         Olc(pencere, "iai", olcumler);
 
         Bitir(vm.AnswerAsync("sepsis", "yes"));
         Assert.True(vm.IsReferral, vm.State.ToString());
         Assert.False(vm.HasFirstChoice);
-        Kaydet(pencere, "a6-iai-sevk-rejimsiz");
+        Kaydet(pencere, "b1-iai-sevk-rejimsiz");
         Olc(pencere, "sevk-rejimsiz", olcumler);
 
         vm.ToggleSettingsCommand.Execute(null);
         Bekle();
-        Kaydet(pencere, "a6-ayarlar-set");
+        Kaydet(pencere, "b1-ayarlar-set");
         Olc(pencere, "ayarlar-set", olcumler);
         vm.CloseSettingsCommand.Execute(null);
 
@@ -178,9 +182,9 @@ public class EkranTests
         var telefon = new Window { Width = 390, Height = 844, Content = new MainView { DataContext = tvm } };
         telefon.Show();
         Bitir(tvm.Idle);
-        Assert.True(tvm.IsEmpty);
-        Kaydet(telefon, "a5-telefon-bos");
-        Olc(telefon, "telefon-bos", olcumler);
+        Assert.True(tvm.IsReady, tvm.State.ToString());
+        Kaydet(telefon, "b1-telefon-baslangic");
+        Olc(telefon, "telefon-baslangic", olcumler);
         telefon.Close();
 
         var hatalar = Hatalar(olcumler);
@@ -205,18 +209,18 @@ public class EkranTests
             Assert.True(vm.IsReady, vm.State.ToString());
             Assert.False(vm.NoRegionData);
             Assert.DoesNotContain(vm.Current!.Excluded, item => item.RegimenId == "azm_po");
-            Kaydet(pencere, "a7-bolge-eu");
+            Kaydet(pencere, "b1-bolge-eu");
             Olc(pencere, "bolge-eu", olcumler);
 
             Bolge(vm, "other");
             Assert.True(vm.NoRegionData);
             Assert.Contains(vm.Current!.Excluded, item => item.RegimenId == "azm_po");
-            Kaydet(pencere, "a7-bolge-diger");
+            Kaydet(pencere, "b1-bolge-diger");
             Olc(pencere, "bolge-diger", olcumler);
 
             vm.ToggleSettingsCommand.Execute(null);
             Bekle();
-            Kaydet(pencere, "a7-ayarlar-bolge");
+            Kaydet(pencere, "b1-ayarlar-bolge");
             Olc(pencere, "ayarlar-bolge", olcumler);
             vm.CloseSettingsCommand.Execute(null);
 
@@ -224,7 +228,7 @@ public class EkranTests
             vm.SelectLanguageCommand.Execute("en");
             Bekle();
             Assert.Equal("Licence (United States)", vm.LicensesTitle);
-            Kaydet(pencere, "a7-en");
+            Kaydet(pencere, "b1-en");
             Olc(pencere, "en", olcumler);
         }
         finally
@@ -242,6 +246,18 @@ public class EkranTests
     {
         vm.SelectRegionCommand.Execute(vm.Regions.First(item => item.Code == code));
         Bitir(vm.Idle);
+    }
+
+    [AvaloniaFact]
+    public void OpensTheLastSyndromeWithDefaults()
+    {
+        var ayar = new MemorySettingsStore(new AppSettings { LastSyndrome = "uti" });
+        var vm = new MainViewModel(KbResources.Knowledge, ayar);
+        Bitir(vm.Idle);
+        Assert.Equal("uti", vm.SelectedSyndrome?.Id);
+        Assert.True(vm.IsReady, vm.State.ToString());
+        Bitir(vm.SelectSyndromeAsync("cap"));
+        Assert.Equal("cap", ayar.Current.LastSyndrome);
     }
 
     [AvaloniaFact]
@@ -367,7 +383,7 @@ public class EkranTests
     {
         var dizin = new DirectoryInfo(AppContext.BaseDirectory);
         while (dizin is not null && !File.Exists(Path.Combine(dizin.FullName, "AbxPilot.sln"))) dizin = dizin.Parent;
-        var klasor = Path.Combine(dizin?.FullName ?? AppContext.BaseDirectory, "docs", "ui-denetim", "2026-09-24");
+        var klasor = Path.Combine(dizin?.FullName ?? AppContext.BaseDirectory, "docs", "ui-denetim", "2026-09-25");
         Directory.CreateDirectory(klasor);
         return klasor;
     }

@@ -18,14 +18,17 @@ Danışma kaydı: [giden](danisma/2026-09-21-fable-plan-giden.md) · [dönen](da
 
 | Bölge | İçerik |
 |---|---|
-| Üst çubuk | Standart Teknesyum çubuğu (`scaffold.js ustcubuk`), veri sürümü rozeti, dil, kılavuz seti |
+| Üst çubuk | Standart Teknesyum çubuğu (`scaffold.js ustcubuk`), veri sürümü rozeti, dil; ortada kalıcı "klinik değerlendirme gerektirir" satırı (sığmazsa kısa sürüm, tam metin ipucu ve ekran okuyucu adı) |
 | Sol ray | Sendrom listesi, arama |
-| Üst kart | Birinci seçenek rejim, doz/yol/süre, gerekçe izi, alternatif sekmesi |
-| Spektrum şeridi | Rejimin sendromdaki olası patojenleri kapsama çubukları |
-| Alt panel | Soru kartları; koşullu görünürlük, cevaplanan soru işaretli |
-| Alt şerit | Kalıcı "klinik değerlendirme gerektirir" satırı ve kaynak bağlantısı |
+| Başlık satırı | Sendrom adı, kılavuz seti düğmesi (kaynak bağlantısı), ayarlar |
+| Üst sıra | Solda kart (birinci seçenek, doz/yol/süre, kaynak, gerekçe, alternatifler), sağda spektrum; eşit yükseklik, pencerenin en çok `CardHeightShare` kadarı, her biri kendi içinde kayar |
+| Alt sıra | Tam genişlik soru ızgarası (`QuestionGrid`): 4/3/2/1 sütun (`QuestionColumnMin` 180, `QuestionColumnsMax` 4), her soru başlık + tek tıkla seçilen maddeler; tekli radyo, çoklu işaret kutusu |
 
-Telefonda aynı düzen dikey akar: kart üstte yapışık, sorular altta kayar.
+Açılışta boş durum yok: son sendrom (yoksa TKP) varsayılanlarla açılır, birinci seçenek hemen görünür.
+Madde seçimi öneriyi günceller; kart, spektrum ve soru kartları FLIP ile yer değiştirir.
+
+Telefonda ve Android'de üst çubuk yok: klinik değerlendirme satırı kartın üstünde kalıcı durur;
+kart üstte, spektrum ve sorular altta kayar.
 
 ## Animasyon Tasarımı
 

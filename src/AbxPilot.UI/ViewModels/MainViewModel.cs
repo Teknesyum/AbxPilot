@@ -186,9 +186,6 @@ public sealed partial class MainViewModel : ObservableObject
     private bool noRegionData;
 
     [ObservableProperty]
-    private string sourceLinkText = "";
-
-    [ObservableProperty]
     private string? sourceUrl;
 
     [ObservableProperty]
@@ -319,6 +316,9 @@ public sealed partial class MainViewModel : ObservableObject
         OnPropertyChanged(nameof(DataVersion));
         OnPropertyChanged(nameof(HasSyndromes));
         OnPropertyChanged(nameof(NoSyndromes));
+
+        var start = Syndromes.FirstOrDefault(item => item.Id == _settings.LastSyndrome) ?? Syndromes.FirstOrDefault();
+        if (start is not null) await Open(start);
     }
 
     public Task SelectSyndromeAsync(string id)
@@ -342,10 +342,12 @@ public sealed partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void SelectSyndrome(SyndromeItem item)
+    private void SelectSyndrome(SyndromeItem item) => Open(item);
+
+    private Task Open(SyndromeItem item)
     {
         IsDrawerOpen = false;
-        if (_knowledge is null || ReferenceEquals(item, SelectedSyndrome) && _current is not null) return;
+        if (_knowledge is null || ReferenceEquals(item, SelectedSyndrome) && _current is not null) return Task.CompletedTask;
 
         foreach (var syndrome in Syndromes)
             syndrome.IsSelected = ReferenceEquals(syndrome, item);
@@ -355,7 +357,8 @@ public sealed partial class MainViewModel : ObservableObject
         _current = null;
         BuildQuestions(item.Id);
         Relabel();
-        Evaluate(null);
+        if (_settings.LastSyndrome != item.Id) Persist(_settings with { LastSyndrome = item.Id });
+        return Evaluate(null);
     }
 
     [RelayCommand]
@@ -610,7 +613,7 @@ public sealed partial class MainViewModel : ObservableObject
             if (question is null) continue;
             var card = new QuestionCard(question.Id, question.Type);
             foreach (var option in question.Options)
-                card.Options.Add(new ChoiceOption(question.Id, option));
+                card.Options.Add(new ChoiceOption(question.Id, option) { IsMulti = card.IsMulti });
             Questions.Add(card);
         }
     }
@@ -664,9 +667,6 @@ public sealed partial class MainViewModel : ObservableObject
         var set = _knowledge?.GuidelineSets.FirstOrDefault(item => item.Id == _set);
         var source = set is null ? null : _knowledge!.Sources.FirstOrDefault(item => item.Id == set.Source);
         SourceUrl = source?.Url;
-        SourceLinkText = set is null
-            ? ""
-            : Localizer.Format("footer.source", ("name", Localizer.Get($"guideline.{set.Id}.name")));
     }
 
     private void Render(Recommendation result, RecommendationDiff? diff)

@@ -31,6 +31,8 @@ public sealed partial class ChoiceOption : ObservableObject
 
     public string Code { get; }
 
+    public bool IsMulti { get; init; }
+
     [ObservableProperty]
     private string label = "";
 

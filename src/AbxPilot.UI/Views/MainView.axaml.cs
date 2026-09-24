@@ -33,7 +33,7 @@ public partial class MainView : UserControl
         DataContextChanged += (_, _) => Attach(DataContext as MainViewModel);
         SizeChanged += (_, _) => Arrange();
         EmptyAction.Click += OnEmptyAction;
-        SourceLink.Click += OnSourceLink;
+        GuidelineButton.Click += OnSourceLink;
         DrawerScrim.PointerPressed += (_, _) => _vm?.CloseDrawerCommand.Execute(null);
         AddHandler(PointerPressedEvent, OnScorePointerPressed);
         AddHandler(PointerMovedEvent, OnScorePointerMoved);
@@ -133,15 +133,25 @@ public partial class MainView : UserControl
         var compact = Bounds.Width < Resource<double>("CompactBreakpoint");
         _vm.IsCompact = compact;
         Main.Margin = new Thickness(compact ? 0 : Resource<double>("SidebarWidth") + Resource<double>("SectionGap"), 0, 0, 0);
-        CardScroll.MaxHeight = Math.Max(Resource<double>("InputHeight"), Bounds.Height * Resource<double>("CardHeightShare"));
+        Upper.MaxHeight = Math.Max(Resource<double>("InputHeight"), Bounds.Height * Resource<double>("CardHeightShare"));
         SettingsPanel.MaxHeight = Math.Max(0, Body.Bounds.Height);
+        InlineDisclaimer.IsVisible = compact || TopLevel.GetTopLevel(this) is not MainWindow;
+        if (AppBar.RowDefinitions.Count != (compact ? 3 : 1)) AppBar.RowDefinitions = new RowDefinitions(compact ? "Auto,Auto,Auto" : "Auto");
         Grid.SetRow(AppTitle, compact ? 1 : 0);
         Grid.SetColumn(AppTitle, 0);
         Grid.SetColumnSpan(AppTitle, compact ? 4 : 2);
-        Grid.SetColumn(SpectrumStrip, compact ? 0 : 1);
-        Grid.SetRow(SpectrumStrip, compact ? 1 : 0);
-        Grid.SetColumnSpan(SpectrumStrip, compact ? 2 : 1);
-        Grid.SetColumnSpan(QuestionPanel, compact ? 2 : 1);
+        Grid.SetRow(GuidelineButton, compact ? 2 : 0);
+        Grid.SetColumn(GuidelineButton, compact ? 0 : 2);
+        Grid.SetColumnSpan(GuidelineButton, compact ? 4 : 1);
+        Grid.SetColumnSpan(SummaryCard, compact ? 2 : 1);
+        SpectrumWide.IsVisible = !compact;
+        SpectrumNarrow.IsVisible = compact;
+        var host = compact ? SpectrumNarrow : SpectrumWide;
+        if (!ReferenceEquals(SpectrumStrip.Parent, host))
+        {
+            (SpectrumStrip.Parent as Panel)?.Children.Remove(SpectrumStrip);
+            host.Children.Add(SpectrumStrip);
+        }
     }
 
     private void Overlays(bool animate)
@@ -200,7 +210,7 @@ public partial class MainView : UserControl
     private void Capture()
     {
         _flip.Clear();
-        foreach (var row in Rows("alt"))
+        foreach (var row in Rows("alt").Concat(Rows("qcard")))
             if (row.DataContext is { } key && row.TranslatePoint(default, this) is { } at)
                 _flip[key] = at;
     }
@@ -208,17 +218,18 @@ public partial class MainView : UserControl
     private void Play()
     {
         if (!Tokens.Animate || _flip.Count == 0) return;
-        var moves = new List<(Border Row, double Dy)>();
-        foreach (var row in Rows("alt"))
+        var moves = new List<(Border Row, double Dx, double Dy)>();
+        foreach (var row in Rows("alt").Concat(Rows("qcard")))
         {
             if (row.DataContext is not { } key || !_flip.TryGetValue(key, out var before)) continue;
             if (row.TranslatePoint(default, this) is not { } now) continue;
+            var dx = before.X - now.X;
             var dy = before.Y - now.Y;
-            if (Math.Abs(dy) > 0.5) moves.Add((row, dy));
+            if (Math.Abs(dx) > 0.5 || Math.Abs(dy) > 0.5) moves.Add((row, dx, dy));
         }
         _flip.Clear();
-        foreach (var (row, dy) in moves)
-            Slide(row, 0, dy, Tokens.Time("TBase"));
+        foreach (var (row, dx, dy) in moves)
+            Slide(row, dx, dy, Tokens.Time("TBase"));
     }
 
     private void OnApplied(object? sender, AppliedEventArgs e)

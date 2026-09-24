@@ -7,6 +7,7 @@ public sealed record AppSettings
     public bool ShowScore { get; init; }
     public string? Language { get; init; }
     public string? Region { get; init; }
+    public string? LastSyndrome { get; init; }
     public IReadOnlyDictionary<string, string>? GuidelineSets { get; init; }
 }
 

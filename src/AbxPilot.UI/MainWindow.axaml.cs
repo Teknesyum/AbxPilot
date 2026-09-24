@@ -3,6 +3,9 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using Avalonia.Media.TextFormatting;
+using Avalonia.Threading;
+using AbxPilot.UI.Localization;
 
 namespace AbxPilot.UI;
 
@@ -14,6 +17,8 @@ public partial class MainWindow : Window
         if (!Motion.Reduced) Classes.Add("anim");
         FitToWorkArea();
         TitleBar.PointerPressed += OnTitleBarPointerPressed;
+        TitleNotice.SizeChanged += (_, _) => FitNotice();
+        Localizer.Changed += (_, _) => Dispatcher.UIThread.Post(FitNotice, DispatcherPriority.Loaded);
         PropertyChanged += (_, e) =>
         {
             if (e.Property != WindowStateProperty) return;
@@ -29,6 +34,15 @@ public partial class MainWindow : Window
         var area = screen.WorkingArea.Size.ToSize(screen.Scaling);
         Width = Math.Max(MinWidth, area.Width * share);
         Height = Math.Max(MinHeight, area.Height * share);
+    }
+
+    private void FitNotice()
+    {
+        var text = NoticeFull.Text ?? string.Empty;
+        using var layout = new TextLayout(text, new Typeface(NoticeFull.FontFamily, NoticeFull.FontStyle, NoticeFull.FontWeight), NoticeFull.FontSize, null);
+        var fits = layout.Width <= TitleNotice.Bounds.Width;
+        NoticeFull.IsVisible = fits;
+        NoticeShort.IsVisible = !fits;
     }
 
     private void OnTitleBarPointerPressed(object? sender, PointerPressedEventArgs e)

@@ -51,6 +51,19 @@
               </TextBlock>
             </StackPanel>
 
+            <Panel x:Name="TitleNotice" Grid.Column="1" Background="Transparent"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                   Margin="{StaticResource InputPadding}"
+                   ToolTip.Tip="{loc:Text footer.disclaimer}"
+                   auto:AutomationProperties.Name="{loc:Text footer.disclaimer}">
+              <TextBlock x:Name="NoticeFull" Theme="{StaticResource Hint}" HorizontalAlignment="Center"
+                         TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                         Text="{loc:Text footer.disclaimer}"/>
+              <TextBlock x:Name="NoticeShort" Theme="{StaticResource Hint}" HorizontalAlignment="Center"
+                         TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" IsVisible="False"
+                         Text="{loc:Text footer.disclaimerShort}"/>
+            </Panel>
+
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Stretch" Spacing="{StaticResource Space2}">
               <Border VerticalAlignment="Center"
                       BorderBrush="{StaticResource BorderDecorative}"
