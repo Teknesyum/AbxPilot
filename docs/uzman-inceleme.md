@@ -2,13 +2,13 @@
 
 Bu belge AbxPilot bilgi tabanının (`kb/`) A9 uzman inceleme paketidir. Kaynaklar:
 `docs/kb-kaynaklar.md`, `docs/kb-degisiklik-2026-09.md`, `docs/kb-arastirma-2026-09.md`,
-`tmp/golden-report.md` (kb 0.2.0, 2026-09-25), `kb/guidelines/*/*.csv`, `kb/constraints.yaml`,
+`docs/altin-vaka-raporu.md` (kb 0.2.0, 2026-09-25), `kb/guidelines/*/*.csv`, `kb/constraints.yaml`,
 `tests/AbxPilot.Tests/Golden/`.
 
 ## 1. Amaç
 
 AbxPilot bir **kılavuz gezgini ve eğitim aracıdır**, klinik karar verme aracı değildir.
-Baskı hasta: 70 kg sağlıklı erişkin, normal böbrek işlevi. `kb/` altındaki her kayıt
+Temel hasta: 70 kg sağlıklı erişkin, normal böbrek işlevi. `kb/` altındaki her kayıt
 `review_status: unreviewed`, `reviewed_at: null` durumundadır; hiçbiri klinik kullanım
 için onaylı değildir.
 
@@ -17,9 +17,9 @@ Onay dışı her satır kb dosyalarına geri yazılmadan önce yeniden değerlen
 
 ## 2. Sendrom Başına İlk Seçim Özeti
 
-Kaynak: `tmp/golden-report.md` (altın vaka çalıştırması) ve ilgili
+Kaynak: `docs/altin-vaka-raporu.md` (altın vaka çalıştırması) ve ilgili
 `kb/guidelines/*/*.csv` bölüm alanları. En çok 15 satır/sendrom; temsil amaçlı seçildi,
-tam liste `tmp/golden-report.md` içindedir.
+tam liste `docs/altin-vaka-raporu.md` içindedir.
 
 ### TKP (Toplumda Gelişen Pnömoni)
 
@@ -105,12 +105,12 @@ tam liste `tmp/golden-report.md` içindedir.
 
 | # | Sonuç | Motor Davranışı | Kaynak |
 |---|---|---|---|
-| A | Gebe, ayaktan TKP'de yalnız amoksisilin seçilir; doksisiklin ve makrolid `pregnancy_avoid` ile elenir. | `cap/pregnancy_outpatient`: `amx_po` seçili, `dox_po`, `clr_po` `pregnancy_avoid` ile, `azm_po` `macrolide_monotherapy_resistance` ile elenmiş. | `tmp/golden-report.md`; `kb/constraints.yaml` (`pregnancy_avoid`, `product-labels`) |
-| B | Gebe + servis + bilinen QT riski: motor aday üretmiyor, "uzmana danışın" sonucu veriyor. | `cap/ward_qt_pregnancy`: her iki sette de `no_candidate`, tüm beta-laktam+makrolid/kinolon kolları `qt_known_risk` ya da `pregnancy_avoid` ile elenmiş. | `tmp/golden-report.md` |
-| C | İAE'de ağır beta-laktam alerjisinde (SCAR) tigesiklin EKMUD ve SIS/IDSA 2010'da ilk seçim; SIS 2017'de siprofloksasin+metronidazol seçiliyor — setler arası uyuşmuyor. | `iai/community_mild_scar`: ekmud-2016 → `iai_tgc_iv`; sis-idsa-2010 → `iai_tgc_iv`; sis-2017 → `iai_cip_mtz_iv`. | `tmp/golden-report.md`; `kb/guidelines/{ekmud-2016,sis-2017,sis-idsa-2010}/iai.csv` |
-| D | Ağır beta-laktam alerjili, sağlık bakımı kökenli MRSA riskli İAE'de üç setin hiçbirinde aday kalmıyor. | `iai/healthcare_mrsa_scar`: üç sette de `no_candidate`; tüm beta-laktamlar `allergy_scar_beta_lactam` ile elenmiş, alternatif ajan yok. | `tmp/golden-report.md` |
+| A | Gebe, ayaktan TKP'de yalnız amoksisilin seçilir; doksisiklin ve makrolid `pregnancy_avoid` ile elenir. | `cap/pregnancy_outpatient`: `amx_po` seçili, `dox_po`, `clr_po` `pregnancy_avoid` ile, `azm_po` `macrolide_monotherapy_resistance` ile elenmiş. | `docs/altin-vaka-raporu.md`; `kb/constraints.yaml` (`pregnancy_avoid`, `product-labels`) |
+| B | Gebe + servis + bilinen QT riski: motor aday üretmiyor, "uzmana danışın" sonucu veriyor. | `cap/ward_qt_pregnancy`: her iki sette de `no_candidate`, tüm beta-laktam+makrolid/kinolon kolları `qt_known_risk` ya da `pregnancy_avoid` ile elenmiş. | `docs/altin-vaka-raporu.md` |
+| C | İAE'de ağır beta-laktam alerjisinde (SCAR) tigesiklin EKMUD ve SIS/IDSA 2010'da ilk seçim; SIS 2017'de siprofloksasin+metronidazol seçiliyor — setler arası uyuşmuyor. | `iai/community_mild_scar`: ekmud-2016 → `iai_tgc_iv`; sis-idsa-2010 → `iai_tgc_iv`; sis-2017 → `iai_cip_mtz_iv`. | `docs/altin-vaka-raporu.md`; `kb/guidelines/{ekmud-2016,sis-2017,sis-idsa-2010}/iai.csv` |
+| D | Ağır beta-laktam alerjili, sağlık bakımı kökenli MRSA riskli İAE'de üç setin hiçbirinde aday kalmıyor. | `iai/healthcare_mrsa_scar`: üç sette de `no_candidate`; tüm beta-laktamlar `allergy_scar_beta_lactam` ile elenmiş, alternatif ajan yok. | `docs/altin-vaka-raporu.md` |
 | E | IDSA İYE setinde GSBL riski yalnız not düşer, ilk seçimi değiştirmez; EAU setinde GSBL riski beta-laktam/kinolon/aminoglikozid/folat antagonistini eler ve karbapeneme geçirir. | `kb/guidelines/idsa-2011-2025/uti.csv` satırı `esbl` → `stage: modifier, action: note`; `kb/guidelines/eau-2026/uti.csv` satırı `esbl` → `stage: modifier, action: replace`, adaylar `uti_mem_iv|uti_ipm_iv`. | `kb/guidelines/idsa-2011-2025/uti.csv`; `kb/guidelines/eau-2026/uti.csv` |
-| F | NICE eki, hafif **oral** selülitte bile MRSA riskinde IV vankomisin ekliyor (oral MRSA seçeneği kılavuzda yok). | `ssti/mild_mrsa` (nice-ng141-2019): birinci seçenek `ssti_flx_po+vancomycin`. | `tmp/golden-report.md`; `docs/kb-arastirma-2026-09.md` madde 38 |
+| F | NICE eki, hafif **oral** selülitte bile MRSA riskinde IV vankomisin ekliyor (oral MRSA seçeneği kılavuzda yok). | `ssti/mild_mrsa` (nice-ng141-2019): birinci seçenek `ssti_flx_po+vancomycin`. | `docs/altin-vaka-raporu.md`; `docs/kb-arastirma-2026-09.md` madde 38 |
 | G | ABD bölgesinde pnömokok makrolid direnci %23,9 — motorun %25 eşiğinin hemen altında kalıyor (invaziv izolat, TKP'ye özgü değil). | `kb/regions/US.yaml` → `spn_macrolide.estimate: 0.239`, `category: lt25`. | `kb/regions/US.yaml`; `docs/kb-kaynaklar.md` madde 42 |
 | H | Aminoglikozit bilgi tabanında yok; TTD'nin "beta-laktam + aminoglikozit + makrolid" alternatif Pseudomonas rejimi ve EKMUD/SIS'in yüksek dirençte aminoglikozit eklemesi modellenmedi. | `kb/guidelines/ttd-2021/cap.csv` satırı `psa_fq` notu; `kb/guidelines/ekmud-2016/iai.csv` satırı `healthcare` notu. | `docs/kb-degisiklik-2026-09.md` ("Uygulanmayanlar"); ilgili csv notları |
 | I | Spektrum matrisinde azitromisin × H. influenzae `reliable` işaretli ama EUCAST klinik etkinliği tartışmalı sayıyor (klaritromisin zaten `variable`). | `kb/spectrum/cap.csv` hücresi `azithromycin × h_influenzae`. | `docs/kb-arastirma-2026-09.md`, Kapsam Matrisi, "Tartışmalı, A9'a" |
