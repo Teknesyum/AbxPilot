@@ -26,5 +26,11 @@
   "exclude.qt": "Excluded: known QT risk with QT prolongation",
   "exclude.recent_class": "Excluded: same class used in the last 3 months",
   "exclude.macrolide_resistance": "Excluded: macrolide alone with local pneumococcal resistance of 25% or higher",
-  "exclude.not_licensed": "Excluded: not licensed in this region"
+  "exclude.not_licensed": "Excluded: not licensed in this region",
+  "warn.recent_class": "Warning: same class used in the last 3 months; a candidate of another class was moved ahead where one exists",
+  "warn.license_unknown": "Warning: licensing status in this region is unknown; check availability",
+  "warn.allergy_ige_other_beta_lactam": "Warning: IgE-mediated penicillin allergy; 3rd/4th generation cephalosporins, carbapenems and aztreonam with a dissimilar side chain may be given without testing (AAAAI/ACAAI 2022)",
+  "engine.warning": "Candidate kept with a warning",
+  "engine.demoted": "Candidate moved back within its tier",
+  "engine.regimen_rewritten": "Regimen name updated to the drugs actually given after a guideline change"
 }

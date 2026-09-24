@@ -1,3 +1,4 @@
+# Changed 2026-09: bug fix: the regimen id now names the drugs actually given (cefepime replaces the beta-lactam), was sam_azm_iv; TTD 2021 gives cefepime plus ciprofloxacin (Table 7) instead of the triple with levofloxacin.
 id: ward_ige_pseudomonas
 title: "Ward patient with IgE penicillin allergy and prior Pseudomonas"
 source: idsa-ats-2019
@@ -9,9 +10,10 @@ answers:
   prior_pseudomonas: 'yes'
 expect:
   status: selected
-  first_choice: sam_azm_iv
+  first_choice: fep_azm_iv
   drugs: [cefepime, azithromycin]
   excluded: [tzp_iv]
 expect_by_set:
-  ttd-2009:
-    drugs: [cefepime, azithromycin, levofloxacin]
+  ttd-2021:
+    first_choice: fep_cip_iv
+    drugs: [cefepime, ciprofloxacin]

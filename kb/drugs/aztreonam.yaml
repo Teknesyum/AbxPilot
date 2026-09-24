@@ -25,7 +25,7 @@ doses:
   amount: 2 g
   interval_hours: 8
   source: idsa-ats-2019
-  section: Q10; Table 4
+  section: Q10; Table 3
 adverse_effects:
 - hypersensitivity
 - c_difficile

@@ -63,7 +63,22 @@ public sealed record Constraint : KbRecord
 {
     public Condition? When { get; init; }
     public DrugSelector Exclude { get; init; } = new();
+    public string Mode { get; init; } = ConstraintMode.Exclude;
+    public ConstraintSpare? Spare { get; init; }
     public string ReasonKey { get; init; } = "";
+}
+
+public static class ConstraintMode
+{
+    public const string Exclude = "exclude";
+    public const string Demote = "demote";
+    public const string Warn = "warn";
+}
+
+public sealed record ConstraintSpare
+{
+    public string Role { get; init; } = "";
+    public Condition? When { get; init; }
 }
 
 public sealed record DrugSelector

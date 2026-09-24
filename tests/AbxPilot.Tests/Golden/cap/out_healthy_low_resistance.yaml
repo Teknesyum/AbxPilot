@@ -1,7 +1,7 @@
 id: out_healthy_low_resistance
 title: "Healthy outpatient where pneumococcal macrolide resistance is below 25%"
 source: idsa-ats-2019
-section: 'Q7; Table 3'
+section: 'Q7; Table 2'
 region: tr
 answers:
   setting: outpatient

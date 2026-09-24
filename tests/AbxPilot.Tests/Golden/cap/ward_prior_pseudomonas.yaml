@@ -1,3 +1,4 @@
+# Changed 2026-09: the regimen id now names the drugs given (was sam_azm_iv); TTD 2021 replaces the macrolide with ciprofloxacin (Table 7) instead of adding levofloxacin.
 id: ward_prior_pseudomonas
 title: "Ward patient with prior respiratory Pseudomonas isolation"
 source: idsa-ats-2019
@@ -8,9 +9,10 @@ answers:
   prior_pseudomonas: 'yes'
 expect:
   status: selected
-  first_choice: sam_azm_iv
+  first_choice: tzp_azm_iv
   drugs: [piperacillin_tazobactam, azithromycin]
   excluded: []
 expect_by_set:
-  ttd-2009:
-    drugs: [piperacillin_tazobactam, azithromycin, levofloxacin]
+  ttd-2021:
+    first_choice: tzp_cip_iv
+    drugs: [piperacillin_tazobactam, ciprofloxacin]

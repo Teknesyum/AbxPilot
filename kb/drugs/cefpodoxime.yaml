@@ -24,7 +24,7 @@ doses:
   amount: 200 mg
   interval_hours: 12
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
 adverse_effects:
 - hypersensitivity
 - gi_upset

@@ -25,7 +25,7 @@ public sealed class GoldenExpectation
 public sealed class GoldenCase
 {
     public const string Syndrome = "cap";
-    public static readonly string[] Sets = ["idsa-ats-2019", "ttd-2009"];
+    public static readonly string[] Sets = ["idsa-ats-2019", "ttd-2021"];
 
     public string Id { get; set; } = "";
     public string Title { get; set; } = "";

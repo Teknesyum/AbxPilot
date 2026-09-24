@@ -1,7 +1,8 @@
+# Changed 2026-09: ceftaroline is not licensed in Turkey (TITCK 2026) and the TTD 2021 ward row no longer lists it; the four ceftaroline combinations are excluded as not licensed.
 id: icu_severe
 title: "Severe pneumonia in the ICU on vasopressors"
 source: idsa-ats-2019
-section: 'Q8; Table 4'
+section: 'Q8; Table 3'
 region: tr
 answers:
   setting: icu
@@ -10,4 +11,4 @@ expect:
   status: selected
   first_choice: sam_azm_iv
   drugs: [ampicillin_sulbactam, azithromycin]
-  excluded: []
+  excluded: [cpt_azm_iv, cpt_clr_iv, cpt_lvx_iv, cpt_mxf_iv]

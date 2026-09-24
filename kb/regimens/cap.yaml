@@ -1,7 +1,7 @@
 - id: amx_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -12,7 +12,7 @@
 - id: dox_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -23,7 +23,7 @@
 - id: azm_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -34,7 +34,7 @@
 - id: clr_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -45,7 +45,7 @@
 - id: amc_azm_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -59,7 +59,7 @@
 - id: amc_clr_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -73,7 +73,7 @@
 - id: amc_dox_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -87,7 +87,7 @@
 - id: cpd_azm_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -101,7 +101,7 @@
 - id: cpd_clr_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -115,7 +115,7 @@
 - id: cpd_dox_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -129,7 +129,7 @@
 - id: cxm_azm_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -143,7 +143,7 @@
 - id: cxm_clr_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -157,7 +157,7 @@
 - id: cxm_dox_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -171,7 +171,7 @@
 - id: lvx_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -182,7 +182,7 @@
 - id: mxf_po
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -193,7 +193,7 @@
 - id: sam_azm_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -207,7 +207,7 @@
 - id: sam_clr_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -221,7 +221,7 @@
 - id: sam_lvx_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4 (severe)
+  section: Q8; Table 3 (severe)
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -235,7 +235,7 @@
 - id: sam_mxf_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4 (severe)
+  section: Q8; Table 3 (severe)
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -249,7 +249,7 @@
 - id: cro_azm_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -263,7 +263,7 @@
 - id: cro_clr_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -277,7 +277,7 @@
 - id: cro_lvx_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4 (severe)
+  section: Q8; Table 3 (severe)
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -291,7 +291,7 @@
 - id: cro_mxf_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4 (severe)
+  section: Q8; Table 3 (severe)
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -305,7 +305,7 @@
 - id: ctx_azm_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -319,7 +319,7 @@
 - id: ctx_clr_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -333,7 +333,7 @@
 - id: ctx_lvx_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4 (severe)
+  section: Q8; Table 3 (severe)
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -347,7 +347,7 @@
 - id: ctx_mxf_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4 (severe)
+  section: Q8; Table 3 (severe)
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -361,7 +361,7 @@
 - id: cpt_azm_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -375,7 +375,7 @@
 - id: cpt_clr_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -389,7 +389,7 @@
 - id: cpt_lvx_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4 (severe)
+  section: Q8; Table 3 (severe)
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -403,7 +403,7 @@
 - id: cpt_mxf_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4 (severe)
+  section: Q8; Table 3 (severe)
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -417,7 +417,7 @@
 - id: lvx_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -428,7 +428,7 @@
 - id: mxf_iv
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -439,10 +439,11 @@
 - id: cro_dox
   version: 1
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
+  note: Doxycycline arm is oral; no IV doxycycline is licensed in Turkey (TITCK 18.09.2026).
   components:
   - drug: ceftriaxone
     dose: cap_iv
@@ -453,7 +454,7 @@
 - id: van_iv
   version: 1
   source: idsa-ats-2019
-  section: Q10; Table 4
+  section: Q10; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -464,7 +465,7 @@
 - id: lzd_iv
   version: 1
   source: idsa-ats-2019
-  section: Q10; Table 4
+  section: Q10; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -486,7 +487,7 @@
 - id: tzp_iv
   version: 1
   source: idsa-ats-2019
-  section: Q10; Table 4
+  section: Q10; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -497,7 +498,7 @@
 - id: fep_iv
   version: 1
   source: idsa-ats-2019
-  section: Q10; Table 4
+  section: Q10; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -508,7 +509,7 @@
 - id: caz_iv
   version: 1
   source: idsa-ats-2019
-  section: Q10; Table 4
+  section: Q10; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -519,7 +520,7 @@
 - id: ipm_iv
   version: 1
   source: idsa-ats-2019
-  section: Q10; Table 4
+  section: Q10; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -530,7 +531,7 @@
 - id: mem_iv
   version: 1
   source: idsa-ats-2019
-  section: Q10; Table 4
+  section: Q10; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -541,7 +542,7 @@
 - id: atm_iv
   version: 1
   source: idsa-ats-2019
-  section: Q10; Table 4
+  section: Q10; Table 3
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -571,3 +572,524 @@
   - drug: amoxicillin_clavulanate
     dose: cap_po_875
     role: beta_lactam
+- id: cip_iv
+  version: 1
+  source: ttd-2021
+  section: Table 7
+  source_date: '2021-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ciprofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: tzp_azm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_iv
+    role: macrolide
+- id: fep_azm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_iv
+    role: macrolide
+- id: caz_azm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftazidime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_iv
+    role: macrolide
+- id: ipm_azm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: imipenem_cilastatin
+    dose: cap_iv
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_iv
+    role: macrolide
+- id: mem_azm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: cap_iv
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_iv
+    role: macrolide
+- id: atm_azm_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: aztreonam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: azithromycin
+    dose: cap_iv
+    role: macrolide
+- id: tzp_clr_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_iv
+    role: macrolide
+- id: fep_clr_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_iv
+    role: macrolide
+- id: caz_clr_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftazidime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_iv
+    role: macrolide
+- id: ipm_clr_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: imipenem_cilastatin
+    dose: cap_iv
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_iv
+    role: macrolide
+- id: mem_clr_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: cap_iv
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_iv
+    role: macrolide
+- id: atm_clr_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: aztreonam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: clarithromycin
+    dose: cap_iv
+    role: macrolide
+- id: tzp_lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: fep_lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: caz_lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftazidime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: ipm_lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: imipenem_cilastatin
+    dose: cap_iv
+    role: beta_lactam
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: mem_lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: cap_iv
+    role: beta_lactam
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: atm_lvx_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: aztreonam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: levofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: tzp_mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: fep_mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: caz_mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftazidime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: ipm_mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: imipenem_cilastatin
+    dose: cap_iv
+    role: beta_lactam
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: mem_mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: cap_iv
+    role: beta_lactam
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: atm_mxf_iv
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: aztreonam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: moxifloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: tzp_cip_iv
+  version: 1
+  source: ttd-2021
+  section: Table 7
+  source_date: '2021-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: ciprofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: fep_cip_iv
+  version: 1
+  source: ttd-2021
+  section: Table 7
+  source_date: '2021-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: ciprofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: caz_cip_iv
+  version: 1
+  source: ttd-2021
+  section: Table 7
+  source_date: '2021-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftazidime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: ciprofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: ipm_cip_iv
+  version: 1
+  source: ttd-2021
+  section: Table 7
+  source_date: '2021-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: imipenem_cilastatin
+    dose: cap_iv
+    role: beta_lactam
+  - drug: ciprofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: mem_cip_iv
+  version: 1
+  source: ttd-2021
+  section: Table 7
+  source_date: '2021-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: cap_iv
+    role: beta_lactam
+  - drug: ciprofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: atm_cip_iv
+  version: 1
+  source: ttd-2021
+  section: Table 7
+  source_date: '2021-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: aztreonam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: ciprofloxacin
+    dose: cap_iv
+    role: fluoroquinolone
+- id: tzp_dox
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Doxycycline arm is oral; no IV doxycycline is licensed in Turkey.
+  components:
+  - drug: piperacillin_tazobactam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline
+- id: fep_dox
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Doxycycline arm is oral; no IV doxycycline is licensed in Turkey.
+  components:
+  - drug: cefepime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline
+- id: caz_dox
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Doxycycline arm is oral; no IV doxycycline is licensed in Turkey.
+  components:
+  - drug: ceftazidime
+    dose: cap_iv
+    role: beta_lactam
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline
+- id: ipm_dox
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Doxycycline arm is oral; no IV doxycycline is licensed in Turkey.
+  components:
+  - drug: imipenem_cilastatin
+    dose: cap_iv
+    role: beta_lactam
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline
+- id: mem_dox
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Doxycycline arm is oral; no IV doxycycline is licensed in Turkey.
+  components:
+  - drug: meropenem
+    dose: cap_iv
+    role: beta_lactam
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline
+- id: atm_dox
+  version: 1
+  source: idsa-ats-2019
+  section: Q10; Table 3
+  source_date: '2019-10-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Doxycycline arm is oral; no IV doxycycline is licensed in Turkey.
+  components:
+  - drug: aztreonam
+    dose: cap_iv
+    role: beta_lactam
+  - drug: doxycycline
+    dose: cap_po
+    role: tetracycline

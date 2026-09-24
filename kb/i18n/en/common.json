@@ -74,7 +74,7 @@
   "threshold.resistant_pathogen_duration": "Duration for MRSA / Pseudomonas",
   "region.tr.name": "Turkey",
   "guideline.idsa-ats-2019.name": "ATS/IDSA 2019",
-  "guideline.ttd-2009.name": "TTD CAP Consensus",
+  "guideline.ttd-2021.name": "TTD CAP Consensus",
   "adverse.hypersensitivity": "Hypersensitivity",
   "adverse.rash": "Rash",
   "adverse.gi_upset": "Gastrointestinal upset",

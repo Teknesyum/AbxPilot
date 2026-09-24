@@ -24,7 +24,7 @@ doses:
   amount: 1.5-3 g
   interval_hours: 6
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
 adverse_effects:
 - hypersensitivity
 - gi_upset

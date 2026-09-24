@@ -1,3 +1,4 @@
+# Changed 2026-09: ceftaroline is not licensed in Turkey (TITCK 2026) and the TTD 2021 ward row no longer lists it.
 id: ward_prior_mrsa
 title: "Ward patient with prior respiratory MRSA isolation"
 source: idsa-ats-2019
@@ -10,4 +11,7 @@ expect:
   status: selected
   first_choice: sam_azm_iv
   drugs: [ampicillin_sulbactam, azithromycin, vancomycin]
-  excluded: []
+  excluded: [cpt_azm_iv, cpt_clr_iv]
+expect_by_set:
+  ttd-2021:
+    excluded: []

@@ -14,8 +14,17 @@
     in adults. Toraks Dergisi 2009;10(Suppl 9).
   published: '2009-01-01'
   date_precision: year
-  note: Newest edition known to the author. Whether a later edition exists, and the exact section and table numbers,
-    must be checked in A9.
+  note: Historical record. Superseded by ttd-2021; the TTD guideline set now rests on the 2021 report.
+- id: ttd-2021
+  version: 1
+  kind: guideline
+  citation: Sayiner A, Babayigit C (eds). Eriskinlerde Toplumda Gelisen Pnomoniler Tani ve Tedavi Uzlasi Raporu 2021.
+    Turk Toraks Dernegi; 2021. ISBN 978-605-74980-6-9.
+  url: https://web.archive.org/web/20250429085342/https://toraks.org.tr/site/sf/books/2022/12/7f996a9b650d792ae0096c78c08245664f5e4c2749be689f3470a2c881242b37.pdf
+  published: '2021-01-01'
+  date_precision: year
+  note: Table 5 outpatient groups, Table 6 ICU criteria, Table 7 inpatient therapy, Appendix 1 doses. The original
+    toraks.org.tr link returns 404; the archived copy was read on 2026-09-24.
 - id: who-aware-2023
   version: 1
   kind: classification
@@ -45,16 +54,48 @@
   date_precision: year
   note: Generic reference; per-label versions are not yet recorded.
 - id: who-caesar
-  version: 1
+  version: 2
   kind: surveillance
-  citation: WHO Regional Office for Europe. Central Asian and European Surveillance of Antimicrobial Resistance
-    (CAESAR), annual report.
-  published: '2020-01-01'
+  citation: WHO Regional Office for Europe, European Centre for Disease Prevention and Control. Antimicrobial resistance
+    surveillance in Europe 2023 - 2021 data. Stockholm; 2023.
+  url: https://www.ecdc.europa.eu/sites/default/files/documents/Antimicrobial%20resistance%20surveillance%20in%20Europe%202023%20-%202021%20data.pdf
+  published: '2023-01-01'
   date_precision: year
-  note: Edition and the Turkish figure are uncertain; placeholder until A9.
+  note: Turkey country page p.137; invasive isolates, data year 2021.
 - id: abxpilot-draft
   version: 1
   kind: draft
   citation: AbxPilot project draft, written without a primary source and awaiting expert review in A9.
   published: '2026-09-24'
   date_precision: day
+- id: titck-2026
+  version: 1
+  kind: reference
+  citation: TITCK. Ruhsatli Beseri Tibbi Urunler Listesi, 18.09.2026.
+  url: https://www.titck.gov.tr/dinamikmodul/85
+  published: '2026-09-18'
+  date_precision: day
+  note: Parsed by ATC code on 2026-09-24.
+- id: aaaai-acaai-2022
+  version: 1
+  kind: guideline
+  citation: Khan DA, Banerji A, Blumenthal KG, et al. Drug allergy - A 2022 practice parameter update. J Allergy Clin
+    Immunol. 2022;150(6):1333-1393.
+  url: https://doi.org/10.1016/j.jaci.2022.08.028
+  published: '2022-12-01'
+  date_precision: month
+- id: eucast-expected-2023
+  version: 1
+  kind: reference
+  citation: EUCAST. Expected Resistant Phenotypes, version 1.2. 2023.
+  url: https://www.eucast.org/bacteria/important-additional-information/expected-phenotypes/
+  published: '2023-01-01'
+  date_precision: year
+- id: ashp-vanco-2020
+  version: 1
+  kind: guideline
+  citation: Rybak MJ, Le J, Lodise TP, et al. Therapeutic monitoring of vancomycin for serious MRSA infections - a revised
+    consensus guideline and review. Am J Health Syst Pharm. 2020;77(11):835-864.
+  url: https://doi.org/10.1093/ajhp/zxaa036
+  published: '2020-05-01'
+  date_precision: month

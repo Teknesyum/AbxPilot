@@ -23,7 +23,7 @@ doses:
   amount: 500 mg
   interval_hours: 6
   source: idsa-ats-2019
-  section: Q10; Table 4
+  section: Q10; Table 3
 adverse_effects:
 - hypersensitivity
 - c_difficile

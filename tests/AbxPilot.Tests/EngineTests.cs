@@ -164,10 +164,62 @@ public sealed class EngineTests
             {
                 var result = Engine.Evaluate(item.Context(set));
                 var keys = result.Trace.Concat(result.Rationale).Select(line => line.MessageKey)
-                    .Concat(result.Excluded.Select(line => line.ReasonKey));
+                    .Concat(result.Excluded.Select(line => line.ReasonKey))
+                    .Concat(result.Alternatives.Prepend(result.FirstChoice).OfType<RegimenLine>()
+                        .SelectMany(line => line.Warnings).Select(line => line.MessageKey));
                 Assert.All(keys, key => Assert.True(strings.ContainsKey(key), $"{language}: {key}"));
             }
         }
+    }
+
+    [Fact]
+    public void UnknownLicenseKeepsTheDrugWithAWarning()
+    {
+        var region = Kb.Regions.Single(item => item.Id == "tr");
+        var unlisted = region with { Licensing = region.Licensing.Where(item => item.Drug != "amoxicillin").ToArray() };
+        var result = new GuidelineEngine(Kb with { Regions = [unlisted] }).Evaluate(Cap(("setting", ["outpatient"])));
+        Assert.Equal("amx_po", result.FirstChoice!.RegimenId);
+        Assert.Contains(result.FirstChoice.Warnings, line => line.RuleId == "license_unknown" && line.Subject == "amoxicillin");
+        Assert.DoesNotContain(result.Excluded, item => item.RegimenId == "amx_po");
+
+        var licensed = Engine.Evaluate(Cap(("setting", ["outpatient"])));
+        Assert.Empty(licensed.FirstChoice!.Warnings);
+    }
+
+    [Fact]
+    public void IgeAllergyWarnsOnOtherBetaLactamsAndScarExcludesThem()
+    {
+        var ige = Engine.Evaluate(Cap(("setting", ["ward"]), ("pen_allergy", ["ige"])));
+        Assert.Equal("cro_azm_iv", ige.FirstChoice!.RegimenId);
+        var warning = Assert.Single(ige.FirstChoice.Warnings, line => line.RuleId == "allergy_ige_other_beta_lactam");
+        Assert.Equal("aaaai-acaai-2022", warning.Source.Source);
+        Assert.Contains(ige.Trace, line => line.MessageKey == "engine.warning" && line.RuleId == "allergy_ige_other_beta_lactam");
+
+        var scar = Engine.Evaluate(Cap(("setting", ["ward"]), ("pen_allergy", ["scar"])));
+        Assert.All(scar.Excluded, item => Assert.Equal("aaaai-acaai-2022", item.Source.Source));
+        Assert.DoesNotContain(scar.FirstChoice!.Components, line => line.DrugId == "ceftriaxone");
+    }
+
+    [Fact]
+    public void RecentClassDemotesButKeepsTheInpatientBackbone()
+    {
+        var outpatient = Engine.Evaluate(Cap(("setting", ["outpatient"]), ("comorbidity", ["lung"]), ("recent_abx_class", ["beta_lactam"])));
+        Assert.Equal("lvx_po", outpatient.FirstChoice!.RegimenId);
+        Assert.Contains(outpatient.Alternatives, line => line.RegimenId == "amc_azm_po" && line.Warnings.Any(item => item.RuleId == "recent_same_class"));
+        Assert.Contains(outpatient.Trace, line => line.MessageKey == "engine.demoted" && line.Subject == "amc_azm_po");
+
+        var ward = Engine.Evaluate(Cap(("setting", ["ward"]), ("recent_abx_class", ["beta_lactam"])));
+        Assert.Equal("sam_azm_iv", ward.FirstChoice!.RegimenId);
+        Assert.Contains(ward.FirstChoice.Warnings, line => line.RuleId == "recent_same_class");
+    }
+
+    [Fact]
+    public void ReplacedRegimenIsRenamedAndTraced()
+    {
+        var result = Engine.Evaluate(Cap(("setting", ["ward"]), ("pen_allergy", ["ige"]), ("prior_pseudomonas", ["yes"])));
+        Assert.Equal("fep_azm_iv", result.FirstChoice!.RegimenId);
+        Assert.Equal(["cefepime", "azithromycin"], result.FirstChoice.DrugIds);
+        Assert.Contains(result.Trace, line => line.MessageKey == "engine.regimen_rewritten" && line.Subject == "sam_azm_iv>fep_azm_iv");
     }
 
     [Fact]

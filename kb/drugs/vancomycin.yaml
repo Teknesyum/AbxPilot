@@ -1,5 +1,5 @@
 id: vancomycin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -22,8 +22,10 @@ doses:
   amount_70kg: 1050 mg (about 1 g)
   interval_hours: 12
   source: idsa-ats-2019
-  section: Q10; Table 4
-  note: Adjust by serum levels.
+  section: Q10; Table 3
+  loading: 20-35 mg/kg in severe illness (70 kg - 1400-2450 mg)
+  note: Loading dose and monitoring by AUC/MIC 400-600 (not trough) follow ashp-vanco-2020; the consensus PDF was not
+    opened line by line, confirm in A9.
 adverse_effects:
 - nephrotoxicity
 - infusion_reaction

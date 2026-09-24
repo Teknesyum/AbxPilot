@@ -1,7 +1,8 @@
+# Changed 2026-09: recent same-class use is a soft rule now (TTD 2021 Table 5, IDSA/ATS 2019 Q7); levofloxacin and moxifloxacin stay as warned alternatives behind the other-class candidates instead of being excluded.
 id: out_recent_fq_comorbid
 title: "Outpatient with COPD who took a fluoroquinolone in the last 3 months"
 source: idsa-ats-2019
-section: 'Q7; Table 3'
+section: 'Q7; Table 2'
 region: tr
 answers:
   setting: outpatient
@@ -11,8 +12,8 @@ expect:
   status: selected
   first_choice: amc_azm_po
   drugs: [amoxicillin_clavulanate, azithromycin]
-  excluded: [lvx_po, mxf_po]
+  excluded: []
 expect_by_set:
-  ttd-2009:
+  ttd-2021:
     first_choice: cxm_azm_po
     drugs: [cefuroxime_axetil, azithromycin]

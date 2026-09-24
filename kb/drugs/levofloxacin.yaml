@@ -22,7 +22,7 @@ doses:
   amount: 750 mg
   interval_hours: 24
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
 - id: cap_iv
   indication: cap
   route: iv
@@ -30,7 +30,7 @@ doses:
   amount: 750 mg
   interval_hours: 24
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
 adverse_effects:
 - tendinopathy
 - aortic_aneurysm

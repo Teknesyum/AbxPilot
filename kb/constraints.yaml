@@ -1,8 +1,8 @@
 - id: allergy_scar_beta_lactam
-  version: 1
-  source: zagursky-2018
-  section: Severe cutaneous reactions
-  source_date: '2018-01-01'
+  version: 2
+  source: aaaai-acaai-2022
+  section: Drug allergy practice parameter 2022, severe cutaneous adverse reactions (beta-lactam avoidance)
+  source_date: '2022-12-01'
   reviewed_at: null
   review_status: unreviewed
   note: Severe cutaneous reaction to a penicillin; every beta-lactam is withheld.
@@ -42,6 +42,22 @@
     shares_r1_with_core:
     - penicillin
   reason_key: exclude.allergy_side_chain
+- id: allergy_ige_other_beta_lactam
+  version: 1
+  source: aaaai-acaai-2022
+  section: Drug allergy practice parameter 2022, cephalosporin and carbapenem use in penicillin allergy
+  source_date: '2022-12-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Third and fourth generation cephalosporins, carbapenems and aztreonam with a dissimilar side chain may be given without testing; the line carries a warning so the allergy stays visible.
+  mode: warn
+  when:
+    question: pen_allergy
+    eq: ige
+  exclude:
+    class_group:
+    - beta_lactam
+  reason_key: warn.allergy_ige_other_beta_lactam
 - id: allergy_delayed_penicillin
   version: 1
   source: zagursky-2018
@@ -85,20 +101,31 @@
     - known
   reason_key: exclude.qt
 - id: recent_same_class
-  version: 1
-  source: idsa-ats-2019
-  section: Q7 (recent antibiotic exposure)
-  source_date: '2019-10-01'
+  version: 2
+  source: ttd-2021
+  section: Table 5 (antibiotic use in the last 3 months); IDSA/ATS 2019 Q7
+  source_date: '2021-01-01'
   reviewed_at: null
   review_status: unreviewed
-  note: The guideline asks for a different class after recent use; the class grouping is a draft.
+  note: Soft rule. A same-tier candidate of another class moves ahead; when none exists the candidate stays with a warning. The beta-lactam backbone of inpatient and severe regimens is never demoted. The class grouping is a draft.
+  mode: demote
+  spare:
+    role: beta_lactam
+    when:
+      any:
+      - question: setting
+        in:
+        - ward
+        - icu
+      - question: severe
+        eq: 'yes'
   when:
     not:
       question: recent_abx_class
       empty: true
   exclude:
     class_group_in_answer: recent_abx_class
-  reason_key: exclude.recent_class
+  reason_key: warn.recent_class
 - id: macrolide_monotherapy_resistance
   version: 1
   source: idsa-ats-2019
@@ -125,3 +152,16 @@
     license:
     - not_licensed
   reason_key: exclude.not_licensed
+- id: license_unknown
+  version: 1
+  source: titck-2026
+  section: Region licensing list
+  source_date: '2026-09-18'
+  reviewed_at: null
+  review_status: unreviewed
+  note: A drug missing from the region licensing list is kept; the line tells the prescriber to check availability.
+  mode: warn
+  exclude:
+    license:
+    - unknown
+  reason_key: warn.license_unknown

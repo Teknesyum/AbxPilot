@@ -71,7 +71,7 @@
   "cap.idsa.aspiration": "Suspected aspiration does not call for routine anaerobic cover.",
   "cap.idsa.abscess": "Lung abscess or empyema: choose a beta-lactam that covers anaerobes.",
   "cap.idsa.influenza": "Influenza positive: add oseltamivir; standard antibacterial treatment is also started.",
-  "cap.ttd.out_comorbid": "TTD: with comorbidity an oral cephalosporin or amoxicillin-clavulanate plus a macrolide comes first; fluoroquinolones are a later tier because they may mask tuberculosis (uncertain).",
-  "cap.ttd.ward": "TTD: on the ward a beta-lactam plus a macrolide comes first; fluoroquinolone monotherapy is a later tier (uncertain).",
-  "cap.ttd.psa_fq": "TTD: with Pseudomonas risk, levofloxacin is added to the antipseudomonal beta-lactam (uncertain)."
+  "cap.ttd.out_comorbid": "TTD 2021 Table 5, Group 1b: with comorbidity a 2nd-3rd generation oral cephalosporin or amoxicillin-clavulanate plus a macrolide or doxycycline; quinolone monotherapy only for GI intolerance, drug allergy or beta-lactam use in the last 3 months, never when tuberculosis is possible.",
+  "cap.ttd.ward": "TTD 2021 Table 7: on the ward a non-antipseudomonal 3rd generation cephalosporin or a beta-lactam/beta-lactamase inhibitor plus a macrolide; a respiratory quinolone is the next tier. Ceftaroline is not listed.",
+  "cap.ttd.psa_fq": "TTD 2021 Table 7: with Pseudomonas risk, ciprofloxacin is given with the antipseudomonal beta-lactam (in place of the macrolide); 7 days."
 }

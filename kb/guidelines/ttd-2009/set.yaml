@@ -1,9 +1,0 @@
-id: ttd-2009
-version: 1
-source: ttd-2009
-section: Treatment section (section and table numbers uncertain)
-source_date: '2009-01-01'
-reviewed_at: null
-review_status: unreviewed
-note: Carries only the rows where the TTD consensus is believed to differ; all are uncertain.
-extends: idsa-ats-2019

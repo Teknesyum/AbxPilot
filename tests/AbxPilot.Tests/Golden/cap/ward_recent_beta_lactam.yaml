@@ -1,11 +1,11 @@
-# Changed 2026-09: ceftaroline is not licensed in Turkey (TITCK 2026) and the TTD 2021 ward row no longer lists it.
-id: ward
-title: "Non-severe inpatient on the ward"
-source: idsa-ats-2019
-section: 'Q8; Table 3'
+id: ward_recent_beta_lactam
+title: "Ward patient with a beta-lactam in the last 3 months keeps the beta-lactam backbone"
+source: ttd-2021
+section: 'Table 5; Table 7'
 region: tr
 answers:
   setting: ward
+  recent_abx_class: [beta_lactam]
 expect:
   status: selected
   first_choice: sam_azm_iv

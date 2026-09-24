@@ -1,11 +1,12 @@
 id: cap
-version: 1
+version: 2
 source: idsa-ats-2019
 section: 'Scope: adults, outpatient and inpatient CAP'
 source_date: '2019-10-01'
 reviewed_at: null
 review_status: unreviewed
-note: 'Baseline patient: healthy 70 kg adult with normal renal function.'
+note: 'Baseline patient: healthy 70 kg adult with normal renal function. Severe CAP is derived from the 2007 IDSA/ATS
+  criteria (1 major or at least 3 minor), not from the ICU location (IDSA/ATS 2019; TTD 2021 Table 6).'
 pathogens:
 - s_pneumoniae
 - h_influenzae
@@ -39,8 +40,6 @@ derived:
 - id: severe
   when:
     any:
-    - question: setting
-      eq: icu
     - question: severe_vasopressor
       eq: 'yes'
     - question: severe_ventilation

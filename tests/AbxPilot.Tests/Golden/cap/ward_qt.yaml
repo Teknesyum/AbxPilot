@@ -1,7 +1,8 @@
+# Changed 2026-09: the TTD 2021 ward row no longer lists ceftaroline, so cpt_* disappear from the TTD exclusions.
 id: ward_qt
 title: "Ward patient with QT prolongation: macrolides and quinolones avoided"
 source: idsa-ats-2019
-section: 'Q8; Table 4'
+section: 'Q8; Table 3'
 region: tr
 answers:
   setting: ward
@@ -11,3 +12,6 @@ expect:
   first_choice: cro_dox
   drugs: [ceftriaxone, doxycycline]
   excluded: [sam_azm_iv, sam_clr_iv, cro_azm_iv, cro_clr_iv, ctx_azm_iv, ctx_clr_iv, cpt_azm_iv, cpt_clr_iv, lvx_iv, mxf_iv]
+expect_by_set:
+  ttd-2021:
+    excluded: [sam_azm_iv, sam_clr_iv, cro_azm_iv, cro_clr_iv, ctx_azm_iv, ctx_clr_iv, lvx_iv, mxf_iv]

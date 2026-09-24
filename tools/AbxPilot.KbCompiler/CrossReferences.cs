@@ -50,7 +50,7 @@ internal sealed class CrossReferences(
         CheckSpectrum(drugIds, pathogenIds);
         CheckRegions(drugIds, pathogenIds);
         CheckScoring();
-        CheckConstraints(questionById, resistanceIds);
+        CheckConstraints(questionById, resistanceIds, flagsBySyndrome.Values.SelectMany(item => item).ToHashSet(StringComparer.Ordinal));
         CheckStrings();
     }
 
@@ -301,7 +301,6 @@ internal sealed class CrossReferences(
     private void CheckRows(HashSet<string> regimenIds, Dictionary<string, Question> questionById,
         Dictionary<string, HashSet<string>> flagsBySyndrome)
     {
-        var regimenById = regimens.GroupBy(item => item.Model.Id).ToDictionary(group => group.Key, group => group.First().Model);
         var setIds = sets.Select(item => item.Model.Id).ToHashSet(StringComparer.Ordinal);
         foreach (var set in sets)
         {
@@ -354,10 +353,6 @@ internal sealed class CrossReferences(
                     Unknown(Codes.UnknownReference, at, "", $"candidate regimen '{id}' does not exist");
                     continue;
                 }
-
-                if (row.Action == "replace" && row.Role is { } replaced &&
-                    regimenById[id].Components.All(component => component.Role != replaced))
-                    Unknown(Codes.Model, at, "", $"replacement regimen '{id}' has no '{replaced}' component");
             }
         }
     }
@@ -429,13 +424,15 @@ internal sealed class CrossReferences(
         }
     }
 
-    private void CheckConstraints(Dictionary<string, Question> questionById, HashSet<string> resistanceIds)
+    private void CheckConstraints(Dictionary<string, Question> questionById, HashSet<string> resistanceIds, HashSet<string> flags)
     {
         foreach (var (constraint, at) in constraints)
         {
             Require(constraint.ReasonKey, at, "/reason_key");
             if (constraint.When is { } when)
-                CheckCondition(when, at, "/when", questionById, new HashSet<string>(StringComparer.Ordinal), resistanceIds);
+                CheckCondition(when, at, "/when", questionById, flags, resistanceIds);
+            if (constraint.Spare?.When is { } spare)
+                CheckCondition(spare, at, "/spare/when", questionById, flags, resistanceIds);
             if (constraint.Exclude.ClassGroupInAnswer is { } answer && !questionById.ContainsKey(answer))
                 Unknown(Codes.UnknownQuestion, at, "/exclude/class_group_in_answer", $"unknown question '{answer}'");
         }

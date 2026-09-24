@@ -24,7 +24,7 @@ doses:
   amount: 600 mg
   interval_hours: 12
   source: idsa-ats-2019
-  section: Q8; Table 4
+  section: Q8; Table 3
 adverse_effects:
 - hypersensitivity
 - positive_coombs

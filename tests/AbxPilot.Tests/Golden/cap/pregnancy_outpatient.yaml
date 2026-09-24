@@ -1,7 +1,7 @@
 id: pregnancy_outpatient
 title: "Pregnant healthy outpatient"
 source: idsa-ats-2019
-section: 'Q7; Table 3'
+section: 'Q7; Table 2'
 region: tr
 answers:
   setting: outpatient

@@ -1,0 +1,18 @@
+id: out_recent_beta_lactam_comorbid
+title: "Outpatient with comorbidity and a beta-lactam in the last 3 months: another class moves ahead"
+source: idsa-ats-2019
+section: 'Q7; Table 2'
+region: tr
+answers:
+  setting: outpatient
+  comorbidity: [lung]
+  recent_abx_class: [beta_lactam]
+expect:
+  status: selected
+  first_choice: lvx_po
+  drugs: [levofloxacin]
+  excluded: []
+expect_by_set:
+  ttd-2021:
+    first_choice: cxm_azm_po
+    drugs: [cefuroxime_axetil, azithromycin]

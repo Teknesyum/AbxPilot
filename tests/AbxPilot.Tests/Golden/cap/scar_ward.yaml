@@ -1,7 +1,8 @@
+# Changed 2026-09: the TTD 2021 ward row (Table 7) no longer lists ceftaroline, so cpt_* disappear from the TTD exclusions; the SCAR rule now cites AAAAI/ACAAI 2022.
 id: scar_ward
 title: "Ward patient with a severe cutaneous reaction to penicillin"
 source: idsa-ats-2019
-section: 'Q8; Table 4'
+section: 'Q8; Table 3'
 region: tr
 answers:
   setting: ward
@@ -11,3 +12,6 @@ expect:
   first_choice: lvx_iv
   drugs: [levofloxacin]
   excluded: [sam_azm_iv, sam_clr_iv, cro_azm_iv, cro_clr_iv, ctx_azm_iv, ctx_clr_iv, cpt_azm_iv, cpt_clr_iv, cro_dox]
+expect_by_set:
+  ttd-2021:
+    excluded: [sam_azm_iv, sam_clr_iv, cro_azm_iv, cro_clr_iv, ctx_azm_iv, ctx_clr_iv, cro_dox]

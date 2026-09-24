@@ -1,0 +1,10 @@
+id: ttd-2021
+version: 1
+source: ttd-2021
+section: Table 5 (outpatient), Table 7 (inpatient), Appendix 1 (doses)
+source_date: '2021-01-01'
+reviewed_at: null
+review_status: unreviewed
+note: Carries only the rows where the TTD 2021 consensus differs from IDSA/ATS 2019. Replaces the former ttd-2009 set;
+  the 2009 report stays in sources.yaml as a historical record.
+extends: idsa-ats-2019

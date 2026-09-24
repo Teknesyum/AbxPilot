@@ -50,6 +50,8 @@ public sealed record RegimenLine(
     public IEnumerable<string> DrugIds => Components.Select(component => component.DrugId);
 
     public string Key => string.Join("+", Components.Select(component => component.DrugId));
+
+    public IReadOnlyList<TraceLine> Warnings { get; init; } = [];
 }
 
 public sealed record ComponentLine(

@@ -1,5 +1,5 @@
 id: clarithromycin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -21,16 +21,17 @@ doses:
   amount: 500 mg
   interval_hours: 12
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
 - id: cap_iv
   indication: cap
   route: iv
   renal_band: normal
   amount: 500 mg
   interval_hours: 12
-  source: product-labels
-  section: SmPC 4.2
-  note: IDSA/ATS 2019 lists 500 mg twice daily without a route; the IV form is not marketed in the US.
+  source: ttd-2021
+  section: Appendix 1
+  note: TTD 2021 gives 500 mg every 12 hours for both the parenteral and the oral form; IV clarithromycin is licensed
+    in Turkey (TITCK 18.09.2026).
 adverse_effects:
 - gi_upset
 - qt_prolongation

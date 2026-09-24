@@ -1,36 +1,39 @@
 id: tr
-version: 1
+version: 2
 source: abxpilot-draft
 section: Region profile for Turkey
 source_date: '2026-09-24'
 reviewed_at: null
 review_status: unreviewed
-note: Licensing states are from memory and must be checked against the TITCK product list in A9.
+note: Licensing states checked against the TITCK licensed product list of 18.09.2026 (titck-2026) by ATC code.
 resistance:
 - id: spn_macrolide
-  version: 1
+  version: 2
   source: who-caesar
-  section: S. pneumoniae macrolide non-susceptibility, Turkey
-  source_date: '2020-01-01'
+  section: Turkey country page p.137 (invasive S. pneumoniae, macrolide resistant)
+  source_date: '2021-12-31'
   reviewed_at: null
   review_status: unreviewed
-  note: Believed to exceed 25%; the exact figure and year are uncertain.
+  note: 34.1% in 2021 (n=126), 34.5-39.5% in 2016-2020. Invasive isolates, not CAP-specific; SOAR 2015-17 outpatient
+    isolates and TTD 2021 (33-51%) agree with the ge25 category.
   pathogen: s_pneumoniae
   drug_class: macrolide
   category: ge25
-  estimate: null
+  estimate: 0.341
 - id: sau_methicillin
-  version: 1
+  version: 2
   source: who-caesar
-  section: S. aureus methicillin resistance, Turkey (invasive isolates)
-  source_date: '2020-01-01'
+  section: Turkey country page p.137 (invasive S. aureus, methicillin resistant)
+  source_date: '2021-12-31'
   reviewed_at: null
   review_status: unreviewed
-  note: Invasive-isolate surveillance does not give a CAP-specific rate; category unknown.
+  note: 30.7% of invasive isolates in 2021 (n=3562). Information only, never a trigger - MRSA in CAP is far rarer, and
+    empiric MRSA cover follows the IDSA/ATS 2019 Q10 risk factors (prior respiratory isolation; recent hospitalisation
+    with IV antibiotics in severe CAP).
   pathogen: mrsa
   drug_class: beta_lactam
-  category: unknown
-  estimate: null
+  category: ge25
+  estimate: 0.307
 thresholds:
 - id: macrolide_resistance_cutoff
   version: 1
@@ -42,28 +45,28 @@ thresholds:
   value: 0.25
   unit: fraction
 - id: recent_exposure_window
-  version: 1
-  source: idsa-ats-2019
-  section: Q10
-  source_date: '2019-10-01'
+  version: 2
+  source: ttd-2021
+  section: Table 7 footnote (hospitalisation or antibiotics in the last 3 months)
+  source_date: '2021-01-01'
   reviewed_at: null
   review_status: unreviewed
   value: 90
   unit: days
 - id: minimum_duration
-  version: 1
-  source: idsa-ats-2019
-  section: Q14
-  source_date: '2019-10-01'
+  version: 2
+  source: ttd-2021
+  section: Treatment duration (at least 5 days)
+  source_date: '2021-01-01'
   reviewed_at: null
   review_status: unreviewed
   value: 5
   unit: days
 - id: resistant_pathogen_duration
-  version: 1
-  source: idsa-ats-2019
-  section: Q14
-  source_date: '2019-10-01'
+  version: 2
+  source: ttd-2021
+  section: Treatment duration (7 days for resistant pathogens)
+  source_date: '2021-01-01'
   reviewed_at: null
   review_status: unreviewed
   value: 7
@@ -93,13 +96,15 @@ licensing:
   status: licensed
 - drug: clarithromycin
   status: licensed
-  note: IV form believed available; to be confirmed.
+  note: IV form licensed (Klacid 500 mg IV and others), TITCK 18.09.2026.
 - drug: doxycycline
   status: licensed
-  note: Oral form licensed; availability of the IV form not confirmed.
+  note: Oral capsules and tablets only; no IV doxycycline is licensed (TITCK 18.09.2026).
 - drug: levofloxacin
   status: licensed
 - drug: moxifloxacin
+  status: licensed
+- drug: ciprofloxacin
   status: licensed
 - drug: vancomycin
   status: licensed
@@ -108,14 +113,14 @@ licensing:
 - drug: oseltamivir
   status: licensed
 - drug: ceftaroline
-  status: unknown
-  note: Availability in Turkey not confirmed.
+  status: not_licensed
+  note: No J01DI02 product in the TITCK list of 18.09.2026.
 - drug: cefpodoxime
-  status: unknown
-  note: Availability in Turkey not confirmed.
+  status: licensed
+  note: J01DD13, 68 active products (TITCK 18.09.2026).
 - drug: cefotaxime
-  status: unknown
-  note: Availability in Turkey not confirmed.
+  status: licensed
+  note: J01DD01, 29 active products (TITCK 18.09.2026).
 - drug: aztreonam
-  status: unknown
-  note: Availability in Turkey not confirmed.
+  status: not_licensed
+  note: No plain J01DF01 product; only aztreonam-avibactam (J01DF51) is licensed (TITCK 18.09.2026).

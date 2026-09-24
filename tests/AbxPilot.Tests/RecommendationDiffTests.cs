@@ -34,10 +34,10 @@ public sealed class RecommendationDiffTests
         var before = Engine.Evaluate(Ward);
         var after = Engine.Evaluate(Ward.WithAnswer("qt_risk", "yes"));
         var diff = RecommendationDiff.Between(before, after);
-        Assert.Equal(10, diff.NewlyExcluded.Count);
+        Assert.Equal(8, diff.NewlyExcluded.Count);
         Assert.NotEmpty(diff.AlternativesRemoved);
         Assert.Empty(RecommendationDiff.Between(after, before).NewlyExcluded);
-        Assert.Equal(10, RecommendationDiff.Between(after, before).NoLongerExcluded.Count);
+        Assert.Equal(8, RecommendationDiff.Between(after, before).NoLongerExcluded.Count);
         Assert.Contains("qt_risk", diff.ChangedAnswers);
     }
 

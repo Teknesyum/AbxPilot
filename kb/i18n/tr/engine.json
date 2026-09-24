@@ -26,5 +26,11 @@
   "exclude.qt": "Elendi: QT uzamasında bilinen QT riski",
   "exclude.recent_class": "Elendi: son 3 ayda aynı sınıf kullanıldı",
   "exclude.macrolide_resistance": "Elendi: yerel pnömokok direnci %25 ve üstündeyken tek başına makrolid",
-  "exclude.not_licensed": "Elendi: bu bölgede ruhsatlı değil"
+  "exclude.not_licensed": "Elendi: bu bölgede ruhsatlı değil",
+  "warn.recent_class": "Uyarı: son 3 ayda aynı sınıf kullanıldı; başka sınıftan aday varsa öne alındı",
+  "warn.license_unknown": "Uyarı: bu bölgede ruhsat durumu bilinmiyor; bulunabilirliği kontrol edin",
+  "warn.allergy_ige_other_beta_lactam": "Uyarı: IgE aracılı penisilin alerjisi; farklı yan zincirli 3./4. kuşak sefalosporin, karbapenem ve aztreonam testsiz verilebilir (AAAAI/ACAAI 2022)",
+  "engine.warning": "Aday kalır, uyarı taşır",
+  "engine.demoted": "Aday aynı basamakta geriye alındı",
+  "engine.regimen_rewritten": "Kılavuz değişikliğinden sonra rejim adı verilen ilaçlara göre güncellendi"
 }

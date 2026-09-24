@@ -1,7 +1,7 @@
 id: no_answers
 title: "No answers at all: every question takes its default"
 source: idsa-ats-2019
-section: 'Q7; Table 3'
+section: 'Q7; Table 2'
 region: tr
 answers: {}
 expect:

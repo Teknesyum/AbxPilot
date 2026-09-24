@@ -1,7 +1,7 @@
 id: out_comorbid
 title: "Outpatient with chronic heart disease"
 source: idsa-ats-2019
-section: 'Q7; Table 3'
+section: 'Q7; Table 2'
 region: tr
 answers:
   setting: outpatient
@@ -12,6 +12,6 @@ expect:
   drugs: [amoxicillin_clavulanate, azithromycin]
   excluded: []
 expect_by_set:
-  ttd-2009:
+  ttd-2021:
     first_choice: cxm_azm_po
     drugs: [cefuroxime_axetil, azithromycin]

@@ -55,7 +55,7 @@
 - id: comorbidity
   version: 1
   source: idsa-ats-2019
-  section: Q7; Table 3
+  section: Q7; Table 2
   source_date: '2019-10-01'
   reviewed_at: null
   review_status: unreviewed
@@ -125,13 +125,14 @@
   options: *id001
   default: 'no'
 - id: recent_abx_class
-  version: 1
-  source: idsa-ats-2019
-  section: Q7 (recent antibiotic exposure)
-  source_date: '2019-10-01'
+  version: 2
+  source: ttd-2021
+  section: Table 5 (antibiotic use in the last 3 months)
+  source_date: '2021-01-01'
   reviewed_at: null
   review_status: unreviewed
-  note: Used by the engine to prefer another class; the guideline wording must be checked in A9.
+  note: Window is the last 3 months. TTD 2021 asks for a different class (beta-lactam user gets a quinolone and the
+    reverse); IDSA/ATS 2019 Q7 agrees. The engine prefers another class and never removes the candidate.
   type: multi
   options:
   - beta_lactam

@@ -104,7 +104,16 @@ public sealed class GuidelineEngine : IGuidelineEngine
             _sources.TryGetValue(dose.Source, out var source) ? source.Published : drug.SourceDate,
             drug.ReviewedAt, drug.ReviewStatus);
 
-    private sealed record Part(RegimenComponent Component, string? AddedBy);
+    private sealed record Part(RegimenComponent Component, string? AddedBy, bool Replacing = false);
+
+    private static string PartKey(IEnumerable<RegimenComponent> components) =>
+        string.Join("+", components.Select(component => $"{component.Drug}:{component.Dose}").Order(StringComparer.Ordinal));
+
+    private string? RegimenFor(IEnumerable<RegimenComponent> components)
+    {
+        var key = PartKey(components);
+        return _kb.Regimens.FirstOrDefault(item => PartKey(item.Components) == key)?.Id;
+    }
 
     private sealed record Modifier(GuidelineRow Row, Regimen Chosen);
 
@@ -126,6 +135,7 @@ public sealed class GuidelineEngine : IGuidelineEngine
         private readonly HashSet<string> _riskPathogens = new(StringComparer.Ordinal);
         private readonly HashSet<string> _quietPathogens = new(StringComparer.Ordinal);
         private List<Constraint> _active = [];
+        private List<Constraint> _soft = [];
 
         public Recommendation Execute()
         {
@@ -135,9 +145,11 @@ public sealed class GuidelineEngine : IGuidelineEngine
 
             ResolveQuestions();
             DeriveFlags();
-            _active = engine._kb.Constraints
+            var active = engine._kb.Constraints
                 .Where(rule => rule.When is null || Matches(rule.When, _values, region))
                 .ToList();
+            _active = active.Where(rule => rule.Mode == ConstraintMode.Exclude).ToList();
+            _soft = active.Where(rule => rule.Mode != ConstraintMode.Exclude).ToList();
 
             var rows = engine._rows.GetValueOrDefault((set.Id, syndrome.Id)) ?? [];
             var baseRow = rows.FirstOrDefault(row => row.Stage == BaseStage && RowMatches(row));
@@ -291,21 +303,57 @@ public sealed class GuidelineEngine : IGuidelineEngine
         private Regimen? ChooseModifier(GuidelineRow row)
         {
             for (var tier = 0; tier < row.Candidates.Count; tier++)
-            foreach (var id in row.Candidates[tier])
             {
-                var regimen = engine._regimens[id];
-                var violation = FirstViolation(regimen.Components, false);
-                if (violation is null) return regimen;
-                Exclude(id, tier + 1, violation);
+                Regimen? fallback = null;
+                foreach (var id in row.Candidates[tier])
+                {
+                    var regimen = engine._regimens[id];
+                    var violation = FirstViolation(regimen.Components, false);
+                    if (violation is not null)
+                    {
+                        Exclude(id, tier + 1, violation);
+                        continue;
+                    }
+
+                    var parts = regimen.Components.Select(component => new Part(component, row.Id)).ToList();
+                    if (!Soft(parts).Demoted) return regimen;
+                    if (fallback is null)
+                    {
+                        fallback = regimen;
+                        _trace.Add(new TraceLine(row.Id, "engine.demoted", regimen.ToSourceRef(), id));
+                    }
+                }
+
+                if (fallback is not null) return fallback;
             }
 
             return null;
+        }
+
+        private (bool Demoted, List<TraceLine> Warnings) Soft(List<Part> parts)
+        {
+            var demoted = false;
+            var warnings = new List<TraceLine>();
+            foreach (var rule in _soft)
+            foreach (var part in parts)
+            {
+                var drug = engine._drugs[part.Component.Drug];
+                if (!Selects(rule.Exclude, drug, parts.Count == 1)) continue;
+                if (warnings.All(item => item.RuleId != rule.Id || item.Subject != drug.Id))
+                    warnings.Add(new TraceLine(rule.Id, rule.ReasonKey, rule.ToSourceRef(), drug.Id));
+                var spared = rule.Spare is { } spare && part.Component.Role == spare.Role &&
+                             (spare.When is null || Matches(spare.When, _values, region));
+                if (rule.Mode == ConstraintMode.Demote && !spared) demoted = true;
+            }
+
+            return (demoted, warnings);
         }
 
         private List<RegimenLine> BuildCandidates(GuidelineRow baseRow, List<Modifier> modifiers, int? duration)
         {
             var lines = new List<RegimenLine>();
             var seen = new HashSet<string>(StringComparer.Ordinal);
+            var demotedIds = new HashSet<string>(StringComparer.Ordinal);
             for (var tier = 0; tier < baseRow.Candidates.Count; tier++)
             foreach (var id in baseRow.Candidates[tier])
             {
@@ -318,17 +366,43 @@ public sealed class GuidelineEngine : IGuidelineEngine
                     continue;
                 }
 
-                var key = string.Join("+", parts.Select(part => part.Component.Drug));
+                var key = string.Join("+", parts.Select(part => part.Component.Drug).Order(StringComparer.Ordinal));
                 if (!seen.Add(key))
                 {
                     _trace.Add(new TraceLine(baseRow.Id, "engine.duplicate", regimen.ToSourceRef(), id));
                     continue;
                 }
 
-                lines.Add(new RegimenLine(id, baseRow.Id, tier + 1, parts.Select(Line).ToArray(), duration, regimen.ToSourceRef(), null));
+                var lineId = id;
+                var lineSource = regimen.ToSourceRef();
+                var core = parts.Where(part => part.AddedBy is null || part.Replacing).Select(part => part.Component).ToArray();
+                if (PartKey(core) != PartKey(regimen.Components))
+                {
+                    var rows = string.Join("+", parts.Where(part => part.Replacing).Select(part => part.AddedBy).Distinct());
+                    var known = engine.RegimenFor(core);
+                    lineId = known ?? $"{id}@{rows}";
+                    if (known is not null) lineSource = engine._regimens[known].ToSourceRef();
+                    _trace.Add(new TraceLine(rows, "engine.regimen_rewritten", lineSource, $"{id}>{lineId}"));
+                }
+
+                var (demoted, warnings) = Soft(parts);
+                if (demoted) demotedIds.Add(lineId);
+                foreach (var warning in warnings)
+                    _trace.Add(new TraceLine(warning.RuleId, "engine.warning", warning.Source, $"{lineId}/{warning.Subject}"));
+                lines.Add(new RegimenLine(lineId, baseRow.Id, tier + 1, parts.Select(Line).ToArray(), duration, lineSource, null)
+                {
+                    Warnings = warnings
+                });
             }
 
-            return lines;
+            var ordered = lines
+                .OrderBy(line => line.Tier)
+                .ThenBy(line => demotedIds.Contains(line.RegimenId) ? 1 : 0)
+                .ToList();
+            foreach (var line in lines.Where(line => demotedIds.Contains(line.RegimenId)))
+                if (ordered.Any(other => other.Tier == line.Tier && !demotedIds.Contains(other.RegimenId)))
+                    _trace.Add(new TraceLine(baseRow.Id, "engine.demoted", line.Source, line.RegimenId));
+            return ordered;
         }
 
         private static List<Part> Compose(Regimen regimen, List<Modifier> modifiers)
@@ -337,12 +411,13 @@ public sealed class GuidelineEngine : IGuidelineEngine
             foreach (var (row, chosen) in modifiers)
             {
                 var incoming = chosen.Components
-                    .Select(component => new Part(component, row.Id))
+                    .Select(component => new Part(component, row.Id, row.Action == ReplaceAction))
                     .ToList();
                 if (row.Action == ReplaceAction)
                 {
-                    var at = parts.FindIndex(part => part.Component.Role == row.Role);
-                    parts.RemoveAll(part => part.Component.Role == row.Role);
+                    var roles = incoming.Select(part => (string?)part.Component.Role).Append(row.Role).ToHashSet();
+                    var at = parts.FindIndex(part => roles.Contains(part.Component.Role));
+                    parts.RemoveAll(part => roles.Contains(part.Component.Role));
                     incoming.RemoveAll(part => parts.Any(existing => existing.Component.Drug == part.Component.Drug));
                     parts.InsertRange(at < 0 ? parts.Count : Math.Min(at, parts.Count), incoming);
                 }

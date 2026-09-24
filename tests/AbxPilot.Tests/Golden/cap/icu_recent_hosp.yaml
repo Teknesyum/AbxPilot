@@ -1,3 +1,4 @@
+# Changed 2026-09: the regimen id now names the drugs given after the Pseudomonas replace rule (was sam_azm_iv); TTD 2021 pairs the antipseudomonal beta-lactam with ciprofloxacin (Table 7).
 id: icu_recent_hosp
 title: "Severe ICU patient hospitalised with IV antibiotics in the last 90 days"
 source: idsa-ats-2019
@@ -9,6 +10,10 @@ answers:
   recent_hosp_iv: 'yes'
 expect:
   status: selected
-  first_choice: sam_azm_iv
+  first_choice: tzp_azm_iv
   drugs: [piperacillin_tazobactam, azithromycin, vancomycin]
   excluded: []
+expect_by_set:
+  ttd-2021:
+    first_choice: tzp_cip_iv
+    drugs: [piperacillin_tazobactam, ciprofloxacin, vancomycin]

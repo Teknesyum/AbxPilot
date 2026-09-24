@@ -1,0 +1,14 @@
+id: tr_no_ceftaroline
+title: "Severe patient with IgE penicillin allergy in Turkey: ceftaroline is never chosen"
+source: titck-2026
+section: 'Region licensing list'
+region: tr
+answers:
+  setting: icu
+  severe_ventilation: 'yes'
+  pen_allergy: ige
+expect:
+  status: selected
+  first_choice: cro_azm_iv
+  drugs: [ceftriaxone, azithromycin]
+  excluded: [sam_azm_iv, sam_clr_iv, sam_lvx_iv, sam_mxf_iv, cpt_azm_iv, cpt_clr_iv, cpt_lvx_iv, cpt_mxf_iv]

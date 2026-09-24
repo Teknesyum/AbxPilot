@@ -1,7 +1,8 @@
+# Changed 2026-09: ceftaroline is not licensed in Turkey (TITCK 2026) and the TTD 2021 ward row no longer lists it; ceftriaxone stays allowed with a warning line (AAAAI/ACAAI 2022).
 id: ward_ige
 title: "Ward patient with IgE-mediated penicillin allergy"
 source: idsa-ats-2019
-section: 'Q8; Table 4'
+section: 'Q8; Table 3'
 region: tr
 answers:
   setting: ward
@@ -10,4 +11,7 @@ expect:
   status: selected
   first_choice: cro_azm_iv
   drugs: [ceftriaxone, azithromycin]
-  excluded: [sam_azm_iv, sam_clr_iv]
+  excluded: [sam_azm_iv, sam_clr_iv, cpt_azm_iv, cpt_clr_iv]
+expect_by_set:
+  ttd-2021:
+    excluded: [sam_azm_iv, sam_clr_iv]

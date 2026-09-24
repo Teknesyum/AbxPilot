@@ -19,7 +19,7 @@ public sealed class KnowledgeBaseTests
         Assert.Equal(12, kb.Pathogens.Count);
         Assert.InRange(kb.Questions.Count, 10, 20);
         Assert.Contains(kb.GuidelineSets, set => set.Id == "idsa-ats-2019");
-        Assert.Contains(kb.GuidelineSets, set => set.Id == "ttd-2009");
+        Assert.Contains(kb.GuidelineSets, set => set.Id == "ttd-2021");
         Assert.Contains("tr", result.StringTables.Keys);
         Assert.Contains("en", result.StringTables.Keys);
     }
@@ -101,7 +101,7 @@ public sealed class KnowledgeBaseTests
         Assert.Equal("15 mg/kg", vancomycin.Amount);
         Assert.False(string.IsNullOrEmpty(vancomycin.Amount70Kg));
         Assert.All(embedded.Drugs, drug => Assert.Null(drug.ReviewedAt));
-        Assert.Contains(embedded.GuidelineRows, row => row.Set == "ttd-2009" && row.Id == "psa_fq");
+        Assert.Contains(embedded.GuidelineRows, row => row.Set == "ttd-2021" && row.Id == "psa_fq");
         Assert.Equal("Türkiye", KbResources.Strings("tr")["region.tr.name"]);
     }
 

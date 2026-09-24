@@ -8,16 +8,17 @@ ceftriaxone,1,reliable,reliable,reliable,none,none,none,variable,none,none,varia
 cefotaxime,1,reliable,reliable,reliable,none,none,none,variable,none,none,variable,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
 ceftaroline,1,reliable,reliable,reliable,none,none,none,reliable,reliable,none,variable,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
 cefepime,1,reliable,reliable,reliable,none,none,none,variable,none,reliable,variable,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
-ceftazidime,1,variable,reliable,reliable,none,none,none,none,none,reliable,variable,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
+ceftazidime,2,none,reliable,reliable,none,none,none,none,none,reliable,variable,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,s_pneumoniae none: no EUCAST pneumococcal breakpoint for ceftazidime (eucast-expected-2023).
 piperacillin_tazobactam,1,reliable,reliable,reliable,none,none,none,reliable,none,reliable,variable,reliable,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
 meropenem,1,reliable,reliable,reliable,none,none,none,reliable,none,reliable,reliable,reliable,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
 imipenem_cilastatin,1,reliable,reliable,reliable,none,none,none,reliable,none,reliable,reliable,reliable,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
 aztreonam,1,none,reliable,reliable,none,none,none,none,none,variable,variable,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
 azithromycin,1,variable,reliable,reliable,reliable,reliable,reliable,variable,none,none,none,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
 clarithromycin,1,variable,variable,reliable,reliable,reliable,reliable,variable,none,none,none,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
+ciprofloxacin,1,variable,reliable,reliable,variable,variable,reliable,variable,none,reliable,variable,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,Weak pneumococcal activity; antipseudomonal partner only.
 doxycycline,1,variable,variable,reliable,reliable,reliable,variable,variable,variable,none,none,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
 levofloxacin,1,reliable,reliable,reliable,reliable,reliable,reliable,variable,none,variable,variable,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
 moxifloxacin,1,reliable,reliable,reliable,reliable,reliable,reliable,variable,none,none,variable,variable,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
-vancomycin,1,reliable,none,none,none,none,none,reliable,reliable,none,none,variable,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
-linezolid,1,reliable,none,none,none,none,none,reliable,reliable,none,none,variable,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
+vancomycin,2,reliable,none,none,none,none,none,reliable,reliable,none,none,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,anaerobes none: Gram-negative anaerobes are expected resistant to glycopeptides; Gram-positive anaerobes only (eucast-expected-2023).
+linezolid,2,reliable,none,none,none,none,none,reliable,reliable,none,none,none,none,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,anaerobes none: Gram-negative anaerobes are expected resistant to oxazolidinones; Gram-positive anaerobes only (eucast-expected-2023).
 oseltamivir,1,none,none,none,none,none,none,none,none,none,none,none,reliable,abxpilot-draft,Draft spectrum matrix for CAP pathogens,2026-09-24,,unreviewed,
