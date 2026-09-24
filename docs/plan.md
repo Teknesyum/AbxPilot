@@ -150,8 +150,8 @@ TİTCK aynı çerçeveyi uygular. "Reçete değildir" yazısı sınıfı düşü
 - [x] **A0 İskele:** çözüm, beş proje, palet, üst çubuk, Kur penceresi, Android başı derlenir, AGPL lisansı
 - [x] **A1 Bilgi tabanı çekirdeği:** şemalar, KbCompiler, TKP için ilaç, patojen, soru ve TTD/IDSA tabloları
 - [x] **A2 Motor:** bağlam, risk bayrakları, tablo eşleme, kısıtlar, gerekçe izi, altın vakalar
-- [ ] **A3 Ekran:** sendrom rayı, soru kartları, öneri kartı, spektrum şeridi, statik
-- [ ] **A4 Hareket:** öneri farkı, neden izi, eleme, spektrum, soru açılması
+- [x] **A3 Ekran:** sendrom rayı, soru kartları, öneri kartı, spektrum şeridi, statik
+- [x] **A4 Hareket:** öneri farkı, neden izi, eleme, spektrum, soru açılması
 - [ ] **A5 İkinci sendrom:** selülit; motorun genellendiği kanıtlanır
 - [ ] **A6 Üçüncü ve dördüncü sendrom:** idrar yolu, intraabdominal
 - [ ] **A7 İngilizce ve bölge katmanı:** `en`, `regions/EU`, `regions/US`, kılavuz seti seçimi
