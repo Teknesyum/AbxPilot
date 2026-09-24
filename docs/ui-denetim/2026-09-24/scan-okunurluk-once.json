@@ -1,0 +1,24 @@
+[
+  {
+    "file": "src/AbxPilot.UI/Themes/Controls.axaml",
+    "line": 102,
+    "rule": "okunurluk/pair-contrast",
+    "severity": "error",
+    "message": "bg NeonPurple (#b026ff) on fg Black (#000000) — 4.6:1, below 7:1",
+    "fix": null,
+    "fixed": false,
+    "ignored": false,
+    "reason": null
+  },
+  {
+    "file": "src/AbxPilot.UI/Themes/Controls.axaml",
+    "line": 115,
+    "rule": "okunurluk/pair-contrast",
+    "severity": "error",
+    "message": "bg NeonPink (#ff00ea) on fg TextBody (#ffffff) — 3.3:1, below 7:1",
+    "fix": null,
+    "fixed": false,
+    "ignored": false,
+    "reason": null
+  }
+]

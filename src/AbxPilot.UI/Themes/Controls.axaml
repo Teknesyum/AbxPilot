@@ -44,7 +44,7 @@
         </ControlTemplate>
       </Setter>
       <Style Selector="^:pointerover">
-        <Setter Property="Foreground" Value="{StaticResource NeonPink}"/>
+        <Setter Property="Foreground" Value="{StaticResource PinkText}"/>
       </Style>
       <Style Selector="^:pointerover /template/ Border#bd">
         <Setter Property="BorderBrush" Value="{StaticResource BorderStrong}"/>
@@ -96,10 +96,10 @@
         </ControlTemplate>
       </Setter>
       <Style Selector="^:pointerover">
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Foreground" Value="{StaticResource OnBlue}"/>
       </Style>
       <Style Selector="^:pointerover /template/ Border#Root">
-        <Setter Property="Background" Value="{StaticResource NeonPurple}"/>
+        <Setter Property="Background" Value="{StaticResource NeonBlue}"/>
       </Style>
       <Style Selector="^:pressed /template/ Border#Root">
         <Setter Property="Opacity" Value="0.85"/>
@@ -111,8 +111,11 @@
 
     <ControlTheme x:Key="CloseWindowButton" TargetType="Button" BasedOn="{StaticResource WindowControlButton}">
       <Setter Property="Foreground" Value="{StaticResource TextBody}"/>
+      <Style Selector="^:pointerover">
+        <Setter Property="Foreground" Value="{StaticResource OnPink20}"/>
+      </Style>
       <Style Selector="^:pointerover /template/ Border#Root">
-        <Setter Property="Background" Value="{StaticResource NeonPink}"/>
+        <Setter Property="Background" Value="{StaticResource NeonPink20}"/>
       </Style>
     </ControlTheme>
 

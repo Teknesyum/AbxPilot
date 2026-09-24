@@ -43,7 +43,7 @@
                         Margin="{StaticResource InputPadding}" Spacing="{StaticResource Space2}">
               <Panel Width="{StaticResource IconSize3}" Height="{StaticResource IconSize3}" VerticalAlignment="Center">
                 <Path Stretch="Uniform" Data="{StaticResource IconLogoLeft}" Fill="{StaticResource NeonBlue}"/>
-                <Path Stretch="Uniform" Data="{StaticResource IconLogoRight}" Fill="{StaticResource NeonPink}"/>
+                <Path Stretch="Uniform" Data="{StaticResource IconLogoRight}" Fill="{StaticResource PinkText}"/>
               </Panel>
               <TextBlock Theme="{StaticResource H3}" VerticalAlignment="Center">
                 <Run Text="{loc:Text app.name.first}" Foreground="{StaticResource NeonBlue}"/><Run Text="{loc:Text app.name.second}" Foreground="{StaticResource PinkText}"/>

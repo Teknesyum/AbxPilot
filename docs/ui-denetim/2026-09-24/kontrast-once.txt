@@ -1,0 +1,57 @@
+durum | tur | yol | metin | on | zemin | oran | sonuc
+dinlenik | simge | Grid > StackPanel#TitleBrand > Panel > Path | "simge" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | simge | Grid > StackPanel#TitleBrand > Panel > Path | "simge" | on #FF00EA | zemin #08090A | 6.11:1 | KALIR
+dinlenik | yazi | Border#TitleBar > Grid > StackPanel#TitleBrand > TextBlock | "Abx" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | yazi | Border#TitleBar > Grid > StackPanel#TitleBrand > TextBlock | "Pilot" | on #FF54EB | zemin #08090A | 7.33:1 | gecer
+dinlenik | yazi | Grid > StackPanel > Border > TextBlock | "Veri 0.0.0" | on #FFFFFF | zemin #08090A | 19.93:1 | gecer
+dinlenik | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "English" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Türkçe" | on #FFFFFF | zemin #08090A | 19.93:1 | gecer
+dinlenik | simge | ContentPresenter#PART_ContentPresenter > StackPanel > Canvas > Path | "simge" | on #FF54EB | zemin #08090A | 7.33:1 | gecer
+dinlenik | yazi | Border#bd > ContentPresenter#PART_ContentPresenter > StackPanel > TextBlock | "Bir kahve ısmarla" | on #FF54EB | zemin #08090A | 7.33:1 | gecer
+dinlenik | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "by Teknesyum" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path#MaximizeGlyph | "simge" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #08090A | 19.93:1 | gecer
+dinlenik | yazi | ContentPresenter#PART_ContentPresenter > DockPanel > Border#Disclaimer > TextBlock | "Klinik değerlendirme gerektirir. Bu prog…" | on #FFFFFF | zemin #08090A | 19.93:1 | gecer
+dinlenik | yazi | Grid > Border#SyndromeRail > DockPanel > TextBlock | "Sendromlar" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | yazi | Grid > Border#SyndromeRail > DockPanel > TextBlock | "Bilgi tabanında henüz sendrom yok" | on #FFFFFF | zemin #08090A | 19.93:1 | gecer
+dinlenik | yazi | StackPanel > Border#SummaryCard > StackPanel > TextBlock | "Kılavuz özeti" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | yazi | StackPanel > UniformGrid > StackPanel > TextBlock | "Rejim" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | yazi | StackPanel > UniformGrid > StackPanel > TextBlock | "Doz" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | yazi | StackPanel > UniformGrid > StackPanel > TextBlock | "Yol" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | yazi | StackPanel > UniformGrid > StackPanel > TextBlock | "Süre" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | yazi | StackPanel > Border#SpectrumStrip > StackPanel > TextBlock | "Spektrum" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | yazi | StackPanel > Border#QuestionPanel > StackPanel > TextBlock | "Sorular" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+dinlenik | yazi | StackPanel > Border#QuestionPanel > StackPanel > TextBlock | "Sendrom seçilince sorular burada açılır" | on #FFFFFF | zemin #08090A | 19.93:1 | gecer
+hover "English" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "English" | on #FF00EA | zemin #08090A | 6.11:1 | KALIR
+basili "English" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "English" | on #FF00EA | zemin #08090A | 6.11:1 | KALIR
+odak "English" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "English" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+edilgen "English" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "English" | on #00F3FF | zemin #08090A | 14.49:1 | edilgen
+hover "Türkçe" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Türkçe" | on #FFFFFF | zemin #08090A | 19.93:1 | gecer
+basili "Türkçe" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Türkçe" | on #FFFFFF | zemin #08090A | 19.93:1 | gecer
+odak "Türkçe" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Türkçe" | on #FFFFFF | zemin #08090A | 19.93:1 | gecer
+edilgen "Türkçe" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Türkçe" | on #FFFFFF | zemin #08090A | 19.93:1 | edilgen
+hover Button | simge | ContentPresenter#PART_ContentPresenter > StackPanel > Canvas > Path | "simge" | on #FF54EB | zemin #08090A | 7.33:1 | gecer
+hover Button | yazi | Border#bd > ContentPresenter#PART_ContentPresenter > StackPanel > TextBlock | "Bir kahve ısmarla" | on #FF54EB | zemin #08090A | 7.33:1 | gecer
+basili Button | simge | ContentPresenter#PART_ContentPresenter > StackPanel > Canvas > Path | "simge" | on #FF54EB | zemin #08090A | 7.33:1 | gecer
+basili Button | yazi | Border#bd > ContentPresenter#PART_ContentPresenter > StackPanel > TextBlock | "Bir kahve ısmarla" | on #FF54EB | zemin #08090A | 7.33:1 | gecer
+odak Button | simge | ContentPresenter#PART_ContentPresenter > StackPanel > Canvas > Path | "simge" | on #FF54EB | zemin #08090A | 7.33:1 | gecer
+odak Button | yazi | Border#bd > ContentPresenter#PART_ContentPresenter > StackPanel > TextBlock | "Bir kahve ısmarla" | on #FF54EB | zemin #08090A | 7.33:1 | gecer
+edilgen Button | simge | ContentPresenter#PART_ContentPresenter > StackPanel > Canvas > Path | "simge" | on #FF54EB | zemin #08090A | 7.33:1 | edilgen
+edilgen Button | yazi | Border#bd > ContentPresenter#PART_ContentPresenter > StackPanel > TextBlock | "Bir kahve ısmarla" | on #FF54EB | zemin #08090A | 7.33:1 | edilgen
+hover Button | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "by Teknesyum" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+basili Button | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "by Teknesyum" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+odak Button | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "by Teknesyum" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+edilgen Button | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "by Teknesyum" | on #00F3FF | zemin #08090A | 14.49:1 | edilgen
+hover #BtnMinimize | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #000000 | zemin #B026FF | 4.57:1 | KALIR
+basili #BtnMinimize | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #000000 | zemin #9722DA | 3.29:1 | KALIR
+odak #BtnMinimize | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+edilgen #BtnMinimize | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #00F3FF | zemin #08090A | 14.49:1 | edilgen
+hover #BtnMaximize | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path#MaximizeGlyph | "simge" | on #000000 | zemin #B026FF | 4.57:1 | KALIR
+basili #BtnMaximize | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path#MaximizeGlyph | "simge" | on #000000 | zemin #9722DA | 3.29:1 | KALIR
+odak #BtnMaximize | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path#MaximizeGlyph | "simge" | on #00F3FF | zemin #08090A | 14.49:1 | gecer
+edilgen #BtnMaximize | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path#MaximizeGlyph | "simge" | on #00F3FF | zemin #08090A | 14.49:1 | edilgen
+hover #BtnClose | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #000000 | zemin #FF00EA | 6.44:1 | KALIR
+basili #BtnClose | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #000000 | zemin #DA01C8 | 4.45:1 | KALIR
+odak #BtnClose | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #08090A | 19.93:1 | gecer
+edilgen #BtnClose | simge | Border#Root > Panel > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #08090A | 19.93:1 | edilgen
