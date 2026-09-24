@@ -142,7 +142,7 @@ TİTCK aynı çerçeveyi uygular. "Reçete değildir" yazısı sınıfı düşü
 
 ## Aşamalar
 
-- [ ] **A0 İskele:** çözüm, beş proje, palet, üst çubuk, Kur penceresi, Android başı derlenir, AGPL lisansı
+- [x] **A0 İskele:** çözüm, beş proje, palet, üst çubuk, Kur penceresi, Android başı derlenir, AGPL lisansı
 - [ ] **A1 Bilgi tabanı çekirdeği:** şemalar, KbCompiler, TKP için ilaç, patojen, soru ve TTD/IDSA tabloları
 - [ ] **A2 Motor:** bağlam, risk bayrakları, tablo eşleme, kısıtlar, gerekçe izi, altın vakalar
 - [ ] **A3 Ekran:** sendrom rayı, soru kartları, öneri kartı, spektrum şeridi, statik
