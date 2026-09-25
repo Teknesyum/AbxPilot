@@ -44,7 +44,7 @@
             <TextBlock Theme="{StaticResource Hint}" Text="{loc:Text footer.disclaimer}"/>
           </Border>
 
-          <Grid x:Name="Upper" Grid.Row="2" ColumnDefinitions="3*,2*" ColumnSpacing="{StaticResource SectionGap}">
+          <Grid x:Name="Upper" Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="{StaticResource SectionGap}">
             <Border x:Name="SummaryCard" Grid.Column="0" Theme="{StaticResource Panel}"
                     Classes.consult="{Binding IsCaution}"
                     Classes.clear="{Binding IsNoAntibiotic}">
@@ -358,36 +358,41 @@
 
             <Panel x:Name="SpectrumWide" Grid.Column="1">
               <Border x:Name="SpectrumStrip" Theme="{StaticResource Panel}">
-                <ScrollViewer HorizontalScrollBarVisibility="Disabled" Padding="{Binding Source={StaticResource Space4}, Converter={x:Static ch:Converters.Gutter}}">
-                  <StackPanel Spacing="{StaticResource RowGap}">
+                <ScrollViewer x:Name="SpectrumScroll" HorizontalScrollBarVisibility="Disabled" Padding="{Binding Source={StaticResource Space4}, Converter={x:Static ch:Converters.Gutter}}">
+                  <StackPanel x:Name="SpectrumContent" Spacing="{StaticResource FieldGap}">
                     <TextBlock Theme="{StaticResource H3}" Text="{loc:Text spectrum.title}"/>
                     <TextBlock Theme="{StaticResource Hint}" Text="{loc:Text spectrum.hint}" IsVisible="{Binding HasSpectrum}"/>
                     <TextBlock Theme="{StaticResource Hint}" Text="{loc:Text spectrum.empty}" IsVisible="{Binding !HasSpectrum}"/>
-                    <ItemsControl x:Name="SpectrumList" ItemsSource="{Binding Spectrum}">
+                    <ItemsControl x:Name="SpectrumList" ItemsSource="{Binding Spectrum}" Grid.IsSharedSizeScope="True">
                       <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                          <StackPanel Spacing="{StaticResource RowGap}"/>
+                          <StackPanel Spacing="{StaticResource Space1}"/>
                         </ItemsPanelTemplate>
                       </ItemsControl.ItemsPanel>
                       <ItemsControl.ItemTemplate>
                         <DataTemplate x:DataType="vm:SpectrumRow">
-                          <StackPanel Spacing="{StaticResource Space1}">
-                            <DockPanel HorizontalSpacing="{StaticResource RowGap}">
-                              <TextBlock DockPanel.Dock="Right" Theme="{StaticResource Label}" Text="{Binding LevelText}"/>
-                              <Border DockPanel.Dock="Right" Theme="{StaticResource WarningBadge}"
-                                      IsVisible="{Binding AtRisk}">
-                                <TextBlock Theme="{StaticResource WarningBody}" Text="{Binding RiskText}"/>
-                              </Border>
-                              <TextBlock Theme="{StaticResource Body}" TextTrimming="CharacterEllipsis" Text="{Binding Name}"
-                                         ToolTip.Tip="{Binding Name}"/>
+                          <Grid ColumnSpacing="{StaticResource FieldGap}">
+                            <Grid.ColumnDefinitions>
+                              <ColumnDefinition Width="Auto" SharedSizeGroup="name"/>
+                              <ColumnDefinition Width="*"/>
+                              <ColumnDefinition Width="Auto" SharedSizeGroup="level"/>
+                            </Grid.ColumnDefinitions>
+                            <DockPanel HorizontalSpacing="{StaticResource Space1}">
+                              <TextBlock DockPanel.Dock="Right" Theme="{StaticResource Hint}" TextWrapping="NoWrap"
+                                         Foreground="{StaticResource Warning}"
+                                         IsVisible="{Binding AtRisk}" Text="{Binding RiskText}"/>
+                              <TextBlock Theme="{StaticResource Hint}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                                         Text="{Binding ShortName}" ToolTip.Tip="{Binding Name}"/>
                             </DockPanel>
-                            <Panel Height="{StaticResource Space2}">
+                            <Panel Grid.Column="1" Height="{StaticResource Space1}" VerticalAlignment="Center">
                               <Border Background="{StaticResource NeonBlue10}" CornerRadius="{StaticResource Radius}"/>
                               <Border Classes="fill" Classes.variable="{Binding IsVariable}"
                                       CornerRadius="{StaticResource Radius}"
                                       RenderTransform="{Binding Coverage, Converter={x:Static ch:Converters.ScaleX}}"/>
                             </Panel>
-                          </StackPanel>
+                            <TextBlock Grid.Column="2" Theme="{StaticResource Label}" VerticalAlignment="Center"
+                                       Text="{Binding LevelText}"/>
+                          </Grid>
                         </DataTemplate>
                       </ItemsControl.ItemTemplate>
                     </ItemsControl>

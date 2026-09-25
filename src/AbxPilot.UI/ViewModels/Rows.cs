@@ -143,6 +143,9 @@ public sealed partial class SpectrumRow : ObservableObject
     private string name = "";
 
     [ObservableProperty]
+    private string shortName = "";
+
+    [ObservableProperty]
     private string levelText = "";
 
     [ObservableProperty]

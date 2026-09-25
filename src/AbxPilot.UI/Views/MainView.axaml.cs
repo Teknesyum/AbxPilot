@@ -33,6 +33,7 @@ public partial class MainView : UserControl
         InitializeComponent();
         DataContextChanged += (_, _) => Attach(DataContext as MainViewModel);
         SizeChanged += (_, _) => Arrange();
+        SpectrumContent.SizeChanged += (_, _) => Arrange();
         EmptyAction.Click += OnEmptyAction;
         GuidelineButton.Click += OnSourceLink;
         DrawerScrim.PointerPressed += (_, _) => _vm?.CloseDrawerCommand.Execute(null);
@@ -134,7 +135,7 @@ public partial class MainView : UserControl
         var compact = Bounds.Width < Resource<double>("CompactBreakpoint");
         _vm.IsCompact = compact;
         Main.Margin = new Thickness(compact ? 0 : Resource<double>("SidebarWidth") + Resource<double>("SectionGap"), 0, 0, 0);
-        Upper.MaxHeight = Math.Max(Resource<double>("InputHeight"), Bounds.Height * Resource<double>("CardHeightShare"));
+        Upper.MaxHeight = Math.Max(Math.Max(Resource<double>("InputHeight"), Bounds.Height * Resource<double>("CardHeightShare")), compact ? 0 : SpectrumNatural());
         SettingsPanel.MaxHeight = Math.Max(0, Body.Bounds.Height);
         InlineDisclaimer.IsVisible = compact || TopLevel.GetTopLevel(this) is not MainWindow;
         if (AppBar.RowDefinitions.Count != (compact ? 3 : 1)) AppBar.RowDefinitions = new RowDefinitions(compact ? "Auto,Auto,Auto" : "Auto");
@@ -154,6 +155,12 @@ public partial class MainView : UserControl
             host.Children.Add(SpectrumStrip);
         }
     }
+
+    private double SpectrumNatural() =>
+        SpectrumContent.DesiredSize.Height
+        + SpectrumScroll.Padding.Top + SpectrumScroll.Padding.Bottom
+        + SpectrumStrip.Padding.Top + SpectrumStrip.Padding.Bottom
+        + SpectrumStrip.BorderThickness.Top + SpectrumStrip.BorderThickness.Bottom;
 
     private void Overlays(bool animate)
     {

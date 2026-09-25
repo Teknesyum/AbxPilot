@@ -221,7 +221,6 @@
 
     <ControlTheme x:Key="Switch" TargetType="ToggleButton">
       <Setter Property="Background" Value="Transparent"/>
-      <Setter Property="Foreground" Value="{StaticResource TextBody}"/>
       <Setter Property="FontFamily" Value="{StaticResource FontSans}"/>
       <Setter Property="FontSize" Value="{StaticResource FontSize1}"/>
       <Setter Property="MinHeight" Value="{StaticResource TargetMin}"/>
@@ -235,7 +234,7 @@
             <ContentPresenter Name="PART_ContentPresenter" Grid.Column="0"
                               Content="{TemplateBinding Content}"
                               ContentTemplate="{TemplateBinding ContentTemplate}"
-                              Foreground="{TemplateBinding Foreground}"
+                              Foreground="{StaticResource TextBody}"
                               VerticalAlignment="Center"/>
             <Border Name="track" Grid.Column="1"
                     Width="{StaticResource InputHeight}" Height="{StaticResource TargetMin}"
@@ -260,7 +259,7 @@
           </Border>
         </ControlTemplate>
       </Setter>
-      <Style Selector="^:pointerover">
+      <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
         <Setter Property="Foreground" Value="{StaticResource PinkText}"/>
       </Style>
       <Style Selector="^:pointerover /template/ Border#track">
@@ -298,13 +297,14 @@
             <Border Name="track"
                     Width="{StaticResource InputHeight}" Height="{StaticResource TargetMin}"
                     CornerRadius="{StaticResource Radius}"
-                    BorderBrush="{StaticResource BorderDefault}"
+                    BorderBrush="{StaticResource BorderDecorative}"
                     BorderThickness="{StaticResource BorderWidth}"
                     Background="Transparent"
                     Padding="{Binding Source={StaticResource Space1}, Converter={x:Static ch:Converters.Inset}}">
               <Ellipse Name="knob" Width="{StaticResource Space4}" Height="{StaticResource Space4}"
                        HorizontalAlignment="Left" VerticalAlignment="Center"
-                       Fill="{StaticResource NeonBlue}">
+                       Fill="Transparent" Stroke="{StaticResource NeonBlue}"
+                       StrokeThickness="{StaticResource FocusWidth}">
                 <Ellipse.Transitions>
                   <Transitions>
                     <TransformOperationsTransition Property="RenderTransform"
@@ -329,13 +329,14 @@
       </Style>
       <Style Selector="^.on /template/ Ellipse#knob">
         <Setter Property="Fill" Value="{StaticResource OnBlue}"/>
+        <Setter Property="Stroke" Value="{StaticResource OnBlue}"/>
         <Setter Property="RenderTransform" Value="{Binding Source={StaticResource Space4}, Converter={x:Static ch:Converters.ShiftX}}"/>
       </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="Segment" TargetType="Button">
       <Setter Property="Background" Value="Transparent"/>
-      <Setter Property="Foreground" Value="{StaticResource NeonBlue}"/>
+      <Setter Property="Foreground" Value="{StaticResource TextBody}"/>
       <Setter Property="BorderBrush" Value="{StaticResource BorderDecorative}"/>
       <Setter Property="BorderThickness" Value="{StaticResource BorderWidth}"/>
       <Setter Property="CornerRadius" Value="{StaticResource Radius}"/>
@@ -404,16 +405,7 @@
       </Style>
     </ControlTheme>
 
-    <ControlTheme x:Key="Chip" TargetType="Button" BasedOn="{StaticResource Segment}">
-      <Style Selector="^.selected">
-        <Setter Property="Background" Value="{StaticResource NeonBlue10}"/>
-        <Setter Property="Foreground" Value="{StaticResource OnBlue10}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource NeonBlue}"/>
-      </Style>
-      <Style Selector="^.selected:pointerover">
-        <Setter Property="Foreground" Value="{StaticResource OnBlue10}"/>
-      </Style>
-    </ControlTheme>
+    <ControlTheme x:Key="Chip" TargetType="Button" BasedOn="{StaticResource Segment}"/>
 
     <ControlTheme x:Key="Skeleton" TargetType="Border">
       <Setter Property="Background" Value="{StaticResource NeonBlue10}"/>
@@ -446,7 +438,8 @@
   </Style>
 
   <Style Selector="Border.qcard.changed">
-    <Setter Property="BorderBrush" Value="{StaticResource NeonBlue30}"/>
+    <Setter Property="Background" Value="{StaticResource NeonBlue10}"/>
+    <Setter Property="BorderBrush" Value="{StaticResource NeonBlue}"/>
   </Style>
 
   <Style Selector="TransitioningContentControl.headline">

@@ -963,6 +963,7 @@ public sealed partial class MainViewModel : ObservableObject
         {
             var row = existing.GetValueOrDefault(bar.PathogenId) ?? new SpectrumRow(bar.PathogenId);
             row.Name = Localizer.Get($"pathogen.{bar.PathogenId}.name");
+            row.ShortName = Localizer.Get($"pathogen.{bar.PathogenId}.short");
             row.Level = bar.Level;
             row.LevelText = Localizer.Get($"spectrum.{bar.Level}");
             row.Coverage = Math.Clamp(bar.Coverage, 0, 1);

@@ -21,7 +21,7 @@ Danışma kaydı: [giden](danisma/2026-09-21-fable-plan-giden.md) · [dönen](da
 | Üst çubuk | Standart Teknesyum çubuğu (`scaffold.js ustcubuk`), veri sürümü rozeti, dil; ortada kalıcı "klinik değerlendirme gerektirir" satırı (sığmazsa kısa sürüm, tam metin ipucu ve ekran okuyucu adı) |
 | Sol ray | Sendrom listesi, arama |
 | Başlık satırı | Sendrom adı, kılavuz seti düğmesi (kaynak bağlantısı), ayarlar |
-| Üst sıra | Solda kart (birinci seçenek, doz/yol/süre, kaynak, gerekçe, alternatifler), sağda spektrum; eşit yükseklik, pencerenin en çok `CardHeightShare` kadarı, her biri kendi içinde kayar |
+| Üst sıra | Solda kart (birinci seçenek, doz/yol/süre, kaynak, gerekçe, alternatifler), sağda spektrum; eşit genişlik ve yükseklik. Yükseklik `CardHeightShare` ile spektrumun doğal yüksekliğinin büyüğü: spektrum hiç kaymaz (patojen başına tek satır: kısa ad, ince çubuk, düzey), kart kendi içinde kayar |
 | Alt sıra | Tam genişlik soru ızgarası (`QuestionGrid`): 4/3/2/1 sütun (`QuestionColumnMin` 420, `QuestionColumnsMax` 4), her soru tek satır (`QuestionRow`): evet/hayır anahtar (kapalı = hayır), tekli bölmeli seçici, çoklu çip. Değişen sorular FLIP ile alttaki "Seçilenler" grubuna iner; "Varsayılana sıfırla" hepsini geri alır |
 
 Açılışta boş durum yok: son sendrom (yoksa TKP) varsayılanlarla açılır, birinci seçenek hemen görünür.
