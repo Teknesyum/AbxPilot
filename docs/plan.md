@@ -22,7 +22,7 @@ Danışma kaydı: [giden](danisma/2026-09-21-fable-plan-giden.md) · [dönen](da
 | Sol ray | Sendrom listesi, arama |
 | Başlık satırı | Sendrom adı, kılavuz seti düğmesi (kaynak bağlantısı), ayarlar |
 | Üst sıra | Solda kart (birinci seçenek, doz/yol/süre, kaynak, gerekçe, alternatifler), sağda spektrum; eşit yükseklik, pencerenin en çok `CardHeightShare` kadarı, her biri kendi içinde kayar |
-| Alt sıra | Tam genişlik soru ızgarası (`QuestionGrid`): 4/3/2/1 sütun (`QuestionColumnMin` 180, `QuestionColumnsMax` 4), her soru başlık + tek tıkla seçilen maddeler; tekli radyo, çoklu işaret kutusu |
+| Alt sıra | Tam genişlik soru ızgarası (`QuestionGrid`): 4/3/2/1 sütun (`QuestionColumnMin` 420, `QuestionColumnsMax` 4), her soru tek satır (`QuestionRow`): evet/hayır anahtar (kapalı = hayır), tekli bölmeli seçici, çoklu çip. Değişen sorular FLIP ile alttaki "Seçilenler" grubuna iner; "Varsayılana sıfırla" hepsini geri alır |
 
 Açılışta boş durum yok: son sendrom (yoksa TKP) varsayılanlarla açılır, birinci seçenek hemen görünür.
 Madde seçimi öneriyi günceller; kart, spektrum ve soru kartları FLIP ile yer değiştirir.
@@ -36,8 +36,9 @@ Hareket süs değil, açıklamanın kendisi. Süreler ve eğriler palet token'la
 
 - **Öneri farkı:** ViewModel eski ve yeni öneriyi karşılaştırır. Yalnız değişen alan canlanır:
   ilaç adı kayarak değişir, doz sayısı sayarak geçer, süre rozeti yanıp söner.
-- **Neden izi:** Cevaplanan soru kartından öneri kartına kısa bir ışık yolu akar. Kullanıcı
-  hangi cevabın neyi değiştirdiğini görür.
+- **Neden izi:** Kartın başlık satırında solan bir değişim etiketi çıkar ("Vazopresör → birinci
+  seçenek değişti"), `ToastLife` kadar kalır. Cevap öneriyi değiştirmediyse satırın yanında
+  "Bu durumda öneriyi değiştirmedi" ipucu solar. Azaltılmış harekette anında görünüp kaybolur.
 - **Elenen ilaç:** Alternatif listesinden solarak çıkar, "elendi: penisilin alerjisi IgE" etiketi kalır.
 - **Spektrum şeridi:** Çubuklar yeni kapsama değerine yayılarak büyür ya da küçülür.
 - **Soru açılması:** Koşullu soru, tetikleyen cevabın altından açılarak gelir.

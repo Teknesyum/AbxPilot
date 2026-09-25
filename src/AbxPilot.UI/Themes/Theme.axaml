@@ -18,7 +18,8 @@
 
   <x:Double x:Key="CompactBreakpoint">720</x:Double>
   <x:Double x:Key="CardHeightShare">0.5</x:Double>
-  <x:Double x:Key="QuestionColumnMin">180</x:Double>
+  <x:Double x:Key="QuestionColumnMin">420</x:Double>
+  <x:Double x:Key="QuestionLabelMin">120</x:Double>
   <x:Int32 x:Key="QuestionColumnsMax">4</x:Int32>
 
 </ResourceDictionary>

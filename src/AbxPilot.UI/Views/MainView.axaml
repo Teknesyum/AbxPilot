@@ -90,45 +90,62 @@
 
                 <StackPanel x:Name="ResultState" Spacing="{StaticResource FieldStack}"
                             IsVisible="{Binding HasCard}">
-                  <WrapPanel ItemSpacing="{StaticResource RowGap}" LineSpacing="{StaticResource FieldGap}">
-                    <TextBlock Theme="{StaticResource H2}" VerticalAlignment="Center" Text="{loc:Text card.title}"/>
-                    <Panel IsVisible="{Binding HasFirstChoice}" VerticalAlignment="Center">
-                      <Border Theme="{StaticResource WarningBadge}" IsVisible="{Binding IsUnreviewed}">
-                        <TextBlock Theme="{StaticResource WarningBody}" Text="{Binding ReviewText}"/>
-                      </Border>
-                      <Border Theme="{StaticResource Badge}" IsVisible="{Binding !IsUnreviewed}">
-                        <TextBlock Theme="{StaticResource Label}" Text="{Binding ReviewText}"/>
-                      </Border>
-                    </Panel>
-                  </WrapPanel>
-
-                  <TextBlock x:Name="RegionNotice" Theme="{StaticResource WarningBody}" TextWrapping="Wrap"
-                             IsVisible="{Binding NoRegionData}" Text="{loc:Text card.regionNoData}"/>
-
-                  <StackPanel x:Name="ConsultBlock" Spacing="{StaticResource FieldGap}" IsVisible="{Binding IsConsult}">
-                    <TextBlock Theme="{StaticResource H3}" Foreground="{StaticResource Warning}"
-                               Text="{loc:Text card.consult.title}"/>
-                    <TextBlock Theme="{StaticResource WarningBody}" TextWrapping="Wrap" Text="{Binding ConsultText}"/>
-                    <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{loc:Text card.consult.body}"/>
-                  </StackPanel>
-
-                  <StackPanel x:Name="ReferralBlock" Spacing="{StaticResource FieldGap}" IsVisible="{Binding IsReferral}">
-                    <TextBlock Theme="{StaticResource H3}" Foreground="{StaticResource Warning}"
-                               Text="{loc:Text card.referral.title}"/>
-                    <TextBlock Theme="{StaticResource WarningBody}" TextWrapping="Wrap" Text="{Binding OutcomeText}"/>
-                    <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{Binding ReferralNote}"/>
-                  </StackPanel>
-
-                  <StackPanel x:Name="NoAntibioticBlock" Spacing="{StaticResource FieldGap}" IsVisible="{Binding IsNoAntibiotic}">
-                    <TextBlock Theme="{StaticResource H3}" Foreground="{StaticResource Success}"
-                               Text="{loc:Text card.noAntibiotic.title}"/>
-                    <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{Binding OutcomeText}"/>
-                    <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{loc:Text card.noAntibiotic.body}"/>
-                  </StackPanel>
-
-                  <StackPanel x:Name="FirstChoice" Spacing="{StaticResource RowGap}" IsVisible="{Binding HasFirstChoice}">
-                    <WrapPanel ItemSpacing="{StaticResource RowGap}" LineSpacing="{StaticResource FieldGap}">
-                      <TextBlock Theme="{StaticResource Label}" VerticalAlignment="Center" Text="{loc:Text card.firstChoice}"/>
+                  <StackPanel Spacing="{StaticResource FieldGap}">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="{StaticResource RowGap}">
+                      <StackPanel Orientation="Horizontal" Spacing="{StaticResource RowGap}">
+                        <TextBlock Theme="{StaticResource Label}" VerticalAlignment="Center" Text="{loc:Text card.title}"/>
+                        <Panel IsVisible="{Binding HasFirstChoice}" VerticalAlignment="Center">
+                          <Border Theme="{StaticResource WarningBadge}" IsVisible="{Binding IsUnreviewed}">
+                            <TextBlock Theme="{StaticResource WarningBody}" Text="{Binding ReviewText}"/>
+                          </Border>
+                          <Border Theme="{StaticResource Badge}" IsVisible="{Binding !IsUnreviewed}">
+                            <TextBlock Theme="{StaticResource Label}" Text="{Binding ReviewText}"/>
+                          </Border>
+                        </Panel>
+                      </StackPanel>
+                      <TextBlock x:Name="ChangeTag" Grid.Column="1" Classes="tag" Theme="{StaticResource Label}"
+                                 Foreground="{StaticResource NeonBlue}"
+                                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                                 TextWrapping="Wrap" TextAlignment="Right"
+                                 Text="{Binding ChangeText}"/>
+                    </Grid>
+                    <TransitioningContentControl x:Name="Headline" Classes="headline drug"
+                                                 Classes.caution="{Binding IsCaution}"
+                                                 Classes.clear="{Binding IsNoAntibiotic}"
+                                                 Content="{Binding Headline}">
+                      <TransitioningContentControl.PageTransition>
+                        <ch:NudgeTransition/>
+                      </TransitioningContentControl.PageTransition>
+                      <TransitioningContentControl.ContentTemplate>
+                        <DataTemplate x:DataType="x:String">
+                          <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                      </TransitioningContentControl.ContentTemplate>
+                    </TransitioningContentControl>
+                    <WrapPanel x:Name="DoseLine" IsVisible="{Binding HasFirstChoice}"
+                               ItemSpacing="{StaticResource RowGap}" LineSpacing="{StaticResource FieldGap}">
+                      <ItemsControl x:Name="SlotList" ItemsSource="{Binding Slots}" VerticalAlignment="Center">
+                        <ItemsControl.ItemsPanel>
+                          <ItemsPanelTemplate>
+                            <StackPanel Spacing="{StaticResource FieldGap}"/>
+                          </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                          <DataTemplate x:DataType="vm:ComponentSlot">
+                            <StackPanel Classes="slot" Spacing="{StaticResource Space1}">
+                              <WrapPanel ItemSpacing="{StaticResource FieldGap}" LineSpacing="{StaticResource Space1}">
+                                <TextBlock Theme="{StaticResource Body}" FontWeight="{StaticResource WeightSemi}"
+                                           VerticalAlignment="Center"
+                                           IsVisible="{Binding ShowName}" Text="{Binding DrugName}"/>
+                                <ch:CountingText Classes="dose" Theme="{StaticResource MonoValue}" VerticalAlignment="Center" Amount="{Binding Amount}"/>
+                                <TextBlock Theme="{StaticResource Body}" VerticalAlignment="Center" Text="{Binding Route}"/>
+                                <TextBlock Theme="{StaticResource Body}" VerticalAlignment="Center" Text="{Binding Schedule}"/>
+                              </WrapPanel>
+                              <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{Binding Extra}" IsVisible="{Binding HasExtra}"/>
+                            </StackPanel>
+                          </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                      </ItemsControl>
                       <Border x:Name="DurationBadge" Theme="{StaticResource Badge}">
                         <Panel>
                           <Border x:Name="DurationGlow" Classes="flash"/>
@@ -139,39 +156,27 @@
                         </Panel>
                       </Border>
                     </WrapPanel>
+                  </StackPanel>
 
-                    <ItemsControl x:Name="SlotList" ItemsSource="{Binding Slots}">
-                      <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                          <StackPanel Spacing="{StaticResource RowGap}"/>
-                        </ItemsPanelTemplate>
-                      </ItemsControl.ItemsPanel>
-                      <ItemsControl.ItemTemplate>
-                        <DataTemplate x:DataType="vm:ComponentSlot">
-                          <Border Classes="slot">
-                            <StackPanel Spacing="{StaticResource Space1}">
-                              <TransitioningContentControl Classes="drug" Content="{Binding DrugName}"
-                                                           FontSize="{StaticResource FontSize3}"
-                                                           FontWeight="{StaticResource WeightSemi}"
-                                                           Foreground="{StaticResource TextBody}"
-                                                           ClipToBounds="False">
-                                <TransitioningContentControl.PageTransition>
-                                  <ch:NudgeTransition/>
-                                </TransitioningContentControl.PageTransition>
-                              </TransitioningContentControl>
-                              <WrapPanel ItemSpacing="{StaticResource RowGap}" LineSpacing="{StaticResource Space1}">
-                                <TextBlock Theme="{StaticResource Label}" Text="{Binding Role}"/>
-                                <ch:CountingText Classes="dose" Theme="{StaticResource MonoValue}" Amount="{Binding Amount}"/>
-                                <TextBlock Theme="{StaticResource Body}" Text="{Binding Route}"/>
-                                <TextBlock Theme="{StaticResource Body}" Text="{Binding Schedule}"/>
-                              </WrapPanel>
-                              <TextBlock Theme="{StaticResource Hint}" Text="{Binding Extra}" IsVisible="{Binding HasExtra}"/>
-                            </StackPanel>
-                          </Border>
-                        </DataTemplate>
-                      </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                  <TextBlock x:Name="RegionNotice" Theme="{StaticResource WarningBody}" TextWrapping="Wrap"
+                             IsVisible="{Binding NoRegionData}" Text="{loc:Text card.regionNoData}"/>
 
+                  <StackPanel x:Name="ConsultBlock" Spacing="{StaticResource FieldGap}" IsVisible="{Binding IsConsult}">
+                    <TextBlock Theme="{StaticResource WarningBody}" TextWrapping="Wrap" Text="{Binding ConsultText}"/>
+                    <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{loc:Text card.consult.body}"/>
+                  </StackPanel>
+
+                  <StackPanel x:Name="ReferralBlock" Spacing="{StaticResource FieldGap}" IsVisible="{Binding IsReferral}">
+                    <TextBlock Theme="{StaticResource WarningBody}" TextWrapping="Wrap" Text="{Binding OutcomeText}"/>
+                    <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{Binding ReferralNote}"/>
+                  </StackPanel>
+
+                  <StackPanel x:Name="NoAntibioticBlock" Spacing="{StaticResource FieldGap}" IsVisible="{Binding IsNoAntibiotic}">
+                    <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{Binding OutcomeText}"/>
+                    <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{loc:Text card.noAntibiotic.body}"/>
+                  </StackPanel>
+
+                  <StackPanel x:Name="FirstChoice" Spacing="{StaticResource RowGap}" IsVisible="{Binding HasFirstChoice}">
                     <TextBlock Theme="{StaticResource Hint}" Text="{Binding SourceText}"/>
 
                     <StackPanel Spacing="{StaticResource Space1}" IsVisible="{Binding HasWarnings}">
@@ -397,63 +402,100 @@
               <Panel x:Name="SpectrumNarrow" IsVisible="False"/>
 
               <Border x:Name="QuestionPanel" Theme="{StaticResource Panel}">
+                <Border.Resources>
+                  <DataTemplate x:Key="QuestionRowTemplate" x:DataType="vm:QuestionCard">
+                    <Border Classes="qcard" Classes.changed="{Binding IsChanged}"
+                            ctl:QuestionGrid.IsWide="{Binding IsWide}">
+                      <ctl:QuestionRow LabelMin="{StaticResource QuestionLabelMin}"
+                                       Spacing="{StaticResource RowGap}"
+                                       IsFlexible="{Binding IsMulti}">
+                        <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{Binding Label}"/>
+                        <Panel>
+                          <Button Theme="{StaticResource Toggle}" IsVisible="{Binding IsBoolean}"
+                                  Classes.on="{Binding IsOn}"
+                                  auto:AutomationProperties.Name="{Binding Label}"
+                                  Command="{Binding #Root.((vm:MainViewModel)DataContext).ToggleQuestionCommand}"
+                                  CommandParameter="{Binding}"/>
+                          <ItemsControl IsVisible="{Binding IsSingle}" ItemsSource="{Binding Options}">
+                            <ItemsControl.ItemsPanel>
+                              <ItemsPanelTemplate>
+                                <WrapPanel ItemSpacing="{StaticResource Space1}" LineSpacing="{StaticResource Space1}"/>
+                              </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                              <DataTemplate x:DataType="vm:ChoiceOption">
+                                <Button Theme="{StaticResource Segment}"
+                                        Classes.selected="{Binding IsSelected}"
+                                        Content="{Binding Label}"
+                                        auto:AutomationProperties.Name="{Binding Label}"
+                                        Command="{Binding #Root.((vm:MainViewModel)DataContext).ChooseCommand}"
+                                        CommandParameter="{Binding}"/>
+                              </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                          </ItemsControl>
+                          <ItemsControl IsVisible="{Binding IsMulti}" ItemsSource="{Binding Options}">
+                            <ItemsControl.ItemsPanel>
+                              <ItemsPanelTemplate>
+                                <WrapPanel ItemSpacing="{StaticResource Space1}" LineSpacing="{StaticResource Space1}"/>
+                              </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                              <DataTemplate x:DataType="vm:ChoiceOption">
+                                <Button Theme="{StaticResource Chip}"
+                                        Classes.selected="{Binding IsSelected}"
+                                        Content="{Binding Label}"
+                                        auto:AutomationProperties.Name="{Binding Label}"
+                                        Command="{Binding #Root.((vm:MainViewModel)DataContext).ChooseCommand}"
+                                        CommandParameter="{Binding}"/>
+                              </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                          </ItemsControl>
+                        </Panel>
+                      </ctl:QuestionRow>
+                    </Border>
+                  </DataTemplate>
+                </Border.Resources>
                 <StackPanel Spacing="{StaticResource FieldStack}">
-                  <TextBlock Theme="{StaticResource H3}" Text="{loc:Text questions.title}"/>
+                  <Grid ColumnDefinitions="*,Auto" ColumnSpacing="{StaticResource RowGap}">
+                    <TextBlock Theme="{StaticResource H3}" VerticalAlignment="Center" Text="{loc:Text questions.title}"/>
+                    <Button x:Name="ResetButton" Grid.Column="1" Theme="{StaticResource HeaderButton}"
+                            IsVisible="{Binding HasCard}"
+                            Content="{loc:Text questions.reset}"
+                            Command="{Binding ResetAnswersCommand}"/>
+                  </Grid>
                   <TextBlock Theme="{StaticResource Hint}" Text="{loc:Text questions.empty}"
                              IsVisible="{Binding ShowQuestionHint}"/>
-                  <TextBlock Theme="{StaticResource Hint}" Text="{loc:Text questions.hint}"
+                  <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{loc:Text questions.hint}"
                              IsVisible="{Binding HasCard}"/>
-                  <ItemsControl x:Name="QuestionList" ItemsSource="{Binding Questions}" IsVisible="{Binding HasCard}">
-                    <ItemsControl.Styles>
-                      <Style Selector="ctl|QuestionGrid > ContentPresenter" x:DataType="vm:QuestionCard">
-                        <Setter Property="IsVisible" Value="{Binding IsVisible}"/>
-                      </Style>
-                    </ItemsControl.Styles>
+                  <ItemsControl x:Name="QuestionList" ItemsSource="{Binding OpenQuestions}" IsVisible="{Binding HasCard}"
+                                ItemTemplate="{StaticResource QuestionRowTemplate}">
                     <ItemsControl.ItemsPanel>
                       <ItemsPanelTemplate>
                         <ctl:QuestionGrid ColumnMin="{StaticResource QuestionColumnMin}"
                                           ColumnsMax="{StaticResource QuestionColumnsMax}"
-                                          Spacing="{StaticResource RowGap}"/>
+                                          Spacing="{StaticResource FieldGap}"/>
                       </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                      <DataTemplate x:DataType="vm:QuestionCard">
-                        <Border Classes="qcard" Classes.answered="{Binding IsAnswered}">
-                          <StackPanel Spacing="{StaticResource FieldGap}">
-                            <DockPanel HorizontalSpacing="{StaticResource FieldGap}">
-                              <Button DockPanel.Dock="Right" Theme="{StaticResource HeaderButton}"
-                                      VerticalAlignment="Top"
-                                      IsVisible="{Binding IsAnswered}"
-                                      Content="{loc:Text qcard.clear}"
-                                      Command="{Binding #Root.((vm:MainViewModel)DataContext).ClearAnswerCommand}"
-                                      CommandParameter="{Binding}"/>
-                              <TextBlock Theme="{StaticResource Body}" FontWeight="{StaticResource WeightSemi}"
-                                         TextWrapping="Wrap" Text="{Binding Label}"/>
-                            </DockPanel>
-                            <TextBlock Classes="state" Theme="{StaticResource Label}" Text="{Binding StateText}"/>
-                            <ItemsControl ItemsSource="{Binding Options}">
-                              <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                  <StackPanel Spacing="{StaticResource Space1}"/>
-                                </ItemsPanelTemplate>
-                              </ItemsControl.ItemsPanel>
-                              <ItemsControl.ItemTemplate>
-                                <DataTemplate x:DataType="vm:ChoiceOption">
-                                  <Button Theme="{StaticResource OptionItem}"
-                                          Classes.selected="{Binding IsSelected}"
-                                          Classes.multi="{Binding IsMulti}"
-                                          Content="{Binding Label}"
-                                          auto:AutomationProperties.Name="{Binding Label}"
-                                          Command="{Binding #Root.((vm:MainViewModel)DataContext).ChooseCommand}"
-                                          CommandParameter="{Binding}"/>
-                                </DataTemplate>
-                              </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                          </StackPanel>
-                        </Border>
-                      </DataTemplate>
-                    </ItemsControl.ItemTemplate>
                   </ItemsControl>
+                  <StackPanel x:Name="ChosenGroup" Spacing="{StaticResource FieldGap}">
+                    <StackPanel.IsVisible>
+                      <MultiBinding Converter="{x:Static BoolConverters.And}">
+                        <Binding Path="HasCard"/>
+                        <Binding Path="HasChosen"/>
+                      </MultiBinding>
+                    </StackPanel.IsVisible>
+                    <TextBlock Theme="{StaticResource Label}" Text="{loc:Text questions.chosen}"/>
+                    <ItemsControl x:Name="ChosenList" ItemsSource="{Binding ChosenQuestions}"
+                                  ItemTemplate="{StaticResource QuestionRowTemplate}">
+                      <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                          <ctl:QuestionGrid ColumnMin="{StaticResource QuestionColumnMin}"
+                                            ColumnsMax="{StaticResource QuestionColumnsMax}"
+                                            Spacing="{StaticResource FieldGap}"/>
+                        </ItemsPanelTemplate>
+                      </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                  </StackPanel>
                 </StackPanel>
               </Border>
             </StackPanel>
@@ -604,12 +646,10 @@
 
       </Panel>
 
-    <Canvas x:Name="TraceLayer" IsHitTestVisible="False">
-      <Border x:Name="TraceDot" Width="{StaticResource Space3}" Height="{StaticResource Space3}"
-              CornerRadius="{StaticResource Radius}"
-              Background="{StaticResource NeonBlue}"
-              Effect="{StaticResource HeroGlow}"
-              Opacity="0"/>
+    <Canvas x:Name="HintLayer" IsHitTestVisible="False">
+      <Border x:Name="NoEffectHint" Theme="{StaticResource Badge}" Background="{StaticResource Surface}" Opacity="0">
+        <TextBlock Theme="{StaticResource Hint}" Text="{Binding NoEffectText}"/>
+      </Border>
     </Canvas>
 
   </Panel>

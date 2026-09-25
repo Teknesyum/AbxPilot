@@ -22,6 +22,7 @@ public partial class MainView : UserControl
 
     private MainViewModel? _vm;
     private readonly Dictionary<object, Point> _flip = [];
+    private readonly Dictionary<Control, int> _blinks = [];
     private CancellationTokenSource? _sweep;
     private DispatcherTimer? _holdTimer;
     private Border? _holdTarget;
@@ -247,12 +248,57 @@ public partial class MainView : UserControl
             if (Tokens.Animate) DispatcherTimer.RunOnce(DropLeaving, Tokens.Time("TFast"));
             else DropLeaving();
         }
+        if (_vm is { ChangeText.Length: > 0 }) Blink(ChangeTag);
+        else Hide(ChangeTag);
+        if (_vm is { NoEffectText.Length: > 0 } && e.Trigger is { } trigger && Card(trigger) is { } row) Beside(row);
+        else Hide(NoEffectHint);
         if (!Tokens.Animate || diff is null || diff.IsEmpty) return;
         foreach (var id in diff.QuestionsShown)
             if (Card(id) is { } shown) Enter(shown, 0, -Resource<double>("EntryOffset"));
         if (diff.DurationChanged) Pulse(DurationGlow);
-        if (e.Trigger is { } trigger && Card(trigger) is { } origin) Trace(origin);
-        else if (diff.FirstChoiceChanged || diff.StatusChanged) Pulse(CardGlow);
+        if (diff.FirstChoiceChanged || diff.StatusChanged) Pulse(CardGlow);
+    }
+
+    private void Beside(Control row)
+    {
+        if (row.TranslatePoint(new Point(0, row.Bounds.Height), HintLayer) is not { } bottom) return;
+        NoEffectHint.Measure(Size.Infinity);
+        var size = NoEffectHint.DesiredSize;
+        var left = Math.Clamp(bottom.X + row.Bounds.Width - size.Width, 0, Math.Max(0, HintLayer.Bounds.Width - size.Width));
+        var top = Math.Min(bottom.Y + Resource<double>("Space1"), Math.Max(0, HintLayer.Bounds.Height - size.Height));
+        Canvas.SetLeft(NoEffectHint, left);
+        Canvas.SetTop(NoEffectHint, top);
+        Blink(NoEffectHint);
+    }
+
+    private void Blink(Control target)
+    {
+        var generation = _blinks[target] = _blinks.GetValueOrDefault(target) + 1;
+        target.Transitions = null;
+        if (Tokens.Animate)
+        {
+            target.Opacity = 0;
+            target.Transitions =
+            [
+                new DoubleTransition { Property = OpacityProperty, Duration = Tokens.Time("TFast"), Easing = Tokens.Ease("EOut") },
+            ];
+        }
+        target.Opacity = 1;
+        DispatcherTimer.RunOnce(() =>
+        {
+            if (_blinks.GetValueOrDefault(target) != generation) return;
+            target.Transitions = Tokens.Animate
+                ? [new DoubleTransition { Property = OpacityProperty, Duration = Tokens.Time("TBase"), Easing = Tokens.Ease("EIn") }]
+                : null;
+            target.Opacity = 0;
+        }, Tokens.Time("ToastLife"));
+    }
+
+    private void Hide(Control target)
+    {
+        _blinks[target] = _blinks.GetValueOrDefault(target) + 1;
+        target.Transitions = null;
+        target.Opacity = 0;
     }
 
     private void DropLeaving()
@@ -260,28 +306,6 @@ public partial class MainView : UserControl
         Capture();
         _vm?.DropLeaving();
         Dispatcher.UIThread.Post(Play, DispatcherPriority.Loaded);
-    }
-
-    private void Trace(Control origin)
-    {
-        var size = Resource<double>("Space3");
-        if (origin.TranslatePoint(new Point(origin.Bounds.Width / 2, origin.Bounds.Height / 2), TraceLayer) is not { } from) return;
-        if (CardScroll.TranslatePoint(new Point(CardScroll.Bounds.Width / 2, CardScroll.Bounds.Height), TraceLayer) is not { } to) return;
-        TraceDot.Transitions = null;
-        TraceDot.RenderTransform = Translate(from.X - size / 2, from.Y - size / 2);
-        TraceDot.Opacity = 1;
-        var slow = Tokens.Time("TSlow");
-        TraceDot.Transitions =
-        [
-            new TransformOperationsTransition { Property = RenderTransformProperty, Duration = slow, Easing = Tokens.Ease("EOut") },
-            new DoubleTransition { Property = OpacityProperty, Duration = Tokens.Time("TFast"), Easing = Tokens.Ease("EIn") },
-        ];
-        TraceDot.RenderTransform = Translate(to.X - size / 2, to.Y - size / 2);
-        DispatcherTimer.RunOnce(() =>
-        {
-            TraceDot.Opacity = 0;
-            Pulse(CardGlow);
-        }, slow);
     }
 
     private static void Pulse(Border glow)

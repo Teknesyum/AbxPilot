@@ -65,6 +65,9 @@ public sealed partial class ComponentSlot : ObservableObject
 
     [ObservableProperty]
     private bool hasExtra;
+
+    [ObservableProperty]
+    private bool showName;
 }
 
 public sealed record TextRow(string Text, string Detail)
@@ -182,6 +185,12 @@ public sealed partial class QuestionCard : ObservableObject
 
     public bool IsMulti => Type == "multi";
 
+    public bool IsBoolean => Type == "boolean";
+
+    public bool IsSingle => !IsMulti && !IsBoolean;
+
+    public bool IsWide => IsMulti || IsSingle && Options.Count > 3;
+
     public ObservableCollection<ChoiceOption> Options { get; } = [];
 
     [ObservableProperty]
@@ -191,11 +200,8 @@ public sealed partial class QuestionCard : ObservableObject
     private bool isVisible = true;
 
     [ObservableProperty]
-    private bool isAnswered;
+    private bool isChanged;
 
     [ObservableProperty]
-    private bool isDefault;
-
-    [ObservableProperty]
-    private string stateText = "";
+    private bool isOn;
 }

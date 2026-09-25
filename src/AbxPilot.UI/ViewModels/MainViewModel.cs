@@ -123,6 +123,14 @@ public sealed partial class MainViewModel : ObservableObject
 
     public ObservableCollection<QuestionCard> Questions { get; } = [];
 
+    public ObservableCollection<QuestionCard> OpenQuestions { get; } = [];
+
+    public ObservableCollection<QuestionCard> ChosenQuestions { get; } = [];
+
+    public bool HasChosen => ChosenQuestions.Count > 0;
+
+    public bool CanReset => _answers.Count > 0;
+
     public AlternativesPage AlternativesTab { get; }
 
     public RationalePage RationaleTab { get; }
@@ -218,6 +226,18 @@ public sealed partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     private string settingsPath = "";
+
+    [ObservableProperty]
+    private string headline = "";
+
+    [ObservableProperty]
+    private string changeText = "";
+
+    [ObservableProperty]
+    private string noEffectText = "";
+
+    [ObservableProperty]
+    private bool isComposite;
 
     public bool IsLoading => State == ScreenState.Loading;
 
@@ -332,12 +352,14 @@ public sealed partial class MainViewModel : ObservableObject
     public Task AnswerAsync(string question, params string[] values)
     {
         _answers[question] = values;
+        OnAnswersChanged();
         return Evaluate(question);
     }
 
     public Task ClearAsync(string question)
     {
         _answers.Remove(question);
+        OnAnswersChanged();
         return Evaluate(question);
     }
 
@@ -354,6 +376,7 @@ public sealed partial class MainViewModel : ObservableObject
         SelectedSyndrome = item;
         ChooseSet(item.Id);
         _answers.Clear();
+        OnAnswersChanged();
         _current = null;
         BuildQuestions(item.Id);
         Relabel();
@@ -367,31 +390,78 @@ public sealed partial class MainViewModel : ObservableObject
         var card = Questions.FirstOrDefault(item => item.Id == option.Owner);
         if (card is null) return;
 
+        var effective = Effective(card.Id);
+        string[] next;
         if (card.IsMulti)
         {
-            var effective = _answers.TryGetValue(card.Id, out var answered)
-                ? answered
-                : _current?.Questions.FirstOrDefault(state => state.QuestionId == card.Id)?.Value ?? [];
-            var next = effective.Contains(option.Code)
+            next = effective.Contains(option.Code)
                 ? effective.Where(code => code != option.Code).ToArray()
                 : card.Options.Select(item => item.Code).Where(code => code == option.Code || effective.Contains(code)).ToArray();
-            _answers[card.Id] = next;
         }
         else
         {
-            if (_answers.TryGetValue(card.Id, out var answered) && answered.Count == 1 && answered[0] == option.Code) return;
-            _answers[card.Id] = [option.Code];
+            if (effective.Count == 1 && effective[0] == option.Code) return;
+            next = [option.Code];
         }
 
-        Evaluate(card.Id);
+        Store(card.Id, next);
     }
 
     [RelayCommand]
-    private void ClearAnswer(QuestionCard card)
+    private void ToggleQuestion(QuestionCard card)
     {
-        if (!_answers.Remove(card.Id)) return;
-        Evaluate(card.Id);
+        if (!card.IsBoolean) return;
+        Store(card.Id, [card.IsOn ? "no" : "yes"]);
     }
+
+    [RelayCommand(CanExecute = nameof(CanReset))]
+    private void ResetAnswers()
+    {
+        if (_answers.Count == 0) return;
+        _answers.Clear();
+        OnAnswersChanged();
+        Evaluate(null);
+    }
+
+    private IReadOnlyList<string> Effective(string id) =>
+        _answers.TryGetValue(id, out var answered)
+            ? answered
+            : _current?.Questions.FirstOrDefault(state => state.QuestionId == id)?.Value ?? DefaultFor(id);
+
+    private void Store(string id, IReadOnlyList<string> value)
+    {
+        if (Same(value, DefaultFor(id))) _answers.Remove(id);
+        else _answers[id] = value;
+        OnAnswersChanged();
+        Evaluate(id);
+    }
+
+    private void OnAnswersChanged()
+    {
+        OnPropertyChanged(nameof(CanReset));
+        ResetAnswersCommand.NotifyCanExecuteChanged();
+    }
+
+    private IReadOnlyList<string> DefaultFor(string id)
+    {
+        var question = _knowledge?.Questions.FirstOrDefault(item => item.Id == id);
+        if (question is null) return [];
+        if (question.DefaultFrom is { } resistanceId &&
+            _knowledge!.Regions.FirstOrDefault(region => region.Id == _region)?.Resistance
+                .FirstOrDefault(entry => entry.Id == resistanceId) is { } entry &&
+            question.Options.Contains(entry.Category))
+            return [entry.Category];
+        return question.Default.ValueKind switch
+        {
+            JsonValueKind.String => [question.Default.GetString()!],
+            JsonValueKind.Array => question.Default.EnumerateArray().Select(item => item.GetString() ?? "")
+                .Where(item => item.Length > 0).ToArray(),
+            _ => []
+        };
+    }
+
+    private static bool Same(IReadOnlyList<string> left, IReadOnlyList<string> right) =>
+        left.Count == right.Count && left.All(right.Contains);
 
     [RelayCommand]
     private void SelectGuidelineSet(ChoiceOption option)
@@ -600,11 +670,37 @@ public sealed partial class MainViewModel : ObservableObject
         _errorKey = null;
         _current = result;
         Render(result, diff);
+        Describe(diff, trigger);
         Applied?.Invoke(this, new AppliedEventArgs(diff, trigger));
+    }
+
+    private void Describe(RecommendationDiff? diff, string? trigger)
+    {
+        var card = trigger is null ? null : Questions.FirstOrDefault(item => item.Id == trigger);
+        if (diff is null || card is null)
+        {
+            ChangeText = "";
+            NoEffectText = "";
+            return;
+        }
+
+        var key = diff.StatusChanged ? "change.status"
+            : diff.FirstChoiceChanged ? "change.firstChoice"
+            : diff.DoseChanges.Count > 0 ? "change.dose"
+            : diff.DurationChanged ? "change.duration"
+            : diff.AlternativesAdded.Count + diff.AlternativesRemoved.Count + diff.NewlyExcluded.Count +
+              diff.NoLongerExcluded.Count > 0 ? "change.alternatives"
+            : diff.SpectrumChanges.Count > 0 ? "change.spectrum"
+            : null;
+        ChangeText = key is null ? "" : Localizer.Format(key, ("question", card.Label));
+        NoEffectText = key is null ? Localizer.Get("change.noEffect") : "";
     }
 
     private void BuildQuestions(string syndromeId)
     {
+        OpenQuestions.Clear();
+        ChosenQuestions.Clear();
+        OnPropertyChanged(nameof(HasChosen));
         Questions.Clear();
         var syndrome = _knowledge!.Syndromes.First(item => item.Id == syndromeId);
         foreach (var id in syndrome.Questions)
@@ -709,6 +805,16 @@ public sealed partial class MainViewModel : ObservableObject
             RecommendationStatus.NoAntibiotic => ScreenState.NoAntibiotic,
             _ => ScreenState.Consult
         };
+        Headline = State switch
+        {
+            ScreenState.Ready => string.Join(" + ", Slots.Select(slot => slot.DrugName)),
+            ScreenState.Referral => Localizer.Get("card.referral.title"),
+            ScreenState.NoAntibiotic => Localizer.Get("card.noAntibiotic.title"),
+            _ => Localizer.Get("card.consult.title")
+        };
+        IsComposite = Slots.Count > 1;
+        foreach (var slot in Slots)
+            slot.ShowName = IsComposite || State != ScreenState.Ready;
         OnPropertyChanged(nameof(HasWarnings));
         OnPropertyChanged(nameof(HasExcluded));
         OnPropertyChanged(nameof(NoAlternatives));
@@ -725,17 +831,13 @@ public sealed partial class MainViewModel : ObservableObject
             var value = stateOf?.Value ?? [];
             foreach (var option in card.Options)
                 option.IsSelected = value.Contains(option.Code);
-            var origin = stateOf?.Origin ?? AnswerOrigin.Default;
-            card.IsAnswered = origin == AnswerOrigin.Answered;
-            card.IsDefault = origin is AnswerOrigin.Default or AnswerOrigin.RegionDefault;
-            card.StateText = origin switch
-            {
-                AnswerOrigin.Answered => Localizer.Get("qcard.answered"),
-                AnswerOrigin.RegionDefault => Localizer.Get("qcard.regionDefault"),
-                _ when value.Count == 0 => Localizer.Get("qcard.defaultNone"),
-                _ => Localizer.Get("qcard.default")
-            };
+            card.IsOn = value.Contains("yes");
+            card.IsChanged = _answers.ContainsKey(card.Id);
         }
+
+        Sync(OpenQuestions, Questions.Where(card => card.IsVisible && !card.IsChanged).ToList());
+        Sync(ChosenQuestions, Questions.Where(card => card.IsVisible && card.IsChanged).ToList());
+        OnPropertyChanged(nameof(HasChosen));
     }
 
     private void RenderFirstChoice(RegimenLine? line, CultureInfo culture)
@@ -748,8 +850,7 @@ public sealed partial class MainViewModel : ObservableObject
             var component = components[index];
             var slot = Slots[index];
             slot.DrugId = component.DrugId;
-            slot.DrugName = Localizer.Get($"drug.{component.DrugId}.name");
-            slot.Role = Localizer.Get($"role.{component.Role}");
+            slot.DrugName = Localizer.Get($"drug.{component.DrugId}.name");            slot.Role = Localizer.Get($"role.{component.Role}");
             slot.Amount = component.Amount;
             slot.Schedule = Localizer.Format("card.interval",
                 ("hours", component.IntervalHours.ToString(culture)));

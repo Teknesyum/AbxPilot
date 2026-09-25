@@ -1,0 +1,16 @@
+id: ward_comorbid
+title: "Ward patient with chronic heart disease: comorbidity does not change the inpatient row"
+source: idsa-ats-2019
+section: 'Q8; Table 3'
+region: tr
+answers:
+  setting: ward
+  comorbidity: [heart]
+expect:
+  status: selected
+  first_choice: sam_azm_iv
+  drugs: [ampicillin_sulbactam, azithromycin]
+  excluded: [cpt_azm_iv, cpt_clr_iv]
+expect_by_set:
+  ttd-2021:
+    excluded: []

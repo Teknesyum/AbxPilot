@@ -1,5 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Presenters;
+using Avalonia.VisualTree;
 
 namespace AbxPilot.UI.Controls;
 
@@ -14,10 +16,19 @@ public sealed class QuestionGrid : Panel
     public static readonly StyledProperty<double> SpacingProperty =
         AvaloniaProperty.Register<QuestionGrid, double>(nameof(Spacing));
 
+    public static readonly AttachedProperty<bool> IsWideProperty =
+        AvaloniaProperty.RegisterAttached<QuestionGrid, Control, bool>("IsWide");
+
     static QuestionGrid()
     {
         AffectsMeasure<QuestionGrid>(ColumnMinProperty, ColumnsMaxProperty, SpacingProperty);
+        IsWideProperty.Changed.AddClassHandler<Control>((control, _) =>
+            control.FindAncestorOfType<QuestionGrid>()?.InvalidateMeasure());
     }
+
+    public static bool GetIsWide(Control control) => control.GetValue(IsWideProperty);
+
+    public static void SetIsWide(Control control, bool value) => control.SetValue(IsWideProperty, value);
 
     public double ColumnMin
     {
@@ -49,7 +60,42 @@ public sealed class QuestionGrid : Panel
     private double CellWidth(double width, int columns) =>
         Math.Max(0, (width - Spacing * (columns - 1)) / columns);
 
-    private List<Control> Shown() => Children.Where(child => child.IsVisible).ToList();
+    private static bool Wide(Control child) =>
+        GetIsWide(child) || child is ContentPresenter { Child: { } inner } && GetIsWide(inner);
+
+    private List<List<Control>> Lines(int columns)
+    {
+        var lines = new List<List<Control>>();
+        var waiting = new List<Control>();
+        List<Control>? line = null;
+        foreach (var child in Children.Where(child => child.IsVisible))
+        {
+            if (Wide(child))
+            {
+                if (line is null || line.Count == columns) lines.Add([child]);
+                else waiting.Add(child);
+                continue;
+            }
+
+            if (line is null || line.Count == columns)
+            {
+                line = [];
+                lines.Add(line);
+            }
+
+            line.Add(child);
+            if (line.Count == columns) Flush();
+        }
+
+        Flush();
+        return lines;
+
+        void Flush()
+        {
+            foreach (var wide in waiting) lines.Add([wide]);
+            waiting.Clear();
+        }
+    }
 
     protected override Size MeasureOverride(Size availableSize)
     {
@@ -57,15 +103,12 @@ public sealed class QuestionGrid : Panel
         Columns = columns;
         var width = double.IsInfinity(availableSize.Width) ? ColumnMin * columns + Spacing * (columns - 1) : availableSize.Width;
         var cell = CellWidth(width, columns);
-        var shown = Shown();
         foreach (var child in Children)
-            child.Measure(new Size(cell, double.PositiveInfinity));
-        var height = 0d;
-        for (var start = 0; start < shown.Count; start += columns)
-        {
-            var row = shown.Skip(start).Take(columns).Max(child => child.DesiredSize.Height);
-            height += row + (start > 0 ? Spacing : 0);
-        }
+            child.Measure(new Size(Wide(child) ? width : cell, double.PositiveInfinity));
+        foreach (var child in Children.Where(Wide))
+            child.Measure(new Size(width, double.PositiveInfinity));
+        var lines = Lines(columns);
+        var height = lines.Sum(line => line.Max(child => child.DesiredSize.Height)) + Spacing * Math.Max(0, lines.Count - 1);
         return new Size(width, height);
     }
 
@@ -74,16 +117,18 @@ public sealed class QuestionGrid : Panel
         var columns = CountFor(finalSize.Width);
         Columns = columns;
         var cell = CellWidth(finalSize.Width, columns);
-        var shown = Shown();
         var top = 0d;
-        for (var start = 0; start < shown.Count; start += columns)
+        foreach (var line in Lines(columns))
         {
-            var row = shown.Skip(start).Take(columns).ToList();
-            var height = row.Max(child => child.DesiredSize.Height);
-            for (var index = 0; index < row.Count; index++)
-                row[index].Arrange(new Rect(index * (cell + Spacing), top, cell, height));
+            var height = line.Max(child => child.DesiredSize.Height);
+            if (line.Count == 1 && Wide(line[0]))
+                line[0].Arrange(new Rect(0, top, finalSize.Width, height));
+            else
+                for (var index = 0; index < line.Count; index++)
+                    line[index].Arrange(new Rect(index * (cell + Spacing), top, cell, height));
             top += height + Spacing;
         }
+
         return finalSize;
     }
 }
