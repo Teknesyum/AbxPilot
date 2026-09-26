@@ -16,6 +16,7 @@ public static class Converters
     public static readonly IValueConverter Inset = new FuncValueConverter<double, Thickness>(value => new Thickness(value));
 
     public static readonly IValueConverter Sides = new FuncValueConverter<double, Thickness>(value => new Thickness(value, 0));
+    public static readonly IValueConverter Top = new FuncValueConverter<double, Thickness>(value => new Thickness(0, value, 0, 0));
 
     public static readonly IValueConverter ShiftX = new FuncValueConverter<double, ITransform>(value =>
         TransformOperations.Parse("translateX(" + value.ToString("0.###", CultureInfo.InvariantCulture) + "px)"));

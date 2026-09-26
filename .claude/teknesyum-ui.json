@@ -1,6 +1,6 @@
 {
   "version": "1.1.0",
-  "template": "neon",
+  "template": "benim",
   "off": false,
   "targets": [
     "avalonia"
@@ -9,11 +9,11 @@
     "sans": "'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif",
     "mono": "'Cascadia Mono', Consolas, ui-monospace, monospace",
     "scale": [
-      10,
-      13,
       14,
-      18,
-      24
+      16,
+      20,
+      24,
+      32
     ]
   },
   "signature": {
@@ -25,10 +25,10 @@
   },
   "note": "",
   "palette": {
-    "primary": "#00f3ff",
-    "secondary": "#ff00ea",
-    "tertiary": "#b026ff",
-    "surface": "#08090a",
+    "primary": "#6fb7ff",
+    "secondary": "#cba7d2",
+    "tertiary": "#c3a3ff",
+    "surface": "#000000",
     "dark": true
   },
   "installedAt": "2026-09-23T12:37:08.387Z",
@@ -38,5 +38,20 @@
       "file": "tests/AbxPilot.Tests/KabukStandardiTests.cs",
       "reason": "The test holds the banned-library list it enforces; no package is referenced."
     }
-  ]
+  ],
+  "duzen": "b3a56d17ff70849c",
+  "notlar": [
+    "Arka plan tasarımı: duz (token karşılığı yok).",
+    "Kaydırma çubuğu biçimi: solan.",
+    "Arayüz geçiş eğrisi: emphasized (önizlemede --tk-e-out yerine).",
+    "Cam bulanıklığı: 0 px.",
+    "Panel gölgesi gücü: ×0.",
+    "Pencere kenarı: yok.",
+    "Düğme: 28 px yükseklik, 10 px yatay dolgu.",
+    "Üst çubuk yüksekliği: 28 px (titlebar-h-min)."
+  ],
+  "denetim": {
+    "tarih": "2026-09-26T23:21:30.895Z",
+    "duzen": "b3a56d17ff70849c"
+  }
 }

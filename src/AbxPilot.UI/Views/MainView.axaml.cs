@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using AbxPilot.UI.Choreography;
+using AbxPilot.UI.Controls;
 using AbxPilot.UI.ViewModels;
 using Avalonia;
 using Avalonia.Animation;
@@ -268,11 +269,19 @@ public partial class MainView : UserControl
 
     private void Beside(Control row)
     {
-        if (row.TranslatePoint(new Point(0, row.Bounds.Height), HintLayer) is not { } bottom) return;
+        if (row.GetVisualDescendants().OfType<QuestionRow>().FirstOrDefault() is not { Children.Count: > 1 } line) return;
+        var label = line.Children[0];
+        var control = line.Children[1];
+        if (row.TranslatePoint(default, HintLayer) is not { } origin) return;
+        if (label.TranslatePoint(default, HintLayer) is not { } labelAt) return;
+        if (control.TranslatePoint(default, HintLayer) is not { } controlAt) return;
         NoEffectHint.Measure(Size.Infinity);
         var size = NoEffectHint.DesiredSize;
-        var left = Math.Clamp(bottom.X + row.Bounds.Width - size.Width, 0, Math.Max(0, HintLayer.Bounds.Width - size.Width));
-        var top = Math.Min(bottom.Y + Resource<double>("Space1"), Math.Max(0, HintLayer.Bounds.Height - size.Height));
+        var gap = Resource<double>("Space1");
+        var edge = line.IsStacked ? origin.X + row.Bounds.Width : controlAt.X - gap;
+        var left = Math.Clamp(edge - size.Width, Math.Max(0, labelAt.X), Math.Max(0, HintLayer.Bounds.Width - size.Width));
+        var middle = line.IsStacked ? labelAt.Y + label.Bounds.Height / 2 : origin.Y + row.Bounds.Height / 2;
+        var top = Math.Clamp(middle - size.Height / 2, 0, Math.Max(0, HintLayer.Bounds.Height - size.Height));
         Canvas.SetLeft(NoEffectHint, left);
         Canvas.SetTop(NoEffectHint, top);
         Blink(NoEffectHint);

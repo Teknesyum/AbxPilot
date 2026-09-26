@@ -288,6 +288,8 @@ public sealed partial class MainViewModel : ObservableObject
     public string DataVersion =>
         Localizer.Format("titlebar.dataVersion", ("version", _knowledge?.Version ?? "…"));
 
+    public bool HasDataVersion => _knowledge is not null;
+
     public string GuidelineSet => _set;
 
     public string RegionId => _region;
@@ -334,6 +336,7 @@ public sealed partial class MainViewModel : ObservableObject
         Relabel();
         State = ScreenState.Empty;
         OnPropertyChanged(nameof(DataVersion));
+        OnPropertyChanged(nameof(HasDataVersion));
         OnPropertyChanged(nameof(HasSyndromes));
         OnPropertyChanged(nameof(NoSyndromes));
 
@@ -753,6 +756,7 @@ public sealed partial class MainViewModel : ObservableObject
         UpdateSource();
         Filter();
         OnPropertyChanged(nameof(DataVersion));
+        OnPropertyChanged(nameof(HasDataVersion));
 
         if (_errorKey is not null) ErrorText = Localizer.Get(_errorKey);
         if (_current is not null) Render(_current, null);

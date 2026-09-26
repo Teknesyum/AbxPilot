@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 120" width="640" height="120" role="img" aria-label="AbxPilot">
+  <rect width="640" height="120" fill="#000000"/>
+  <text x="32" y="70" font-family="Segoe UI, system-ui, sans-serif" font-size="48" font-weight="700" fill="#6fb7ff">Abx<tspan fill="#fa8cff">Pilot</tspan></text>
+  <text x="32" y="98" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#ffffff">Empiric Antibiotic Guideline Navigator</text>
+</svg>

@@ -1,11 +1,9 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using Avalonia.Input;
-using IOPath = System.IO.Path;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using Avalonia;
 using Avalonia.Controls;
@@ -15,10 +13,12 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Shapes;
 using Avalonia.Headless;
 using Avalonia.Headless.XUnit;
+using Avalonia.Input;
 using Avalonia.Media;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 using Xunit;
+using IOPath = System.IO.Path;
 
 [assembly: AvaloniaTestApplication(typeof(AbxPilot.UI.Kontrast.KontrastUygulamasi))]
 
@@ -36,6 +36,7 @@ namespace AbxPilot.UI.Kontrast
     {
         const double Esik = 7.0;
         static readonly double[] Olcekler = { 1.0, 1.25, 1.5 };
+        static readonly string[] Durumlar = { "hover", "basili", "odak" };
 
         sealed record Olcum(string Durum, string Tur, string Yol, string Metin, string On, string Zemin, double Oran, bool Edilgen, bool Kesin);
 
@@ -45,9 +46,9 @@ namespace AbxPilot.UI.Kontrast
             var pencere = Ac(1.0);
             var olcumler = new List<Olcum>();
             Yuru(pencere, "dinlenik", olcumler);
-            foreach (var dugme in pencere.GetVisualDescendants().OfType<Button>().ToList())
+            foreach (var dugme in pencere.GetVisualDescendants().OfType<Button>().Where(b => b.IsEffectivelyVisible).ToList())
             {
-                foreach (var durum in new[] { "hover", "basili", "odak" })
+                foreach (var durum in Durumlar)
                 {
                     Uygula(dugme, durum, true);
                     Bekle();
@@ -55,11 +56,11 @@ namespace AbxPilot.UI.Kontrast
                     Uygula(dugme, durum, false);
                     Bekle();
                 }
-                var edilgen = dugme.IsEnabled;
+                var etkin = dugme.IsEnabled;
                 dugme.IsEnabled = false;
                 Bekle();
                 Yuru(dugme, "edilgen " + Ad(dugme), olcumler);
-                dugme.IsEnabled = edilgen;
+                dugme.IsEnabled = etkin;
                 Bekle();
             }
             pencere.Close();
@@ -69,7 +70,7 @@ namespace AbxPilot.UI.Kontrast
         }
 
         [AvaloniaFact]
-        public void CapturesEveryScreenAtEveryScale()
+        public void CapturesTheWindowAtEveryScale()
         {
             var etiket = Environment.GetEnvironmentVariable("UC_ETIKET") ?? "anlik";
             var klasor = Cikti();
@@ -78,30 +79,21 @@ namespace AbxPilot.UI.Kontrast
                 var yuzde = ((int)Math.Round(olcek * 100)).ToString(CultureInfo.InvariantCulture);
                 var pencere = Ac(olcek);
                 Kaydet(pencere, IOPath.Combine(klasor, "ana-" + yuzde + "-" + etiket + ".png"));
-                var hedefler = new (string ekran, Button dugme)[]
-                {
-                    ("kucult-hover", Bul<Button>(pencere, "BtnMinimize")),
-                    ("kapat-hover", Bul<Button>(pencere, "BtnClose")),
-                    ("dil-hover", pencere.GetVisualDescendants().OfType<Button>().First(b => !b.Classes.Contains("selected") && b.Theme == pencere.FindResource("HeaderButton"))),
-                };
-                foreach (var (ekran, dugme) in hedefler)
-                {
-                    Uygula(dugme, "hover", true);
-                    Bekle();
-                    Kaydet(pencere, IOPath.Combine(klasor, ekran + "-" + yuzde + "-" + etiket + ".png"));
-                    Uygula(dugme, "hover", false);
-                    Bekle();
-                }
                 pencere.Close();
             }
         }
 
         static Window Ac(double olcek)
         {
-            var pencere = new global::AbxPilot.UI.MainWindow { DataContext = new global::AbxPilot.UI.ViewModels.MainViewModel() };
-            pencere.Width = 1280;
-            pencere.Height = 800;
+            var model = new global::AbxPilot.UI.ViewModels.MainViewModel();
+            var pencere = new global::AbxPilot.UI.MainWindow { DataContext = model, Width = 1280, Height = 800 };
             pencere.Show();
+            var saat = System.Diagnostics.Stopwatch.StartNew();
+            while (!model.Idle.IsCompleted && saat.Elapsed < TimeSpan.FromSeconds(20))
+            {
+                Dispatcher.UIThread.RunJobs();
+                System.Threading.Thread.Sleep(2);
+            }
             pencere.SetRenderScaling(olcek);
             Bekle();
             return pencere;
@@ -122,9 +114,6 @@ namespace AbxPilot.UI.Kontrast
             var kare = pencere.CaptureRenderedFrame();
             kare?.Save(yol);
         }
-
-        static T Bul<T>(Window pencere, string ad) where T : Control =>
-            pencere.GetVisualDescendants().OfType<T>().First(c => c.Name == ad);
 
         static void Uygula(Button dugme, string durum, bool acik)
         {
@@ -148,7 +137,7 @@ namespace AbxPilot.UI.Kontrast
         static string Ad(Control c)
         {
             if (!string.IsNullOrEmpty(c.Name)) return "#" + c.Name;
-            if (c is ContentControl cc && cc.Content is string s) return "\"" + s + "\"";
+            if (c is ContentControl cc && cc.Content is string s) return "\"" + Kisalt(s) + "\"";
             return c.GetType().Name;
         }
 
@@ -173,36 +162,46 @@ namespace AbxPilot.UI.Kontrast
                 else
                     parcalar.Add(("yazi", tb.Text ?? "", tb.Foreground));
             }
-            else if (dugum is Shape sekil)
+            else if (dugum is Shape sekil && sekil.Bounds.Width > 0 && sekil.Bounds.Height > 0)
             {
-                var boya = sekil.Fill ?? sekil.Stroke;
-                parcalar.Add(("simge", "simge", boya));
+                parcalar.Add(("simge", "simge", sekil.Fill ?? sekil.Stroke));
             }
             foreach (var (tur, metin, on) in parcalar)
             {
                 if (tur == "yazi" && string.IsNullOrWhiteSpace(metin)) continue;
-                if (on is not ISolidColorBrush fg)
+                if (on == null) continue;
+                var onlar = Boyalar(on, on.Opacity * Saydamlik(dugum));
+                if (onlar == null)
                 {
-                    if (on != null)
-                        olcumler.Add(new Olcum(durum, tur, Yol(dugum), Kisalt(metin), on.GetType().Name, "-", 0, edilgen, false));
+                    olcumler.Add(new Olcum(durum, tur, Yol(dugum), Kisalt(metin), on.GetType().Name, "-", 0, edilgen, false));
                     continue;
                 }
-                if (fg.Color.A == 0) continue;
+                onlar = onlar.Where(r => r[3] > 0).ToList();
+                if (onlar.Count == 0) continue;
                 var zeminler = Zeminler(dugum, out var kesin);
-                var onRenk = Renk(fg.Color, fg.Opacity * Saydamlik(dugum));
-                double enKotu = double.MaxValue;
-                double[] enKotuZemin = zeminler[0];
-                foreach (var zemin in zeminler)
-                {
-                    var oran = Oran(Ustune(onRenk, zemin), zemin);
-                    if (oran < enKotu)
+                var enKotu = double.MaxValue;
+                var enKotuOn = onlar[0];
+                var enKotuZemin = zeminler[0];
+                foreach (var onRenk in onlar)
+                    foreach (var zemin in zeminler)
                     {
-                        enKotu = oran;
-                        enKotuZemin = zemin;
+                        var oran = Oran(Ustune(onRenk, zemin), zemin);
+                        if (oran < enKotu)
+                        {
+                            enKotu = oran;
+                            enKotuOn = onRenk;
+                            enKotuZemin = zemin;
+                        }
                     }
-                }
-                olcumler.Add(new Olcum(durum, tur, Yol(dugum), Kisalt(metin), Hex(fg.Color), Hex(enKotuZemin), enKotu, edilgen, kesin));
+                olcumler.Add(new Olcum(durum, tur, Yol(dugum), Kisalt(metin), Hex(enKotuOn), Hex(enKotuZemin), enKotu, edilgen, kesin));
             }
+        }
+
+        static List<double[]>? Boyalar(IBrush b, double opaklik)
+        {
+            if (b is ISolidColorBrush sb) return new List<double[]> { Renk(sb.Color, opaklik) };
+            if (b is IGradientBrush gb && gb.GradientStops.Count > 0) return gb.GradientStops.Select(s => Renk(s.Color, opaklik)).ToList();
+            return null;
         }
 
         static IBrush? Dolgu(Visual n)
@@ -218,11 +217,7 @@ namespace AbxPilot.UI.Kontrast
         static List<double[]>? Katman(Visual n)
         {
             var b = Dolgu(n);
-            if (b == null) return null;
-            var opaklik = b.Opacity * Saydamlik(n);
-            if (b is ISolidColorBrush sb) return new List<double[]> { Renk(sb.Color, opaklik) };
-            if (b is IGradientBrush gb) return gb.GradientStops.Select(s => Renk(s.Color, opaklik)).ToList();
-            return null;
+            return b == null ? null : Boyalar(b, b.Opacity * Saydamlik(n));
         }
 
         static List<double[]> Zeminler(Visual dugum, out bool kesin)
@@ -249,7 +244,10 @@ namespace AbxPilot.UI.Kontrast
             kesin = opak;
             var sonuc = new List<double[]> { new double[] { 255, 255, 255, 1 } };
             for (var i = katmanlar.Count - 1; i >= 0; i--)
-                sonuc = sonuc.SelectMany(alt => katmanlar[i].Select(ust => Ustune(ust, alt))).ToList();
+            {
+                var katman = katmanlar[i];
+                sonuc = sonuc.SelectMany(alt => katman.Select(ust => Ustune(ust, alt))).ToList();
+            }
             foreach (var z in sonuc) z[3] = 1;
             return sonuc;
         }
@@ -299,9 +297,8 @@ namespace AbxPilot.UI.Kontrast
             return (Math.Max(a, b) + 0.05) / (Math.Min(a, b) + 0.05);
         }
 
-        static string Hex(double[] c) => "#" + ((int)Math.Round(c[0])).ToString("X2") + ((int)Math.Round(c[1])).ToString("X2") + ((int)Math.Round(c[2])).ToString("X2");
-
-        static string Hex(Color c) => "#" + (c.A < 255 ? c.A.ToString("X2") : "") + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
+        static string Hex(double[] c) =>
+            "#" + (c[3] < 1 ? ((int)Math.Round(c[3] * 255)).ToString("X2") : "") + ((int)Math.Round(c[0])).ToString("X2") + ((int)Math.Round(c[1])).ToString("X2") + ((int)Math.Round(c[2])).ToString("X2");
 
         static string Kisalt(string s)
         {
@@ -331,7 +328,7 @@ namespace AbxPilot.UI.Kontrast
             if (string.IsNullOrEmpty(yol))
             {
                 var d = new DirectoryInfo(AppContext.BaseDirectory);
-                while (d != null && !File.Exists(IOPath.Combine(d.FullName, "AbxPilot.sln"))) d = d.Parent;
+                while (d != null && !d.EnumerateFiles("*.sln*").Any()) d = d.Parent;
                 yol = IOPath.Combine(d?.FullName ?? AppContext.BaseDirectory, "tmp", "uc");
             }
             Directory.CreateDirectory(yol);

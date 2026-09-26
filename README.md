@@ -2,6 +2,8 @@
 
 [<img src="assets/badge-lang.svg" alt="English selected, switch to Türkçe" width="124" height="44">](README.tr.md)
 
+![AbxPilot](assets/banner.svg)
+
 # AbxPilot
 
 Empiric antibiotic guideline navigator.
@@ -63,12 +65,32 @@ The engine is a guideline decision table plus hard constraints. The knowledge ba
 `kb/`, embedded into `AbxPilot.Data` at build time. The UI reads it through `AbxPilot.Core`
 interfaces and never holds medical content itself.
 
-## What the program shows
+```mermaid
+flowchart LR
+    A[Select Syndrome] --> B[Answer Questions]
+    B --> C[Apply Hard Constraints]
+    C --> D[Show Recommendation]
+```
 
-![Main window: syndrome rail on the left, guideline summary, spectrum strip and question panel on the right, disclaimer at the bottom.](assets/main-window.png)
+Selecting a syndrome loads its guideline table; each answered question narrows the table;
+hard constraints remove regimens and state why; the remaining first choice and alternatives
+are shown with source, dose, route and duration.
 
-The main window at stage A0: syndrome rail, guideline summary card, spectrum strip, question
-panel and the permanent disclaimer strip.
+## The program shows it works
+
+![Main window: syndrome rail on the left, guideline summary, spectrum strip and question panel on the right, disclaimer in the title bar.](docs/ui-denetim/2026-09-27/b3-acilis.png)
+
+Main window: syndrome rail, guideline summary card, spectrum strip, question panel and the
+permanent disclaimer strip.
+
+![Recommendation card: first choice, dose, route, duration and source section, with alternatives listed below.](docs/ui-denetim/2026-09-27/b3-secimler.png)
+
+Recommendation card: first choice with dose, route and duration, its source section, and the
+alternatives ranked below it.
+
+![Settings panel: guideline set, region and score-hint toggles.](docs/ui-denetim/2026-09-27/b3-ayarlar-set.png)
+
+Settings panel: guideline set, region and the score-hint toggle.
 
 ## Development
 
@@ -98,7 +120,7 @@ If the project helps you, sponsoring keeps it going.
 
 ## License
 
-[AGPL-3.0-or-later](LICENSE)
+AGPL-3.0-or-later. See [LICENSE](LICENSE).
 
 <!-- signature -->
 <div align="center">

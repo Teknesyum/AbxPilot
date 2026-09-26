@@ -193,25 +193,43 @@ public sealed class KabukStandardiTests
             var isaret = File.ReadAllText(yol);
             if (!isaret.Contains(@"WindowDecorations=""BorderOnly""", StringComparison.Ordinal))
                 eksikler.Add($"{Kisalt(yol)}: WindowDecorations=\"BorderOnly\" yok");
-
-            var arka = yol + ".cs";
-            if (!File.Exists(arka)) { eksikler.Add($"{Kisalt(yol)}: arka kod yok"); continue; }
-
-            var govde = File.ReadAllText(arka);
-            if (!govde.Contains("BeginMoveDrag(", StringComparison.Ordinal))
-                eksikler.Add($"{Kisalt(arka)}: BeginMoveDrag yok");
         }
 
-        var ana = File.ReadAllText(Path.Combine(AppRoot, "MainWindow.axaml.cs"));
-        var ciftTik = ana.IndexOf("e.ClickCount == 2", StringComparison.Ordinal);
-        if (ciftTik < 0) eksikler.Add("MainWindow.axaml.cs: cift tik kolu yok");
-        else if (ana.IndexOf("ToggleMaximizeRestore()", ciftTik, StringComparison.Ordinal) < 0)
-            eksikler.Add("MainWindow.axaml.cs: cift tik buyutme/geri alma cagirmiyor");
+        var kabukKoklari = KabukKaynakDosyalari();
 
-        if (!ana.Contains("WindowState = WindowState == WindowState.Maximized", StringComparison.Ordinal))
-            eksikler.Add("MainWindow.axaml.cs: buyutme/geri alma gecisi yok");
+        if (!kabukKoklari.Any(metin => metin.Contains("BeginMoveDrag(", StringComparison.Ordinal)))
+            eksikler.Add("BeginMoveDrag hicbir kabuk kaynaginda yok (pencere veya UstCubuk)");
+
+        var ciftTikVar = kabukKoklari.Any(metin =>
+        {
+            var ciftTik = metin.IndexOf("ClickCount == 2", StringComparison.Ordinal);
+            if (ciftTik < 0) return false;
+            return metin.IndexOf("Maximize", ciftTik, StringComparison.OrdinalIgnoreCase) >= 0
+                   || metin.IndexOf("Buyut", ciftTik, StringComparison.OrdinalIgnoreCase) >= 0;
+        });
+        if (!ciftTikVar) eksikler.Add("cift tik ile buyutme/geri alma kolu hicbir kabuk kaynaginda yok");
+
+        var gecisVar = kabukKoklari.Any(metin =>
+            metin.Contains("WindowState == WindowState.Maximized", StringComparison.Ordinal)
+            && metin.Contains("WindowState.Normal", StringComparison.Ordinal));
+        if (!gecisVar) eksikler.Add("buyutme/geri alma gecisi hicbir kabuk kaynaginda yok");
 
         Assert.Empty(eksikler);
+    }
+
+    private static string[] KabukKaynakDosyalari()
+    {
+        var dosyalar = new List<string>();
+        dosyalar.AddRange(Directory.GetFiles(AppRoot, "*.cs", SearchOption.AllDirectories));
+
+        var ustcubuk = Path.Combine(RepoPaths.Root, "teknesyum-ui", "ustcubuk");
+        if (Directory.Exists(ustcubuk))
+            dosyalar.AddRange(Directory.GetFiles(ustcubuk, "*.cs", SearchOption.AllDirectories));
+
+        return dosyalar
+            .OrderBy(yol => yol, StringComparer.Ordinal)
+            .Select(File.ReadAllText)
+            .ToArray();
     }
 
     [Fact]

@@ -1,4 +1,4 @@
-﻿param([string]$AnahtarAdi = "usb-01", [switch]$Onar, [switch]$Prova)
+﻿param([switch]$Onar, [switch]$Prova)
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
@@ -9,8 +9,7 @@ $betik = $MyInvocation.MyCommand.Path
 $S = [hashtable]::Synchronized(@{
   ad = "AbxPilot"
   altbaslik = "Kılavuz gezgini"
-  depo = "git@github.com:Teknesyum/abxpilot.git"
-  anahtarAdi = $AnahtarAdi
+  depo = "https://github.com/Teknesyum/AbxPilot.git"
   onar = [bool]$Onar
   kaynak = $kaynak
   hedef = Join-Path ([Environment]::GetFolderPath("MyDocuments")) "AbxPilot"
@@ -35,11 +34,6 @@ $is = {
     Add-Content -Path $S.gunluk -Value $satir -Encoding UTF8
   }
   function Adim([int]$y, [int]$t, [string]$m) { $S.yuzde = $y; $S.tavan = $t; $S.adim = $m; Yaz $m }
-  function Kilitle([string]$yol) { icacls $yol /inheritance:r /grant:r "$($env:USERNAME):(R)" | Out-Null }
-  function Coz([string]$yol) { if (Test-Path $yol) { icacls $yol /grant:r "$($env:USERNAME):(F)" | Out-Null } }
-  function SshKomut([string]$ssh, [string]$anahtar, [string]$bilinen) {
-    '"{0}" -i "{1}" -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile="{2}"' -f ($ssh -replace '\\', '/'), ($anahtar -replace '\\', '/'), ($bilinen -replace '\\', '/')
-  }
   function Durdur([string]$kok) {
     Get-CimInstance Win32_Process | Where-Object { $_.ExecutablePath -and $_.ExecutablePath.StartsWith($kok, [StringComparison]::OrdinalIgnoreCase) } | ForEach-Object {
       Yaz ("Kapatılıyor: " + $_.Name)
@@ -51,7 +45,6 @@ $is = {
   try {
     $kaynak = $S.kaynak
     $hedef = $S.hedef
-    $kur = Join-Path $kaynak ".kurulum"
     $depo = $S.depo
     $veriAdi = "veri"
     $gecici = Join-Path $env:TEMP ("kur-" + [guid]::NewGuid().ToString("N").Substring(0, 8))
@@ -62,22 +55,8 @@ $is = {
 
     Adim 2 6 "Git hazırlanıyor"
     $sistemGit = Get-Command git.exe -ErrorAction SilentlyContinue
-    $usbGit = Join-Path $kur "git\cmd\git.exe"
-    if ($sistemGit) { $git = $sistemGit.Source; $ssh = "ssh"; Yaz "Bilgisayarda Git var" }
-    elseif (Test-Path $usbGit) { $git = $usbGit; $ssh = Join-Path $kur "git\usr\bin\ssh.exe"; Yaz "Bilgisayarda Git yok, taşınabilir Git kullanılacak" }
-    else { throw "Git bulunamadı: ne bilgisayarda ne USB'de (.kurulum\git)" }
-
-    $anahtarUsb = Join-Path $kur ("anahtar\" + $S.anahtarAdi)
-    if (-not (Test-Path $anahtarUsb)) { throw "Erişim anahtarı yok: $anahtarUsb" }
-    if ($S.prova) { $sshKlasor = $gecici } else { $sshKlasor = Join-Path $env:USERPROFILE ".ssh" }
-    New-Item -ItemType Directory -Force $sshKlasor | Out-Null
-    $anahtar = Join-Path $sshKlasor $S.anahtarAdi
-    $bilinen = Join-Path $sshKlasor "known_hosts"
-    Coz $anahtar
-    Copy-Item $anahtarUsb $anahtar -Force
-    Kilitle $anahtar
-    Yaz "Erişim anahtarı: $anahtar"
-    $env:GIT_SSH_COMMAND = SshKomut $ssh $anahtar $bilinen
+    if ($sistemGit) { $git = $sistemGit.Source; Yaz "Bilgisayarda Git var" }
+    else { throw ".NET ile birlikte Git de kurulu olmalı; bilgisayarda git.exe bulunamadı" }
     $env:GIT_TERMINAL_PROMPT = "0"
 
     Adim 6 12 "GitHub bağlantısı sınanıyor"
@@ -149,15 +128,6 @@ $is = {
     Adim 52 56 "Git ayarları yazılıyor"
     $arac = Join-Path $hedef ".araclar"
     New-Item -ItemType Directory -Force $arac | Out-Null
-    $kaliciSsh = $ssh
-    if (-not $sistemGit) {
-      Adim 56 76 "Taşınabilir Git kuruluyor"
-      robocopy (Join-Path $kur "git") (Join-Path $arac "git") /E /R:1 /W:1 /NFL /NDL /NJH /NJS /NP /MT:16 | Out-Null
-      if ($LASTEXITCODE -ge 8) { throw "Git kopyalanamadı (robocopy $LASTEXITCODE)" }
-      $git = Join-Path $arac "git\cmd\git.exe"
-      $kaliciSsh = Join-Path $arac "git\usr\bin\ssh.exe"
-    }
-    & $git -C $hedef config core.sshCommand ((SshKomut $kaliciSsh $anahtar $bilinen) -replace '"', '\"')
     & $git -C $hedef config remote.origin.url $depo
     & $git -C $hedef config user.name $env:USERNAME
     & $git -C $hedef config user.email "$env:USERNAME@$env:COMPUTERNAME"
@@ -191,7 +161,7 @@ $is = {
     } else { Yaz "Çalıştırılacak dosya bulunamadı, kısayol yazılmadı" }
 
     $surum = (& $git -C $hedef rev-parse --short HEAD) | Select-Object -First 1
-    @{ tarih = (Get-Date).ToString("s"); surum = "$surum"; bilgisayar = $env:COMPUTERNAME; cevrimdisi = [bool]$S.cevrimdisi; anahtar = $S.anahtarAdi } | ConvertTo-Json | Set-Content (Join-Path $arac "kurulum.json") -Encoding UTF8
+    @{ tarih = (Get-Date).ToString("s"); surum = "$surum"; bilgisayar = $env:COMPUTERNAME; cevrimdisi = [bool]$S.cevrimdisi } | ConvertTo-Json | Set-Content (Join-Path $arac "kurulum.json") -Encoding UTF8
     if (-not $S.prova) { Remove-Item $gecici -Recurse -Force -ErrorAction SilentlyContinue }
     Adim 100 100 "Kurulum tamamlandı · sürüm $surum"
     $S.durum = "bitti"
@@ -315,7 +285,7 @@ $kapat = Dugme "Kapat" $false 376
 $programAc.Add_Click({ Start-Process $S.baslat; $f.Close() })
 $gunlukAc.Add_Click({ Start-Process notepad.exe $S.gunluk })
 $onarDugme.Add_Click({
-  $argumanlar = @("-NoProfile", "-ExecutionPolicy", "Bypass", "-STA", "-WindowStyle", "Hidden", "-File", ('"' + $betik + '"'), "-Onar", "-AnahtarAdi", $S.anahtarAdi)
+  $argumanlar = @("-NoProfile", "-STA", "-File", ('"' + $betik + '"'), "-Onar")
   if ($S.prova) { $argumanlar += "-Prova" }
   Start-Process powershell.exe -ArgumentList $argumanlar
   $f.Close()

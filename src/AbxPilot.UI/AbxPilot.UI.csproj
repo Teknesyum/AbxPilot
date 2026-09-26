@@ -13,6 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AvaloniaXaml Include="../../teknesyum-ui/ustcubuk/*.axaml" Link="Kabuk/%(Filename)%(Extension)" />
+    <Compile Include="../../teknesyum-ui/ustcubuk/*.cs" Link="Kabuk/%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AbxPilot.Core\AbxPilot.Core.csproj" />
     <ProjectReference Include="..\AbxPilot.Data\AbxPilot.Data.csproj" />
   </ItemGroup>

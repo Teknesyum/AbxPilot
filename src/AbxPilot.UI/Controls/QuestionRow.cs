@@ -48,12 +48,10 @@ public sealed class QuestionRow : Panel
         if (Label is not { } label || Control is not { } control) return base.MeasureOverride(availableSize);
 
         var width = availableSize.Width;
-        var reserve = LabelMin;
+        label.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+        var reserve = Math.Min(LabelMin, label.DesiredSize.Width);
         if (IsFlexible && !double.IsInfinity(width))
-        {
-            label.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             reserve = Math.Clamp(label.DesiredSize.Width, LabelMin, Math.Max(LabelMin, width / 2));
-        }
         var room = Math.Max(0, width - reserve - Spacing);
         control.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
         var natural = control.DesiredSize.Width;

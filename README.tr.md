@@ -2,6 +2,8 @@
 
 [<img src="assets/badge-lang.tr.svg" alt="Türkçe seçili, switch to English" width="124" height="44">](README.md)
 
+![AbxPilot](assets/banner.tr.svg)
+
 # AbxPilot
 
 Ampirik antibiyotik kılavuz gezgini.
@@ -61,12 +63,32 @@ Motor, bir kılavuz karar tablosu ile katı kısıtlardan oluşur. Bilgi tabanı
 JSON'dur ve derlemede `AbxPilot.Data` içine gömülür. Arayüz onu `AbxPilot.Core`
 arayüzleri üzerinden okur; tıbbi içeriği kendisi tutmaz.
 
+```mermaid
+flowchart LR
+    A[Sendrom Seç] --> B[Soruları Yanıtla]
+    B --> C[Katı Kısıtları Uygula]
+    C --> D[Öneriyi Göster]
+```
+
+Sendrom seçimi ilgili kılavuz tablosunu yükler; her yanıtlanan soru tabloyu daraltır; katı
+kısıtlar rejimleri çıkarır ve nedenini söyler; kalan birinci seçenek ve alternatifler kaynak,
+doz, yol ve süreyle gösterilir.
+
 ## Program ne yaptığını gösterir
 
-![Ana pencere: solda sendrom listesi, sağda kılavuz özeti, spektrum şeridi ve soru paneli, altta uyarı şeridi.](assets/main-window.png)
+![Ana pencere: solda sendrom listesi, sağda kılavuz özeti, spektrum şeridi ve soru paneli, uyarı başlık çubuğunda.](docs/ui-denetim/2026-09-27/b3-acilis.png)
 
-A0 aşamasında ana pencere: sendrom listesi, kılavuz özeti kartı, spektrum şeridi, soru paneli
-ve kalıcı uyarı şeridi.
+Ana pencere: sendrom listesi, kılavuz özeti kartı, spektrum şeridi, soru paneli ve kalıcı
+uyarı şeridi.
+
+![Öneri kartı: birinci seçenek, doz, yol, süre ve kaynak bölümü, altında alternatifler.](docs/ui-denetim/2026-09-27/b3-secimler.png)
+
+Öneri kartı: doz, yol ve süresiyle birinci seçenek, kaynak bölümü ve altındaki sıralı
+alternatifler.
+
+![Ayarlar paneli: kılavuz seti, bölge ve puan-ipucu anahtarları.](docs/ui-denetim/2026-09-27/b3-ayarlar-set.png)
+
+Ayarlar paneli: kılavuz seti, bölge ve puan-ipucu anahtarı.
 
 ## Geliştirme
 
@@ -96,7 +118,7 @@ Proje işinize yarıyorsa sponsorluk onu sürdürür.
 
 ## Lisans
 
-[AGPL-3.0-or-later](LICENSE)
+AGPL-3.0-or-later. Bkz. [LICENSE](LICENSE).
 
 <!-- signature -->
 <div align="center">

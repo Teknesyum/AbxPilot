@@ -1,0 +1,265 @@
+durum | tur | yol | metin | on | zemin | oran | sonuc
+dinlenik | yazi | Grid#Kap > Border > StackPanel > TextBlock#AdYazisi | "Abx" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Grid#Kap > Border > StackPanel > TextBlock#AdYazisi | "Pilot" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+dinlenik | yazi | ContentControl#OrtaAlani > ContentPresenter#PART_ContentPresenter > Panel#TitleNotice > TextBlock#NoticeShort | "Klinik değerlendirme gerektirir." | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter#PART_ContentPresenter > StackPanel > Border > TextBlock | "Veri 0.2.0" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "English" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Türkçe" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Button#DestekDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Bir kahve ısmarla" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+dinlenik | yazi | Button#ImzaDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "by Teknesyum" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | simge | Button#KucultDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | simge | Button#BuyutDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | simge | Button#KapatDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel#Body > Grid#Main > Grid#AppBar > TextBlock#AppTitle | "Toplum kökenli pnömoni (TKP)" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Button#GuidelineButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "TTD TGP Uzlaşı Raporu" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Button#SettingsButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ayarlar" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | StackPanel > Grid > StackPanel > TextBlock | "Kılavuz özeti" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | StackPanel > Panel > Border > TextBlock | "Gözden geçirilmedi" | on #FFD24D | zemin #000000 | 14.58:1 | gecer
+dinlenik | yazi | TransitioningContentControl#Headline > Panel > ContentPresenter#PART_ContentPresenter > TextBlock | "Amoksisilin" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > StackPanel > WrapPanel > CountingText | "1 g" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+dinlenik | yazi | ContentPresenter > StackPanel > WrapPanel > TextBlock | "Oral" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > StackPanel > WrapPanel > TextBlock | "8 saatte bir" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Border#DurationBadge > Panel > StackPanel > TextBlock | "Süre" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Border#DurationBadge > Panel > StackPanel > TextBlock | "5 gün" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+dinlenik | yazi | Panel > StackPanel#ResultState > StackPanel#FirstChoice > TextBlock | "Kaynak: ATS/IDSA 2019 · Q7; Table 2" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel#ResultState > StackPanel#FirstChoice > StackPanel > TextBlock | "Ruhsat (Türkiye)" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ItemsPresenter#PART_ItemsPresenter > StackPanel > ContentPresenter > TextBlock | "Amoksisilin: Ruhsatlı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Button#TabAlternatives > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Alternatifler (1)" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Button#TabRationale > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Gerekçe" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Border > StackPanel > DockPanel > TextBlock | "Doksisiklin" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > StackPanel > TextBlock | "Basamak 2 · 100 mg Oral 12 saatte bir" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter#PART_ContentPresenter > StackPanel > StackPanel > TextBlock | "Elenen seçenekler (2)" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > StackPanel > TextBlock | "Azitromisin" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > StackPanel > TextBlock | "Elendi: yerel pnömokok direnci %25 ve üs…" | on #FFD24D | zemin #000000 | 14.58:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > StackPanel > TextBlock | "Klaritromisin" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > StackPanel > TextBlock | "Elendi: yerel pnömokok direnci %25 ve üs…" | on #FFD24D | zemin #000000 | 14.58:1 | gecer
+dinlenik | yazi | Grid > ScrollContentPresenter#PART_ContentPresenter > StackPanel#SpectrumContent > TextBlock | "Spektrum" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Grid > ScrollContentPresenter#PART_ContentPresenter > StackPanel#SpectrumContent > TextBlock | "Birinci seçeneğin olası etkenleri kapsam…" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "S. pneumoniae" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Güvenilir" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "H. influenzae" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Değişken" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "M. catarrhalis" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Yok" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "M. pneumoniae" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Yok" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "C. pneumoniae" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Yok" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "Legionella" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Yok" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "MSSA" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Yok" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "MRSA" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Yok" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "P. aeruginosa" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Yok" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "Enterobacterales" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Değişken" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "Anaeroplar" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Değişken" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | ContentPresenter > Grid > DockPanel > TextBlock | "İnfluenza" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | StackPanel > ContentPresenter > Grid > TextBlock | "Yok" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Border#QuestionPanel > StackPanel > Grid > TextBlock | "Sorular" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Button#ResetButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Varsayılana sıfırla" | on #6FB7FF | zemin #000000 | 9.89:1 | edilgen
+dinlenik | yazi | StackPanel#Lower > Border#QuestionPanel > StackPanel > TextBlock | "Kapalı anahtar "hayır" demektir; değişti…" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "Tedavi yeri" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ayaktan" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Serviste yatış" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yoğun bakım" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "Eşlik eden hastalıklar" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik kalp hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik akciğer hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik karaciğer hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik böbrek hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Diyabet" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Alkol bağımlılığı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Malignite" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Aspleni" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "Daha önce solunum yolundan MRSA üremesi" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "Daha önce solunum yolundan P. aeruginosa…" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "Penisilin alerjisi" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yok" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Hızlı tip (IgE aracılı)" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Gecikmiş tip, ağır olmayan" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ağır kutanöz reaksiyon (SJS/TEN, DRESS)" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "Gebelik" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "QT uzaması ya da QT uzatan ilaç kullanım…" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "Aspirasyon" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yok" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Aspirasyon şüphesi" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Akciğer apsesi ya da ampiyem" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "İnfluenza testi pozitif" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "Son 3 ayda kullanılan antibiyotik sınıfı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Beta-laktam" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Makrolid" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Florokinolon" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Tetrasiklin" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | ContentPresenter > Border > QuestionRow > TextBlock | "Yerel pnömokok makrolid direnci" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "%25'in altında" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+dinlenik | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "%25 veya üzeri" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+dinlenik | yazi | Panel#Body > Border#SyndromeRail > DockPanel > TextBlock | "Sendromlar" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Border#SyndromeRail > DockPanel > StackPanel > TextBlock#SearchLabel | "Sendrom ara" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Toplum kökenli pnömoni (TKP)" | on #FFFFFF | zemin #152331 | 15.87:1 | gecer
+dinlenik | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Komplike intraabdominal infeksiyon" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Selülit ve deri-yumuşak doku infeksiyonu" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+dinlenik | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "İdrar yolu infeksiyonu" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+hover "English" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "English" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "English" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "English" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "English" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "English" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+edilgen "English" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "English" | on #6FB7FF | zemin #000000 | 9.89:1 | edilgen
+hover "Türkçe" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Türkçe" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+basili "Türkçe" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Türkçe" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+odak "Türkçe" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Türkçe" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Türkçe" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Türkçe" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover #DestekDugmesi | yazi | Button#DestekDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Bir kahve ısmarla" | on #FFFFFF | zemin #493C4C | 10.31:1 | gecer
+basili #DestekDugmesi | yazi | Button#DestekDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Bir kahve ısmarla" | on #FFFFFF | zemin #493C4C | 10.31:1 | gecer
+odak #DestekDugmesi | yazi | Button#DestekDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Bir kahve ısmarla" | on #FFFFFF | zemin #272029 | 15.80:1 | gecer
+edilgen #DestekDugmesi | yazi | Button#DestekDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Bir kahve ısmarla" | on #8A8F9A | zemin #000000 | 6.48:1 | edilgen
+hover #ImzaDugmesi | yazi | Button#ImzaDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "by Teknesyum" | on #FFFFFF | zemin #28425C | 10.39:1 | gecer
+basili #ImzaDugmesi | yazi | Button#ImzaDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "by Teknesyum" | on #FFFFFF | zemin #28425C | 10.39:1 | gecer
+odak #ImzaDugmesi | yazi | Button#ImzaDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "by Teknesyum" | on #FFFFFF | zemin #152331 | 15.87:1 | gecer
+edilgen #ImzaDugmesi | yazi | Button#ImzaDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "by Teknesyum" | on #8A8F9A | zemin #000000 | 6.48:1 | edilgen
+hover #KucultDugmesi | simge | Button#KucultDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #162533 | 15.65:1 | gecer
+basili #KucultDugmesi | simge | Button#KucultDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #22374D | 12.17:1 | gecer
+odak #KucultDugmesi | simge | Button#KucultDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen #KucultDugmesi | simge | Button#KucultDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #8A8F9A | zemin #000000 | 6.48:1 | edilgen
+hover #BuyutDugmesi | simge | Button#BuyutDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #162533 | 15.65:1 | gecer
+basili #BuyutDugmesi | simge | Button#BuyutDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #22374D | 12.17:1 | gecer
+odak #BuyutDugmesi | simge | Button#BuyutDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen #BuyutDugmesi | simge | Button#BuyutDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #8A8F9A | zemin #000000 | 6.48:1 | edilgen
+hover #KapatDugmesi | simge | Button#KapatDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #000000 | zemin #FA8CFF | 10.26:1 | gecer
+basili #KapatDugmesi | simge | Button#KapatDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #000000 | zemin #FA8CFF | 10.26:1 | gecer
+odak #KapatDugmesi | simge | Button#KapatDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen #KapatDugmesi | simge | Button#KapatDugmesi > Border#bd > ContentPresenter#PART_ContentPresenter > Path | "simge" | on #8A8F9A | zemin #000000 | 6.48:1 | edilgen
+hover #GuidelineButton | yazi | Button#GuidelineButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "TTD TGP Uzlaşı Raporu" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili #GuidelineButton | yazi | Button#GuidelineButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "TTD TGP Uzlaşı Raporu" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak #GuidelineButton | yazi | Button#GuidelineButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "TTD TGP Uzlaşı Raporu" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+edilgen #GuidelineButton | yazi | Button#GuidelineButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "TTD TGP Uzlaşı Raporu" | on #6FB7FF | zemin #000000 | 9.89:1 | edilgen
+hover #SettingsButton | yazi | Button#SettingsButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ayarlar" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili #SettingsButton | yazi | Button#SettingsButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ayarlar" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak #SettingsButton | yazi | Button#SettingsButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ayarlar" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+edilgen #SettingsButton | yazi | Button#SettingsButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ayarlar" | on #6FB7FF | zemin #000000 | 9.89:1 | edilgen
+hover #TabAlternatives | yazi | Button#TabAlternatives > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Alternatifler (1)" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+basili #TabAlternatives | yazi | Button#TabAlternatives > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Alternatifler (1)" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+odak #TabAlternatives | yazi | Button#TabAlternatives > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Alternatifler (1)" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen #TabAlternatives | yazi | Button#TabAlternatives > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Alternatifler (1)" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover #TabRationale | yazi | Button#TabRationale > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Gerekçe" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili #TabRationale | yazi | Button#TabRationale > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Gerekçe" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak #TabRationale | yazi | Button#TabRationale > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Gerekçe" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+edilgen #TabRationale | yazi | Button#TabRationale > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Gerekçe" | on #6FB7FF | zemin #000000 | 9.89:1 | edilgen
+hover #ResetButton | yazi | Button#ResetButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Varsayılana sıfırla" | on #FA8CFF | zemin #000000 | 10.26:1 | edilgen
+basili #ResetButton | yazi | Button#ResetButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Varsayılana sıfırla" | on #FA8CFF | zemin #000000 | 10.26:1 | edilgen
+odak #ResetButton | yazi | Button#ResetButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Varsayılana sıfırla" | on #6FB7FF | zemin #000000 | 9.89:1 | edilgen
+edilgen #ResetButton | yazi | Button#ResetButton > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Varsayılana sıfırla" | on #6FB7FF | zemin #000000 | 9.89:1 | edilgen
+hover "Ayaktan" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ayaktan" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+basili "Ayaktan" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ayaktan" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+odak "Ayaktan" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ayaktan" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+edilgen "Ayaktan" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ayaktan" | on #000000 | zemin #6FB7FF | 9.89:1 | edilgen
+hover "Serviste yatış" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Serviste yatış" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Serviste yatış" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Serviste yatış" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Serviste yatış" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Serviste yatış" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Serviste yatış" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Serviste yatış" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Yoğun bakım" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yoğun bakım" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Yoğun bakım" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yoğun bakım" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Yoğun bakım" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yoğun bakım" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Yoğun bakım" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yoğun bakım" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Kronik kalp hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik kalp hastalığı" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Kronik kalp hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik kalp hastalığı" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Kronik kalp hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik kalp hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Kronik kalp hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik kalp hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Kronik akciğer hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik akciğer hastalığı" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Kronik akciğer hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik akciğer hastalığı" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Kronik akciğer hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik akciğer hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Kronik akciğer hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik akciğer hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Kronik karaciğer hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik karaciğer hastalığı" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Kronik karaciğer hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik karaciğer hastalığı" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Kronik karaciğer hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik karaciğer hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Kronik karaciğer hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik karaciğer hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Kronik böbrek hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik böbrek hastalığı" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Kronik böbrek hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik böbrek hastalığı" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Kronik böbrek hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik böbrek hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Kronik böbrek hastalığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Kronik böbrek hastalığı" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Diyabet" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Diyabet" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Diyabet" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Diyabet" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Diyabet" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Diyabet" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Diyabet" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Diyabet" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Alkol bağımlılığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Alkol bağımlılığı" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Alkol bağımlılığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Alkol bağımlılığı" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Alkol bağımlılığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Alkol bağımlılığı" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Alkol bağımlılığı" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Alkol bağımlılığı" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Malignite" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Malignite" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Malignite" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Malignite" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Malignite" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Malignite" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Malignite" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Malignite" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Aspleni" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Aspleni" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Aspleni" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Aspleni" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Aspleni" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Aspleni" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Aspleni" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Aspleni" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Yok" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yok" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+basili "Yok" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yok" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+odak "Yok" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yok" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+edilgen "Yok" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yok" | on #000000 | zemin #6FB7FF | 9.89:1 | edilgen
+hover "Hızlı tip (IgE aracılı)" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Hızlı tip (IgE aracılı)" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Hızlı tip (IgE aracılı)" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Hızlı tip (IgE aracılı)" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Hızlı tip (IgE aracılı)" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Hızlı tip (IgE aracılı)" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Hızlı tip (IgE aracılı)" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Hızlı tip (IgE aracılı)" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Gecikmiş tip, ağır olmayan" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Gecikmiş tip, ağır olmayan" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Gecikmiş tip, ağır olmayan" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Gecikmiş tip, ağır olmayan" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Gecikmiş tip, ağır olmayan" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Gecikmiş tip, ağır olmayan" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Gecikmiş tip, ağır olmayan" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Gecikmiş tip, ağır olmayan" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Ağır kutanöz reaksiyon (SJS/TEN, DRESS)" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ağır kutanöz reaksiyon (SJS/TEN, DRESS)" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Ağır kutanöz reaksiyon (SJS/TEN, DRESS)" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ağır kutanöz reaksiyon (SJS/TEN, DRESS)" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Ağır kutanöz reaksiyon (SJS/TEN, DRESS)" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ağır kutanöz reaksiyon (SJS/TEN, DRESS)" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Ağır kutanöz reaksiyon (SJS/TEN, DRESS)" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Ağır kutanöz reaksiyon (SJS/TEN, DRESS)" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Yok" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yok" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+basili "Yok" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yok" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+odak "Yok" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yok" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+edilgen "Yok" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Yok" | on #000000 | zemin #6FB7FF | 9.89:1 | edilgen
+hover "Aspirasyon şüphesi" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Aspirasyon şüphesi" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Aspirasyon şüphesi" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Aspirasyon şüphesi" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Aspirasyon şüphesi" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Aspirasyon şüphesi" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Aspirasyon şüphesi" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Aspirasyon şüphesi" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Akciğer apsesi ya da ampiyem" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Akciğer apsesi ya da ampiyem" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Akciğer apsesi ya da ampiyem" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Akciğer apsesi ya da ampiyem" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Akciğer apsesi ya da ampiyem" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Akciğer apsesi ya da ampiyem" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Akciğer apsesi ya da ampiyem" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Akciğer apsesi ya da ampiyem" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Beta-laktam" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Beta-laktam" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Beta-laktam" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Beta-laktam" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Beta-laktam" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Beta-laktam" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Beta-laktam" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Beta-laktam" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Makrolid" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Makrolid" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Makrolid" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Makrolid" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Makrolid" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Makrolid" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Makrolid" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Makrolid" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Florokinolon" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Florokinolon" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Florokinolon" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Florokinolon" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Florokinolon" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Florokinolon" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Florokinolon" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Florokinolon" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "Tetrasiklin" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Tetrasiklin" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Tetrasiklin" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Tetrasiklin" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Tetrasiklin" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Tetrasiklin" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "Tetrasiklin" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Tetrasiklin" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "%25'in altında" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "%25'in altında" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "%25'in altında" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "%25'in altında" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "%25'in altında" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "%25'in altında" | on #FFFFFF | zemin #000000 | 21.00:1 | gecer
+edilgen "%25'in altında" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "%25'in altında" | on #FFFFFF | zemin #000000 | 21.00:1 | edilgen
+hover "%25 veya üzeri" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "%25 veya üzeri" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+basili "%25 veya üzeri" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "%25 veya üzeri" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+odak "%25 veya üzeri" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "%25 veya üzeri" | on #000000 | zemin #6FB7FF | 9.89:1 | gecer
+edilgen "%25 veya üzeri" | yazi | Panel > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "%25 veya üzeri" | on #000000 | zemin #6FB7FF | 9.89:1 | edilgen
+hover "Toplum kökenli pnömoni (TKP)" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Toplum kökenli pnömoni (TKP)" | on #FFFFFF | zemin #152331 | 15.87:1 | gecer
+basili "Toplum kökenli pnömoni (TKP)" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Toplum kökenli pnömoni (TKP)" | on #FFFFFF | zemin #152331 | 15.87:1 | gecer
+odak "Toplum kökenli pnömoni (TKP)" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Toplum kökenli pnömoni (TKP)" | on #FFFFFF | zemin #152331 | 15.87:1 | gecer
+edilgen "Toplum kökenli pnömoni (TKP)" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Toplum kökenli pnömoni (TKP)" | on #FFFFFF | zemin #152331 | 15.87:1 | edilgen
+hover "Komplike intraabdominal infeksiyon" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Komplike intraabdominal infeksiyon" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Komplike intraabdominal infeksiyon" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Komplike intraabdominal infeksiyon" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Komplike intraabdominal infeksiyon" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Komplike intraabdominal infeksiyon" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+edilgen "Komplike intraabdominal infeksiyon" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Komplike intraabdominal infeksiyon" | on #6FB7FF | zemin #000000 | 9.89:1 | edilgen
+hover "Selülit ve deri-yumuşak doku infeksiyonu" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Selülit ve deri-yumuşak doku infeksiyonu" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "Selülit ve deri-yumuşak doku infeksiyonu" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Selülit ve deri-yumuşak doku infeksiyonu" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "Selülit ve deri-yumuşak doku infeksiyonu" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Selülit ve deri-yumuşak doku infeksiyonu" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+edilgen "Selülit ve deri-yumuşak doku infeksiyonu" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "Selülit ve deri-yumuşak doku infeksiyonu" | on #6FB7FF | zemin #000000 | 9.89:1 | edilgen
+hover "İdrar yolu infeksiyonu" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "İdrar yolu infeksiyonu" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+basili "İdrar yolu infeksiyonu" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "İdrar yolu infeksiyonu" | on #FA8CFF | zemin #000000 | 10.26:1 | gecer
+odak "İdrar yolu infeksiyonu" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "İdrar yolu infeksiyonu" | on #6FB7FF | zemin #000000 | 9.89:1 | gecer
+edilgen "İdrar yolu infeksiyonu" | yazi | Button > Border#bd > ContentPresenter#PART_ContentPresenter > TextBlock | "İdrar yolu infeksiyonu" | on #6FB7FF | zemin #000000 | 9.89:1 | edilgen

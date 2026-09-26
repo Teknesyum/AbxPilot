@@ -71,7 +71,6 @@ public class EkranTests
         Bekle();
 
         var satir = pencere.GetVisualDescendants().OfType<Border>().First(b => b.Classes.Contains("alt") && ToolTip.GetServiceEnabled(b));
-        ToolTip.SetPlacement(satir, PlacementMode.Bottom);
         satir.BringIntoView();
         Bekle();
         ToolTip.SetIsOpen(satir, true);
@@ -431,7 +430,7 @@ public class EkranTests
         var ipucu = ToolTip.GetTip(hedef) as Control;
         var kok = ipucu is null ? null : TopLevel.GetTopLevel(ipucu);
         var kare = kok is not null && kok != pencere ? kok.CaptureRenderedFrame() : null;
-        var yer = hedef.TranslatePoint(new Point(0, hedef.Bounds.Height), pencere) ?? default;
+        var yer = hedef.TranslatePoint(new Point(hedef.Bounds.Width + ToolTip.GetHorizontalOffset(hedef), 0), pencere) ?? default;
         var boyut = ana.PixelSize;
         using var tuval = new RenderTargetBitmap(boyut);
         using (var ctx = tuval.CreateDrawingContext())
@@ -477,7 +476,7 @@ public class EkranTests
     {
         var dizin = new DirectoryInfo(AppContext.BaseDirectory);
         while (dizin is not null && !File.Exists(Path.Combine(dizin.FullName, "AbxPilot.sln"))) dizin = dizin.Parent;
-        var klasor = Path.Combine(dizin?.FullName ?? AppContext.BaseDirectory, "docs", "ui-denetim", "2026-09-25");
+        var klasor = Path.Combine(dizin?.FullName ?? AppContext.BaseDirectory, "docs", "ui-denetim", "2026-09-27");
         Directory.CreateDirectory(klasor);
         return klasor;
     }

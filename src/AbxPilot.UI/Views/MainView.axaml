@@ -28,7 +28,7 @@
                        TextTrimming="CharacterEllipsis"
                        Text="{Binding SyndromeTitle}"/>
             <Button x:Name="GuidelineButton" Grid.Column="2" HorizontalAlignment="Left" Theme="{StaticResource HeaderButton}"
-                    IsVisible="{Binding !IsLoading}"
+                    IsVisible="{Binding GuidelineName, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
                     Content="{Binding GuidelineName}"
                     ToolTip.Tip="{Binding SourceUrl}"
                     ToolTip.ServiceEnabled="{Binding SourceUrl, Converter={x:Static ObjectConverters.IsNotNull}}"/>
@@ -65,7 +65,7 @@
                     </StackPanel>
                     <Border x:Name="SkeletonSweep" HorizontalAlignment="Left"
                             Width="{StaticResource SidebarWidth}"
-                            Background="{StaticResource NeonBlue10}"/>
+                            Background="{StaticResource Renk1x10}"/>
                   </Panel>
                 </StackPanel>
 
@@ -91,7 +91,7 @@
                 <StackPanel x:Name="ResultState" Spacing="{StaticResource FieldStack}"
                             IsVisible="{Binding HasCard}">
                   <StackPanel Spacing="{StaticResource FieldGap}">
-                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="{StaticResource RowGap}">
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" ColumnSpacing="{StaticResource RowGap}">
                       <StackPanel Orientation="Horizontal" Spacing="{StaticResource RowGap}">
                         <TextBlock Theme="{StaticResource Label}" VerticalAlignment="Center" Text="{loc:Text card.title}"/>
                         <Panel IsVisible="{Binding HasFirstChoice}" VerticalAlignment="Center">
@@ -103,10 +103,12 @@
                           </Border>
                         </Panel>
                       </StackPanel>
-                      <TextBlock x:Name="ChangeTag" Grid.Column="1" Classes="tag" Theme="{StaticResource Label}"
-                                 Foreground="{StaticResource NeonBlue}"
-                                 HorizontalAlignment="Right" VerticalAlignment="Center"
-                                 TextWrapping="Wrap" TextAlignment="Right"
+                      <TextBlock x:Name="ChangeTag" Grid.Row="1" Grid.ColumnSpan="2" Classes="tag" Theme="{StaticResource Label}"
+                                 Foreground="{StaticResource Renk1}"
+                                 Margin="{Binding Source={StaticResource FieldGap}, Converter={x:Static ch:Converters.Top}}"
+                                 IsVisible="{Binding ChangeText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                                 TextWrapping="Wrap" MaxLines="2" TextTrimming="CharacterEllipsis"
+                                 ToolTip.Tip="{Binding ChangeText}"
                                  Text="{Binding ChangeText}"/>
                     </Grid>
                     <TransitioningContentControl x:Name="Headline" Classes="headline drug"
@@ -241,6 +243,8 @@
                                         CornerRadius="{StaticResource Radius}"
                                         Padding="{Binding Source={StaticResource Space3}, Converter={x:Static ch:Converters.Inset}}"
                                         ToolTip.ServiceEnabled="{Binding HasScore}"
+                                        ToolTip.Placement="RightEdgeAlignedTop"
+                                        ToolTip.HorizontalOffset="{StaticResource Space2}"
                                         ToolTip.ShowDelay="0">
                                   <ToolTip.Tip>
                                     <StackPanel Spacing="{StaticResource Space1}">
@@ -385,7 +389,7 @@
                                          Text="{Binding ShortName}" ToolTip.Tip="{Binding Name}"/>
                             </DockPanel>
                             <Panel Grid.Column="1" Height="{StaticResource Space1}" VerticalAlignment="Center">
-                              <Border Background="{StaticResource NeonBlue10}" CornerRadius="{StaticResource Radius}"/>
+                              <Border Background="{StaticResource Renk1x10}" CornerRadius="{StaticResource Radius}"/>
                               <Border Classes="fill" Classes.variable="{Binding IsVariable}"
                                       CornerRadius="{StaticResource Radius}"
                                       RenderTransform="{Binding Coverage, Converter={x:Static ch:Converters.ScaleX}}"/>
@@ -521,18 +525,18 @@
                        VerticalContentAlignment="Center"
                        CornerRadius="{StaticResource Radius}"
                        FontFamily="{StaticResource FontSans}"
-                       FontSize="{StaticResource FontSize1}"
+                       FontSize="{StaticResource FontSize2}"
                        Foreground="{StaticResource TextBody}"
-                       CaretBrush="{StaticResource NeonBlue}"
-                       SelectionBrush="{StaticResource NeonBlue30}"
-                       SelectionForegroundBrush="{StaticResource OnBlue30}">
+                       CaretBrush="{StaticResource Renk1}"
+                       SelectionBrush="{StaticResource Renk1x30}"
+                       SelectionForegroundBrush="{StaticResource OnRenk1x30}">
                 <TextBox.Resources>
                   <StaticResource x:Key="TextControlBackground" ResourceKey="AppBg"/>
                   <StaticResource x:Key="TextControlBackgroundPointerOver" ResourceKey="AppBg"/>
                   <StaticResource x:Key="TextControlBackgroundFocused" ResourceKey="AppBg"/>
                   <StaticResource x:Key="TextControlBorderBrush" ResourceKey="BorderDefault"/>
                   <StaticResource x:Key="TextControlBorderBrushPointerOver" ResourceKey="BorderStrong"/>
-                  <StaticResource x:Key="TextControlBorderBrushFocused" ResourceKey="NeonBlue"/>
+                  <StaticResource x:Key="TextControlBorderBrushFocused" ResourceKey="Renk1"/>
                   <StaticResource x:Key="TextControlForeground" ResourceKey="TextBody"/>
                   <StaticResource x:Key="TextControlForegroundPointerOver" ResourceKey="TextBody"/>
                   <StaticResource x:Key="TextControlForegroundFocused" ResourceKey="TextBody"/>
@@ -589,7 +593,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                   <DataTemplate x:DataType="vm:ChoiceOption">
-                    <Button Theme="{StaticResource HeaderButton}"
+                    <Button Theme="{StaticResource Segment}"
                             Classes.selected="{Binding IsSelected}"
                             Content="{Binding Label}"
                             Command="{Binding #Root.((vm:MainViewModel)DataContext).SelectGuidelineSetCommand}"
@@ -610,7 +614,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                   <DataTemplate x:DataType="vm:ChoiceOption">
-                    <Button Theme="{StaticResource HeaderButton}"
+                    <Button Theme="{StaticResource Segment}"
                             Classes.selected="{Binding IsSelected}"
                             Content="{Binding Label}"
                             Command="{Binding #Root.((vm:MainViewModel)DataContext).SelectRegionCommand}"
@@ -630,7 +634,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                   <DataTemplate x:DataType="vm:LanguageOption">
-                    <Button Theme="{StaticResource HeaderButton}"
+                    <Button Theme="{StaticResource Segment}"
                             Classes.selected="{Binding IsSelected}"
                             Content="{Binding Label}"
                             Command="{Binding #Root.((vm:MainViewModel)DataContext).SelectLanguageCommand}"
