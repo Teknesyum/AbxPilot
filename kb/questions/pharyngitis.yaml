@@ -1,0 +1,118 @@
+- id: phar_complication
+  version: 1
+  source: nice-ng84-2018
+  section: 'Recommendation 1.1.13'
+  source_date: '2018-01-26'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Peritonsillar abscess (quinsy), cellulitis, parapharyngeal or retropharyngeal abscess, Lemierre syndrome, airway compromise or severe systemic infection.'
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: phar_fever
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.6; Tablo 3.3'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Temperature over 38 C (Centor, McIsaac); fever in the last 24 h (FeverPAIN).'
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'yes'
+- id: phar_exudate
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.6; Tablo 3.3'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Swollen or exudative tonsils (Centor, McIsaac); purulence (FeverPAIN).'
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'yes'
+- id: phar_nodes
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.6; Tablo 3.3'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Swollen tender anterior cervical nodes.'
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'yes'
+- id: phar_no_cough
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.6; Tablo 3.3'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Absence of cough (Centor, McIsaac); no cough or coryza (FeverPAIN).'
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'yes'
+- id: phar_rapid
+  version: 1
+  source: nice-ng84-2018
+  section: 'Terms used; recommendation 1.1.3'
+  source_date: '2018-01-26'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Attended within 3 days of symptom onset (FeverPAIN).'
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'yes'
+- id: phar_inflamed
+  version: 1
+  source: nice-ng84-2018
+  section: 'Terms used; recommendation 1.1.3'
+  source_date: '2018-01-26'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Severely inflamed tonsils (FeverPAIN).'
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: phar_age
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.6; Tablo 3.3'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'McIsaac: 15-44 years scores 0, over 44 scores -1.'
+  type: single
+  options:
+  - 'age_15_44'
+  - 'age_45_plus'
+  default: 'age_15_44'
+- id: gas_test
+  version: 1
+  source: idsa-gas-2012
+  section: 'Recommendations 1-2'
+  source_date: '2012-11-15'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Rapid antigen detection test or throat culture for group A Streptococcus.'
+  type: single
+  options:
+  - 'not_done'
+  - 'positive'
+  - 'negative'
+  default: 'not_done'

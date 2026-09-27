@@ -177,5 +177,9 @@
   "guideline.ekmud-2016.name": "EKMUD İAİ Uzlaşı Raporu 2016",
   "region.eu.name": "Avrupa Birliği",
   "region.us.name": "ABD",
-  "region.other.name": "Diğer"
+  "region.other.name": "Diğer",
+  "indication.pharyngitis": "Akut farenjit",
+  "guideline.idsa-2012.name": "IDSA GAS Farenjiti 2012",
+  "guideline.nice-ng84-2018.name": "NICE NG84 2018",
+  "guideline.titck-2020.name": "TİTCK Akılcı Antibiyotik 2020"
 }

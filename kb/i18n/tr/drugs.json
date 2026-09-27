@@ -43,5 +43,6 @@
   "drug.metronidazole.name": "Metronidazol",
   "drug.tigecycline.name": "Tigesiklin",
   "drug.teicoplanin.name": "Teikoplanin",
-  "drug.erythromycin.name": "Eritromisin"
+  "drug.erythromycin.name": "Eritromisin",
+  "drug.benzathine_benzylpenicillin.name": "Benzatin benzilpenisilin (benzatin penisilin G)"
 }

@@ -58,6 +58,8 @@ licensing:
   status: unknown
 - drug: penicillin_v
   status: unknown
+- drug: benzathine_benzylpenicillin
+  status: unknown
 - drug: benzylpenicillin
   status: unknown
 - drug: flucloxacillin

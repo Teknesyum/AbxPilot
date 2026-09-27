@@ -40,6 +40,26 @@ doses:
   interval_hours: 24
   source: idsa-ats-2019
   section: Q8; Table 3
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 12 mg/kg
+  amount_70kg: 500 mg
+  interval_hours: 24
+  source: idsa-gas-2012
+  section: 'Table 2'
+  note: 'Maximum 500 mg; 5 days.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 12 mg/kg
+  amount_70kg: 500 mg
+  interval_hours: 24
+  source: titck-akilci-2020
+  section: 'Konu 3, Tablo 3.4'
+  note: 'Maximum 500 mg; 5 days.'
 adverse_effects:
 - gi_upset
 - qt_prolongation

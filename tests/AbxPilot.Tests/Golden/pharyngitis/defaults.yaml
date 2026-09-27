@@ -1,0 +1,24 @@
+id: defaults
+title: "Typical adult sore throat, all defaults (McIsaac 4, not tested)"
+source: titck-akilci-2020
+section: 'Konu 3.6-3.7; Tablo 3.3'
+region: tr
+answers: {}
+expect:
+  status: no_antibiotic
+  first_choice: null
+expect_by_set:
+  idsa-2012:
+    status: no_antibiotic
+    first_choice: null
+    excluded: []
+  nice-ng84-2018:
+    status: selected
+    first_choice: phar_pnv_nice_po
+    drugs: [penicillin_v]
+    excluded: []
+  titck-2020:
+    status: selected
+    first_choice: phar_pnv_tr_po
+    drugs: [penicillin_v]
+    excluded: []

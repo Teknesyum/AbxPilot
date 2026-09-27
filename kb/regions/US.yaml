@@ -145,6 +145,9 @@ licensing:
   status: licensed
 - drug: penicillin_v
   status: licensed
+- drug: benzathine_benzylpenicillin
+  status: licensed
+  note: Bicillin L-A, NDA050141, prescription (Drugs@FDA).
 - drug: benzylpenicillin
   status: licensed
 - drug: flucloxacillin

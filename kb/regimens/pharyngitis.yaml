@@ -1,0 +1,213 @@
+- id: phar_pnv_po
+  version: 1
+  source: idsa-gas-2012
+  section: 'Recommendation 8; Table 2'
+  source_date: '2012-11-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: penicillin_v
+    dose: phar_po
+    role: beta_lactam
+- id: phar_amx_po
+  version: 1
+  source: idsa-gas-2012
+  section: 'Recommendation 8; Table 2'
+  source_date: '2012-11-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: amoxicillin
+    dose: phar_po
+    role: beta_lactam
+- id: phar_bpg_im
+  version: 1
+  source: idsa-gas-2012
+  section: 'Recommendation 8; Table 2'
+  source_date: '2012-11-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: benzathine_benzylpenicillin
+    dose: phar_im
+    role: beta_lactam
+  duration_days: 1
+- id: phar_lex_po
+  version: 1
+  source: idsa-gas-2012
+  section: 'Recommendation 9; Table 2'
+  source_date: '2012-11-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cephalexin
+    dose: phar_po
+    role: beta_lactam
+- id: phar_cdx_po
+  version: 1
+  source: idsa-gas-2012
+  section: 'Recommendation 9; Table 2'
+  source_date: '2012-11-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefadroxil
+    dose: phar_po
+    role: beta_lactam
+- id: phar_cli_po
+  version: 1
+  source: idsa-gas-2012
+  section: 'Recommendation 9; Table 2'
+  source_date: '2012-11-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clindamycin
+    dose: phar_po
+    role: lincosamide
+- id: phar_azm_po
+  version: 1
+  source: idsa-gas-2012
+  section: 'Recommendation 9; Table 2'
+  source_date: '2012-11-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: azithromycin
+    dose: phar_po
+    role: macrolide
+  duration_days: 5
+- id: phar_clr_po
+  version: 1
+  source: idsa-gas-2012
+  section: 'Recommendation 9; Table 2'
+  source_date: '2012-11-15'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clarithromycin
+    dose: phar_po
+    role: macrolide
+- id: phar_pnv_tr_po
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.7; Tablo 3.4'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: penicillin_v
+    dose: phar_po_tr
+    role: beta_lactam
+- id: phar_amx_tr_po
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.7; Tablo 3.4'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: amoxicillin
+    dose: phar_po_tr
+    role: beta_lactam
+- id: phar_bpg_tr_im
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.7; Tablo 3.4'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: benzathine_benzylpenicillin
+    dose: phar_im_tr
+    role: beta_lactam
+  duration_days: 1
+- id: phar_lex_tr_po
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.7; Tablo 3.4'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cephalexin
+    dose: phar_po_tr
+    role: beta_lactam
+- id: phar_cdx_tr_po
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.7; Tablo 3.4'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefadroxil
+    dose: phar_po_tr
+    role: beta_lactam
+- id: phar_cli_tr_po
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.7; Tablo 3.4'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clindamycin
+    dose: phar_po_tr
+    role: lincosamide
+- id: phar_azm_tr_po
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.7; Tablo 3.4'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: azithromycin
+    dose: phar_po_tr
+    role: macrolide
+  duration_days: 5
+- id: phar_clr_tr_po
+  version: 1
+  source: titck-akilci-2020
+  section: 'Konu 3.7; Tablo 3.4'
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clarithromycin
+    dose: phar_po_tr
+    role: macrolide
+- id: phar_pnv_nice_po
+  version: 1
+  source: nice-ng84-2018
+  section: 'Recommendation 1.1.10; Table 1'
+  source_date: '2018-01-26'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: penicillin_v
+    dose: phar_po_nice
+    role: beta_lactam
+- id: phar_clr_nice_po
+  version: 1
+  source: nice-ng84-2018
+  section: 'Table 1'
+  source_date: '2018-01-26'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: clarithromycin
+    dose: phar_po_nice
+    role: macrolide
+- id: phar_ery_nice_po
+  version: 1
+  source: nice-ng84-2018
+  section: 'Table 1'
+  source_date: '2018-01-26'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: erythromycin
+    dose: phar_po_nice
+    role: macrolide

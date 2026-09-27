@@ -1,0 +1,6 @@
+id,version,stage,action,role,phar_complication,phar_no_cough,gas_test,candidates,duration_days,rationale_key,source,section,source_date,reviewed_at,review_status,note
+complication,1,base,refer,,yes,*,*,,,pharyngitis.idsa.refer,nice-ng84-2018,Recommendation 1.1.13,2018-01-26,,unreviewed,IDSA 2012 names suppurative complications but gives no referral rule; the NICE rule is used.
+viral,1,base,withhold,,no,no,*,,,pharyngitis.idsa.viral,idsa-gas-2012,Recommendations 1 and 4,2012-11-15,,unreviewed,
+negative,1,base,withhold,,no,yes,negative,,,pharyngitis.idsa.negative,idsa-gas-2012,Recommendation 2,2012-11-15,,unreviewed,
+positive,1,base,select,,no,yes,positive,phar_pnv_po|phar_amx_po|phar_bpg_im;phar_lex_po|phar_cdx_po;phar_cli_po|phar_azm_po|phar_clr_po,10,pharyngitis.idsa.treat,idsa-gas-2012,Recommendations 8-9; Table 2,2012-11-15,,unreviewed,
+untested,1,base,withhold,,no,yes,not_done,,,pharyngitis.idsa.test_first,idsa-gas-2012,Recommendation 1,2012-11-15,,unreviewed,

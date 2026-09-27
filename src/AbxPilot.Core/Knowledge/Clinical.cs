@@ -47,6 +47,7 @@ public sealed record Condition
 
 public sealed record Syndrome : KbRecord
 {
+    public int? Order { get; init; }
     public IReadOnlyList<string> Pathogens { get; init; } = [];
     public IReadOnlyList<string> Questions { get; init; } = [];
     public IReadOnlyList<DerivedFlag> Derived { get; init; } = [];

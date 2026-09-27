@@ -1,0 +1,12 @@
+id: s_pyogenes
+version: 1
+source: idsa-gas-2012
+section: 'Scope: group A streptococcal pharyngitis'
+source_date: '2012-11-15'
+reviewed_at: null
+review_status: unreviewed
+kind: bacterium
+gram: positive
+group: typical
+resistance_mechanisms:
+- macrolide_resistance

@@ -1,0 +1,24 @@
+id: negative_test
+title: "Typical features but a negative rapid antigen test"
+source: idsa-gas-2012
+section: 'Recommendation 2'
+region: tr
+answers:
+  gas_test: 'negative'
+expect:
+  status: no_antibiotic
+  first_choice: null
+expect_by_set:
+  idsa-2012:
+    status: no_antibiotic
+    first_choice: null
+    excluded: []
+  nice-ng84-2018:
+    status: selected
+    first_choice: phar_pnv_nice_po
+    drugs: [penicillin_v]
+    excluded: []
+  titck-2020:
+    status: no_antibiotic
+    first_choice: null
+    excluded: []

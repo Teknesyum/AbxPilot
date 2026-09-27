@@ -24,6 +24,26 @@ doses:
   interval_hours: 12
   source: eau-uti-2026
   section: Table 3 (section 3.4.4)
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 30 mg/kg
+  amount_70kg: 1 g
+  interval_hours: 24
+  source: idsa-gas-2012
+  section: 'Table 2'
+  note: 'Maximum 1 g.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 30 mg/kg
+  amount_70kg: 1 g
+  interval_hours: 24
+  source: titck-akilci-2020
+  section: 'Konu 3, Tablo 3.4'
+  note: 'Maximum 1 g.'
 adverse_effects:
 - hypersensitivity
 - gi_upset

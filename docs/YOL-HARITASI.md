@@ -12,4 +12,5 @@ Aşamaların ayrıntısı `plan.md` içinde. Biten silinmez, işaretlenir.
 - [x] A6 İdrar yolu, intraabdominal
 - [x] A7 İngilizce ve bölge katmanı
 - [x] A8 Android — imza anahtarı kullanıcıda; Android ertelendi, önce Windows sürümü (2026-09-25)
+- [x] Farenjit sendromu, açılış ekranı penisilin V (2026-09-27)
 - [ ] A9 Uzman gözden geçirmesi ve ilk yayın — önce Windows; `tools/publish-desktop.ps1`

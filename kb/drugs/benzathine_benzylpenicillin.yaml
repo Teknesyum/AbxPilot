@@ -1,0 +1,43 @@
+id: benzathine_benzylpenicillin
+version: 1
+source: product-labels
+section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
+source_date: '2024-01-01'
+reviewed_at: null
+review_status: unreviewed
+class: penicillin
+class_group: beta_lactam
+aware: access
+routes:
+- im
+oral_bioavailability: none
+beta_lactam:
+  core: penicillin
+  r1_group: benzyl
+  r1_similar: []
+doses:
+- id: phar_im
+  indication: pharyngitis
+  route: im
+  renal_band: normal
+  amount: 1.2 million units
+  interval_hours: 24
+  source: idsa-gas-2012
+  section: Table 2
+  note: Single intramuscular dose for patients of 27 kg or more.
+- id: phar_im_tr
+  indication: pharyngitis
+  route: im
+  renal_band: normal
+  amount: 1.2 million units
+  interval_hours: 24
+  source: titck-akilci-2020
+  section: Konu 3, Tablo 3.4
+  note: Single intramuscular dose for patients of 27 kg or more.
+adverse_effects:
+- hypersensitivity
+interactions:
+- methotrexate
+pregnancy:
+  category: compatible
+qt_risk: none

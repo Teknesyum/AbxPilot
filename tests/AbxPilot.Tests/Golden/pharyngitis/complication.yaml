@@ -1,0 +1,23 @@
+id: complication
+title: "Suspected peritonsillar abscess"
+source: nice-ng84-2018
+section: 'Recommendation 1.1.13'
+region: tr
+answers:
+  phar_complication: 'yes'
+expect:
+  status: referral
+  first_choice: null
+expect_by_set:
+  idsa-2012:
+    status: referral
+    first_choice: null
+    excluded: []
+  nice-ng84-2018:
+    status: referral
+    first_choice: null
+    excluded: []
+  titck-2020:
+    status: referral
+    first_choice: null
+    excluded: []

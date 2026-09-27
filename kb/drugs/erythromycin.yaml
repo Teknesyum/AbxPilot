@@ -23,6 +23,15 @@ doses:
   source: nice-ng141-2019
   section: Table 1
   note: NICE prefers erythromycin when a macrolide is needed in pregnancy.
+- id: phar_po_nice
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 250-500 mg
+  interval_hours: 6
+  source: nice-ng84-2018
+  section: 'Table 1'
+  note: 'Penicillin allergy in pregnancy; or 500-1000 mg every 12 h; 5 days.'
 adverse_effects:
 - gi_upset
 - qt_prolongation

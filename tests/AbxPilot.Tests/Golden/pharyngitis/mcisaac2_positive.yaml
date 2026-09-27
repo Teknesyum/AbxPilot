@@ -1,0 +1,27 @@
+id: mcisaac2_positive
+title: "McIsaac 2 (fever, no cough), positive test"
+source: titck-akilci-2020
+section: 'Konu 3.6; Tablo 3.3'
+region: tr
+answers:
+  phar_exudate: 'no'
+  phar_nodes: 'no'
+  gas_test: 'positive'
+expect:
+  status: no_antibiotic
+  first_choice: null
+expect_by_set:
+  idsa-2012:
+    status: selected
+    first_choice: phar_pnv_po
+    drugs: [penicillin_v]
+    excluded: []
+  nice-ng84-2018:
+    status: no_antibiotic
+    first_choice: null
+    excluded: []
+  titck-2020:
+    status: selected
+    first_choice: phar_pnv_tr_po
+    drugs: [penicillin_v]
+    excluded: []

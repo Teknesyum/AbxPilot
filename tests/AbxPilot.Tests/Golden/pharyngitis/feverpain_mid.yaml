@@ -1,0 +1,25 @@
+id: feverpain_mid
+title: "FeverPAIN 3, Centor 2, not tested"
+source: nice-ng84-2018
+section: 'Recommendation 1.1.8'
+region: tr
+answers:
+  phar_fever: 'no'
+  phar_exudate: 'no'
+  phar_inflamed: 'yes'
+expect:
+  status: no_antibiotic
+  first_choice: null
+expect_by_set:
+  idsa-2012:
+    status: no_antibiotic
+    first_choice: null
+    excluded: []
+  nice-ng84-2018:
+    status: no_antibiotic
+    first_choice: null
+    excluded: []
+  titck-2020:
+    status: no_antibiotic
+    first_choice: null
+    excluded: []

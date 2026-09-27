@@ -39,6 +39,26 @@ doses:
   source: nice-ng141-2019
   section: Table 1
   note: NICE gives 600 mg-2.7 g a day in 2-4 doses; 600 mg every 8 h lies inside that range.
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 7 mg/kg
+  amount_70kg: 300 mg
+  interval_hours: 8
+  source: idsa-gas-2012
+  section: 'Table 2'
+  note: 'Maximum 300 mg per dose.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 7 mg/kg
+  amount_70kg: 300 mg
+  interval_hours: 8
+  source: titck-akilci-2020
+  section: 'Konu 3, Tablo 3.4'
+  note: 'Maximum 300 mg per dose.'
 adverse_effects:
 - c_difficile
 - gi_upset

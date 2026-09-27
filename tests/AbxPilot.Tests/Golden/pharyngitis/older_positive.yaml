@@ -1,0 +1,27 @@
+id: older_positive
+title: "Age 45 or over, McIsaac 3, positive test"
+source: titck-akilci-2020
+section: 'Konu 3.6-3.7; Tablo 3.3'
+region: tr
+answers:
+  phar_age: 'age_45_plus'
+  gas_test: 'positive'
+expect:
+  status: selected
+  first_choice: phar_pnv_tr_po
+expect_by_set:
+  idsa-2012:
+    status: selected
+    first_choice: phar_pnv_po
+    drugs: [penicillin_v]
+    excluded: []
+  nice-ng84-2018:
+    status: selected
+    first_choice: phar_pnv_nice_po
+    drugs: [penicillin_v]
+    excluded: []
+  titck-2020:
+    status: selected
+    first_choice: phar_pnv_tr_po
+    drugs: [penicillin_v]
+    excluded: []

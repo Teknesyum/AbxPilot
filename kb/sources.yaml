@@ -238,3 +238,26 @@
   url: https://api.fda.gov/drug/drugsfda.json
   published: '2026-09-24'
   date_precision: day
+- id: idsa-gas-2012
+  version: 1
+  kind: guideline
+  citation: 'Shulman ST, Bisno AL, Clegg HW, et al. Clinical practice guideline for the diagnosis and management of group
+    A streptococcal pharyngitis: 2012 update by the Infectious Diseases Society of America. Clin Infect Dis. 2012;55(10):e86-e102.'
+  url: https://doi.org/10.1093/cid/cis629
+  published: '2012-11-15'
+  date_precision: day
+- id: nice-ng84-2018
+  version: 1
+  kind: guideline
+  citation: 'National Institute for Health and Care Excellence. Sore throat (acute): antimicrobial prescribing (NG84). 2018.'
+  url: https://www.nice.org.uk/guidance/ng84
+  published: '2018-01-26'
+  date_precision: day
+- id: titck-akilci-2020
+  version: 1
+  kind: guideline
+  citation: 'T.C. Sağlık Bakanlığı Türkiye İlaç ve Tıbbi Cihaz Kurumu. Erişkin Hastada Antibiyotik Kullanımına Akılcı Yaklaşım.
+    Konu 3: Erişkinde Akut Tonsillofarenjitte Akılcı Antibiyotik Kullanımı (Candevir Ulu A). Ankara; 2020. ISBN 978-975-590-796-3.'
+  url: https://titck.gov.tr/storage/Archive/2021/news/ErikinHastadaAntibiyotikKullanmnaAklcYaklamKitab_59e8dde2-295e-4d4e-b069-336da21f126d.pdf
+  published: '2020-01-01'
+  date_precision: year

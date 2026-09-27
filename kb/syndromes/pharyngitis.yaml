@@ -1,0 +1,228 @@
+id: pharyngitis
+version: 1
+source: idsa-gas-2012
+section: 'Scope: adult acute group A streptococcal pharyngitis'
+source_date: '2012-11-15'
+reviewed_at: null
+review_status: unreviewed
+note: 'Baseline patient: healthy 70 kg adult with normal renal function. Children, recurrent tonsillitis and carriers are not modelled.'
+order: 1
+pathogens:
+- s_pyogenes
+questions:
+- phar_complication
+- phar_fever
+- phar_exudate
+- phar_nodes
+- phar_no_cough
+- phar_rapid
+- phar_inflamed
+- phar_age
+- gas_test
+- pen_allergy
+- pregnancy
+- qt_risk
+derived:
+- id: centor_ge2
+  when:
+    any:
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_exudate
+        eq: 'yes'
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_nodes
+        eq: 'yes'
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+    - all:
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_nodes
+        eq: 'yes'
+    - all:
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+    - all:
+      - question: phar_nodes
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+- id: centor_ge3
+  when:
+    any:
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_nodes
+        eq: 'yes'
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_nodes
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+    - all:
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_nodes
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+- id: centor_4
+  when:
+    all:
+    - question: phar_fever
+      eq: 'yes'
+    - question: phar_exudate
+      eq: 'yes'
+    - question: phar_nodes
+      eq: 'yes'
+    - question: phar_no_cough
+      eq: 'yes'
+- id: mcisaac_ge4
+  when:
+    all:
+    - question: centor_4
+      eq: 'yes'
+    - question: phar_age
+      eq: age_15_44
+- id: mcisaac_ge2
+  when:
+    any:
+    - all:
+      - question: centor_ge2
+        eq: 'yes'
+      - question: phar_age
+        eq: age_15_44
+    - all:
+      - question: centor_ge3
+        eq: 'yes'
+      - question: phar_age
+        eq: age_45_plus
+- id: feverpain_ge2
+  when:
+    any:
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_exudate
+        eq: 'yes'
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_rapid
+        eq: 'yes'
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_inflamed
+        eq: 'yes'
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+    - all:
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_rapid
+        eq: 'yes'
+    - all:
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_inflamed
+        eq: 'yes'
+    - all:
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+    - all:
+      - question: phar_rapid
+        eq: 'yes'
+      - question: phar_inflamed
+        eq: 'yes'
+    - all:
+      - question: phar_rapid
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+    - all:
+      - question: phar_inflamed
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+- id: feverpain_ge4
+  when:
+    any:
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_rapid
+        eq: 'yes'
+      - question: phar_inflamed
+        eq: 'yes'
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_rapid
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_inflamed
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+    - all:
+      - question: phar_fever
+        eq: 'yes'
+      - question: phar_rapid
+        eq: 'yes'
+      - question: phar_inflamed
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+    - all:
+      - question: phar_exudate
+        eq: 'yes'
+      - question: phar_rapid
+        eq: 'yes'
+      - question: phar_inflamed
+        eq: 'yes'
+      - question: phar_no_cough
+        eq: 'yes'
+- id: nice_high
+  when:
+    any:
+    - question: feverpain_ge4
+      eq: 'yes'
+    - question: centor_ge3
+      eq: 'yes'

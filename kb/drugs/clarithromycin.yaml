@@ -48,6 +48,35 @@ doses:
   interval_hours: 12
   source: nice-ng141-2019
   section: Table 1
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 7.5 mg/kg
+  amount_70kg: 250 mg
+  interval_hours: 12
+  source: idsa-gas-2012
+  section: 'Table 2'
+  note: 'Maximum 250 mg per dose.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 7.5 mg/kg
+  amount_70kg: 250 mg
+  interval_hours: 12
+  source: titck-akilci-2020
+  section: 'Konu 3, Tablo 3.4'
+  note: 'Maximum 250 mg per dose.'
+- id: phar_po_nice
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 250-500 mg
+  interval_hours: 12
+  source: nice-ng84-2018
+  section: 'Table 1'
+  note: 'Penicillin allergy or intolerance, not pregnant; 5 days.'
 adverse_effects:
 - gi_upset
 - qt_prolongation

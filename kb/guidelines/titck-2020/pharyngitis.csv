@@ -1,0 +1,7 @@
+id,version,stage,action,role,phar_complication,mcisaac_ge2,mcisaac_ge4,gas_test,candidates,duration_days,rationale_key,source,section,source_date,reviewed_at,review_status,note
+complication,1,base,refer,,yes,*,*,*,,,pharyngitis.tr.refer,titck-akilci-2020,Konu 3.5,2020-01-01,,unreviewed,
+low,1,base,withhold,,no,no,*,*,,,pharyngitis.tr.low,titck-akilci-2020,Konu 3.6; Tablo 3.3,2020-01-01,,unreviewed,
+high_negative,1,base,withhold,,no,yes,yes,negative,,,pharyngitis.tr.negative,titck-akilci-2020,Konu 3.6; Tablo 3.3,2020-01-01,,unreviewed,The book does not say what to do with a negative test at score 4 or more.
+high,1,base,select,,no,yes,yes,*,phar_pnv_tr_po|phar_amx_tr_po|phar_bpg_tr_im;phar_lex_tr_po|phar_cdx_tr_po;phar_cli_tr_po|phar_azm_tr_po|phar_clr_tr_po,10,pharyngitis.tr.treat_empiric,titck-akilci-2020,Konu 3.6-3.7; Tablo 3.3; Tablo 3.4,2020-01-01,,unreviewed,
+mid_positive,1,base,select,,no,yes,no,positive,phar_pnv_tr_po|phar_amx_tr_po|phar_bpg_tr_im;phar_lex_tr_po|phar_cdx_tr_po;phar_cli_tr_po|phar_azm_tr_po|phar_clr_tr_po,10,pharyngitis.tr.treat_positive,titck-akilci-2020,Konu 3.6-3.7; Tablo 3.3; Tablo 3.4,2020-01-01,,unreviewed,
+mid,1,base,withhold,,no,yes,no,not_done|negative,,,pharyngitis.tr.test,titck-akilci-2020,Konu 3.6; Tablo 3.3,2020-01-01,,unreviewed,

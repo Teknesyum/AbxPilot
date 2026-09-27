@@ -8,9 +8,9 @@
   tr key) fail with file and line; the embedded kb.json matches the sources.
 - `EngineTests`, `RecommendationDiffTests`: visibility, region defaults, score never reorders,
   region leaf, consult status, translated message keys.
-- `Golden/cap/*.yaml`: clinical vignettes run on every guideline set (`expect_by_set` overrides);
+- `Golden/<syndrome>/*.yaml`: clinical vignettes run on every guideline set (`expect_by_set` overrides);
   each under 50 ms. `ReportIsWritten` writes `tmp/golden-report.md`.
 - `AbxPilot.UiTests` (headless Avalonia): `KontrastTests` checks 7:1 on every text pair;
   `EkranTests` renders the designed states to `docs/ui-denetim/2026-09-27/` (`b3-*`) and runs the
-  contrast walk on each, checks startup opens the last syndrome with defaults, and proves evaluation
-  leaves the UI thread free.
+  contrast walk on each, checks a fresh start opens pharyngitis with penicillin V (`farenjit-*`),
+  startup opens the last syndrome with defaults, and proves evaluation leaves the UI thread free.

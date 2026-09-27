@@ -1,0 +1,27 @@
+id: scar_positive
+title: "Severe cutaneous reaction to penicillin, positive test"
+source: idsa-gas-2012
+section: 'Recommendation 9'
+region: tr
+answers:
+  gas_test: 'positive'
+  pen_allergy: 'scar'
+expect:
+  status: selected
+  first_choice: phar_cli_tr_po
+expect_by_set:
+  idsa-2012:
+    status: selected
+    first_choice: phar_cli_po
+    drugs: [clindamycin]
+    excluded: [phar_amx_po, phar_bpg_im, phar_cdx_po, phar_lex_po, phar_pnv_po]
+  nice-ng84-2018:
+    status: selected
+    first_choice: phar_clr_nice_po
+    drugs: [clarithromycin]
+    excluded: [phar_pnv_nice_po]
+  titck-2020:
+    status: selected
+    first_choice: phar_cli_tr_po
+    drugs: [clindamycin]
+    excluded: [phar_amx_tr_po, phar_bpg_tr_im, phar_cdx_tr_po, phar_lex_tr_po, phar_pnv_tr_po]

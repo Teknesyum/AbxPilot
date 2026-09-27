@@ -161,3 +161,17 @@ TİTCK aynı çerçeveyi uygular. "Reçete değildir" yazısı sınıfı düşü
 - [x] **A7 İngilizce ve bölge katmanı:** `en`, `regions/EU`, `regions/US`, kılavuz seti seçimi
 - [x] **A8 Android:** duyarlı düzen, dokunmatik, APK — imza anahtarı kullanıcıda
 - [ ] **A9 Uzman gözden geçirmesi ve ilk yayın**
+
+## Farenjit (Akut Tonsillofarenjit, Erişkin) — 2026-09-27
+
+Sahibin ilk isteği: uygulama penisilin V ile açılsın. Yeni sendrom `pharyngitis`, listede ilk.
+
+- **Setler:** `idsa-2012` (Shulman 2012, test et ve tedavi et), `nice-ng84-2018` (FeverPAIN/Centor),
+  `titck-2020` (TİTCK "Erişkin Hastada Antibiyotik Kullanımına Akılcı Yaklaşım", Konu 3; McIsaac; TR ulusal seti).
+- **Sorular:** komplikasyon (sevk), ateş, eksüda, hassas ön servikal LAP, öksürük/nezle yok, ilk 3 gün başvuru,
+  ağır tonsil inflamasyonu, yaş bandı, GAS testi; ortak: penisilin alerjisi, gebelik, QT.
+  Skorlar türetilmiş bayraklarla sayılır; motor değişmez.
+- **Yeni kayıtlar:** patojen `s_pyogenes`, ilaç `benzathine_benzylpenicillin`, farenjit dozları mevcut ilaçlara,
+  `spectrum/pharyngitis.csv`, `i18n/*/pharyngitis.json`.
+- **Sıra:** sendrom şemasına `order` alanı; derleyici önce `order`, sonra kimliğe göre sıralar.
+- **Test:** en az 15 altın vaka; UiTests açılışı farenjitle bekler; ekran görüntüleri `docs/ui-denetim/2026-09-27/farenjit-*.png`.

@@ -91,7 +91,10 @@ public static class KbCompilation
             Pathogens = Sorted(pathogens, item => item.Id),
             Regimens = Sorted(regimens, item => item.Id),
             Questions = Sorted(questions, item => item.Id),
-            Syndromes = Sorted(syndromes, item => item.Id),
+            Syndromes = syndromes.Select(item => item.Model)
+                .OrderBy(item => item.Order ?? int.MaxValue)
+                .ThenBy(item => item.Id, StringComparer.Ordinal)
+                .ToArray(),
             GuidelineSets = Sorted(sets, item => item.Id),
             GuidelineRows = resolved
                 .OrderBy(item => item.Set, StringComparer.Ordinal)

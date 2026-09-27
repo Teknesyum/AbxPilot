@@ -1,0 +1,10 @@
+drug,version,s_pyogenes,source,section,source_date,reviewed_at,review_status,note
+penicillin_v,1,reliable,abxpilot-draft,Empiric coverage draft; intrinsic resistance per EUCAST expected phenotypes 2023,2026-09-27,,unreviewed,
+amoxicillin,1,reliable,abxpilot-draft,Empiric coverage draft; intrinsic resistance per EUCAST expected phenotypes 2023,2026-09-27,,unreviewed,
+benzathine_benzylpenicillin,1,reliable,abxpilot-draft,Empiric coverage draft; intrinsic resistance per EUCAST expected phenotypes 2023,2026-09-27,,unreviewed,
+cephalexin,1,reliable,abxpilot-draft,Empiric coverage draft; intrinsic resistance per EUCAST expected phenotypes 2023,2026-09-27,,unreviewed,
+cefadroxil,1,reliable,abxpilot-draft,Empiric coverage draft; intrinsic resistance per EUCAST expected phenotypes 2023,2026-09-27,,unreviewed,
+clindamycin,1,reliable,abxpilot-draft,Empiric coverage draft; intrinsic resistance per EUCAST expected phenotypes 2023,2026-09-27,,unreviewed,
+azithromycin,1,variable,abxpilot-draft,Empiric coverage draft; intrinsic resistance per EUCAST expected phenotypes 2023,2026-09-27,,unreviewed,Macrolide resistance in group A Streptococcus varies by region.
+clarithromycin,1,variable,abxpilot-draft,Empiric coverage draft; intrinsic resistance per EUCAST expected phenotypes 2023,2026-09-27,,unreviewed,Macrolide resistance in group A Streptococcus varies by region.
+erythromycin,1,variable,abxpilot-draft,Empiric coverage draft; intrinsic resistance per EUCAST expected phenotypes 2023,2026-09-27,,unreviewed,Macrolide resistance in group A Streptococcus varies by region.

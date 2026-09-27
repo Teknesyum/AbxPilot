@@ -35,7 +35,7 @@ public class EkranTests
         Kaydet(yukleme, "b3-yukleniyor");
         kapi.Set();
         Bitir(yvm.Idle);
-        Assert.Equal("cap", yvm.SelectedSyndrome?.Id);
+        Assert.Equal("pharyngitis", yvm.SelectedSyndrome?.Id);
         Assert.True(yvm.IsReady, yvm.State.ToString());
         Assert.True(yvm.HasFirstChoice);
         Assert.All(yvm.Questions.Where(item => item.IsVisible && !item.IsMulti), item => Assert.Contains(item.Options, option => option.IsSelected));
@@ -339,6 +339,32 @@ public class EkranTests
     {
         vm.SelectRegionCommand.Execute(vm.Regions.First(item => item.Code == code));
         Bitir(vm.Idle);
+    }
+
+    [AvaloniaFact]
+    public void OpensOnPharyngitisWithPenicillinV()
+    {
+        var olcumler = Olcumler();
+        var (pencere, vm) = Ac(1280, 800);
+        Assert.Equal("pharyngitis", vm.Syndromes[0].Id);
+        Assert.Equal("pharyngitis", vm.SelectedSyndrome?.Id);
+        Assert.True(vm.IsReady, vm.State.ToString());
+        Assert.Equal("penicillin_v", vm.Slots[0].DrugId);
+        SpektrumKaymaz(pencere);
+        Kaydet(pencere, "farenjit-acilis");
+        Olc(pencere, "farenjit", olcumler);
+
+        Bitir(vm.AnswerAsync("pen_allergy", "ige"));
+        Assert.True(vm.IsReady, vm.State.ToString());
+        Assert.Equal("clindamycin", vm.Slots[0].DrugId);
+        Assert.NotEmpty(vm.Excluded);
+        SpektrumKaymaz(pencere);
+        Kaydet(pencere, "farenjit-alerji");
+        Olc(pencere, "farenjit-alerji", olcumler);
+        pencere.Close();
+
+        var hatalar = Hatalar(olcumler);
+        Assert.True(hatalar.Count == 0, string.Join("\n", hatalar));
     }
 
     [AvaloniaFact]

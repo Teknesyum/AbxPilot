@@ -177,5 +177,9 @@
   "guideline.ekmud-2016.name": "EKMUD IAI Consensus 2016",
   "region.eu.name": "European Union",
   "region.us.name": "United States",
-  "region.other.name": "Other"
+  "region.other.name": "Other",
+  "indication.pharyngitis": "Acute pharyngitis",
+  "guideline.idsa-2012.name": "IDSA GAS Pharyngitis 2012",
+  "guideline.nice-ng84-2018.name": "NICE NG84 2018",
+  "guideline.titck-2020.name": "TITCK Rational Antibiotic Use 2020"
 }

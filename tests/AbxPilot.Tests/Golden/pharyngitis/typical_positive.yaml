@@ -1,0 +1,26 @@
+id: typical_positive
+title: "Typical case with a positive rapid antigen test"
+source: idsa-gas-2012
+section: 'Recommendation 8; Table 2'
+region: tr
+answers:
+  gas_test: 'positive'
+expect:
+  status: selected
+  first_choice: phar_pnv_tr_po
+expect_by_set:
+  idsa-2012:
+    status: selected
+    first_choice: phar_pnv_po
+    drugs: [penicillin_v]
+    excluded: []
+  nice-ng84-2018:
+    status: selected
+    first_choice: phar_pnv_nice_po
+    drugs: [penicillin_v]
+    excluded: []
+  titck-2020:
+    status: selected
+    first_choice: phar_pnv_tr_po
+    drugs: [penicillin_v]
+    excluded: []

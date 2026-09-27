@@ -1,0 +1,25 @@
+id: ige_allergy_default
+title: "Defaults with an immediate penicillin allergy"
+source: titck-akilci-2020
+section: 'Konu 3.7'
+region: tr
+answers:
+  pen_allergy: 'ige'
+expect:
+  status: no_antibiotic
+  first_choice: null
+expect_by_set:
+  idsa-2012:
+    status: no_antibiotic
+    first_choice: null
+    excluded: []
+  nice-ng84-2018:
+    status: selected
+    first_choice: phar_clr_nice_po
+    drugs: [clarithromycin]
+    excluded: [phar_pnv_nice_po]
+  titck-2020:
+    status: selected
+    first_choice: phar_cli_tr_po
+    drugs: [clindamycin]
+    excluded: [phar_amx_tr_po, phar_bpg_tr_im, phar_cdx_tr_po, phar_lex_tr_po, phar_pnv_tr_po]

@@ -1,0 +1,5 @@
+id,version,stage,action,role,phar_complication,nice_high,feverpain_ge2,candidates,duration_days,rationale_key,source,section,source_date,reviewed_at,review_status,note
+complication,1,base,refer,,yes,*,*,,,pharyngitis.nice.refer,nice-ng84-2018,Recommendation 1.1.13,2018-01-26,,unreviewed,
+high,1,base,select,,no,yes,*,phar_pnv_nice_po;phar_clr_nice_po|phar_ery_nice_po,5,pharyngitis.nice.treat,nice-ng84-2018,Recommendations 1.1.10-1.1.12; Table 1,2018-01-26,,unreviewed,Table 1 gives 5-10 days for phenoxymethylpenicillin and 5 days for the macrolides.
+backup,1,base,withhold,,no,no,yes,,,pharyngitis.nice.backup,nice-ng84-2018,Recommendation 1.1.8,2018-01-26,,unreviewed,
+low,1,base,withhold,,no,no,no,,,pharyngitis.nice.low,nice-ng84-2018,Recommendations 1.1.6-1.1.7,2018-01-26,,unreviewed,

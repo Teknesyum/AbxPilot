@@ -25,6 +25,33 @@ doses:
   interval_hours: 6
   source: idsa-ssti-2014
   section: Table 2
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 12
+  source: idsa-gas-2012
+  section: 'Table 2'
+  note: 'Or 250 mg every 6 h.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 12
+  source: titck-akilci-2020
+  section: 'Konu 3.7; Tablo 3.4'
+  note: 'Or 250 mg every 6 h. Turkish 1000 mg tablets contain 600 mg penicillin V.'
+- id: phar_po_nice
+  indication: pharyngitis
+  route: po
+  renal_band: normal
+  amount: 500 mg
+  interval_hours: 6
+  source: nice-ng84-2018
+  section: 'Table 1'
+  note: 'Or 1000 mg every 12 h.'
 adverse_effects:
 - hypersensitivity
 - gi_upset

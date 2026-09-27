@@ -101,6 +101,28 @@ tam liste `docs/altin-vaka-raporu.md` içindedir.
 | no_source_control | ekmud-2016 | iai_etp_iv | Items 20, 28; Table 8 |
 | sepsis | tüm üç set | sevk | Items 7, 26 / Sections 1, 2, 6B / Recommendations 11-12, 38 |
 
+### Farenjit (Akut Tonsillofarenjit)
+
+Varsayılan: ateş, tonsil eksüdası, hassas lenf nodu, öksürük yok, ilk 3 gün, 15-44 yaş, test yapılmadı
+(McIsaac 4, Centor 4, FeverPAIN 4).
+
+| Senaryo | Set | Birinci Seçenek | Kaynak Bölüm |
+|---|---|---|---|
+| defaults (açılış) | titck-2020 | phar_pnv_tr_po (penisilin V 500 mg ×2, 10 gün) | Konu 3.6-3.7; Tablo 3.3-3.4 |
+| defaults (açılış) | nice-ng84-2018 | phar_pnv_nice_po (500 mg ×4, 5 gün) | 1.1.10; Tablo 1 |
+| defaults (açılış) | idsa-2012 | antibiyotik yok, önce test | Öneri 1 |
+| typical_positive | üç set | penisilin V | Öneri 8; Tablo 2 / Tablo 1 / Tablo 3.4 |
+| low_score | üç set | antibiyotik yok | Tablo 3.3 / 1.1.6 / Öneri 1 |
+| delayed_allergy_positive | idsa-2012 / titck-2020 | sefaleksin | Öneri 9; Tablo 2 / Tablo 3.4 |
+| delayed_allergy_positive | nice-ng84-2018 | klaritromisin | Tablo 1 |
+| ige_allergy_positive | idsa-2012 / titck-2020 | klindamisin (sefaleksin, sefadroksil R1 yan zinciri ile elenir) | Öneri 9 / Konu 3.7 |
+| pregnant_ige_positive | nice-ng84-2018 | eritromisin | Tablo 1 |
+| ige_qt_positive | nice-ng84-2018 | aday yok | (bkz. Bölüm 3, K) |
+| complication | üç set | sevk | 1.1.13 / Konu 3.5 |
+| negative_test | idsa-2012 / titck-2020 | antibiyotik yok | Öneri 2 / Konu 3.6 |
+| older_untested (McIsaac 3) | titck-2020 | antibiyotik yok, test | Tablo 3.3 |
+| cough_positive | idsa-2012 | antibiyotik yok | Öneri 1, 4 |
+
 ## 3. Klinik Olarak Tartışmalı Sonuçlar
 
 | # | Sonuç | Motor Davranışı | Kaynak |
@@ -115,6 +137,8 @@ tam liste `docs/altin-vaka-raporu.md` içindedir.
 | H | Aminoglikozit bilgi tabanında yok; TTD'nin "beta-laktam + aminoglikozit + makrolid" alternatif Pseudomonas rejimi ve EKMUD/SIS'in yüksek dirençte aminoglikozit eklemesi modellenmedi. | `kb/guidelines/ttd-2021/cap.csv` satırı `psa_fq` notu; `kb/guidelines/ekmud-2016/iai.csv` satırı `healthcare` notu. | `docs/kb-degisiklik-2026-09.md` ("Uygulanmayanlar"); ilgili csv notları |
 | I | Spektrum matrisinde azitromisin × H. influenzae `reliable` işaretli ama EUCAST klinik etkinliği tartışmalı sayıyor (klaritromisin zaten `variable`). | `kb/spectrum/cap.csv` hücresi `azithromycin × h_influenzae`. | `docs/kb-arastirma-2026-09.md`, Kapsam Matrisi, "Tartışmalı, A9'a" |
 | J | Spektrum matrisinde doksisiklin × MRSA `variable` işaretli; duyarlılık yerel değişken ve TKP'de MRSA için kılavuz ajanı değil. | `kb/spectrum/cap.csv` hücresi `doxycycline × mrsa`. | `docs/kb-arastirma-2026-09.md`, Kapsam Matrisi, "Tartışmalı, A9'a" |
+| K | Farenjitte IgE penisilin alerjisi + QT riski: NICE setinde aday kalmıyor; NICE Tablo 1 klindamisin vermiyor. IDSA ve TİTCK klindamisin seçer. | `pharyngitis/ige_qt_positive` (nice-ng84-2018): `no_candidate`. | `kb/guidelines/nice-ng84-2018/pharyngitis.csv` |
+| L | Aynı tipik hastada setler ayrışır: TİTCK ve NICE test beklemeden penisilin V, IDSA önce test ister. | `pharyngitis/defaults`: idsa-2012 → antibiyotik yok. | `docs/kb-kaynaklar.md` madde 50-51 |
 
 ## 4. Kaynakla Doğrulanamayan Maddeler
 
@@ -142,6 +166,8 @@ invaziv izolat, sendroma özgü değil), 40 (EARS-Net E. coli TMP-SMX raporlamı
 43 (ABD toplum kökenli MRSA oranı bulunamadı), 44 (ABD E. coli oranları Kaye 2021,
 CDC değil), 45 (ABD 2017 sonrası karbapenem direnci bulunamadı), 46 (sefotaksim ABD'de
 yalnız Claforan), 47 (Diğer bölge profili direnç verisi taşımıyor).
+
+**Farenjit (açık):** 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60 — ayrıntı Bölüm 5 ve `docs/kb-kaynaklar.md`.
 
 ## 5. Onay Tablosu
 
@@ -186,3 +212,16 @@ yalnız Claforan), 47 (Diğer bölge profili direnç verisi taşımıyor).
 | 45 | ABD'de 2017 sonrası tür düzeyinde karbapenem direnci bulunamadı | `kb/regions/US.yaml` | kaynak bulunamadı |  |  |
 | 46 | Sefotaksim ABD'de yalnız Claforan ile listeli, `unknown` bırakıldı | `kb/regions/US.yaml` (`license`) | `fda-drugsfda-2026` |  |  |
 | 47 | "Diğer" bölge profili direnç verisi taşımıyor; sorular statik varsayılanla işleniyor | `kb/regions/OTHER.yaml` | `who-aware-2023` |  |  |
+| 48 | NICE FeverPAIN 2-3: kılavuz "antibiyotik yok ya da yedek reçete" diyor; motor yedek reçeteyi modellemez, sonuç antibiyotik yok | `kb/guidelines/nice-ng84-2018/pharyngitis.csv` (`backup`) | `nice-ng84-2018` 1.1.8 |  |  |
+| 49 | NICE setinde süre 5 gün; Tablo 1 fenoksimetilpenisilin için 5-10 gün veriyor | `kb/guidelines/nice-ng84-2018/pharyngitis.csv` (`high`) | `nice-ng84-2018` Tablo 1 |  |  |
+| 50 | NICE seti test sonucunu kullanmaz; yüksek skorda negatif test olsa da penisilin V çıkar | `kb/guidelines/nice-ng84-2018/pharyngitis.csv` | `nice-ng84-2018` 1.1.3-1.1.10 |  |  |
+| 51 | IDSA setinde test yapılmamışsa sonuç "önce test" ve antibiyotik yok; açılış varsayılanında IDSA penisilin V göstermez | `kb/guidelines/idsa-2012/pharyngitis.csv` (`untested`) | `idsa-gas-2012` Öneri 1 |  |  |
+| 52 | IDSA setindeki sevk satırı NICE 1.1.13'e dayanır; IDSA 2012 süpüratif komplikasyonu anar ama sevk kuralı vermez | `kb/guidelines/idsa-2012/pharyngitis.csv` (`complication`) | `nice-ng84-2018` 1.1.13 |  |  |
+| 53 | Skor soruları birleştirildi: öksürük yokluğu ile "öksürük ya da nezle yok"; şiş/eksüdalı tonsil ile pürülans; >38 °C ateş ile son 24 saatte ateş | `kb/questions/pharyngitis.yaml` | `titck-akilci-2020` Tablo 3.3; `nice-ng84-2018` Terimler |  |  |
+| 54 | TİTCK McIsaac ≥4 ve negatif test: kitap bu durumu yazmıyor; antibiyotik yok olarak modellendi | `kb/guidelines/titck-2020/pharyngitis.csv` (`high_negative`) | `titck-akilci-2020` Konu 3.6 |  |  |
+| 55 | IDSA setinde öksürük/nezle varsa pozitif testte bile antibiyotik yok (viral bulgu, Öneri 4) | `kb/guidelines/idsa-2012/pharyngitis.csv` (`viral`) | `idsa-gas-2012` Öneri 1, 4 |  |  |
+| 56 | Penisilin V kartta 500 mg 12 saatte bir; 250 mg 6 saatte bir notta. TR'deki 1000 mg tablet 600 mg penisilin V içerir, ürün eşlemesi yapılmadı | `kb/drugs/penicillin_v.yaml` (`phar_po*`) | `idsa-gas-2012` Tablo 2; `titck-akilci-2020` Konu 3.7 |  |  |
+| 57 | Benzatin penisilin G tek doz; şemada 24 saat aralık ve 1 gün süre olarak gösterilir | `kb/drugs/benzathine_benzylpenicillin.yaml`, `kb/regimens/pharyngitis.yaml` | `idsa-gas-2012` Tablo 2 |  |  |
+| 58 | S. pyogenes makrolid kapsamı `variable` taslak; bölge dosyalarında GAS makrolid direnç oranı yok | `kb/spectrum/pharyngitis.csv` | `abxpilot-draft` |  |  |
+| 59 | Uygulama ilk kurulumda farenjitle açılır; kayıtlı son sendrom varsa o açılır | `kb/syndromes/pharyngitis.yaml` (`order: 1`); `MainViewModel` | `abxpilot-draft` |  |  |
+| 60 | 15 yaş altı modellenmedi (McIsaac 3-14 yaş +1); yalnız erişkin | `kb/questions/pharyngitis.yaml` (`phar_age`) | `titck-akilci-2020` Tablo 3.3 |  |  |

@@ -164,6 +164,9 @@ licensing:
 - drug: penicillin_v
   status: licensed
   note: J01CE02, 2 active products (TITCK 18.09.2026).
+- drug: benzathine_benzylpenicillin
+  status: licensed
+  note: J01CE08, 8 active products (TITCK 18.09.2026).
 - drug: benzylpenicillin
   status: licensed
   note: J01CE01, 8 active products (TITCK 18.09.2026).

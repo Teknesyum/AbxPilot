@@ -34,5 +34,7 @@
   "pathogen.esbl_enterobacterales.name": "GSBL üreten Enterobacterales",
   "pathogen.esbl_enterobacterales.short": "ESBL Enterobacterales",
   "pathogen.viridans_strep.name": "Viridans streptokoklar",
-  "pathogen.viridans_strep.short": "Viridans strep."
+  "pathogen.viridans_strep.short": "Viridans strep.",
+  "pathogen.s_pyogenes.name": "Streptococcus pyogenes (A grubu streptokok)",
+  "pathogen.s_pyogenes.short": "A grubu strep."
 }

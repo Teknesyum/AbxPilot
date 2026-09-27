@@ -42,6 +42,9 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `weiner-lastinger-2020` | Weiner-Lastinger ve ark., NHSN 2015-2017, ICHE 2020;41(1):1-18 | Ay |
 | `kaye-2021` | Kaye ve ark., ABD ayaktan idrar E. coli direnci 2011-2019, CID 2021;73(11):1992-1999 | Ay |
 | `fda-drugsfda-2026` | Drugs@FDA, openFDA sorgusu 24.09.2026 (`docs/danisma/2026-09-24-openfda-sorgusu.txt`) | Gün |
+| `idsa-gas-2012` | Shulman ST ve ark. IDSA A grubu streptokok farenjiti kılavuzu 2012, CID 2012;55(10):e86-e102 | Gün |
+| `nice-ng84-2018` | NICE NG84, akut boğaz ağrısı: antimikrobiyal reçeteleme, 26.01.2018 | Gün |
+| `titck-akilci-2020` | TİTCK, Erişkin Hastada Antibiyotik Kullanımına Akılcı Yaklaşım, 2020, Konu 3 (Candevir Ulu A); ISBN 978-975-590-796-3 | Yıl |
 | `abxpilot-draft` | Proje taslağı, birincil kaynak yok | Gün |
 
 ## Kayıt Türüne Göre Kaynak
@@ -72,6 +75,11 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `regions/EU.yaml` | Direnç: makrolid %19,0, MRSA %14,2, E. coli 3. kuşak sefalosporin %16,0, FQ %22,5, K. pneumoniae karbapenem %11,3; ruhsat hep `unknown` | `ecdc-ears-net-2024`; ruhsat notu `ema-authorisation` |
 | `regions/US.yaml` | Direnç: pnömokok eritromisin %23,9; MRSA %44,9 (YBÜ CLABSI); E. coli FQ %21,1, TMP-SMX %25,4, GSBL %6,4; Klebsiella karbapenem %6,9; ruhsat FDA | `cdc-abcs-spn-2024`, `cdc-nhsn-2018-2021`, `kaye-2021`, `weiner-lastinger-2020`; ruhsat `fda-drugsfda-2026` |
 | `regions/OTHER.yaml` | Direnç verisi yok, ruhsat hep `unknown`; kartta görünür uyarı | `who-aware-2023` |
+| `syndromes/pharyngitis.yaml`, `questions/pharyngitis.yaml` | Farenjit, `order: 1`; 9 soru; Centor, McIsaac ve FeverPAIN türetilmiş bayrakları | `titck-akilci-2020` Tablo 3.3; `nice-ng84-2018` Terimler, 1.1.3; `idsa-gas-2012` Öneri 1-2 |
+| `guidelines/idsa-2012`, `nice-ng84-2018`, `titck-2020` / `pharyngitis.csv` | 5 + 4 + 6 satır; `titck-2020` ulusal set (`region: tr`) | `idsa-gas-2012` Öneri 1-9, Tablo 2; `nice-ng84-2018` 1.1.6-1.1.13, Tablo 1; `titck-akilci-2020` Konu 3.5-3.7, Tablo 3.3-3.4 |
+| `regimens/pharyngitis.yaml`, `drugs/*.yaml` | 19 rejim; `phar_*` dozları; yeni ilaç benzatin benzilpenisilin | `idsa-gas-2012` Tablo 2; `titck-akilci-2020` Tablo 3.4; `nice-ng84-2018` Tablo 1 |
+| `pathogens/s_pyogenes.yaml`, `spectrum/pharyngitis.csv` | A grubu streptokok; 9 ilaç × 1 patojen | `idsa-gas-2012`; spektrum `abxpilot-draft` |
+| `regions/*.yaml` | Benzatin benzilpenisilin ruhsatı: TR J01CE08 8 etkin ürün, ABD Bicillin L-A (NDA050141) | `titck-2026`, `fda-drugsfda-2026` |
 
 ## Belirsiz Noktalar
 
@@ -146,3 +154,16 @@ işlendi; yine de A9 uzman onayı bekler. "Açık" maddeler belirsiz kalır.
 45. **Açık (A7):** ABD'de 2017 sonrası tür düzeyinde karbapenem direnci bulunamadı.
 46. **Açık (A7):** Sefotaksim ABD'de yalnız Claforan ile listeli, diğerleri piyasadan çekilmiş; `unknown` bırakıldı.
 47. **Açık (A7):** Bölge dosyası olmayan ülke için "Diğer" profili direnç verisi taşımaz; yerel veri eklenene dek sorular statik varsayılanla işlenir.
+48. **Açık (Farenjit):** NICE FeverPAIN 2-3: kılavuz "antibiyotik yok ya da yedek reçete" diyor; motor yedek reçeteyi modellemez, sonuç antibiyotik yok.
+49. **Açık (Farenjit):** NICE setinde süre 5 gün; Tablo 1 fenoksimetilpenisilin için 5-10 gün veriyor.
+50. **Açık (Farenjit):** NICE seti test sonucunu kullanmaz; yüksek skorda negatif test olsa da penisilin V çıkar.
+51. **Açık (Farenjit):** IDSA setinde test yapılmamışsa sonuç "önce test" ve antibiyotik yok; açılış varsayılanında IDSA penisilin V göstermez.
+52. **Açık (Farenjit):** IDSA setindeki sevk satırı NICE 1.1.13'e dayanır; IDSA 2012 süpüratif komplikasyonu anar ama sevk kuralı vermez.
+53. **Açık (Farenjit):** Skor soruları birleştirildi: öksürük yokluğu ile "öksürük ya da nezle yok"; şiş/eksüdalı tonsil ile pürülans; >38 °C ateş ile son 24 saatte ateş.
+54. **Açık (Farenjit):** TİTCK McIsaac ≥4 ve negatif test: kitap bu durumu yazmıyor; antibiyotik yok olarak modellendi.
+55. **Açık (Farenjit):** IDSA setinde öksürük/nezle varsa pozitif testte bile antibiyotik yok (viral bulgu, Öneri 4).
+56. **Açık (Farenjit):** Penisilin V kartta 500 mg 12 saatte bir; 250 mg 6 saatte bir notta. TR'deki 1000 mg tablet 600 mg penisilin V içerir, ürün eşlemesi yapılmadı.
+57. **Açık (Farenjit):** Benzatin penisilin G tek doz; şemada 24 saat aralık ve 1 gün süre olarak gösterilir.
+58. **Açık (Farenjit):** S. pyogenes makrolid kapsamı `variable` taslak; bölge dosyalarında GAS makrolid direnç oranı yok.
+59. **Açık (Farenjit):** Uygulama ilk kurulumda farenjitle açılır; kayıtlı son sendrom varsa o açılır.
+60. **Açık (Farenjit):** 15 yaş altı modellenmedi (McIsaac 3-14 yaş +1); yalnız erişkin.
