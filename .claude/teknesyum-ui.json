@@ -40,5 +40,11 @@
     "tarih": "2026-09-27T04:09:10.739Z",
     "duzen": "75ea90cdce3cabe5"
   },
-  "plugin": "0.20.0"
+  "plugin": "0.20.0",
+  "uc": {
+    "surum": "0.20.0",
+    "duzen": "52e0c6b7355cba20",
+    "commit": "21dc1c795fbd56bb4204f256ade784fbf400448c",
+    "tarih": "2026-09-27"
+  }
 }
