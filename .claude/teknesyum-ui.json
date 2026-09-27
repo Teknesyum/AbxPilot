@@ -35,12 +35,12 @@
       "reason": "Clinical doses and durations quoted from guidelines for expert review, not interface measurements."
     }
   ],
-  "duzen": "52e0c6b7355cba20",
+  "duzen": "a0eaf97ec84216aa",
   "denetim": {
     "tarih": "2026-09-27T04:09:10.739Z",
     "duzen": "75ea90cdce3cabe5"
   },
-  "plugin": "0.20.0",
+  "plugin": "0.26.0",
   "uc": {
     "surum": "0.20.0",
     "duzen": "52e0c6b7355cba20",
