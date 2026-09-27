@@ -8,13 +8,18 @@ dotnet publish "$root/src/AbxPilot.Desktop/AbxPilot.Desktop.csproj" -c Release -
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $exe = Join-Path $Target "AbxPilot.exe"
-$desktop = [Environment]::GetFolderPath("Desktop")
+$ico = Join-Path $Target "abxpilot.ico"
+$iconLocation = if (Test-Path $ico) { "$ico,0" } else { "$exe,0" }
 $shell = New-Object -ComObject WScript.Shell
-$link = $shell.CreateShortcut((Join-Path $desktop "AbxPilot.lnk"))
-$link.TargetPath = $exe
-$link.WorkingDirectory = $Target
-$link.IconLocation = "$exe,0"
-$link.Description = "AbxPilot - guideline navigator"
-$link.Save()
+foreach ($folder in @([Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("Programs"))) {
+    $path = Join-Path $folder "AbxPilot.lnk"
+    $link = $shell.CreateShortcut($path)
+    $link.TargetPath = $exe
+    $link.WorkingDirectory = $Target
+    $link.IconLocation = $iconLocation
+    $link.Description = "AbxPilot - guideline navigator"
+    $link.Save()
+    Write-Output "shortcut: $path ($iconLocation)"
+}
+& "$env:SystemRoot\System32\ie4uinit.exe" -show
 Write-Output "published: $exe"
-Write-Output "shortcut: $(Join-Path $desktop 'AbxPilot.lnk')"

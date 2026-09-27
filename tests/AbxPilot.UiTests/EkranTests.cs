@@ -502,7 +502,7 @@ public class EkranTests
     {
         var dizin = new DirectoryInfo(AppContext.BaseDirectory);
         while (dizin is not null && !File.Exists(Path.Combine(dizin.FullName, "AbxPilot.sln"))) dizin = dizin.Parent;
-        var klasor = Path.Combine(dizin?.FullName ?? AppContext.BaseDirectory, "docs", "ui-denetim", "2026-09-27");
+        var klasor = Path.Combine(dizin?.FullName ?? AppContext.BaseDirectory, "docs", "ui-denetim", "2026-09-27-uc020");
         Directory.CreateDirectory(klasor);
         return klasor;
     }

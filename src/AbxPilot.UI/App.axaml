@@ -14,7 +14,7 @@
 
   <Application.Styles>
     <FluentTheme/>
-    <StyleInclude Source="avares://AbxPilot.UI/Themes/Palette/Neon/Theme.axaml"/>
+    <StyleInclude Source="avares://AbxPilot.UI/Tema/Theme.axaml"/>
     <StyleInclude Source="avares://AbxPilot.UI/Kabuk/KabukStilleri.axaml"/>
     <StyleInclude Source="avares://AbxPilot.UI/Themes/Controls.axaml"/>
   </Application.Styles>

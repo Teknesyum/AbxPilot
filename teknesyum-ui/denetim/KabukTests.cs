@@ -91,8 +91,11 @@ namespace AbxPilot.UI.Kontrast
                     .Where(b => b.IsEffectivelyVisible && !b.GetVisualAncestors().OfType<ScrollBar>().Any())
                     .ToList();
                 foreach (var dugme in dugmeler)
+                {
+                    dugme.BringIntoView();
                     foreach (var durum in Durumlar)
                         hatalar.AddRange(Tasmalar(dugme, durum));
+                }
             }
             finally
             {

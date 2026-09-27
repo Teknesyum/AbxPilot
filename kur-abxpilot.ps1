@@ -11,10 +11,12 @@ $betik = $MyInvocation.MyCommand.Path
 if ($env:KUR_KOK) {
   $yerel = Join-Path $env:KUR_KOK "AppData\Local"
   $masaustu = Join-Path $env:KUR_KOK "Desktop"
+  $menu = Join-Path $env:KUR_KOK "AppData\Roaming\Microsoft\Windows\Start Menu\Programs"
   $belgeler = Join-Path $env:KUR_KOK "Documents"
 } else {
   $yerel = $env:LOCALAPPDATA
   $masaustu = [Environment]::GetFolderPath("Desktop")
+  $menu = [Environment]::GetFolderPath("Programs")
   $belgeler = [Environment]::GetFolderPath("MyDocuments")
 }
 if (-not $Surum) { $Surum = [string]$env:KUR_SURUM }
@@ -28,6 +30,7 @@ $S = [hashtable]::Synchronized(@{
   hedef = Join-Path $yerel "Programs\AbxPilot"
   eski = Join-Path $belgeler "AbxPilot"
   masaustu = $masaustu
+  menu = $menu
   yedek = Join-Path $yerel "AbxPilot\yedek"
   gunluk = Join-Path $yerel "AbxPilot\kurulum.log"
   surum = $Surum
@@ -258,16 +261,20 @@ $is = {
     $calistir = Join-Path $hedef "AbxPilot.exe"
     if ($S.prova) { Yaz "Prova: kısayol yazılmadı" }
     elseif (Test-Path -LiteralPath $calistir) {
-      New-Item -ItemType Directory -Force $S.masaustu | Out-Null
-      $kisayol = Join-Path $S.masaustu ($S.ad + ".lnk")
-      $lnk = (New-Object -ComObject WScript.Shell).CreateShortcut($kisayol)
-      $lnk.TargetPath = $calistir
-      $lnk.WorkingDirectory = $hedef
-      $lnk.IconLocation = "$calistir,0"
-      $lnk.Description = "AbxPilot - kılavuz gezgini"
-      $lnk.Save()
-      $S.baslat = $kisayol
-      Yaz "Kısayol: $kisayol"
+      $simge = Join-Path $hedef "abxpilot.ico"
+      $simgeYeri = if (Test-Path -LiteralPath $simge) { "$simge,0" } else { "$calistir,0" }
+      foreach ($klasor in @($S.masaustu, $S.menu)) {
+        New-Item -ItemType Directory -Force $klasor | Out-Null
+        $kisayol = Join-Path $klasor ($S.ad + ".lnk")
+        $lnk = (New-Object -ComObject WScript.Shell).CreateShortcut($kisayol)
+        $lnk.TargetPath = $calistir
+        $lnk.WorkingDirectory = $hedef
+        $lnk.IconLocation = $simgeYeri
+        $lnk.Description = "AbxPilot - kılavuz gezgini"
+        $lnk.Save()
+        if (-not $S.baslat) { $S.baslat = $kisayol }
+        Yaz "Kısayol: $kisayol"
+      }
     } else { Yaz "Çalıştırılacak dosya bulunamadı, kısayol yazılmadı" }
 
     @{ tarih = (Get-Date).ToString("s"); surum = "$etiket"; paket = $zipAdi; sha256 = $bulunan; bilgisayar = $env:COMPUTERNAME; cevrimdisi = [bool]$S.cevrimdisi; prova = [bool]$S.prova } | ConvertTo-Json | Set-Content (Join-Path $hedef "kurulum.json") -Encoding UTF8

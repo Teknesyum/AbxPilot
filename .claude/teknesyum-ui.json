@@ -18,19 +18,10 @@
   },
   "signature": {
     "off": false,
-    "text": "by Teknesyum",
     "github": "https://github.com/Teknesyum",
-    "sponsor": "https://github.com/sponsors/Teknesyum",
-    "supportText": "Buy me a coffee"
+    "sponsor": "https://github.com/sponsors/Teknesyum"
   },
   "note": "",
-  "palette": {
-    "primary": "#6fb7ff",
-    "secondary": "#cba7d2",
-    "tertiary": "#c3a3ff",
-    "surface": "#000000",
-    "dark": true
-  },
   "installedAt": "2026-09-23T12:37:08.387Z",
   "ignore": [
     {
@@ -44,19 +35,10 @@
       "reason": "Clinical doses and durations quoted from guidelines for expert review, not interface measurements."
     }
   ],
-  "duzen": "b3a56d17ff70849c",
-  "notlar": [
-    "Arka plan tasarımı: duz (token karşılığı yok).",
-    "Kaydırma çubuğu biçimi: solan.",
-    "Arayüz geçiş eğrisi: emphasized (önizlemede --tk-e-out yerine).",
-    "Cam bulanıklığı: 0 px.",
-    "Panel gölgesi gücü: ×0.",
-    "Pencere kenarı: yok.",
-    "Düğme: 28 px yükseklik, 10 px yatay dolgu.",
-    "Üst çubuk yüksekliği: 28 px (titlebar-h-min)."
-  ],
+  "duzen": "52e0c6b7355cba20",
   "denetim": {
-    "tarih": "2026-09-27T03:17:55.458Z",
-    "duzen": "b3a56d17ff70849c"
-  }
+    "tarih": "2026-09-27T04:09:10.739Z",
+    "duzen": "75ea90cdce3cabe5"
+  },
+  "plugin": "0.20.0"
 }

@@ -1,18 +1,24 @@
-param([string]$Out = "$PSScriptRoot/../src/AbxPilot.UI/Assets/abxpilot.ico")
+param(
+    [string]$Out = "$PSScriptRoot/../src/AbxPilot.UI/Assets/abxpilot.ico",
+    [string]$Android = "$PSScriptRoot/../src/AbxPilot.Android/Resources/mipmap",
+    [string]$Tokens = "$PSScriptRoot/../teknesyum-ui/theme.tokens.json"
+)
 
 Add-Type -AssemblyName System.Drawing
 
 $sizes = 16, 24, 32, 48, 64, 128, 256
-$cyan = [System.Drawing.Color]::FromArgb(255, 0, 243, 255)
+$brand = (Get-Content -Raw -Encoding UTF8 $Tokens | ConvertFrom-Json).brand
+$renk = [System.Drawing.ColorTranslator]::FromHtml($brand.'renk-1'.value)
+$zemin = [System.Drawing.ColorTranslator]::FromHtml($brand.surface.value)
 $images = @()
 
 foreach ($size in $sizes) {
     $bmp = New-Object System.Drawing.Bitmap $size, $size
     $g = [System.Drawing.Graphics]::FromImage($bmp)
     $g.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
-    $g.Clear([System.Drawing.Color]::Black)
+    $g.Clear($zemin)
     $k = $size / 108.0
-    $brush = New-Object System.Drawing.SolidBrush $cyan
+    $brush = New-Object System.Drawing.SolidBrush $renk
 
     $ring = New-Object System.Drawing.Drawing2D.GraphicsPath
     $ring.FillMode = [System.Drawing.Drawing2D.FillMode]::Alternate
@@ -49,3 +55,14 @@ foreach ($img in $images) {
 foreach ($img in $images) { $w.Write($img[1]) }
 $w.Dispose()
 Write-Output "icon: $Out"
+
+$on = $brand.'renk-1'.value.ToUpperInvariant()
+$arka = $brand.surface.value.ToUpperInvariant()
+foreach ($xml in Get-ChildItem -Path $Android -Filter *.xml -ErrorAction SilentlyContinue) {
+    $satirlar = Get-Content -Encoding UTF8 $xml.FullName | ForEach-Object {
+        $renkSatir = if ($_ -match 'M0,0h108v108h-108z') { $arka } else { $on }
+        $_ -replace 'android:fillColor="#[0-9A-Fa-f]{6}"', ('android:fillColor="' + $renkSatir + '"')
+    }
+    [System.IO.File]::WriteAllText($xml.FullName, (($satirlar -join "`n") + "`n"))
+    Write-Output "android: $($xml.Name)"
+}

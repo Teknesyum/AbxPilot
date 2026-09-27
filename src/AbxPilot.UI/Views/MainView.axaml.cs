@@ -17,9 +17,6 @@ namespace AbxPilot.UI.Views;
 
 public partial class MainView : UserControl
 {
-    private static readonly TimeSpan HoldDelay = TimeSpan.FromMilliseconds(450);
-    private static readonly TimeSpan HoldAutoClose = TimeSpan.FromSeconds(3.5);
-    private const double HoldMoveTolerance = 12;
 
     private MainViewModel? _vm;
     private readonly Dictionary<object, Point> _flip = [];
@@ -28,6 +25,7 @@ public partial class MainView : UserControl
     private DispatcherTimer? _holdTimer;
     private Border? _holdTarget;
     private Point _holdOrigin;
+    private Size _holdTolerance;
 
     public MainView()
     {
@@ -58,7 +56,9 @@ public partial class MainView : UserControl
         if (card.DataContext is not AlternativeRow { HasScore: true }) return;
         _holdTarget = card;
         _holdOrigin = e.GetPosition(this);
-        _holdTimer = new DispatcherTimer { Interval = HoldDelay };
+        var ayar = Application.Current?.PlatformSettings;
+        _holdTolerance = ayar?.GetTapSize(e.Pointer.Type) ?? new Size(Resource<double>("Space3"), Resource<double>("Space3"));
+        _holdTimer = new DispatcherTimer { Interval = ayar?.HoldWaitDuration ?? Tokens.Time("TFadeOut") };
         _holdTimer.Tick += OnHoldElapsed;
         _holdTimer.Start();
     }
@@ -67,7 +67,7 @@ public partial class MainView : UserControl
     {
         if (_holdTarget is null) return;
         var now = e.GetPosition(this);
-        if (Math.Abs(now.X - _holdOrigin.X) > HoldMoveTolerance || Math.Abs(now.Y - _holdOrigin.Y) > HoldMoveTolerance)
+        if (Math.Abs(now.X - _holdOrigin.X) > _holdTolerance.Width || Math.Abs(now.Y - _holdOrigin.Y) > _holdTolerance.Height)
             CancelHold();
     }
 
@@ -80,7 +80,7 @@ public partial class MainView : UserControl
         CancelHold();
         if (_holdTarget is not { } card) return;
         ToolTip.SetIsOpen(card, true);
-        DispatcherTimer.RunOnce(() => ToolTip.SetIsOpen(card, false), HoldAutoClose);
+        DispatcherTimer.RunOnce(() => ToolTip.SetIsOpen(card, false), Tokens.Time("ToastLife"));
     }
 
     private void CancelHold()

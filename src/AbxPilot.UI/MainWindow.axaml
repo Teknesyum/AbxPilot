@@ -7,7 +7,6 @@
         xmlns:kabuk="using:AbxPilot.UI.Kabuk"
         x:Class="AbxPilot.UI.MainWindow"
         x:DataType="vm:MainViewModel"
-        Title="AbxPilot"
         Icon="avares://AbxPilot.UI/Assets/abxpilot.ico"
         MinWidth="{StaticResource WindowMinWidth}"
         MinHeight="{StaticResource WindowMinHeight}"
@@ -20,15 +19,6 @@
         FontFamily="{StaticResource FontSans}"
         FontSize="{StaticResource FontSize2}"
         Foreground="{StaticResource TextBody}">
-
-  <Window.Resources>
-    <DrawingImage x:Key="LogoImage">
-      <DrawingGroup>
-        <GeometryDrawing Geometry="{StaticResource IconLogoLeft}" Brush="{StaticResource Renk1}"/>
-        <GeometryDrawing Geometry="{StaticResource IconLogoRight}" Brush="{StaticResource Renk2Text}"/>
-      </DrawingGroup>
-    </DrawingImage>
-  </Window.Resources>
 
   <Border x:Name="WindowShell"
           Background="{StaticResource AppBg}"
@@ -46,7 +36,6 @@
                 BorderBrush="{StaticResource BorderDecorative}"
                 BorderThickness="0,0,0,1">
           <kabuk:TitleBar x:Name="UstCubuk"
-                          Logo="{StaticResource LogoImage}"
                           Ad1="{loc:Text app.name.first}"
                           Ad2="{loc:Text app.name.second}"
                           ImzaMetni="{loc:Text sig.brand}"
@@ -55,8 +44,11 @@
                           DestekMetni="{loc:Text sig.support}"
                           DestekIpucu="{loc:Text sig.supportTitle}"
                           DestekAdresi="{StaticResource LinkSponsor}"
+                          SiteMetni="{loc:Text sig.site}"
+                          SiteIpucu="{loc:Text sig.siteTitle}"
                           KucultMetni="{loc:Text window.minimize}"
                           BuyutMetni="{loc:Text window.maximize}"
+                          GeriAlMetni="{loc:Text window.restore}"
                           KapatMetni="{loc:Text window.close}">
             <kabuk:TitleBar.Orta>
               <Panel x:Name="TitleNotice" Background="Transparent"

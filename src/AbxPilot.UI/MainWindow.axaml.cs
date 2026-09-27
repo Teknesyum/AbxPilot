@@ -14,8 +14,13 @@ public partial class MainWindow : Window
         InitializeComponent();
         if (!Motion.Reduced) Classes.Add("anim");
         FitToWorkArea();
+        ApplyLabels();
         TitleNotice.SizeChanged += (_, _) => FitNotice();
-        Localizer.Changed += (_, _) => Dispatcher.UIThread.Post(FitNotice, DispatcherPriority.Loaded);
+        Localizer.Changed += (_, _) => Dispatcher.UIThread.Post(() =>
+        {
+            ApplyLabels();
+            FitNotice();
+        }, DispatcherPriority.Loaded);
         PropertyChanged += (_, e) =>
         {
             if (e.Property != WindowStateProperty) return;
@@ -30,6 +35,13 @@ public partial class MainWindow : Window
         var area = screen.WorkingArea.Size.ToSize(screen.Scaling);
         Width = Math.Max(MinWidth, area.Width * share);
         Height = Math.Max(MinHeight, area.Height * share);
+    }
+
+    private void ApplyLabels()
+    {
+        Title = Localizer.Get("app.name.first") + Localizer.Get("app.name.second");
+        var site = Localizer.Get("sig.site");
+        UstCubuk.SiteAdresi = Uri.TryCreate("https://" + site, UriKind.Absolute, out var uri) ? uri.AbsoluteUri : string.Empty;
     }
 
     private void FitNotice()

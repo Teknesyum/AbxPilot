@@ -7,14 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AvaloniaResource Include="Fonts\*.ttf" />
     <AvaloniaResource Include="Assets\*.ico" />
-    <None Update="Fonts\OFL.txt" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Assets\Fonts\OFL.txt" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
     <AvaloniaXaml Include="../../teknesyum-ui/ustcubuk/*.axaml" Link="Kabuk/%(Filename)%(Extension)" />
     <Compile Include="../../teknesyum-ui/ustcubuk/*.cs" Link="Kabuk/%(Filename)%(Extension)" />
+    <AvaloniaXaml Include="../../teknesyum-ui/avalonia/Theme.axaml" Link="Tema/Theme.axaml" />
+    <EmbeddedResource Include="../../teknesyum-ui/avalonia/labels.*.json" LogicalName="Etiketler.%(Filename)%(Extension)" WithCulture="false" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,4 +29,7 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="$(CommunityToolkitMvvmVersion)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\Fonts\**" />
+  </ItemGroup>
 </Project>

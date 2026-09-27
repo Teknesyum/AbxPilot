@@ -164,7 +164,7 @@ public sealed class KabukStandardiTests
     [Fact]
     public void HataBildirimiKendiKapanmaz()
     {
-        var palette = File.ReadAllText(Path.Combine(PaletteRoot, "Neon", "Theme.axaml"));
+        var palette = File.ReadAllText(Path.Combine(RepoPaths.Root, "teknesyum-ui", "avalonia", "Theme.axaml"));
         var life = Regex.Match(palette, @"x:Key=""ToastLife"">([^<]+)<");
         Assert.True(life.Success, "ToastLife token missing");
         Assert.Equal(TimeSpan.FromSeconds(6), TimeSpan.Parse(life.Groups[1].Value));

@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\AbxPilot.UI\Assets\abxpilot.ico" Link="abxpilot.ico" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AbxPilot.UI\AbxPilot.UI.csproj" />
   </ItemGroup>
 

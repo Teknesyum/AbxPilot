@@ -9,6 +9,7 @@ public static class Localizer
 
     private static readonly object Gate = new();
     private static IReadOnlyDictionary<string, string> strings = KbResources.Strings(DefaultLanguage);
+    private static IReadOnlyDictionary<string, string> labels = Etiketler.Oku(DefaultLanguage);
     private static string language = DefaultLanguage;
 
     public static event EventHandler? Changed;
@@ -28,6 +29,7 @@ public static class Localizer
         {
             if (string.Equals(language, code, StringComparison.Ordinal)) return;
             strings = KbResources.Strings(code);
+            labels = Etiketler.Oku(code);
             language = code;
         }
 
@@ -36,7 +38,10 @@ public static class Localizer
 
     public static string Get(string key)
     {
-        lock (Gate) return strings.TryGetValue(key, out var value) ? value : key;
+        lock (Gate)
+            return strings.TryGetValue(key, out var value) ? value
+                : labels.TryGetValue(key, out var label) ? label
+                : key;
     }
 
     public static string Format(string key, params (string Name, string Value)[] values)
