@@ -126,10 +126,33 @@ $is = {
           if ($istenen) { throw ("GitHub'da bu sürüm yok ya da depo herkese açık değil: " + $S.depo + " " + $istenen) }
           throw ("GitHub'da depo bulunamadı ya da herkese açık değil: " + $S.depo)
         }
-        $S.cevrimdisi = $true
-        Yaz ("GitHub'a ulaşılamadı: " + $_.Exception.Message)
+        $kod = 0
+        if ($_.Exception.Response) { $kod = [int]$_.Exception.Response.StatusCode }
+        if ($kod -eq 403 -or $kod -eq 429) {
+          Yaz "GitHub API sınırı doldu, sürüm sayfasından okunuyor"
+          try {
+            $etiket = $istenen
+            if (-not $etiket) {
+              $besleme = Invoke-WebRequest -Uri ("https://github.com/" + $S.depo + "/releases.atom") -Headers @{ "User-Agent" = "AbxPilot-Kurulum" } -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop
+              $m = [regex]::Match([string]$besleme.Content, '/releases/tag/([^"<>\s]+)')
+              if (-not $m.Success) { throw "GitHub'da yayımlanmış bir sürüm yok" }
+              $etiket = [Uri]::UnescapeDataString($m.Groups[1].Value)
+            }
+            $zipAdi = "AbxPilot-win-x64-$etiket.zip"
+            $zipUrl = "https://github.com/" + $S.depo + "/releases/download/$etiket/$zipAdi"
+            $sumUrl = $zipUrl + ".sha256"
+            $rel = "sayfa"
+            Yaz "Sürüm: $etiket"
+          } catch {
+            $S.cevrimdisi = $true
+            Yaz ("GitHub'a ulaşılamadı: " + $_.Exception.Message)
+          }
+        } else {
+          $S.cevrimdisi = $true
+          Yaz ("GitHub'a ulaşılamadı: " + $_.Exception.Message)
+        }
       }
-      if (-not $S.cevrimdisi) {
+      if (-not $S.cevrimdisi -and $rel -ne "sayfa") {
         if (-not $rel) { throw "GitHub'da yayımlanmış bir sürüm yok" }
         Yaz "GitHub erişimi tamam"
         $etiket = [string]$rel.tag_name
