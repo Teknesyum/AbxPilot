@@ -45,11 +45,32 @@ Yapıyor: kaynak kılavuzdur, AbxPilot kendi tıbbi bilgisini eklemez. Eklediği
 
 Program A0 aşamasında: kabuk çalışır, bilgi tabanı boştur.
 
-Windows, kurucuyla hazırlanmış USB bellekten:
+Windows (x64, yönetici yetkisi, .NET SDK ya da Git gerekmez): `Kur.bat` ile
+`kur-abxpilot.ps1` dosyalarını [son sürümden](https://github.com/Teknesyum/AbxPilot/releases)
+aynı klasöre indirin, `Kur.bat`'ı çalıştırın. Windows betiği engellerse bir kez
+`Unblock-File kur-abxpilot.ps1` çalıştırın.
+
+Kurucu sürüm zip'ini ve `.sha256` dosyasını GitHub'dan HTTPS ile indirir, özeti denetler;
+uyuşmazsa hiçbir şeye dokunmadan durur. `%LOCALAPPDATA%\Programs\AbxPilot` altına kurar,
+masaüstüne kısayol yazar.
 
 ```
-Kur.bat
+Kur.bat -Surum v0.1.0-onizleme   son sürüm yerine belirli bir sürüm
+Kur.bat -Prova                   geçici klasöre deneme kurulumu, kısayol yok
+Kur.bat -Onar                    baştan kurulum; yerel veri yedeklenip geri yüklenir
 ```
+
+Bağlantı yoksa `Kur.bat`'ın yanına konmuş zip ile `.sha256` dosyasını kullanır (USB bellek).
+Önizleme sürümleri klinik kullanım için değildir.
+
+İndirilen dosyayı elle denetlemek için PowerShell'de:
+
+```
+(Get-FileHash .\AbxPilot-win-x64-v0.1.0-onizleme.zip -Algorithm SHA256).Hash
+Get-Content .\AbxPilot-win-x64-v0.1.0-onizleme.zip.sha256
+```
+
+İki özet aynı olmalı (büyük/küçük harf fark etmez).
 
 Kaynaktan, .NET 10 SDK ile:
 

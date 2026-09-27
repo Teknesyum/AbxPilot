@@ -47,11 +47,32 @@ What it adds:
 
 The program is at stage A0: the shell runs, the knowledge base is empty.
 
-Windows, from a USB stick prepared with the installer:
+Windows (x64, no admin rights, no .NET SDK or Git needed): download `Kur.bat` and
+`kur-abxpilot.ps1` from the [latest release](https://github.com/Teknesyum/AbxPilot/releases)
+into one folder and run `Kur.bat`. If Windows blocks the script, run
+`Unblock-File kur-abxpilot.ps1` once.
+
+The installer fetches the release zip and its `.sha256` file from GitHub over HTTPS,
+checks the hash and stops without touching anything on a mismatch. It installs to
+`%LOCALAPPDATA%\Programs\AbxPilot` and writes a desktop shortcut.
 
 ```
-Kur.bat
+Kur.bat -Surum v0.1.0-onizleme   pin a release instead of the latest
+Kur.bat -Prova                   dry run into a temp folder, no shortcut
+Kur.bat -Onar                    reinstall; local data is backed up and restored
 ```
+
+Without a connection it uses a zip plus `.sha256` placed next to `Kur.bat` (USB stick).
+Preview releases are not for clinical use.
+
+Checking a download by hand, in PowerShell:
+
+```
+(Get-FileHash .\AbxPilot-win-x64-v0.1.0-onizleme.zip -Algorithm SHA256).Hash
+Get-Content .\AbxPilot-win-x64-v0.1.0-onizleme.zip.sha256
+```
+
+The two hashes must match (case does not matter).
 
 From source, with the .NET 10 SDK:
 

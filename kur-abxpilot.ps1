@@ -1,19 +1,37 @@
-﻿param([switch]$Onar, [switch]$Prova)
+﻿param([switch]$Onar, [switch]$Prova, [switch]$Otomatik, [string]$Surum = "", [string]$Paket = "")
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
+Add-Type -AssemblyName System.IO.Compression.FileSystem
 [System.Windows.Forms.Application]::EnableVisualStyles()
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
 $kaynak = Split-Path -Parent $MyInvocation.MyCommand.Path
 $betik = $MyInvocation.MyCommand.Path
+if ($env:KUR_KOK) {
+  $yerel = Join-Path $env:KUR_KOK "AppData\Local"
+  $masaustu = Join-Path $env:KUR_KOK "Desktop"
+  $belgeler = Join-Path $env:KUR_KOK "Documents"
+} else {
+  $yerel = $env:LOCALAPPDATA
+  $masaustu = [Environment]::GetFolderPath("Desktop")
+  $belgeler = [Environment]::GetFolderPath("MyDocuments")
+}
+if (-not $Surum) { $Surum = [string]$env:KUR_SURUM }
+if (-not $Paket) { $Paket = [string]$env:KUR_PAKET }
 $S = [hashtable]::Synchronized(@{
   ad = "AbxPilot"
   altbaslik = "Kılavuz gezgini"
-  depo = "https://github.com/Teknesyum/AbxPilot.git"
+  depo = "Teknesyum/AbxPilot"
   onar = [bool]$Onar
   kaynak = $kaynak
-  hedef = Join-Path ([Environment]::GetFolderPath("MyDocuments")) "AbxPilot"
-  gunluk = Join-Path $env:LOCALAPPDATA "AbxPilot\kurulum.log"
+  hedef = Join-Path $yerel "Programs\AbxPilot"
+  eski = Join-Path $belgeler "AbxPilot"
+  masaustu = $masaustu
+  yedek = Join-Path $yerel "AbxPilot\yedek"
+  gunluk = Join-Path $yerel "AbxPilot\kurulum.log"
+  surum = $Surum
+  paket = $Paket
   yuzde = 0
   tavan = 2
   adim = "Hazırlanıyor"
@@ -21,155 +39,224 @@ $S = [hashtable]::Synchronized(@{
   durum = "calisiyor"
   cevrimdisi = $false
   prova = ([bool]$Prova -or [bool]$env:KUR_PROVA)
+  otomatik = ([bool]$Otomatik -or [bool]$env:KUR_OTOMATIK)
   baslat = $null
 })
 
 $is = {
   param($S)
   $ErrorActionPreference = "Continue"
+  $ProgressPreference = "SilentlyContinue"
+  [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
   New-Item -ItemType Directory -Force (Split-Path $S.gunluk) | Out-Null
   function Yaz([string]$m) {
     $satir = (Get-Date -Format "HH:mm:ss") + "  " + $m
     [void]$S.log.Add($satir)
     Add-Content -Path $S.gunluk -Value $satir -Encoding UTF8
+    if ($S.otomatik) { Write-Host $satir }
   }
   function Adim([int]$y, [int]$t, [string]$m) { $S.yuzde = $y; $S.tavan = $t; $S.adim = $m; Yaz $m }
   function Durdur([string]$kok) {
-    Get-CimInstance Win32_Process | Where-Object { $_.ExecutablePath -and $_.ExecutablePath.StartsWith($kok, [StringComparison]::OrdinalIgnoreCase) } | ForEach-Object {
+    Get-CimInstance Win32_Process | Where-Object { $_.ExecutablePath -and $_.ExecutablePath.StartsWith($kok + "\", [StringComparison]::OrdinalIgnoreCase) } | ForEach-Object {
       Yaz ("Kapatılıyor: " + $_.Name)
       Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue
     }
     Start-Sleep -Milliseconds 800
   }
+  function Api([string]$yol) {
+    Invoke-RestMethod -Uri ("https://api.github.com/repos/" + $S.depo + $yol) -Headers @{ "User-Agent" = "AbxPilot-Kurulum"; "Accept" = "application/vnd.github+json" } -UseBasicParsing -TimeoutSec 30 -ErrorAction Stop
+  }
+  function Indir([string]$url, [string]$yol) {
+    Invoke-WebRequest -Uri $url -OutFile $yol -Headers @{ "User-Agent" = "AbxPilot-Kurulum" } -UseBasicParsing -TimeoutSec 900 -ErrorAction Stop
+  }
+  function VeriYedekle([string[]]$kokler, [string]$yedekKok) {
+    foreach ($k in $kokler) {
+      if (-not (Test-Path -LiteralPath $k)) { continue }
+      foreach ($d in @($k) + @(Get-ChildItem -LiteralPath $k -Directory -ErrorAction SilentlyContinue | ForEach-Object FullName)) {
+        $v = Join-Path $d "veri"
+        if (Test-Path -LiteralPath $v) {
+          if ($d -eq $k) { $yv = Join-Path $yedekKok "_kok" } else { $yv = Join-Path $yedekKok (Split-Path $d -Leaf) }
+          robocopy $v $yv /E /R:1 /W:1 /NFL /NDL /NJH /NJS /NP | Out-Null
+          if ($LASTEXITCODE -ge 8) { throw "Veri yedeklenemedi (robocopy $LASTEXITCODE): $v" }
+          Yaz "Veri yedeklendi: $yv"
+        }
+      }
+    }
+  }
+  function VeriGeriYukle([string]$yedekKok, [string]$hedef) {
+    if (-not (Test-Path -LiteralPath $yedekKok)) { return }
+    foreach ($y in @(Get-ChildItem -LiteralPath $yedekKok -Directory)) {
+      if ($y.Name -eq "_kok") { $v = Join-Path $hedef "veri" } else { $v = Join-Path (Join-Path $hedef $y.Name) "veri" }
+      robocopy $y.FullName $v /E /R:1 /W:1 /NFL /NDL /NJH /NJS /NP | Out-Null
+      if ($LASTEXITCODE -ge 8) { throw ("Veri geri yüklenemedi (robocopy $LASTEXITCODE); yedek duruyor: " + $y.FullName) }
+      Yaz "Veri geri yüklendi: $v"
+    }
+  }
 
+  $yeni = $null
   try {
     $kaynak = $S.kaynak
     $hedef = $S.hedef
-    $depo = $S.depo
-    $veriAdi = "veri"
+    $gercekHedef = $hedef
     $gecici = Join-Path $env:TEMP ("kur-" + [guid]::NewGuid().ToString("N").Substring(0, 8))
     New-Item -ItemType Directory -Force $gecici | Out-Null
     Yaz "Kaynak: $kaynak"
     Yaz "Hedef : $hedef"
     if ($S.onar) { Yaz "Onarım: kurulum baştan yapılacak" }
 
-    Adim 2 6 "Git hazırlanıyor"
-    $sistemGit = Get-Command git.exe -ErrorAction SilentlyContinue
-    if ($sistemGit) { $git = $sistemGit.Source; Yaz "Bilgisayarda Git var" }
-    else { throw ".NET ile birlikte Git de kurulu olmalı; bilgisayarda git.exe bulunamadı" }
-    $env:GIT_TERMINAL_PROMPT = "0"
+    Adim 2 10 "GitHub bağlantısı sınanıyor"
+    $zipUrl = $null; $sumUrl = $null; $zipYerel = $null; $sumYerel = $null; $etiket = $null
+    $paketDizin = $S.paket
+    if ($paketDizin) { Yaz "Yerel paket klasörü: $paketDizin" }
+    else {
+      $rel = $null
+      $istenen = $null
+      if ($S.surum) { $istenen = $S.surum; if (-not $istenen.StartsWith("v")) { $istenen = "v" + $istenen } }
+      try {
+        if ($istenen) { $rel = Api "/releases/tags/$istenen" }
+        else {
+          try { $rel = Api "/releases/latest" }
+          catch {
+            if ([int]$_.Exception.Response.StatusCode -ne 404) { throw }
+            $rel = Api "/releases?per_page=20" | ForEach-Object { $_ } | Where-Object { -not $_.draft } | Select-Object -First 1
+          }
+        }
+      } catch {
+        if ($istenen -and [int]$_.Exception.Response.StatusCode -eq 404) { throw "GitHub'da bu sürüm yok: $istenen" }
+        $S.cevrimdisi = $true
+        Yaz ("GitHub'a ulaşılamadı: " + $_.Exception.Message)
+      }
+      if (-not $S.cevrimdisi) {
+        if (-not $rel) { throw "GitHub'da yayımlanmış bir sürüm yok" }
+        Yaz "GitHub erişimi tamam"
+        $etiket = [string]$rel.tag_name
+        $zipVarlik = @($rel.assets) | Where-Object { $_.name -like "AbxPilot-win-x64-*.zip" } | Select-Object -First 1
+        if (-not $zipVarlik) { throw "Sürümde Windows paketi yok: $etiket" }
+        $sumVarlik = @($rel.assets) | Where-Object { $_.name -eq ($zipVarlik.name + ".sha256") } | Select-Object -First 1
+        if (-not $sumVarlik) { throw "Sürümde sağlama toplamı dosyası yok; doğrulamasız kurulum yapılmaz: $etiket" }
+        $zipAdi = [string]$zipVarlik.name
+        $zipUrl = [string]$zipVarlik.browser_download_url
+        $sumUrl = [string]$sumVarlik.browser_download_url
+        Yaz ("Sürüm: $etiket" + $(if ($rel.prerelease) { " (önizleme)" } else { "" }))
+      } else { $paketDizin = $kaynak }
+    }
+    if (-not $zipUrl) {
+      $zipYerel = Get-ChildItem -LiteralPath $paketDizin -Filter "AbxPilot-win-x64-*.zip" -File -ErrorAction SilentlyContinue | Sort-Object Name -Descending | Select-Object -First 1
+      if (-not $zipYerel) {
+        if ($S.cevrimdisi) { throw "GitHub'a ulaşılamadı ve kurulum klasöründe paket yok ($paketDizin)" }
+        throw "Paket klasöründe AbxPilot-win-x64-*.zip yok: $paketDizin"
+      }
+      $sumYerel = $zipYerel.FullName + ".sha256"
+      if (-not (Test-Path -LiteralPath $sumYerel)) { throw ("Paketin yanında sağlama toplamı dosyası yok; doğrulamasız kurulum yapılmaz: " + $zipYerel.Name + ".sha256") }
+      $zipAdi = $zipYerel.Name
+      $etiket = $zipAdi -replace '^AbxPilot-win-x64-(.+)\.zip$', '$1'
+      Yaz "Yerel paket: $zipAdi"
+    }
 
-    Adim 6 12 "GitHub bağlantısı sınanıyor"
-    $uzak = & $git ls-remote $depo HEAD 2>&1
-    if ($LASTEXITCODE -eq 0) { Yaz "GitHub erişimi tamam" }
-    else { $S.cevrimdisi = $true; Yaz ("GitHub'a ulaşılamadı: " + ($uzak | Select-Object -Last 1)) }
-
-    Adim 12 16 "Eski kurulum aranıyor"
-    $mevcut = Test-Path $hedef
-    $gitli = Test-Path (Join-Path $hedef ".git")
+    Adim 10 16 "Eski kurulum aranıyor"
+    $mevcut = Test-Path -LiteralPath $hedef
+    $saglam = Test-Path -LiteralPath (Join-Path $hedef "AbxPilot.exe")
     if (-not $mevcut) { Yaz "Eski kurulum yok" }
-    elseif ($S.onar) {
-      Adim 16 24 "Eski kurulum kaldırılıyor"
+    elseif ($S.onar) { Yaz "Onarım: eski kurulum doğrulanmış paketle değiştirilecek" }
+    elseif (-not $saglam) { throw "Kurulum klasörü bozuk görünüyor ($hedef). Onar düğmesiyle baştan kurun." }
+    else { Yaz "Kurulum var, yerinde güncellenecek" }
+    $eskiVar = Test-Path -LiteralPath (Join-Path $S.eski ".git")
+    if ($eskiVar) { Yaz ("Eski konumdaki kurulum bulundu: " + $S.eski + " — verisi taşınacak, klasör elle silinebilir") }
+
+    if ($S.prova) { $hedef = Join-Path $gecici $S.ad; $S.hedef = $hedef; Yaz "Prova hedefi: $hedef" }
+
+    Adim 16 20 "Kurulum yeri sınanıyor"
+    $ust = Split-Path $hedef
+    New-Item -ItemType Directory -Force $ust -ErrorAction SilentlyContinue | Out-Null
+    $deneme = Join-Path $ust (".yazma-" + [guid]::NewGuid().ToString("N").Substring(0, 8))
+    try { [IO.File]::WriteAllText($deneme, ""); Remove-Item -LiteralPath $deneme -Force }
+    catch { throw "Kurulum yerine yazılamıyor: $ust" }
+    Yaz "Yazma izni tamam: $ust"
+
+    $zip = Join-Path $gecici $zipAdi
+    $sum = $zip + ".sha256"
+    if ($zipUrl) {
+      Adim 20 60 "Güncel sürüm GitHub'dan indiriliyor"
+      try { Indir $sumUrl $sum; Indir $zipUrl $zip }
+      catch { throw ("İndirme başarısız: " + $_.Exception.Message) }
+    } else {
+      Adim 20 60 "USB'deki sürüm kopyalanıyor"
+      Copy-Item -LiteralPath $zipYerel.FullName -Destination $zip -Force
+      Copy-Item -LiteralPath $sumYerel -Destination $sum -Force
+    }
+    Yaz ("İndirildi: $zipAdi (" + [math]::Round((Get-Item -LiteralPath $zip).Length / 1MB, 1) + " MB)")
+
+    Adim 60 66 "Sağlama toplamı doğrulanıyor"
+    $parca = @(([IO.File]::ReadAllText($sum)).Trim() -split '\s+')
+    $beklenen = $parca[0].ToLowerInvariant()
+    if ($beklenen -notmatch '^[0-9a-f]{64}$') { throw "Sağlama toplamı dosyası okunamadı: $zipAdi.sha256" }
+    if ($parca.Count -gt 1 -and $parca[1].TrimStart("*") -ne $zipAdi) { throw ("Sağlama toplamı başka bir dosyaya ait: " + $parca[1]) }
+    $bulunan = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+    if ($bulunan -ne $beklenen) {
+      Yaz "Beklenen SHA-256: $beklenen"
+      Yaz "Bulunan  SHA-256: $bulunan"
+      throw "Sağlama toplamı uyuşmadı; paket bozuk ya da değiştirilmiş. Kurulum durduruldu, bilgisayarda hiçbir şey değiştirilmedi."
+    }
+    Yaz "SHA-256 doğrulandı: $bulunan"
+
+    Adim 66 78 "Paket açılıyor"
+    $yeni = $hedef + ".yeni-" + [guid]::NewGuid().ToString("N").Substring(0, 8)
+    [IO.Compression.ZipFile]::ExtractToDirectory($zip, $yeni)
+    if (-not (Test-Path -LiteralPath (Join-Path $yeni "AbxPilot.exe"))) { throw "Pakette AbxPilot.exe yok: $zipAdi" }
+    Yaz "Paket açıldı"
+
+    Adim 78 88 "Eski kurulum kaldırılıyor"
+    if ($S.prova) { $yedekKok = Join-Path $gecici "yedek" }
+    else { $yedekKok = Join-Path $S.yedek (Get-Date -Format "yyyyMMdd-HHmmss") }
+    $kokler = @()
+    if ($eskiVar) { $kokler += $S.eski }
+    if ($mevcut) { $kokler += $gercekHedef }
+    VeriYedekle $kokler $yedekKok
+    if ($mevcut) {
       if ($S.prova) { Yaz "Prova: silinmedi" }
       else {
         Durdur $hedef
-        $yedekKok = Join-Path $env:LOCALAPPDATA ($S.ad + "\yedek\" + (Get-Date -Format "yyyyMMdd-HHmmss"))
-        foreach ($d in @($hedef) + @(Get-ChildItem -LiteralPath $hedef -Directory -ErrorAction SilentlyContinue | ForEach-Object FullName)) {
-          $v = Join-Path $d $veriAdi
-          if (Test-Path $v) {
-            $yv = Join-Path $yedekKok (Split-Path $d -Leaf)
-            robocopy $v $yv /E /R:1 /W:1 /NFL /NDL /NJH /NJS /NP | Out-Null
-            Yaz "Veri yedeklendi: $yv"
-          }
-        }
-        if ($gitli -and -not $S.cevrimdisi) {
-          & $git -C $hedef add -A -- ":(glob)**/$veriAdi/**" 2>&1 | Out-Null
-          & $git -C $hedef -c user.name=$env:USERNAME -c "user.email=$env:USERNAME@$env:COMPUTERNAME" commit -m "veri (onarım öncesi, $env:COMPUTERNAME)" 2>&1 | Out-Null
-          & $git -C $hedef -c user.name=$env:USERNAME -c "user.email=$env:USERNAME@$env:COMPUTERNAME" pull --no-rebase --no-edit -X ours $depo main 2>&1 | Out-Null
-          & $git -C $hedef push $depo HEAD:main 2>&1 | Out-Null
-          if ($LASTEXITCODE -eq 0) { Yaz "Eski kurulumdaki veri GitHub'a gönderildi" } else { Yaz "Eski veri gönderilemedi, yedekte duruyor" }
-        }
         Remove-Item -LiteralPath $hedef -Recurse -Force -ErrorAction SilentlyContinue
-        if (Test-Path $hedef) { throw "Eski kurulum silinemedi (açık bir dosya olabilir): $hedef" }
+        if (Test-Path -LiteralPath $hedef) { throw "Eski kurulum silinemedi (açık bir dosya olabilir): $hedef" }
         Yaz "Silindi: $hedef"
       }
     }
-    elseif (-not $gitli) { throw "Kurulum klasörü bozuk görünüyor ($hedef). Onar düğmesiyle baştan kurun." }
-    else {
-      Yaz "Kurulum var, yerinde güncellenecek"
-      if (-not $S.prova) { Durdur $hedef }
-    }
-
-    $yerinde = $mevcut -and $gitli -and -not $S.onar -and -not $S.prova
-    if ($S.prova) { $hedef = Join-Path $gecici $S.ad; $S.hedef = $hedef; Yaz "Prova hedefi: $hedef" }
-
-    if ($yerinde) {
-      Adim 24 52 "Güncel sürüm çekiliyor"
-      if ($S.cevrimdisi) { Yaz "Çevrimdışı: güncelleme ilk bağlantıya kaldı" }
-      else {
-        & $git -C $hedef pull --no-rebase --no-edit 2>&1 | ForEach-Object { Yaz "$_" }
-        if ($LASTEXITCODE -ne 0) { Yaz "Güncelleme çekilemedi; kurulu sürümle devam ediliyor" }
-      }
-    } else {
-      if (-not $S.cevrimdisi) {
-        Adim 24 52 "Güncel sürüm GitHub'dan indiriliyor"
-        & $git clone --quiet $depo $hedef 2>&1 | ForEach-Object { Yaz "$_" }
-        if ($LASTEXITCODE -ne 0) { $S.cevrimdisi = $true; Remove-Item -LiteralPath $hedef -Recurse -Force -ErrorAction SilentlyContinue }
-      }
-      if ($S.cevrimdisi) {
-        Adim 24 52 "USB'deki sürüm kopyalanıyor"
-        robocopy $kaynak $hedef /E /R:1 /W:1 /NFL /NDL /NJH /NJS /NP /MT:16 /XD .kurulum .araclar trash node_modules /XF Kur.bat | Out-Null
-        if ($LASTEXITCODE -ge 8) { throw "Kopyalama başarısız (robocopy $LASTEXITCODE)" }
-        Yaz "Çevrimdışı kuruldu; program ilk bağlantıda kendini günceller"
-      }
-    }
-    if (-not (Test-Path (Join-Path $hedef ".git"))) { throw "Kurulum klasörü eksik: $hedef" }
-
-    Adim 52 56 "Git ayarları yazılıyor"
-    $arac = Join-Path $hedef ".araclar"
-    New-Item -ItemType Directory -Force $arac | Out-Null
-    & $git -C $hedef config remote.origin.url $depo
-    & $git -C $hedef config user.name $env:USERNAME
-    & $git -C $hedef config user.email "$env:USERNAME@$env:COMPUTERNAME"
-    & $git -C $hedef config core.quotepath false
-    if ($LASTEXITCODE -ne 0) { throw "Git ayarları yazılamadı (çıkış $LASTEXITCODE)" }
-    Yaz "Git ayarları yazıldı"
-
-    Adim 76 92 "Program derleniyor"
-    if (-not (Get-Command dotnet.exe -ErrorAction SilentlyContinue)) { throw ".NET SDK kurulu değil; program derlenemedi" }
-    $yayin = Join-Path $hedef "yayin"
-    Push-Location $hedef
-    & dotnet.exe publish "src\AbxPilot.Desktop\AbxPilot.Desktop.csproj" -c Release -r win-x64 --self-contained false -o $yayin 2>&1 | ForEach-Object { Yaz "$_" }
-    $dotnetKod = $LASTEXITCODE
-    Pop-Location
-    if ($dotnetKod -ne 0) { throw "dotnet publish başarısız (çıkış $dotnetKod)" }
-    Yaz "Program hazır"
+    Move-Item -LiteralPath $yeni -Destination $hedef
+    $yeni = $null
+    VeriGeriYukle $yedekKok $hedef
+    Yaz "Program hazır: $hedef"
 
     Adim 92 97 "Masaüstü kısayolu yazılıyor"
-    $kisayol = Join-Path ([Environment]::GetFolderPath("Desktop")) ($S.ad + ".lnk")
-    $calistir = Join-Path $yayin "AbxPilot.exe"
+    $calistir = Join-Path $hedef "AbxPilot.exe"
     if ($S.prova) { Yaz "Prova: kısayol yazılmadı" }
-    elseif (Test-Path $calistir) {
+    elseif (Test-Path -LiteralPath $calistir) {
+      New-Item -ItemType Directory -Force $S.masaustu | Out-Null
+      $kisayol = Join-Path $S.masaustu ($S.ad + ".lnk")
       $lnk = (New-Object -ComObject WScript.Shell).CreateShortcut($kisayol)
       $lnk.TargetPath = $calistir
-      $lnk.WorkingDirectory = $yayin
-      $ikonYol = Join-Path $hedef "simge.ico"
-      if (Test-Path $ikonYol) { $lnk.IconLocation = $ikonYol }
+      $lnk.WorkingDirectory = $hedef
+      $lnk.IconLocation = "$calistir,0"
+      $lnk.Description = "AbxPilot - kılavuz gezgini"
       $lnk.Save()
       $S.baslat = $kisayol
       Yaz "Kısayol: $kisayol"
     } else { Yaz "Çalıştırılacak dosya bulunamadı, kısayol yazılmadı" }
 
-    $surum = (& $git -C $hedef rev-parse --short HEAD) | Select-Object -First 1
-    @{ tarih = (Get-Date).ToString("s"); surum = "$surum"; bilgisayar = $env:COMPUTERNAME; cevrimdisi = [bool]$S.cevrimdisi } | ConvertTo-Json | Set-Content (Join-Path $arac "kurulum.json") -Encoding UTF8
+    @{ tarih = (Get-Date).ToString("s"); surum = "$etiket"; paket = $zipAdi; sha256 = $bulunan; bilgisayar = $env:COMPUTERNAME; cevrimdisi = [bool]$S.cevrimdisi; prova = [bool]$S.prova } | ConvertTo-Json | Set-Content (Join-Path $hedef "kurulum.json") -Encoding UTF8
     if (-not $S.prova) { Remove-Item $gecici -Recurse -Force -ErrorAction SilentlyContinue }
-    Adim 100 100 "Kurulum tamamlandı · sürüm $surum"
+    Adim 100 100 "Kurulum tamamlandı · sürüm $etiket"
     $S.durum = "bitti"
   } catch {
+    if ($yeni -and (Test-Path -LiteralPath $yeni)) { Remove-Item -LiteralPath $yeni -Recurse -Force -ErrorAction SilentlyContinue }
     Yaz ("HATA: " + $_)
     $S.adim = "Kurulum yarıda kaldı: " + $_
     $S.durum = "hata"
   }
+}
+
+if ($S.otomatik) {
+  & $is $S
+  if ($S.durum -eq "bitti") { exit 0 } else { exit 1 }
 }
 
 function Renk([string]$h, [int]$a = 255) { [System.Drawing.Color]::FromArgb($a, [System.Drawing.ColorTranslator]::FromHtml($h)) }
@@ -287,6 +374,8 @@ $gunlukAc.Add_Click({ Start-Process notepad.exe $S.gunluk })
 $onarDugme.Add_Click({
   $argumanlar = @("-NoProfile", "-STA", "-File", ('"' + $betik + '"'), "-Onar")
   if ($S.prova) { $argumanlar += "-Prova" }
+  if ($S.surum) { $argumanlar += @("-Surum", $S.surum) }
+  if ($S.paket) { $argumanlar += @("-Paket", ('"' + $S.paket + '"')) }
   Start-Process powershell.exe -ArgumentList $argumanlar
   $f.Close()
 })
