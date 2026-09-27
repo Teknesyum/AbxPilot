@@ -57,9 +57,9 @@ $is = {
   }
   function Adim([int]$y, [int]$t, [string]$m) { $S.yuzde = $y; $S.tavan = $t; $S.adim = $m; Yaz $m }
   function Durdur([string]$kok) {
-    Get-CimInstance Win32_Process | Where-Object { $_.ExecutablePath -and $_.ExecutablePath.StartsWith($kok + "\", [StringComparison]::OrdinalIgnoreCase) } | ForEach-Object {
-      Yaz ("Kapatılıyor: " + $_.Name)
-      Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue
+    Get-Process | Where-Object { $_.Path -and $_.Path.StartsWith($kok + "\", [StringComparison]::OrdinalIgnoreCase) } | ForEach-Object {
+      Yaz ("Kapatılıyor: " + $_.ProcessName)
+      Stop-Process -Id $_.Id -Force -ErrorAction SilentlyContinue
     }
     Start-Sleep -Milliseconds 800
   }
@@ -122,7 +122,10 @@ $is = {
           }
         }
       } catch {
-        if ($istenen -and [int]$_.Exception.Response.StatusCode -eq 404) { throw "GitHub'da bu sürüm yok: $istenen" }
+        if ([int]$_.Exception.Response.StatusCode -eq 404) {
+          if ($istenen) { throw ("GitHub'da bu sürüm yok ya da depo herkese açık değil: " + $S.depo + " " + $istenen) }
+          throw ("GitHub'da depo bulunamadı ya da herkese açık değil: " + $S.depo)
+        }
         $S.cevrimdisi = $true
         Yaz ("GitHub'a ulaşılamadı: " + $_.Exception.Message)
       }
@@ -180,18 +183,20 @@ $is = {
       try { Indir $sumUrl $sum; Indir $zipUrl $zip }
       catch { throw ("İndirme başarısız: " + $_.Exception.Message) }
     } else {
-      Adim 20 60 "USB'deki sürüm kopyalanıyor"
+      if ($S.cevrimdisi) { Adim 20 60 "USB'deki sürüm kopyalanıyor" } else { Adim 20 60 "Yerel paket kopyalanıyor" }
       Copy-Item -LiteralPath $zipYerel.FullName -Destination $zip -Force
       Copy-Item -LiteralPath $sumYerel -Destination $sum -Force
     }
-    Yaz ("İndirildi: $zipAdi (" + [math]::Round((Get-Item -LiteralPath $zip).Length / 1MB, 1) + " MB)")
+    Yaz ("Paket: $zipAdi (" + [math]::Round((Get-Item -LiteralPath $zip).Length / 1MB, 1) + " MB)")
 
     Adim 60 66 "Sağlama toplamı doğrulanıyor"
     $parca = @(([IO.File]::ReadAllText($sum)).Trim() -split '\s+')
     $beklenen = $parca[0].ToLowerInvariant()
     if ($beklenen -notmatch '^[0-9a-f]{64}$') { throw "Sağlama toplamı dosyası okunamadı: $zipAdi.sha256" }
     if ($parca.Count -gt 1 -and $parca[1].TrimStart("*") -ne $zipAdi) { throw ("Sağlama toplamı başka bir dosyaya ait: " + $parca[1]) }
-    $bulunan = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+    $akis = [IO.File]::OpenRead($zip)
+    try { $bulunan = -join ([Security.Cryptography.SHA256]::Create().ComputeHash($akis) | ForEach-Object { $_.ToString("x2") }) }
+    finally { $akis.Dispose() }
     if ($bulunan -ne $beklenen) {
       Yaz "Beklenen SHA-256: $beklenen"
       Yaz "Bulunan  SHA-256: $bulunan"
