@@ -1,0 +1,70 @@
+{
+  "icon": ".teknesyum/icon.png",
+  "screenshot": ".teknesyum/shot.jpg",
+  "full": ".teknesyum/full.jpg",
+  "catalog": {
+    "category": "medical",
+    "tags": {
+      "tr": [
+        "antibiyotik",
+        "kılavuz",
+        "klinik",
+        "eğitim"
+      ],
+      "en": [
+        "antibiotics",
+        "guideline",
+        "clinical",
+        "education"
+      ]
+    },
+    "summary": {
+      "tr": "Klinisyenin bir sendrom için güncel kılavuzun ampirik antibiyotik önerisini hızla bulmasına yardım eden bir kılavuz gezgini. Sendromu seçip birkaç soruyu yanıtlayınca ilk seçenek, alternatifler, doz, yol ve süre kaynak bölümüyle birlikte gösterilir. Alerji, gebelik ve böbrek işlevi gibi kısıtlar uygun olmayan rejimleri gerekçesiyle eler. Tıbbi cihaz değildir, reçete yazmaz ve yapay zekâ kullanmaz. Şu an erken aşamada: kabuk çalışıyor, bilgi tabanı henüz boş. Avalonia ile Windows, macOS ve Linux için.",
+      "en": "A guideline navigator that helps a clinician find what the current guideline recommends for empiric antibiotic therapy in a given syndrome. Pick the syndrome, answer a few questions, and it shows the first choice, alternatives, dose, route and duration along with the source section. Allergy, pregnancy and renal function remove unsuitable regimens and say why. It is not a medical device, writes no prescriptions and uses no AI. Early stage: the shell runs but the knowledge base is still empty. Built with Avalonia for Windows, macOS and Linux."
+    },
+    "points": {
+      "tr": [
+        "Sendrom seçip adım adım soruyla daralan karar ağacı",
+        "İlk seçenek, alternatif rejimler, doz, yol, süre gösterimi",
+        "Her satırda kaynak bölüm, tarih ve inceleme tarihi",
+        "Alerji, gebelik, böbrek işlevine göre sert kısıtlar",
+        "Kapsanan spektrumu gösteren şerit",
+        "Bilgi tabanı koddan ayrı JSON kaynağında",
+        "Yalnız kılavuzu yansıtır, tanı ya da skor koymaz",
+        "Özel başlık çubuğu: sürükle, Aero Snap, Alt+F4",
+        "Windows masaüstü ve Android sürümü",
+        "Türkçe ve İngilizce aynı veriden"
+      ],
+      "en": [
+        "Step-by-step syndrome decision path",
+        "First choice, alternatives, dose, route, duration",
+        "Every line cites source section and review date",
+        "Hard constraints for allergy, pregnancy, renal function",
+        "Spectrum strip showing regimen coverage",
+        "Knowledge base kept as data, not code",
+        "Mirrors the guideline only, no diagnosis or scoring",
+        "Custom title bar with drag, Aero Snap, Alt+F4",
+        "Windows desktop and Android builds",
+        "Turkish and English from the same data"
+      ]
+    },
+    "uses": {
+      "tr": [
+        "Sendroma uygun antibiyotiği hızla bul",
+        "Doz, yol ve süreyi gör",
+        "Alerji, gebelik, böbreğe göre daralt",
+        "Her önerinin kılavuz kaynağını gör"
+      ],
+      "en": [
+        "Find the right antibiotic fast",
+        "See dose, route and duration",
+        "Filter by allergy, pregnancy, kidneys",
+        "Check each suggestion's guideline source"
+      ]
+    },
+    "lead": {
+      "tr": "Ampirik Antibiyotik Tedavisi için Kılavuz Rehberi",
+      "en": "Guideline Navigator for Empiric Antibiotic Therapy"
+    }
+  }
+}
