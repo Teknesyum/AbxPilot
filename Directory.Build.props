@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <AvaloniaVersion>12.1.2</AvaloniaVersion>
     <CommunityToolkitMvvmVersion>8.4.0</CommunityToolkitMvvmVersion>
     <LangVersion>latest</LangVersion>
