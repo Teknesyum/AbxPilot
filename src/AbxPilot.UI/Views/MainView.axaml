@@ -46,6 +46,7 @@
 
           <Grid x:Name="Upper" Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="{StaticResource SectionGap}">
             <Border x:Name="SummaryCard" Grid.Column="0" Theme="{StaticResource Panel}"
+                    auto:AutomationProperties.Name="{loc:Text card.title}"
                     Classes.consult="{Binding IsCaution}"
                     Classes.clear="{Binding IsNoAntibiotic}">
               <Panel>
@@ -103,7 +104,13 @@
                           </Border>
                         </Panel>
                       </StackPanel>
+                      <Button x:Name="CopyButton" Grid.Column="1" HorizontalAlignment="Right"
+                              Theme="{StaticResource HeaderButton}"
+                              Content="{loc:Text summary.copy}"
+                              ToolTip.Tip="{loc:Text summary.copyTip}"
+                              auto:AutomationProperties.Name="{loc:Text summary.copy}"/>
                       <TextBlock x:Name="ChangeTag" Grid.Row="1" Grid.ColumnSpan="2" Classes="tag" Theme="{StaticResource Label}"
+                                 auto:AutomationProperties.LiveSetting="Polite"
                                  Foreground="{StaticResource Renk1}"
                                  Margin="{Binding Source={StaticResource FieldGap}, Converter={x:Static ch:Converters.Top}}"
                                  IsVisible="{Binding ChangeText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
@@ -112,6 +119,8 @@
                                  Text="{Binding ChangeText}"/>
                     </Grid>
                     <TransitioningContentControl x:Name="Headline" Classes="headline drug"
+                                                 auto:AutomationProperties.Name="{Binding Headline}"
+                                                 auto:AutomationProperties.LiveSetting="Polite"
                                                  Classes.caution="{Binding IsCaution}"
                                                  Classes.clear="{Binding IsNoAntibiotic}"
                                                  Content="{Binding Headline}">
@@ -327,6 +336,24 @@
                               </DataTemplate>
                             </ItemsControl.ItemTemplate>
                           </ItemsControl>
+                          <StackPanel Spacing="{StaticResource FieldGap}" IsVisible="{Binding Owner.HasHistory}">
+                            <TextBlock Theme="{StaticResource Label}" Text="{loc:Text history.title}"/>
+                            <ItemsControl ItemsSource="{Binding Owner.History}">
+                              <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                  <StackPanel Spacing="{StaticResource Space1}"/>
+                                </ItemsPanelTemplate>
+                              </ItemsControl.ItemsPanel>
+                              <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="vm:TextRow">
+                                  <StackPanel>
+                                    <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{Binding Text}"/>
+                                    <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{Binding Detail}"/>
+                                  </StackPanel>
+                                </DataTemplate>
+                              </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                          </StackPanel>
                           <Button Theme="{StaticResource HeaderButton}" HorizontalAlignment="Left"
                                   Command="{Binding Owner.ToggleTraceCommand}">
                             <Panel>
@@ -361,7 +388,8 @@
             </Border>
 
             <Panel x:Name="SpectrumWide" Grid.Column="1">
-              <Border x:Name="SpectrumStrip" Theme="{StaticResource Panel}">
+              <Border x:Name="SpectrumStrip" Theme="{StaticResource Panel}"
+                      auto:AutomationProperties.Name="{loc:Text spectrum.title}">
                 <ScrollViewer x:Name="SpectrumScroll" HorizontalScrollBarVisibility="Disabled" Padding="{Binding Source={StaticResource Space4}, Converter={x:Static ch:Converters.Gutter}}">
                   <StackPanel x:Name="SpectrumContent" Spacing="{StaticResource FieldGap}">
                     <TextBlock Theme="{StaticResource H3}" Text="{loc:Text spectrum.title}"/>
@@ -386,6 +414,7 @@
                                          Foreground="{StaticResource Warning}"
                                          IsVisible="{Binding AtRisk}" Text="{Binding RiskText}"/>
                               <TextBlock Theme="{StaticResource Hint}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                                         auto:AutomationProperties.Name="{Binding Name}"
                                          Text="{Binding ShortName}" ToolTip.Tip="{Binding Name}"/>
                             </DockPanel>
                             <Panel Grid.Column="1" Height="{StaticResource Space1}" VerticalAlignment="Center">
@@ -409,6 +438,21 @@
           <ScrollViewer x:Name="LowerScroll" Grid.Row="3" HorizontalScrollBarVisibility="Disabled" Margin="{Binding Source={StaticResource Space4}, Converter={x:Static ch:Converters.Overhang}}" Padding="{Binding Source={StaticResource Space4}, Converter={x:Static ch:Converters.Gutter}}">
             <StackPanel x:Name="Lower" Spacing="{StaticResource SectionGap}">
               <Panel x:Name="SpectrumNarrow" IsVisible="False"/>
+
+              <Border x:Name="TipStrip" Theme="{StaticResource Badge}" HorizontalAlignment="Stretch"
+                      IsVisible="{Binding ShowTip}"
+                      auto:AutomationProperties.Name="{loc:Text tip.title}">
+                <DockPanel HorizontalSpacing="{StaticResource RowGap}">
+                  <Button DockPanel.Dock="Right" Theme="{StaticResource HeaderButton}"
+                          Content="{loc:Text tip.dismiss}"
+                          Command="{Binding DismissTipCommand}"/>
+                  <StackPanel Spacing="{StaticResource Space1}" VerticalAlignment="Center">
+                    <TextBlock Theme="{StaticResource Label}" Text="{loc:Text tip.title}"/>
+                    <TextBlock Theme="{StaticResource Body}" TextWrapping="Wrap" Text="{loc:Text tip.body}"/>
+                    <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{loc:Text tip.keys}"/>
+                  </StackPanel>
+                </DockPanel>
+              </Border>
 
               <Border x:Name="QuestionPanel" Theme="{StaticResource Panel}">
                 <Border.Resources>
@@ -652,6 +696,10 @@
             <ToggleButton x:Name="UpdateConfirmSwitch" Theme="{StaticResource Switch}"
                           IsChecked="{Binding ConfirmUpdate}"
                           Content="{loc:Text update.confirmSetting}"/>
+            <StackPanel Spacing="{StaticResource Space1}">
+              <TextBlock Theme="{StaticResource Label}" Text="{loc:Text shortcuts.title}"/>
+              <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{loc:Text shortcuts.list}"/>
+            </StackPanel>
             <TextBlock Theme="{StaticResource Hint}" FontFamily="{StaticResource FontMono}"
                        IsVisible="{Binding HasDataVersion}" Text="{Binding DataVersion}"/>
             <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{Binding SettingsPath}"/>

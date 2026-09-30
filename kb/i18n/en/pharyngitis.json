@@ -42,5 +42,6 @@
   "pharyngitis.nice.refer": "Severe systemic infection or suppurative complication: refer to hospital.",
   "pharyngitis.nice.treat": "FeverPAIN 4-5 or Centor 3-4: immediate or back-up phenoxymethylpenicillin for 5-10 days; clarithromycin with allergy, erythromycin in pregnancy, 5 days.",
   "pharyngitis.nice.backup": "FeverPAIN 2-3: no antibiotic, or a back-up prescription to use if worse in 3-5 days.",
-  "pharyngitis.nice.low": "FeverPAIN 0-1 or Centor 0-2: no antibiotic; pain relief and self-care."
+  "pharyngitis.nice.low": "FeverPAIN 0-1 or Centor 0-2: no antibiotic; pain relief and self-care.",
+  "syndrome.pharyngitis.aliases": "sore throat, tonsillitis, strep throat, GAS, throat infection"
 }

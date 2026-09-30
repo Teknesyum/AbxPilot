@@ -95,5 +95,20 @@
   "settings.regionHint": "Bölge direnç varsayılanlarını, ruhsat satırlarını ve önerilen ulusal kılavuzu değiştirir.",
   "update.confirm": "{version} sürümü hazır. Şimdi kurulsun mu? Kurulum sırasında program kapanır.",
   "update.installNow": "Şimdi kur",
-  "update.later": "Sonra"
+  "update.later": "Sonra",
+  "history.title": "Son değişiklikler",
+  "history.answer": "{question}: {answer}",
+  "history.yes": "Evet",
+  "history.no": "Hayır",
+  "history.noEffect": "Öneri değişmedi",
+  "summary.answers": "Yanıtlar:",
+  "summary.copy": "Özeti kopyala",
+  "summary.copyTip": "Öneriyi, dozları, uyarıları ve kaynağı panoya kopyalar (Ctrl+Shift+C)",
+  "summary.copied": "Kopyalandı",
+  "tip.title": "Hızlı başlangıç",
+  "tip.body": "Soldan bir tablo seçin, soruları yanıtlayın; öneri anında güncellenir. Arama kutusu eş anlamlıları ve ilaç adlarını da bulur. Bir tabloya dönünce yanıtlarınız hatırlanır.",
+  "tip.keys": "Ctrl+F ara · Ctrl+1…9 tablo aç · Ctrl+R yanıtları sıfırla · Ctrl+Shift+C özeti kopyala · Esc kapat · Ctrl +/− ölçek",
+  "tip.dismiss": "Anladım",
+  "shortcuts.title": "Kısayollar",
+  "shortcuts.list": "Ctrl+F ara · Ctrl+1…9 listedeki tabloyu aç · Ctrl+R yanıtları sıfırla · Ctrl+Shift+C özeti kopyala · Esc paneli kapat · Ctrl +/−/0 ölçek"
 }

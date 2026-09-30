@@ -46,5 +46,6 @@
   "ssti.nice.mild": "Flukloksasilin ilk seçenek; penisilin alerjisinde klaritromisin, eritromisin (gebelik) ya da doksisiklin. 5-7 gün.",
   "ssti.nice.moderate": "Ağır olmayan hastanede flukloksasilin IV; ağır infeksiyonda ko-amoksiklav, sefuroksim, klindamisin ya da seftriakson.",
   "ssti.nice.facial": "Göz ya da burun çevresi: anaerop kapsamı için ko-amoksiklav; alerjide klaritromisin artı metronidazol. Uzman görüşü düşünülür.",
-  "ssti.nice.mrsa_add": "MRSA şüphesi ya da doğrulanması: vankomisin ya da teikoplanin eklenir; linezolid yalnız ikisi kullanılamıyorsa."
+  "ssti.nice.mrsa_add": "MRSA şüphesi ya da doğrulanması: vankomisin ya da teikoplanin eklenir; linezolid yalnız ikisi kullanılamıyorsa.",
+  "syndrome.ssti.aliases": "selülit, erizipel, apse, fronkül, karbonkül, yara enfeksiyonu, deri, yumuşak doku, DYDİ"
 }

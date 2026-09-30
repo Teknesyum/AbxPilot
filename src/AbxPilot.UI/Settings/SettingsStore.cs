@@ -6,6 +6,7 @@ public sealed record AppSettings
 {
     public bool ShowScore { get; init; }
     public bool ConfirmUpdate { get; init; }
+    public bool TipSeen { get; init; }
     public string? Language { get; init; }
     public string? Region { get; init; }
     public string? LastSyndrome { get; init; }

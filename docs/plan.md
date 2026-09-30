@@ -175,3 +175,16 @@ Sahibin ilk isteği: uygulama penisilin V ile açılsın. Yeni sendrom `pharyngi
   `spectrum/pharyngitis.csv`, `i18n/*/pharyngitis.json`.
 - **Sıra:** sendrom şemasına `order` alanı; derleyici önce `order`, sonra kimliğe göre sıralar.
 - **Test:** en az 15 altın vaka; UiTests açılışı farenjitle bekler; ekran görüntüleri `docs/ui-denetim/2026-09-27/farenjit-*.png`.
+
+## Kullanım Kolaylığı Paketi — 2026-09-30
+
+Klinik mantık ve kb içeriği değişmez; yalnız akış ve erişilebilirlik.
+
+- **Cevap belleği:** sendrom değişince cevaplar o sendrom için oturum boyunca bellekte kalır, diske yazılmaz.
+- **Özeti kopyala:** sendrom, kılavuz seti, rejim (ilaç, doz, yol, süre), uyarılar, kaynak ve veri sürümü düz metin olarak panoya; sonda amaç beyanı.
+- **Kısayollar:** Ctrl+F arama, Ctrl+1…9 sendrom, Ctrl+R cevapları sıfırla, Ctrl+Shift+C özeti kopyala, Esc panel kapat. Ayarlarda kısayol listesi.
+- **Arama:** sendrom adı, kimlik, i18n eşanlamlıları (`syndrome.<id>.aliases`) ve öneri tablosundaki ilaç adları.
+- **Erişilebilirlik:** kart, spektrum ve değişim etiketine otomasyon adı; değişim etiketi canlı bölge.
+- **Ne değişti:** son beş cevabın öneriye etkisi, gerekçe sekmesinde liste.
+- **İlk açılış ipucu:** tek şeritte üç adım; kapatılınca `TipSeen` ayarı.
+- **Sonraya:** yazdır/PDF (kütüphane seçimi gerekir).

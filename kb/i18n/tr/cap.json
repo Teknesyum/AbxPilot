@@ -73,5 +73,6 @@
   "cap.idsa.influenza": "İnfluenza pozitifse oseltamivir eklenir; standart antibakteriyel tedavi de başlanır.",
   "cap.ttd.out_comorbid": "TTD 2021 Tablo 5, Grup 1b: eşlik eden hastalıkta 2.-3. kuşak oral sefalosporin ya da amoksisilin-klavulanat artı makrolid veya doksisiklin; kinolon monoterapisi yalnız GİS sorunu, ilaç alerjisi ya da son 3 ayda beta-laktam kullanımında, tüberküloz olasılığında hiç kullanılmaz.",
   "cap.ttd.ward": "TTD 2021 Tablo 7: serviste anti-Pseudomonas olmayan 3. kuşak sefalosporin ya da beta-laktam/beta-laktamaz inhibitörü artı makrolid; solunum kinolonu sonraki basamaktadır. Seftarolin listede yoktur.",
-  "cap.ttd.psa_fq": "TTD 2021 Tablo 7: Pseudomonas riskinde anti-Pseudomonas beta-laktama siprofloksasin eklenir (makrolidin yerine); süre 7 gün."
+  "cap.ttd.psa_fq": "TTD 2021 Tablo 7: Pseudomonas riskinde anti-Pseudomonas beta-laktama siprofloksasin eklenir (makrolidin yerine); süre 7 gün.",
+  "syndrome.cap.aliases": "pnömoni, zatürre, akciğer enfeksiyonu, alt solunum yolu, öksürük ateş, TKP"
 }

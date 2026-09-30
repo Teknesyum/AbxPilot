@@ -52,5 +52,6 @@
   "uti.eau.inpatient": "Yatan hastada parenteral florokinolon ya da sefalosporin; ağırlığa göre geniş seçenekler.",
   "uti.eau.inpatient_resistant": "Florokinolon direnci %10 veya üzeri: florokinolonsuz parenteral seçenekler.",
   "uti.eau.esbl": "Önceki GSBL üreten bakteri: karbapenem ile değiştirilir.",
-  "uti.eau.male_systemic": "Erkekte sistemik infeksiyon: prostat tutulumu dışlanamıyorsa 14 gün."
+  "uti.eau.male_systemic": "Erkekte sistemik infeksiyon: prostat tutulumu dışlanamıyorsa 14 gün.",
+  "syndrome.uti.aliases": "sistit, piyelonefrit, idrar yanması, dizüri, İYE, üriner, böbrek enfeksiyonu"
 }

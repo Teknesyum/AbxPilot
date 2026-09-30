@@ -6,6 +6,7 @@ using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Input.Platform;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Media;
@@ -35,6 +36,7 @@ public partial class MainView : UserControl
         SpectrumContent.SizeChanged += (_, _) => Arrange();
         EmptyAction.Click += OnEmptyAction;
         GuidelineButton.Click += OnSourceLink;
+        CopyButton.Click += (_, _) => CopySummary();
         DrawerScrim.PointerPressed += (_, _) => _vm?.CloseDrawerCommand.Execute(null);
         AddHandler(PointerPressedEvent, OnScorePointerPressed);
         AddHandler(PointerMovedEvent, OnScorePointerMoved);
@@ -42,11 +44,44 @@ public partial class MainView : UserControl
         AddHandler(PointerCaptureLostEvent, OnScorePointerCaptureLost);
         AttachedToVisualTree += (_, _) =>
         {
+            TopLevel.GetTopLevel(this)?.AddHandler(KeyDownEvent, OnShortcut, RoutingStrategies.Tunnel);
             CardGlow.Margin = Negate(Resource<Thickness>("PanelPadding"));
             DurationGlow.Margin = new Thickness(-Resource<double>("Space2"));
             Sweep();
         };
-        DetachedFromVisualTree += (_, _) => _sweep?.Cancel();
+        DetachedFromVisualTree += (_, e) =>
+        {
+            _sweep?.Cancel();
+            (e.Root as TopLevel)?.RemoveHandler(KeyDownEvent, OnShortcut);
+        };
+    }
+
+    private void OnShortcut(object? sender, KeyEventArgs e)
+    {
+        if (_vm is null) return;
+        var ctrl = e.KeyModifiers.HasFlag(KeyModifiers.Control);
+        var shift = e.KeyModifiers.HasFlag(KeyModifiers.Shift);
+        if (ctrl && !shift && e.Key == Key.F)
+        {
+            if (_vm.IsCompact) _vm.IsDrawerOpen = true;
+            SearchBox.Focus();
+            SearchBox.SelectAll();
+        }
+        else if (ctrl && shift && e.Key == Key.C) CopySummary();
+        else if (ctrl && !shift && e.Key == Key.R && _vm.ResetAnswersCommand.CanExecute(null)) _vm.ResetAnswersCommand.Execute(null);
+        else if (ctrl && !shift && e.Key is >= Key.D1 and <= Key.D9) _vm.FocusSyndromeCommand.Execute(((int)(e.Key - Key.D0)).ToString());
+        else if (!ctrl && e.Key == Key.Escape && (_vm.IsSettingsOpen || _vm.IsDrawerOpen || _vm.IsTraceOpen)) _vm.CloseOverlaysCommand.Execute(null);
+        else return;
+        e.Handled = true;
+    }
+
+    private async void CopySummary()
+    {
+        if (_vm is not { HasCard: true } || TopLevel.GetTopLevel(this)?.Clipboard is not { } clipboard) return;
+        await clipboard.SetTextAsync(_vm.BuildSummary());
+        CopyButton.Content = Localization.Localizer.Get("summary.copied");
+        await Task.Delay(Tokens.Time("ToastLife"));
+        CopyButton.Content = Localization.Localizer.Get("summary.copy");
     }
 
     private void OnScorePointerPressed(object? sender, PointerPressedEventArgs e)

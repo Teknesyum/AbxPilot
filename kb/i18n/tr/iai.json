@@ -42,5 +42,6 @@
   "iai.ekmud.community_high": "Ağır toplum kökenli: antipsödomonal rejim; florokinolon ilk seçenek değil.",
   "iai.ekmud.community_mild_esbl": "Yerel GSBL oranı %10 veya üzeri ya da GSBL öyküsü: GSBL'ye etkili tek ilaç.",
   "iai.ekmud.community_mild": "Hafif-orta toplum kökenli: tek ilaç ya da sefalosporin artı metronidazol; Türkiye'de E. coli kinolon duyarlılığı düşük olduğundan kinolon sonraki basamakta.",
-  "iai.ekmud.source_control": "Kaynak kontrolü yapılamadıysa cerrahi değerlendirme ve klinik izlem."
+  "iai.ekmud.source_control": "Kaynak kontrolü yapılamadıysa cerrahi değerlendirme ve klinik izlem.",
+  "syndrome.iai.aliases": "apandisit, peritonit, kolanjit, kolesistit, karın içi apse, divertikülit, perforasyon, abdominal, İAE"
 }

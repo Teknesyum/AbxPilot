@@ -42,5 +42,6 @@
   "iai.ekmud.community_high": "Severe community-acquired: an antipseudomonal regimen; quinolones are not first choice.",
   "iai.ekmud.community_mild_esbl": "Local ESBL rate of 10% or more, or an ESBL history: a single agent active against ESBL producers.",
   "iai.ekmud.community_mild": "Mild to moderate community-acquired: a single agent or a cephalosporin plus metronidazole; quinolones come later because E. coli susceptibility in Turkey is low.",
-  "iai.ekmud.source_control": "Without source control, surgical review and clinical follow-up."
+  "iai.ekmud.source_control": "Without source control, surgical review and clinical follow-up.",
+  "syndrome.iai.aliases": "appendicitis, peritonitis, cholangitis, cholecystitis, abdominal abscess, diverticulitis, perforation, IAI"
 }

@@ -42,5 +42,6 @@
   "pharyngitis.nice.refer": "Ağır sistemik infeksiyon ya da süpüratif komplikasyon: hastaneye sevk.",
   "pharyngitis.nice.treat": "FeverPAIN 4-5 ya da Centor 3-4: hemen ya da yedek reçeteyle fenoksimetilpenisilin 5-10 gün; alerjide klaritromisin, gebelikte eritromisin 5 gün.",
   "pharyngitis.nice.backup": "FeverPAIN 2-3: antibiyotik yok ya da 3-5 gün içinde kötüleşirse kullanılacak yedek reçete.",
-  "pharyngitis.nice.low": "FeverPAIN 0-1 ya da Centor 0-2: antibiyotik önerilmez; ağrı kesici ve öz bakım."
+  "pharyngitis.nice.low": "FeverPAIN 0-1 ya da Centor 0-2: antibiyotik önerilmez; ağrı kesici ve öz bakım.",
+  "syndrome.pharyngitis.aliases": "boğaz ağrısı, tonsillit, anjin, bademcik, farenjit, streptokok, GAS"
 }

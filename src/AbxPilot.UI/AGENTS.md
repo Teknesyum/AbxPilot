@@ -13,6 +13,7 @@ Avalonia shared UI: App, MainWindow, MainView, view models, theme, title bar.
 - Engine runs off the UI thread (`Task.Run`); never call it synchronously from a view.
 - Title bar: template `teknesyum-ui/ustcubuk` (`scaffold.js ustcubuk`, linked as `Kabuk/`), slots `Orta` (notice) and `Ek` (version button, languages); `UygulamaOlcegi` scales the window (Ctrl +/-/0). Window opens maximized.
 - Updates: `teknesyum-ui/durum/SurumDugmesi.cs` shows the app version; `Update/GitHubUpdater` checks GitHub releases and runs the release's `kur-abxpilot.ps1`. Setting `ConfirmUpdate` asks first. Data version sits in settings.
+- Usability: answers remembered per syndrome, search by alias and drug name, last 5 changes in Gerekçe, copy summary (`BuildSummary`), first-run tip (`TipSeen`), shortcuts in `MainView.OnShortcut` (Ctrl+F, Ctrl+1..9, Ctrl+R, Ctrl+Shift+C, Esc).
 - Visible text only via `{loc:Text key}`; keys in `kb/i18n/<lang>/ui.json`, sentence case.
 - No Watermark, no visual theme library, no comments in code.
 - Reduced motion: the `anim` class is added to the window only when motion is allowed.

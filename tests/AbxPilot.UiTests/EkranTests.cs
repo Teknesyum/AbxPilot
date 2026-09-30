@@ -380,6 +380,38 @@ public class EkranTests
     }
 
     [AvaloniaFact]
+    public void RemembersAnswersSearchesDrugsAndCopiesTheSummary()
+    {
+        var ayar = new MemorySettingsStore();
+        var vm = new MainViewModel(KbResources.Knowledge, ayar);
+        Bitir(vm.Idle);
+        Bitir(vm.SelectSyndromeAsync("cap"));
+        Bitir(vm.AnswerAsync("setting", "icu"));
+        Assert.True(vm.HasHistory);
+
+        var ozet = vm.BuildSummary();
+        Assert.Contains(vm.Headline, ozet);
+        Assert.Contains(vm.SourceText, ozet);
+        Assert.Contains(vm.Questions.First(kart => kart.Id == "setting").Label, ozet);
+
+        Bitir(vm.SelectSyndromeAsync("uti"));
+        Assert.False(vm.HasHistory);
+        Bitir(vm.SelectSyndromeAsync("cap"));
+        var ortam = vm.Questions.First(kart => kart.Id == "setting");
+        Assert.True(ortam.Options.First(secenek => secenek.Code == "icu").IsSelected);
+
+        vm.SearchText = "nitrofurantoin";
+        Assert.True(vm.Syndromes.First(tablo => tablo.Id == "uti").IsMatch);
+        Assert.False(vm.Syndromes.First(tablo => tablo.Id == "pharyngitis").IsMatch);
+        vm.SearchText = "";
+
+        Assert.True(vm.ShowTip);
+        vm.DismissTipCommand.Execute(null);
+        Assert.False(vm.ShowTip);
+        Assert.True(ayar.Current.TipSeen);
+    }
+
+    [AvaloniaFact]
     public void EvaluationLeavesTheUiThreadFree()
     {
         var vm = new MainViewModel(KbResources.Knowledge, new MemorySettingsStore());

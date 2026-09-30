@@ -46,5 +46,6 @@
   "ssti.nice.mild": "Flucloxacillin first; clarithromycin, erythromycin (pregnancy) or doxycycline in penicillin allergy. 5-7 days.",
   "ssti.nice.moderate": "IV flucloxacillin when not severe; co-amoxiclav, cefuroxime, clindamycin or ceftriaxone for severe infection.",
   "ssti.nice.facial": "Near the eyes or nose: co-amoxiclav for anaerobic cover; clarithromycin plus metronidazole in allergy. Consider specialist advice.",
-  "ssti.nice.mrsa_add": "Suspected or confirmed MRSA: add vancomycin or teicoplanin; linezolid only when neither can be used."
+  "ssti.nice.mrsa_add": "Suspected or confirmed MRSA: add vancomycin or teicoplanin; linezolid only when neither can be used.",
+  "syndrome.ssti.aliases": "cellulitis, erysipelas, abscess, furuncle, carbuncle, wound infection, skin, soft tissue, SSTI"
 }

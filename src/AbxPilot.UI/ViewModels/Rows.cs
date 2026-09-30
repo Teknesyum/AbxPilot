@@ -9,6 +9,8 @@ public sealed partial class SyndromeItem : ObservableObject
 
     public string Id { get; }
 
+    public string Terms { get; set; } = "";
+
     [ObservableProperty]
     private string name = "";
 

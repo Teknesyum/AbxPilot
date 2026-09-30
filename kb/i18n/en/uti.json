@@ -52,5 +52,6 @@
   "uti.eau.inpatient": "Inpatient: a parenteral fluoroquinolone or cephalosporin; broader options by severity.",
   "uti.eau.inpatient_resistant": "Fluoroquinolone resistance of 10% or more: parenteral options without a fluoroquinolone.",
   "uti.eau.esbl": "Previous ESBL producer: switch to a carbapenem.",
-  "uti.eau.male_systemic": "Systemic infection in men: 14 days when prostate involvement cannot be excluded."
+  "uti.eau.male_systemic": "Systemic infection in men: 14 days when prostate involvement cannot be excluded.",
+  "syndrome.uti.aliases": "cystitis, pyelonephritis, dysuria, urinary, kidney infection, UTI"
 }

@@ -95,5 +95,20 @@
   "settings.regionHint": "The region sets resistance defaults, licence lines and the national guideline offered first.",
   "update.confirm": "Version {version} is ready. Install now? The program closes during installation.",
   "update.installNow": "Install now",
-  "update.later": "Later"
+  "update.later": "Later",
+  "history.title": "Recent changes",
+  "history.answer": "{question}: {answer}",
+  "history.yes": "Yes",
+  "history.no": "No",
+  "history.noEffect": "Recommendation unchanged",
+  "summary.answers": "Answers:",
+  "summary.copy": "Copy summary",
+  "summary.copyTip": "Copies the recommendation, doses, warnings and source to the clipboard (Ctrl+Shift+C)",
+  "summary.copied": "Copied",
+  "tip.title": "Quick start",
+  "tip.body": "Pick a syndrome on the left and answer the questions; the recommendation updates at once. Search also finds synonyms and drug names. Your answers are remembered when you come back to a syndrome.",
+  "tip.keys": "Ctrl+F search · Ctrl+1…9 open syndrome · Ctrl+R reset answers · Ctrl+Shift+C copy summary · Esc close · Ctrl +/− scale",
+  "tip.dismiss": "Got it",
+  "shortcuts.title": "Shortcuts",
+  "shortcuts.list": "Ctrl+F search · Ctrl+1…9 open listed syndrome · Ctrl+R reset answers · Ctrl+Shift+C copy summary · Esc close panel · Ctrl +/−/0 scale"
 }

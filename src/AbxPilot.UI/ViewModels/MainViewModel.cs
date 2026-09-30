@@ -50,6 +50,8 @@ public sealed partial class MainViewModel : ObservableObject
     private readonly Func<KnowledgeBase> _load;
     private readonly ISettingsStore _store;
     private readonly Dictionary<string, IReadOnlyList<string>> _answers = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, Dictionary<string, IReadOnlyList<string>>> _memory = new(StringComparer.Ordinal);
+    private Dictionary<string, string[]> _drugsBySyndrome = new(StringComparer.Ordinal);
     private AppSettings _settings;
     private KnowledgeBase? _knowledge;
     private GuidelineEngine? _engine;
@@ -78,6 +80,7 @@ public sealed partial class MainViewModel : ObservableObject
 
         showScore = _settings.ShowScore;
         confirmUpdate = _settings.ConfirmUpdate;
+        showTip = !_settings.TipSeen;
         AlternativesTab = new AlternativesPage(this);
         RationaleTab = new RationalePage(this);
         currentTab = AlternativesTab;
@@ -123,6 +126,10 @@ public sealed partial class MainViewModel : ObservableObject
     public ObservableCollection<SpectrumRow> Spectrum { get; } = [];
 
     public ObservableCollection<QuestionCard> Questions { get; } = [];
+
+    public ObservableCollection<TextRow> History { get; } = [];
+
+    public bool HasHistory => History.Count > 0;
 
     public ObservableCollection<QuestionCard> OpenQuestions { get; } = [];
 
@@ -229,6 +236,9 @@ public sealed partial class MainViewModel : ObservableObject
     private bool confirmUpdate;
 
     [ObservableProperty]
+    private bool showTip;
+
+    [ObservableProperty]
     private string settingsPath = "";
 
     [ObservableProperty]
@@ -319,6 +329,17 @@ public sealed partial class MainViewModel : ObservableObject
         foreach (var syndrome in knowledge.Syndromes)
             Syndromes.Add(new SyndromeItem(syndrome.Id));
 
+        var regimens = knowledge.Regimens.ToDictionary(regimen => regimen.Id, StringComparer.Ordinal);
+        _drugsBySyndrome = knowledge.Syndromes.ToDictionary(
+            syndrome => syndrome.Id,
+            syndrome => knowledge.GuidelineRows
+                .Where(row => row.Syndrome == syndrome.Id)
+                .SelectMany(row => row.Candidates.SelectMany(tier => tier))
+                .SelectMany(id => regimens.TryGetValue(id, out var regimen) ? regimen.Components.Select(item => item.Drug) : [])
+                .Concat(knowledge.Spectrum.Where(entry => entry.Syndrome == syndrome.Id).Select(entry => entry.Drug))
+                .Distinct(StringComparer.Ordinal)
+                .ToArray(),
+            StringComparer.Ordinal);
         _setsBySyndrome = knowledge.Syndromes.ToDictionary(
             syndrome => syndrome.Id,
             syndrome => knowledge.GuidelineSets
@@ -380,9 +401,16 @@ public sealed partial class MainViewModel : ObservableObject
 
         foreach (var syndrome in Syndromes)
             syndrome.IsSelected = ReferenceEquals(syndrome, item);
+        if (SelectedSyndrome is { } previous)
+            _memory[previous.Id] = new Dictionary<string, IReadOnlyList<string>>(_answers, StringComparer.Ordinal);
         SelectedSyndrome = item;
         ChooseSet(item.Id);
         _answers.Clear();
+        if (_memory.TryGetValue(item.Id, out var remembered))
+            foreach (var pair in remembered)
+                _answers[pair.Key] = pair.Value;
+        History.Clear();
+        OnPropertyChanged(nameof(HasHistory));
         OnAnswersChanged();
         _current = null;
         BuildQuestions(item.Id);
@@ -508,6 +536,29 @@ public sealed partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private void DismissTip()
+    {
+        ShowTip = false;
+        if (!_settings.TipSeen) Persist(_settings with { TipSeen = true });
+    }
+
+    [RelayCommand]
+    private void FocusSyndrome(string index)
+    {
+        if (!int.TryParse(index, out var at)) return;
+        var item = Syndromes.Where(syndrome => syndrome.IsMatch).Skip(at - 1).FirstOrDefault();
+        if (item is not null) Open(item);
+    }
+
+    [RelayCommand]
+    private void CloseOverlays()
+    {
+        IsSettingsOpen = false;
+        IsDrawerOpen = false;
+        IsTraceOpen = false;
+    }
+
+    [RelayCommand]
     private void ShowTab(string id)
     {
         CurrentTab = id == "rationale" ? RationaleTab : AlternativesTab;
@@ -620,9 +671,11 @@ public sealed partial class MainViewModel : ObservableObject
     {
         var query = SearchText.Trim();
         var compare = Localizer.Culture.CompareInfo;
+        var options = CompareOptions.IgnoreCase | CompareOptions.IgnoreNonSpace;
         foreach (var item in Syndromes)
             item.IsMatch = query.Length == 0 ||
-                           compare.IndexOf(item.Name, query, CompareOptions.IgnoreCase | CompareOptions.IgnoreNonSpace) >= 0 ||
+                           compare.IndexOf(item.Name, query, options) >= 0 ||
+                           compare.IndexOf(item.Terms, query, options) >= 0 ||
                            item.Id.Contains(query, StringComparison.OrdinalIgnoreCase);
         OnPropertyChanged(nameof(NoMatches));
     }
@@ -706,6 +759,11 @@ public sealed partial class MainViewModel : ObservableObject
             : null;
         ChangeText = key is null ? "" : Localizer.Format(key, ("question", card.Label));
         NoEffectText = key is null ? Localizer.Get("change.noEffect") : "";
+        History.Insert(0, new TextRow(
+            Localizer.Format("history.answer", ("question", card.Label), ("answer", AnswerText(card))),
+            key is null ? Localizer.Get("history.noEffect") : ChangeText));
+        while (History.Count > 5) History.RemoveAt(History.Count - 1);
+        OnPropertyChanged(nameof(HasHistory));
     }
 
     private void BuildQuestions(string syndromeId)
@@ -729,7 +787,13 @@ public sealed partial class MainViewModel : ObservableObject
     private void Relabel()
     {
         foreach (var item in Syndromes)
+        {
             item.Name = Localizer.Get($"syndrome.{item.Id}.name");
+            var aliasKey = $"syndrome.{item.Id}.aliases";
+            var aliases = Localizer.Get(aliasKey);
+            var drugs = (_drugsBySyndrome.GetValueOrDefault(item.Id) ?? []).Select(drug => Localizer.Get($"drug.{drug}.name"));
+            item.Terms = string.Join(" · ", drugs.Prepend(aliases == aliasKey ? "" : aliases));
+        }
         foreach (var option in GuidelineSets)
         {
             option.Label = Localizer.Get($"guideline.{option.Code}.name");
@@ -986,6 +1050,39 @@ public sealed partial class MainViewModel : ObservableObject
         }
 
         Sync(Spectrum, desired);
+    }
+
+    private static string AnswerText(QuestionCard card) =>
+        card.IsBoolean
+            ? Localizer.Get(card.IsOn ? "history.yes" : "history.no")
+            : string.Join(", ", card.Options.Where(option => option.IsSelected).Select(option => option.Label));
+
+    public string BuildSummary()
+    {
+        var lines = new List<string>
+        {
+            $"{SyndromeTitle} — {GuidelineName}",
+            Headline
+        };
+        foreach (var slot in Slots)
+            lines.Add($"• {slot.DrugName}: {slot.Amount} {slot.Route} {slot.Schedule}{(slot.HasExtra ? " (" + slot.Extra + ")" : "")}");
+        if (HasFirstChoice) lines.Add(DurationText);
+        lines.Add(OutcomeText);
+        lines.Add(ConsultText);
+        foreach (var warning in Warnings)
+            lines.Add("! " + (warning.Detail.Length > 0 ? warning.Detail + ": " : "") + warning.Text);
+        var chosen = Questions.Where(card => card.IsVisible && card.IsChanged).ToArray();
+        if (chosen.Length > 0)
+        {
+            lines.Add(Localizer.Get("summary.answers"));
+            foreach (var card in chosen)
+                lines.Add($"  {card.Label}: {AnswerText(card)}");
+        }
+        lines.Add(SourceText);
+        lines.Add(ReviewText);
+        lines.Add(DataVersion + " · AbxPilot " + Update.GitHubUpdater.Label);
+        lines.Add(Localizer.Get("footer.disclaimer"));
+        return string.Join(Environment.NewLine, lines.Where(line => !string.IsNullOrWhiteSpace(line)));
     }
 
     private string RegimenName(string regimenId, string? drugId)
