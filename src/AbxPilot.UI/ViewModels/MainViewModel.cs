@@ -77,6 +77,7 @@ public sealed partial class MainViewModel : ObservableObject
             Languages.Add(new LanguageOption(code, code == Localizer.Language));
 
         showScore = _settings.ShowScore;
+        confirmUpdate = _settings.ConfirmUpdate;
         AlternativesTab = new AlternativesPage(this);
         RationaleTab = new RationalePage(this);
         currentTab = AlternativesTab;
@@ -223,6 +224,9 @@ public sealed partial class MainViewModel : ObservableObject
 
     [ObservableProperty]
     private bool showScore;
+
+    [ObservableProperty]
+    private bool confirmUpdate;
 
     [ObservableProperty]
     private string settingsPath = "";
@@ -555,6 +559,11 @@ public sealed partial class MainViewModel : ObservableObject
         foreach (var row in Alternatives.Where(row => row.IsLeaving).ToArray())
             Alternatives.Remove(row);
         OnPropertyChanged(nameof(NoAlternatives));
+    }
+
+    partial void OnConfirmUpdateChanged(bool value)
+    {
+        if (_settings.ConfirmUpdate != value) Persist(_settings with { ConfirmUpdate = value });
     }
 
     partial void OnShowScoreChanged(bool value)

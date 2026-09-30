@@ -11,6 +11,7 @@
         MinWidth="{StaticResource WindowMinWidth}"
         MinHeight="{StaticResource WindowMinHeight}"
         WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
         Background="Transparent"
         TransparencyLevelHint="Transparent"
         ExtendClientAreaToDecorationsHint="True"
@@ -44,8 +45,6 @@
                           DestekMetni="{loc:Text sig.support}"
                           DestekIpucu="{loc:Text sig.supportTitle}"
                           DestekAdresi="{StaticResource LinkSponsor}"
-                          SiteMetni="{loc:Text sig.site}"
-                          SiteIpucu="{loc:Text sig.siteTitle}"
                           KucultMetni="{loc:Text window.minimize}"
                           BuyutMetni="{loc:Text window.maximize}"
                           GeriAlMetni="{loc:Text window.restore}"
@@ -64,16 +63,10 @@
             </kabuk:TitleBar.Orta>
             <kabuk:TitleBar.Ek>
               <StackPanel Orientation="Horizontal" Spacing="{StaticResource Space2}">
-                <Border VerticalAlignment="Center" IsVisible="{Binding HasDataVersion}"
-                        BorderBrush="{StaticResource BorderDecorative}"
-                        BorderThickness="{StaticResource BorderWidth}"
-                        CornerRadius="{StaticResource Radius}"
-                        Padding="{StaticResource InputPadding}"
-                        MinHeight="{StaticResource TargetMin}">
-                  <TextBlock Text="{Binding DataVersion}" VerticalAlignment="Center"
-                             FontFamily="{StaticResource FontMono}" FontSize="{StaticResource FontSize2}"
-                             Foreground="{StaticResource TextBody}"/>
-                </Border>
+                <kabuk:SurumDugmesi x:Name="SurumDugmesi" VerticalAlignment="Center"
+                                    DenetleMetni="{loc:Text update.check}"
+                                    GuncelMetni="{loc:Text update.current}"
+                                    HataMetni="{loc:Text update.error}"/>
                 <ItemsControl ItemsSource="{Binding Languages}" VerticalAlignment="Center"
                               auto:AutomationProperties.Name="{loc:Text titlebar.language}">
                   <ItemsControl.ItemsPanel>

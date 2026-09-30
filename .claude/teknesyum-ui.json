@@ -35,16 +35,17 @@
       "reason": "Clinical doses and durations quoted from guidelines for expert review, not interface measurements."
     }
   ],
-  "duzen": "a0eaf97ec84216aa",
+  "duzen": "920c61ba2837ca0d",
   "denetim": {
-    "tarih": "2026-09-27T04:09:10.739Z",
-    "duzen": "75ea90cdce3cabe5"
+    "tarih": "2026-09-30T19:29:22.410Z",
+    "duzen": "920c61ba2837ca0d"
   },
-  "plugin": "0.26.0",
+  "plugin": "0.32.0",
   "uc": {
-    "surum": "0.26.0",
-    "duzen": "a0eaf97ec84216aa",
-    "commit": "719d96c11264994110ed33720b2830d9813be316",
-    "tarih": "2026-09-27"
-  }
+    "surum": "0.32.0",
+    "duzen": "920c61ba2837ca0d",
+    "commit": "d2f4f472d616858918df2bd95c3c526c8309ff10",
+    "tarih": "2026-09-30"
+  },
+  "pencere": "maximize"
 }

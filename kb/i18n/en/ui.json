@@ -92,5 +92,8 @@
   "appbar.region": "Region: {name}",
   "card.regionNoData": "No resistance data for this region (WHO AWaRe default). Resistance questions use the cautious default; answer them if you know the local rate.",
   "settings.region": "Region",
-  "settings.regionHint": "The region sets resistance defaults, licence lines and the national guideline offered first."
+  "settings.regionHint": "The region sets resistance defaults, licence lines and the national guideline offered first.",
+  "update.confirm": "Version {version} is ready. Install now? The program closes during installation.",
+  "update.installNow": "Install now",
+  "update.later": "Later"
 }

@@ -2,8 +2,12 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.TextFormatting;
+using Avalonia.Styling;
 using Avalonia.Threading;
+using AbxPilot.UI.Kabuk;
 using AbxPilot.UI.Localization;
+using AbxPilot.UI.Update;
+using AbxPilot.UI.ViewModels;
 
 namespace AbxPilot.UI;
 
@@ -15,6 +19,8 @@ public partial class MainWindow : Window
         if (!Motion.Reduced) Classes.Add("anim");
         FitToWorkArea();
         ApplyLabels();
+        BindUpdates();
+        UygulamaOlcegi.Bagla(this);
         TitleNotice.SizeChanged += (_, _) => FitNotice();
         Localizer.Changed += (_, _) => Dispatcher.UIThread.Post(() =>
         {
@@ -40,8 +46,54 @@ public partial class MainWindow : Window
     private void ApplyLabels()
     {
         Title = Localizer.Get("app.name.first") + Localizer.Get("app.name.second");
-        var site = Localizer.Get("sig.site");
-        UstCubuk.SiteAdresi = Uri.TryCreate("https://" + site, UriKind.Absolute, out var uri) ? uri.AbsoluteUri : string.Empty;
+    }
+
+    private void BindUpdates()
+    {
+        var updater = new GitHubUpdater();
+        SurumDugmesi.Surum = GitHubUpdater.Label;
+        SurumDugmesi.OnayIste = true;
+        SurumDugmesi.Denetle = updater.CheckAsync;
+        SurumDugmesi.Sor = result => DataContext is MainViewModel { ConfirmUpdate: true } ? AskInstall(result) : Task.FromResult(true);
+        SurumDugmesi.Kur = updater.InstallAsync;
+    }
+
+    private async Task<bool> AskInstall(SurumSonucu result)
+    {
+        var accepted = false;
+        var dialog = new Window
+        {
+            Title = Title,
+            Icon = Icon,
+            SizeToContent = SizeToContent.WidthAndHeight,
+            CanResize = false,
+            ShowInTaskbar = false,
+            WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            FontFamily = FontFamily,
+            FontSize = FontSize,
+            Foreground = Foreground,
+            Background = this.TryFindResource("Surface", out var surface) && surface is IBrush brush ? brush : Brushes.Transparent
+        };
+        var install = new Button { Content = Localizer.Get("update.installNow"), IsDefault = true };
+        var later = new Button { Content = Localizer.Get("update.later"), IsCancel = true };
+        if (this.TryFindResource("PrimaryButton", out var primary) && primary is ControlTheme primaryTheme) install.Theme = primaryTheme;
+        if (this.TryFindResource("HeaderButton", out var plain) && plain is ControlTheme plainTheme) later.Theme = plainTheme;
+        install.Click += (_, _) => { accepted = true; dialog.Close(); };
+        later.Click += (_, _) => dialog.Close();
+        var gap = this.TryFindResource("Space3", out var space) && space is double value ? value : 0;
+        dialog.Content = new StackPanel
+        {
+            Margin = new Thickness(gap * 2),
+            Spacing = gap,
+            MaxWidth = this.TryFindResource("ToastWidth", out var width) && width is double max ? max : double.PositiveInfinity,
+            Children =
+            {
+                new TextBlock { Text = Localizer.Get("update.confirm").Replace("{version}", result.Surum), TextWrapping = TextWrapping.Wrap },
+                new StackPanel { Orientation = Avalonia.Layout.Orientation.Horizontal, Spacing = gap, HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Right, Children = { later, install } }
+            }
+        };
+        await dialog.ShowDialog(this);
+        return accepted;
     }
 
     private void FitNotice()

@@ -649,6 +649,11 @@
                             Content="{loc:Text settings.showScore}"/>
               <TextBlock Theme="{StaticResource Hint}" Text="{loc:Text settings.showScoreHint}"/>
             </StackPanel>
+            <ToggleButton x:Name="UpdateConfirmSwitch" Theme="{StaticResource Switch}"
+                          IsChecked="{Binding ConfirmUpdate}"
+                          Content="{loc:Text update.confirmSetting}"/>
+            <TextBlock Theme="{StaticResource Hint}" FontFamily="{StaticResource FontMono}"
+                       IsVisible="{Binding HasDataVersion}" Text="{Binding DataVersion}"/>
             <TextBlock Theme="{StaticResource Hint}" TextWrapping="Wrap" Text="{Binding SettingsPath}"/>
           </StackPanel>
         </Border>

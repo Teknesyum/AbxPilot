@@ -14,6 +14,7 @@
   <ItemGroup>
     <AvaloniaXaml Include="../../teknesyum-ui/ustcubuk/*.axaml" Link="Kabuk/%(Filename)%(Extension)" />
     <Compile Include="../../teknesyum-ui/ustcubuk/*.cs" Link="Kabuk/%(Filename)%(Extension)" />
+    <Compile Include="../../teknesyum-ui/durum/SurumDugmesi.cs" Link="Kabuk/%(Filename)%(Extension)" />
     <AvaloniaXaml Include="../../teknesyum-ui/avalonia/Theme.axaml" Link="Tema/Theme.axaml" />
     <EmbeddedResource Include="../../teknesyum-ui/avalonia/labels.*.json" LogicalName="Etiketler.%(Filename)%(Extension)" WithCulture="false" />
   </ItemGroup>

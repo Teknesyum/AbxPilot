@@ -92,5 +92,8 @@
   "appbar.region": "Bölge: {name}",
   "card.regionNoData": "Bu bölge için direnç verisi yok (DSÖ AWaRe varsayılanı). Direnç soruları temkinli varsayılanla işlenir; yerel oranı biliyorsanız soruyu yanıtlayın.",
   "settings.region": "Bölge",
-  "settings.regionHint": "Bölge direnç varsayılanlarını, ruhsat satırlarını ve önerilen ulusal kılavuzu değiştirir."
+  "settings.regionHint": "Bölge direnç varsayılanlarını, ruhsat satırlarını ve önerilen ulusal kılavuzu değiştirir.",
+  "update.confirm": "{version} sürümü hazır. Şimdi kurulsun mu? Kurulum sırasında program kapanır.",
+  "update.installNow": "Şimdi kur",
+  "update.later": "Sonra"
 }
