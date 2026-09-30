@@ -1,5 +1,5 @@
 id: fosfomycin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -31,3 +31,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: none
+  source: label-fosfomycin-po
+  section: US PI Clinical Pharmacology (Renal Insufficiency)
+  note: Label gives no renal dose change for the single 3 g dose; half-life rises to 50 h at CrCl 7 mL/min.

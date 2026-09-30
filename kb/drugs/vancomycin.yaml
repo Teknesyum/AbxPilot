@@ -1,5 +1,5 @@
 id: vancomycin
-version: 3
+version: 4
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -67,3 +67,8 @@ pregnancy:
   category: caution
   note_key: pregnancy.note.limited_data
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-vancomycin
+  section: 'US PI 2.4'
+  note: 'Dose by serum levels. Label: initial dose no less than 15 mg/kg; functionally anephric 1.9 mg/kg/24 h after 15 mg/kg.'

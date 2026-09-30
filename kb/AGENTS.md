@@ -13,8 +13,8 @@ Knowledge base as data, compiled by `tools/AbxPilot.KbCompiler` on every `AbxPil
 - `region: <id>` on a set marks it national; the app offers it first in that region. `regions/OTHER.yaml` (id `other`) is the fallback without resistance data.
 - Syndrome `order` sets the list position; a fresh install opens the first one (pharyngitis).
 - `i18n/<lang>/*.json`: flat keys merged per language. Missing tr key = error, missing en = warning.
+- Renal: a dose id repeats per `renal_band` (label source); drug `renal.adjust` none|bands; the `renal` question picks the band, missing band = normal dose + `warn.renal_missing`.
 - mg/kg doses keep `amount_70kg`. Baseline patient: healthy 70 kg adult.
 - `constraints.yaml`: hard exclusions in precedence order (`when` + drug `exclude` selector + reason key).
-- Derived flags with `risk`/`pathogen` are risk flags (spectrum bars). A condition leaf `region: <id>`
-  tests the region resistance category.
+- Derived flags with `risk`/`pathogen` are risk flags (spectrum bars). A condition leaf `region: <id>` tests the region resistance category.
 - `scoring.yaml`: weights plus coverage, bioavailability and resistance value maps.

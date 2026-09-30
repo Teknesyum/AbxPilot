@@ -1,5 +1,5 @@
 id: moxifloxacin
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -58,3 +58,8 @@ pregnancy:
   category: avoid
   note_key: pregnancy.note.fluoroquinolone
 qt_risk: known
+renal:
+  adjust: none
+  source: label-moxifloxacin
+  section: 'US PI 2, 8.6'
+  note: 'No adjustment, including hemodialysis and CAPD.'

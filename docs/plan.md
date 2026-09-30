@@ -188,3 +188,23 @@ Klinik mantık ve kb içeriği değişmez; yalnız akış ve erişilebilirlik.
 - **Ne değişti:** son beş cevabın öneriye etkisi, gerekçe sekmesinde liste.
 - **İlk açılış ipucu:** tek şeritte üç adım; kapatılınca `TipSeen` ayarı.
 - **Sonraya:** yazdır/PDF (kütüphane seçimi gerekir).
+
+## Böbrek Doz Ayarı — 2026-09-30
+
+Amaç: kreatinin klirensine (CrCl, Cockcroft-Gault) göre öneri kartındaki dozun etiket dozuna
+dönmesi. Temel hasta değişmez; böbrek işlevi yalnız bir soru olarak eklenir.
+
+- **Kaynak:** ABD FDA ürün etiketi (DailyMed/openFDA, kamu malı), ABD etiketi yoksa AB SmPC 4.2.
+  Sanford ve UpToDate telifli; gömülmez, A9 incelemesinde karşılaştırma için kullanılır.
+- **Kanıt:** her ilacın etiket paragrafı olduğu gibi `docs/danisma/2026-09-30-bobrek/<ilaç>.md`.
+- **Kaynak kaydı:** ilaç başına `label-<ilaç>` (`kb/sources.yaml`), etiket tarihi ve bağlantısıyla.
+- **Veri:** mevcut doz kimliğinin (ör. `cap_iv`) her bant için kopyası, `renal_band` farklı.
+  Bantlar: `normal` (≥60), `crcl_30_59`, `crcl_15_29`, `crcl_lt15`, `hemodialysis`, `crrt`.
+  Etiket eşikleri banda denk düşmezse bandın çoğunu kapsayan satır alınır, etiket metni nota yazılır.
+- **İlaç alanı `renal`:** `adjust: none | bands`, kaynak ve bölüm. `none` = etiket ayar gerektirmiyor.
+- **Kaçınma:** etiketin kontrendike dediği bantlar `kb/constraints.yaml` kuralı olur (aday elenir).
+- **Motor:** `renal` sorusu (ortak, varsayılan `normal`). Satır o bandın dozunu alır; bant verisi yoksa
+  normal doz gösterilir ve "Bu böbrek bandı için etiket dozu yok" uyarısı çıkar.
+- **Arayüz:** soru ortak sorularda; kartta bant rozeti; özet metnine bant yazılır.
+- **Test:** şema, bant seçimi, eksik bant uyarısı, kaçınma kuralı, altın vaka (sefepim CrCl 15-29).
+- Hasta hesabı (Cockcroft-Gault hesaplayıcı) sonraya: kullanıcı bandı kendisi seçer.

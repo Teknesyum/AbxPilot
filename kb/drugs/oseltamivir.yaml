@@ -1,5 +1,5 @@
 id: oseltamivir
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -22,6 +22,33 @@ doses:
   source: product-labels
   section: SmPC 4.2
   note: Five days of treatment.
+- id: flu_po
+  indication: influenza
+  route: po
+  renal_band: crcl_30_59
+  amount: 30 mg
+  interval_hours: 12
+  source: label-oseltamivir
+  section: 'US PI 2.4, Table 2'
+  note: 'Label row CrCl >30-60 mL/min; 5 days.'
+- id: flu_po
+  indication: influenza
+  route: po
+  renal_band: crcl_15_29
+  amount: 30 mg
+  interval_hours: 24
+  source: label-oseltamivir
+  section: 'US PI 2.4, Table 2'
+  note: 'Label row CrCl >10-30 mL/min; 5 days.'
+- id: flu_po
+  indication: influenza
+  route: po
+  renal_band: hemodialysis
+  amount: 30 mg
+  interval_hours: 48
+  source: label-oseltamivir
+  section: 'US PI 2.4, Table 2'
+  note: 'Give after each dialysis session. Label: 30 mg immediately, then 30 mg after every hemodialysis cycle; not beyond 5 days.'
 adverse_effects:
 - gi_upset
 - neuropsychiatric
@@ -30,3 +57,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-oseltamivir
+  section: 'US PI 2.4, 8.6'
+  note: 'Not recommended in ESRD not on dialysis (US PI 1.3, 8.6). CRRT not in label.'

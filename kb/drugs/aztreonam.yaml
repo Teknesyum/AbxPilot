@@ -1,5 +1,5 @@
 id: aztreonam
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -26,6 +26,36 @@ doses:
   interval_hours: 8
   source: idsa-ats-2019
   section: Q10; Table 3
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_15_29
+  amount: 1 g
+  loading: 2 g
+  interval_hours: 8
+  source: label-aztreonam
+  section: 'US PI Dosage and Administration, Renal Impairment in Adult Patients'
+  note: 'Label: halve the dose when CrCl 10-30 mL/min/1.73 m2, after the usual initial dose.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  loading: 2 g
+  interval_hours: 8
+  source: label-aztreonam
+  section: 'US PI Dosage and Administration, Renal Impairment in Adult Patients'
+  note: 'Label: CrCl <10 mL/min/1.73 m2, maintenance one-fourth of the initial dose at the usual interval.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: hemodialysis
+  amount: 500 mg
+  loading: 2 g
+  interval_hours: 8
+  source: label-aztreonam
+  section: 'US PI Dosage and Administration, Renal Impairment in Adult Patients'
+  note: 'Label: maintenance one-fourth of the initial dose; in serious infection also give one-eighth of the initial dose (250 mg) after each hemodialysis session.'
 - id: iai_iv
   indication: iai
   route: iv
@@ -35,6 +65,36 @@ doses:
   source: sis-idsa-2010
   section: Table 6
   note: Table 6 gives every 6-8 h.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_15_29
+  amount: 0.5-1 g
+  loading: 1-2 g
+  interval_hours: 8
+  source: label-aztreonam
+  section: 'US PI Dosage and Administration, Renal Impairment in Adult Patients'
+  note: 'Label: halve the dose when CrCl 10-30 mL/min/1.73 m2, after the usual initial dose.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_lt15
+  amount: 250-500 mg
+  loading: 1-2 g
+  interval_hours: 8
+  source: label-aztreonam
+  section: 'US PI Dosage and Administration, Renal Impairment in Adult Patients'
+  note: 'Label: CrCl <10 mL/min/1.73 m2, maintenance one-fourth of the initial dose at the usual interval.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: hemodialysis
+  amount: 250-500 mg
+  loading: 1-2 g
+  interval_hours: 8
+  source: label-aztreonam
+  section: 'US PI Dosage and Administration, Renal Impairment in Adult Patients'
+  note: 'Label: maintenance one-fourth of the initial dose; in serious infection also give one-eighth of the initial dose (125-250 mg) after each hemodialysis session.'
 adverse_effects:
 - hypersensitivity
 - c_difficile
@@ -43,3 +103,8 @@ pregnancy:
   category: caution
   note_key: pregnancy.note.limited_data
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-aztreonam
+  section: 'US PI Dosage and Administration, Renal Impairment in Adult Patients'
+  note: 'No adjustment when CrCl >30 mL/min/1.73 m2.'

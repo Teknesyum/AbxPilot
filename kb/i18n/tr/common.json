@@ -181,5 +181,20 @@
   "indication.pharyngitis": "Akut farenjit",
   "guideline.idsa-2012.name": "IDSA GAS Farenjiti 2012",
   "guideline.nice-ng84-2018.name": "NICE NG84 2018",
-  "guideline.titck-2020.name": "TİTCK Akılcı Antibiyotik 2020"
+  "guideline.titck-2020.name": "TİTCK Akılcı Antibiyotik 2020",
+  "question.renal.label": "Böbrek işlevi (kreatinin klirensi, Cockcroft-Gault)",
+  "question.renal.option.normal": "Normal (≥60 mL/dk)",
+  "question.renal.option.crcl_30_59": "30-59 mL/dk",
+  "question.renal.option.crcl_15_29": "15-29 mL/dk",
+  "question.renal.option.crcl_lt15": "<15 mL/dk (diyaliz yok)",
+  "question.renal.option.hemodialysis": "Hemodiyaliz",
+  "question.renal.option.crrt": "Sürekli böbrek replasman tedavisi (CRRT)",
+  "warn.renal_missing": "Uyarı: bu böbrek bandı için etiket dozu kayıtlı değil; gösterilen normal doz, ürün bilgisinden doğrulayın",
+  "exclude.renal": "Elendi: bu böbrek işlevinde ürün bilgisi kullanımı önermiyor",
+  "renal.band.crcl_30_59": "CrCl 30-59 dozu",
+  "renal.band.crcl_15_29": "CrCl 15-29 dozu",
+  "renal.band.crcl_lt15": "CrCl <15 dozu",
+  "renal.band.hemodialysis": "Hemodiyaliz dozu",
+  "renal.band.crrt": "CRRT dozu",
+  "renal.none": "Böbrek ayarı gerekmez (ürün bilgisi)"
 }

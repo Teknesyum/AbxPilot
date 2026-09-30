@@ -16,6 +16,15 @@ public sealed record Drug : KbRecord
     public IReadOnlyList<string> Interactions { get; init; } = [];
     public PregnancyInfo Pregnancy { get; init; } = new();
     public string QtRisk { get; init; } = "";
+    public RenalInfo? Renal { get; init; }
+}
+
+public sealed record RenalInfo
+{
+    public string Adjust { get; init; } = "";
+    public string Source { get; init; } = "";
+    public string Section { get; init; } = "";
+    public string? Note { get; init; }
 }
 
 public sealed record BetaLactamInfo

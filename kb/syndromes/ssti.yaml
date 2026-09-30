@@ -1,5 +1,5 @@
 id: ssti
-version: 1
+version: 2
 source: idsa-ssti-2014
 section: 'Scope: adult cellulitis, erysipelas and purulent skin infection'
 source_date: '2014-07-15'
@@ -26,6 +26,7 @@ questions:
 - facial_site
 - pen_allergy
 - pregnancy
+- renal
 - qt_risk
 derived:
 - id: ssti_severe

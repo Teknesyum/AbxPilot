@@ -1,5 +1,5 @@
 id: pharyngitis
-version: 1
+version: 2
 source: idsa-gas-2012
 section: 'Scope: adult acute group A streptococcal pharyngitis'
 source_date: '2012-11-15'
@@ -21,6 +21,7 @@ questions:
 - gas_test
 - pen_allergy
 - pregnancy
+- renal
 - qt_risk
 derived:
 - id: centor_ge2

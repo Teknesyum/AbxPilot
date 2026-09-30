@@ -937,6 +937,8 @@ public sealed partial class MainViewModel : ObservableObject
                 extras.Add(Localizer.Format("card.loading", ("dose", loading)));
             if (component.Amount70Kg is { Length: > 0 } adult)
                 extras.Add(Localizer.Format("card.amount70", ("dose", adult)));
+            if (component.RenalBand != "normal")
+                extras.Insert(0, Localizer.Get($"renal.band.{component.RenalBand}"));
             slot.Extra = string.Join(" · ", extras);
             slot.HasExtra = extras.Count > 0;
         }

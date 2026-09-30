@@ -1,5 +1,5 @@
 id: cefepime
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -26,6 +26,43 @@ doses:
   interval_hours: 8
   source: idsa-ats-2019
   section: Q10; Table 3
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_30_59
+  amount: 2 g
+  interval_hours: 12
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl 30-60 mL/min for the 2 g q8h regimen.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_15_29
+  amount: 2 g
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl 11-29 mL/min for the 2 g q8h regimen.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_lt15
+  amount: 1 g
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl <11 mL/min for the 2 g q8h regimen.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: hemodialysis
+  amount: 500 mg
+  loading: 1 g on day 1
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row Hemodialysis: 1 g on day 1, then 500 mg every 24 hours. Give after each dialysis session.'
 - id: uti_iv
   indication: uti
   route: iv
@@ -35,6 +72,43 @@ doses:
   source: idsa-cuti-2025
   section: Table 2.1
   note: Table 2.1 gives every 8-12 h.
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_30_59
+  amount: 2 g
+  interval_hours: 12
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl 30-60 mL/min for the 2 g q8h regimen.'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 2 g
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl 11-29 mL/min for the 2 g q8h regimen.'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 1 g
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl <11 mL/min for the 2 g q8h regimen.'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: hemodialysis
+  amount: 500 mg
+  loading: 1 g on day 1
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row Hemodialysis: 1 g on day 1, then 500 mg every 24 hours. Give after each dialysis session.'
 - id: uti_iv_eau
   indication: uti
   route: iv
@@ -44,6 +118,43 @@ doses:
   source: eau-uti-2026
   section: Table 6 (section 3.6.3)
   note: Standard dose 1 g every 8 h or 2 g every 12 h; high dose 2 g every 8 h.
+- id: uti_iv_eau
+  indication: uti
+  route: iv
+  renal_band: crcl_30_59
+  amount: 2 g
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl 30-60 mL/min for the 2 g q12h regimen.'
+- id: uti_iv_eau
+  indication: uti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 1 g
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl 11-29 mL/min for the 2 g q12h regimen.'
+- id: uti_iv_eau
+  indication: uti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl <11 mL/min for the 2 g q12h regimen.'
+- id: uti_iv_eau
+  indication: uti
+  route: iv
+  renal_band: hemodialysis
+  amount: 500 mg
+  loading: 1 g on day 1
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row Hemodialysis: 1 g on day 1, then 500 mg every 24 hours. Give after each dialysis session.'
 - id: iai_iv
   indication: iai
   route: iv
@@ -53,6 +164,43 @@ doses:
   source: sis-idsa-2010
   section: Table 6
   note: Table 6 gives every 8-12 h.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_30_59
+  amount: 2 g
+  interval_hours: 12
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl 30-60 mL/min for the 2 g q8h regimen.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_15_29
+  amount: 2 g
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl 11-29 mL/min for the 2 g q8h regimen.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_lt15
+  amount: 1 g
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl <11 mL/min for the 2 g q8h regimen.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: hemodialysis
+  amount: 500 mg
+  loading: 1 g on day 1
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row Hemodialysis: 1 g on day 1, then 500 mg every 24 hours. Give after each dialysis session.'
 adverse_effects:
 - hypersensitivity
 - neurotoxicity
@@ -61,3 +209,8 @@ interactions: []
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-cefepime
+  section: 'US PI 2.3, 8.6'
+  note: 'Adjust when CrCl <=60 mL/min; initial dose unchanged except in hemodialysis. uti_iv (1-2 g q8h) is mapped to the 2 g q8h column.'

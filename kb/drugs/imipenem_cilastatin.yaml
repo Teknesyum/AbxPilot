@@ -1,5 +1,5 @@
 id: imipenem_cilastatin
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -24,6 +24,33 @@ doses:
   interval_hours: 6
   source: idsa-ats-2019
   section: Q10; Table 3
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_30_59
+  amount: 300 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.3, Table 3
+  note: 'Label row: CrCl 30 to <60 mL/min, 500 mg every 6 h regimen.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_15_29
+  amount: 200 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.3, Table 3
+  note: 'Label row: CrCl 15 to <30 mL/min, 500 mg every 6 h regimen. Possible increased seizure risk.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: hemodialysis
+  amount: 200 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.4
+  note: Give after each dialysis session; intervals timed from the end of the session. Label uses the CrCl 15 to <30 mL/min row. Use only when benefit outweighs seizure risk.
 - id: ssti_iv
   indication: ssti
   route: iv
@@ -33,6 +60,33 @@ doses:
   source: product-labels
   section: SmPC 4.2 (complicated skin and soft tissue)
   note: IDSA 2014 names imipenem for severe cellulitis without a dose.
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_30_59
+  amount: 300 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.3, Table 3
+  note: 'Label row: CrCl 30 to <60 mL/min, 500 mg every 6 h regimen.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 200 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.3, Table 3
+  note: 'Label row: CrCl 15 to <30 mL/min, 500 mg every 6 h regimen. Possible increased seizure risk.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: hemodialysis
+  amount: 200 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.4
+  note: Give after each dialysis session; intervals timed from the end of the session. Label uses the CrCl 15 to <30 mL/min row. Use only when benefit outweighs seizure risk.
 - id: uti_iv
   indication: uti
   route: iv
@@ -42,6 +96,33 @@ doses:
   source: idsa-cuti-2025
   section: Table 2.1
   note: Or 1 g every 8 h.
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_30_59
+  amount: 300 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.3, Table 3
+  note: 'Label row: CrCl 30 to <60 mL/min, 500 mg every 6 h regimen.'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 200 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.3, Table 3
+  note: 'Label row: CrCl 15 to <30 mL/min, 500 mg every 6 h regimen. Possible increased seizure risk.'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: hemodialysis
+  amount: 200 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.4
+  note: Give after each dialysis session; intervals timed from the end of the session. Label uses the CrCl 15 to <30 mL/min row. Use only when benefit outweighs seizure risk.
 - id: iai_iv
   indication: iai
   route: iv
@@ -51,6 +132,33 @@ doses:
   source: sis-idsa-2010
   section: Table 6
   note: Or 1 g every 8 h.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_30_59
+  amount: 300 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.3, Table 3
+  note: 'Label row: CrCl 30 to <60 mL/min, 500 mg every 6 h regimen.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_15_29
+  amount: 200 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.3, Table 3
+  note: 'Label row: CrCl 15 to <30 mL/min, 500 mg every 6 h regimen. Possible increased seizure risk.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: hemodialysis
+  amount: 200 mg
+  interval_hours: 6
+  source: label-imipenem-cilastatin
+  section: US PI 2.4
+  note: Give after each dialysis session; intervals timed from the end of the session. Label uses the CrCl 15 to <30 mL/min row. Use only when benefit outweighs seizure risk.
 adverse_effects:
 - hypersensitivity
 - c_difficile
@@ -61,3 +169,8 @@ pregnancy:
   category: caution
   note_key: pregnancy.note.limited_data
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-imipenem-cilastatin
+  section: US PI 2.3, 2.4, Table 3
+  note: 'Label also reduces the dose at CrCl 60-89 mL/min (400 mg every 6 h for the 500 mg every 6 h regimen). CrCl <15 mL/min: do not give unless hemodialysis is started within 48 hours.'

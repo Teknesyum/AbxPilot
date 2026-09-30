@@ -1,5 +1,5 @@
 id: ampicillin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -35,3 +35,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: smpc-ampicillin
+  section: 'UK SmPC 4.2'
+  note: 'No numeric renal dose in the US label or the SmPC. SmPC: consider a dose reduction or a longer interval when CrCl <10 mL/min; give an additional dose after dialysis.'

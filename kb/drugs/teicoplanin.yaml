@@ -1,5 +1,5 @@
 id: teicoplanin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -24,6 +24,50 @@ doses:
   source: nice-ng141-2019
   section: Table 1
   loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_30_59
+  amount: 6 mg/kg
+  amount_70kg: 420 mg
+  interval_hours: 48
+  source: label-teicoplanin
+  section: 'SmPC 4.2'
+  loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+  note: 'SmPC row CrCl 30-80 mL/min: from day 4 half the maintenance dose (full dose every 2 days or half dose daily).'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 6 mg/kg
+  amount_70kg: 420 mg
+  interval_hours: 72
+  source: label-teicoplanin
+  section: 'SmPC 4.2'
+  loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+  note: 'SmPC row CrCl <30 mL/min: from day 4 one-third of the dose (full dose every 3 days or one-third daily).'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 6 mg/kg
+  amount_70kg: 420 mg
+  interval_hours: 72
+  source: label-teicoplanin
+  section: 'SmPC 4.2'
+  loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+  note: 'SmPC row CrCl <30 mL/min: from day 4 one-third of the dose (full dose every 3 days or one-third daily).'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: hemodialysis
+  amount: 6 mg/kg
+  amount_70kg: 420 mg
+  interval_hours: 72
+  source: label-teicoplanin
+  section: 'SmPC 4.2'
+  loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+  note: 'SmPC row haemodialysed patients: from day 4 one-third of the dose. Not removed by haemodialysis.'
 - id: iai_iv
   indication: iai
   route: iv
@@ -35,6 +79,50 @@ doses:
   section: SmPC 4.2 (complicated skin and intra-abdominal)
   loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
   note: SIS 2017 and EKMUD 2016 name teicoplanin without a dose; the label dose is used.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_30_59
+  amount: 6 mg/kg
+  amount_70kg: 420 mg
+  interval_hours: 48
+  source: label-teicoplanin
+  section: 'SmPC 4.2'
+  loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+  note: 'SmPC row CrCl 30-80 mL/min: from day 4 half the maintenance dose (full dose every 2 days or half dose daily).'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_15_29
+  amount: 6 mg/kg
+  amount_70kg: 420 mg
+  interval_hours: 72
+  source: label-teicoplanin
+  section: 'SmPC 4.2'
+  loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+  note: 'SmPC row CrCl <30 mL/min: from day 4 one-third of the dose (full dose every 3 days or one-third daily).'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_lt15
+  amount: 6 mg/kg
+  amount_70kg: 420 mg
+  interval_hours: 72
+  source: label-teicoplanin
+  section: 'SmPC 4.2'
+  loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+  note: 'SmPC row CrCl <30 mL/min: from day 4 one-third of the dose (full dose every 3 days or one-third daily).'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: hemodialysis
+  amount: 6 mg/kg
+  amount_70kg: 420 mg
+  interval_hours: 72
+  source: label-teicoplanin
+  section: 'SmPC 4.2'
+  loading: 6 mg/kg (70 kg - 420 mg) every 12 h for 3 doses
+  note: 'SmPC row haemodialysed patients: from day 4 one-third of the dose. Not removed by haemodialysis.'
 adverse_effects:
 - hypersensitivity
 - nephrotoxicity
@@ -44,3 +132,8 @@ pregnancy:
   category: caution
   note_key: pregnancy.note.limited_data
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-teicoplanin
+  section: 'SmPC 4.2'
+  note: 'Adjust from day 4 and keep trough at least 10 mg/L (HPLC) or 15 mg/L (FPIA). CRRT not in SmPC.'

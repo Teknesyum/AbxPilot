@@ -246,3 +246,70 @@
     class_group:
     - fluoroquinolone
   reason_key: warn.iai_fq_resistance
+- id: renal_nitrofurantoin
+  version: 1
+  source: label-nitrofurantoin
+  section: Contraindications
+  source_date: '2025-10-14'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Label contraindicates creatinine clearance under 60 mL/min.
+  when:
+    question: renal
+    in:
+    - crcl_30_59
+    - crcl_15_29
+    - crcl_lt15
+    - hemodialysis
+    - crrt
+  exclude:
+    drug:
+    - nitrofurantoin
+  reason_key: exclude.renal
+- id: renal_oseltamivir_esrd
+  version: 1
+  source: label-oseltamivir
+  section: US PI 1.3, 8.6
+  source_date: '2025-12-15'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Not recommended in end-stage renal disease without dialysis.
+  when:
+    question: renal
+    eq: crcl_lt15
+  exclude:
+    drug:
+    - oseltamivir
+  reason_key: exclude.renal
+- id: renal_tmp_smx
+  version: 1
+  source: label-tmp-smx
+  section: Dosage and Administration, renal impairment table
+  source_date: '2024-12-30'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Label: creatinine clearance below 15 mL/min, use not recommended.'
+  when:
+    question: renal
+    in:
+    - crcl_lt15
+    - hemodialysis
+  exclude:
+    drug:
+    - tmp_smx
+  reason_key: exclude.renal
+- id: renal_imipenem
+  version: 1
+  source: label-imipenem-cilastatin
+  section: US PI 2.3
+  source_date: '2024-07-05'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Creatinine clearance below 15 mL/min without haemodialysis within 48 hours.
+  when:
+    question: renal
+    eq: crcl_lt15
+  exclude:
+    drug:
+    - imipenem_cilastatin
+  reason_key: exclude.renal

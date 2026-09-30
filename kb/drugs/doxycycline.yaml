@@ -1,5 +1,5 @@
 id: doxycycline
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -57,3 +57,8 @@ pregnancy:
   category: avoid
   note_key: pregnancy.note.tetracycline
 qt_risk: none
+renal:
+  adjust: none
+  source: label-doxycycline-po
+  section: US PI Dosage and Administration; Clinical Pharmacology
+  note: Usual doses do not accumulate in renal impairment; hemodialysis does not alter half-life.

@@ -1,5 +1,5 @@
 id: azithromycin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -71,3 +71,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: known
+renal:
+  adjust: none
+  source: smpc-azithromycin
+  section: 'UK SmPC 4.2'
+  note: 'No adjustment when GFR >=10 mL/min; use with caution when GFR <10 mL/min. The US label gives pharmacokinetics only (AUC +35% at GFR <10).'

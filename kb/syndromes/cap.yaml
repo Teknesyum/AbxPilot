@@ -1,5 +1,5 @@
 id: cap
-version: 2
+version: 3
 source: idsa-ats-2019
 section: 'Scope: adults, outpatient and inpatient CAP'
 source_date: '2019-10-01'
@@ -31,6 +31,7 @@ questions:
 - prior_pseudomonas
 - pen_allergy
 - pregnancy
+- renal
 - qt_risk
 - aspiration
 - influenza

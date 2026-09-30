@@ -1,5 +1,5 @@
 id: amikacin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -35,3 +35,8 @@ pregnancy:
   category: avoid
   note_key: pregnancy.note.aminoglycoside
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-amikacin
+  section: 'US PI Dosage and Administration, Impaired Renal Function'
+  note: 'Dose by serum levels. Label gives formulas, not fixed bands: normal dose at an interval of serum creatinine x 9 hours, or a reduced dose every 12 hours in proportion to CrCl; avoid peaks above 35 mcg/mL and troughs above 10 mcg/mL. Neither method applies during dialysis.'

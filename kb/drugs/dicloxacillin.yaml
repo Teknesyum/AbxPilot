@@ -1,5 +1,5 @@
 id: dicloxacillin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -33,3 +33,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: none
+  source: label-dicloxacillin
+  section: US PI Precautions (Laboratory Tests)
+  note: Label gives no renal dose table; if renal impairment is known, consider reducing the total dose and monitor levels.

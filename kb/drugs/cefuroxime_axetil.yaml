@@ -1,5 +1,5 @@
 id: cefuroxime_axetil
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -26,6 +26,33 @@ doses:
   interval_hours: 12
   source: idsa-ats-2019
   section: Q7; Table 2
+- id: cap_po
+  indication: cap
+  route: po
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 24
+  source: label-cefuroxime-axetil
+  section: 'US PI 2.5, Table 4'
+  note: 'Label row CrCl 10 to <30 mL/min: standard dose every 24 hours.'
+- id: cap_po
+  indication: cap
+  route: po
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 48
+  source: label-cefuroxime-axetil
+  section: 'US PI 2.5, Table 4'
+  note: 'Label row CrCl <10 mL/min without hemodialysis: standard dose every 48 hours.'
+- id: cap_po
+  indication: cap
+  route: po
+  renal_band: hemodialysis
+  amount: 500 mg
+  interval_hours: 48
+  source: label-cefuroxime-axetil
+  section: 'US PI 2.5, Table 4'
+  note: 'Label: a single additional standard dose at the end of each dialysis; base interval from the CrCl <10 row. Give after each dialysis session.'
 adverse_effects:
 - hypersensitivity
 - gi_upset
@@ -35,3 +62,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-cefuroxime-axetil
+  section: 'US PI 2.5, Table 4'
+  note: 'No adjustment at CrCl 30 mL/min or above.'

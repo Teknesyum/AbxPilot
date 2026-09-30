@@ -1,5 +1,5 @@
 id: amoxicillin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -25,6 +25,33 @@ doses:
   interval_hours: 8
   source: idsa-ats-2019
   section: Q7; Table 2
+- id: cap_po
+  indication: cap
+  route: po
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 12
+  source: label-amoxicillin
+  section: 'US PI 2.5, Table 2'
+  note: 'Label row GFR 10-30 mL/min: 500 mg or 250 mg every 12 hours depending on severity; the 875 mg dose must not be used when GFR <30 mL/min.'
+- id: cap_po
+  indication: cap
+  route: po
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-amoxicillin
+  section: 'US PI 2.5, Table 2'
+  note: 'Label row GFR <10 mL/min: 500 mg or 250 mg every 24 hours depending on severity.'
+- id: cap_po
+  indication: cap
+  route: po
+  renal_band: hemodialysis
+  amount: 500 mg
+  interval_hours: 24
+  source: label-amoxicillin
+  section: 'US PI 2.5, Table 2'
+  note: 'Label row Hemodialysis: 500 mg or 250 mg every 24 hours; give an additional dose both during and at the end of dialysis.'
 - id: phar_po
   indication: pharyngitis
   route: po
@@ -35,6 +62,33 @@ doses:
   source: idsa-gas-2012
   section: 'Table 2'
   note: 'Maximum 1000 mg; alternative 25 mg/kg (maximum 500 mg) every 12 h.'
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 12
+  source: label-amoxicillin
+  section: 'US PI 2.5, Table 2'
+  note: 'Label row GFR 10-30 mL/min: 500 mg or 250 mg every 12 hours depending on severity; the 875 mg dose must not be used when GFR <30 mL/min.'
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-amoxicillin
+  section: 'US PI 2.5, Table 2'
+  note: 'Label row GFR <10 mL/min: 500 mg or 250 mg every 24 hours depending on severity.'
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: hemodialysis
+  amount: 500 mg
+  interval_hours: 24
+  source: label-amoxicillin
+  section: 'US PI 2.5, Table 2'
+  note: 'Label row Hemodialysis: 500 mg or 250 mg every 24 hours; give an additional dose both during and at the end of dialysis.'
 - id: phar_po_tr
   indication: pharyngitis
   route: po
@@ -45,6 +99,33 @@ doses:
   source: titck-akilci-2020
   section: 'Konu 3, Tablo 3.4'
   note: 'Maximum 1000 mg; alternative 25 mg/kg (maximum 500 mg) every 12 h.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 12
+  source: label-amoxicillin
+  section: 'US PI 2.5, Table 2'
+  note: 'Label row GFR 10-30 mL/min: 500 mg or 250 mg every 12 hours depending on severity; the 875 mg dose must not be used when GFR <30 mL/min.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-amoxicillin
+  section: 'US PI 2.5, Table 2'
+  note: 'Label row GFR <10 mL/min: 500 mg or 250 mg every 24 hours depending on severity.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: hemodialysis
+  amount: 500 mg
+  interval_hours: 24
+  source: label-amoxicillin
+  section: 'US PI 2.5, Table 2'
+  note: 'Label row Hemodialysis: 500 mg or 250 mg every 24 hours; give an additional dose both during and at the end of dialysis.'
 adverse_effects:
 - hypersensitivity
 - rash
@@ -56,3 +137,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-amoxicillin
+  section: 'US PI 2.5, 8.6'
+  note: 'No adjustment unless GFR <30 mL/min.'

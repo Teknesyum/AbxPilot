@@ -1,5 +1,5 @@
 id: amoxicillin_clavulanate
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -27,6 +27,33 @@ doses:
   interval_hours: 12
   source: idsa-ats-2019
   section: Q7; Table 2
+- id: cap_po_875
+  indication: cap
+  route: po
+  renal_band: crcl_15_29
+  amount: 500/125 mg
+  interval_hours: 12
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row GFR 10-30 mL/min: 500 mg or 250 mg every 12 hours depending on severity; the 875 mg dose must not be used when GFR <30 mL/min.'
+- id: cap_po_875
+  indication: cap
+  route: po
+  renal_band: crcl_lt15
+  amount: 500/125 mg
+  interval_hours: 24
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row GFR <10 mL/min: 500 mg or 250 mg every 24 hours depending on severity.'
+- id: cap_po_875
+  indication: cap
+  route: po
+  renal_band: hemodialysis
+  amount: 500/125 mg
+  interval_hours: 24
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row Hemodialysis: 500 mg or 250 mg every 24 hours; give an additional dose both during and at the end of dialysis.'
 - id: cap_po_500
   indication: cap
   route: po
@@ -35,6 +62,33 @@ doses:
   interval_hours: 8
   source: idsa-ats-2019
   section: Q7; Table 2
+- id: cap_po_500
+  indication: cap
+  route: po
+  renal_band: crcl_15_29
+  amount: 500/125 mg
+  interval_hours: 12
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row GFR 10-30 mL/min: 500 mg or 250 mg every 12 hours depending on severity; the 875 mg dose must not be used when GFR <30 mL/min.'
+- id: cap_po_500
+  indication: cap
+  route: po
+  renal_band: crcl_lt15
+  amount: 500/125 mg
+  interval_hours: 24
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row GFR <10 mL/min: 500 mg or 250 mg every 24 hours depending on severity.'
+- id: cap_po_500
+  indication: cap
+  route: po
+  renal_band: hemodialysis
+  amount: 500/125 mg
+  interval_hours: 24
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row Hemodialysis: 500 mg or 250 mg every 24 hours; give an additional dose both during and at the end of dialysis.'
 - id: cap_po_2000
   indication: cap
   route: po
@@ -52,6 +106,33 @@ doses:
   interval_hours: 8
   source: nice-ng141-2019
   section: Table 1
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: crcl_15_29
+  amount: 500/125 mg
+  interval_hours: 12
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row GFR 10-30 mL/min: 500 mg or 250 mg every 12 hours depending on severity; the 875 mg dose must not be used when GFR <30 mL/min.'
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: crcl_lt15
+  amount: 500/125 mg
+  interval_hours: 24
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row GFR <10 mL/min: 500 mg or 250 mg every 24 hours depending on severity.'
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: hemodialysis
+  amount: 500/125 mg
+  interval_hours: 24
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row Hemodialysis: 500 mg or 250 mg every 24 hours; give an additional dose both during and at the end of dialysis.'
 - id: ssti_iv
   indication: ssti
   route: iv
@@ -60,6 +141,36 @@ doses:
   interval_hours: 8
   source: nice-ng141-2019
   section: Table 1
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 500/100 mg
+  loading: 1000/200 mg
+  interval_hours: 12
+  source: smpc-co-amoxiclav-iv
+  section: 'UK SmPC 4.2, renal impairment'
+  note: 'SmPC row CrCl 10-30 mL/min: 500 mg/100 mg twice daily after the initial dose.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500/100 mg
+  loading: 1000/200 mg
+  interval_hours: 24
+  source: smpc-co-amoxiclav-iv
+  section: 'UK SmPC 4.2, renal impairment'
+  note: 'SmPC row CrCl <10 mL/min.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: hemodialysis
+  amount: 500/100 mg
+  loading: 1000/200 mg
+  interval_hours: 24
+  source: smpc-co-amoxiclav-iv
+  section: 'UK SmPC 4.2, renal impairment'
+  note: 'SmPC row Haemodialysis: plus a dose of 500 mg/100 mg at the end of dialysis.'
 - id: uti_cys_po
   indication: uti
   route: po
@@ -69,6 +180,33 @@ doses:
   source: idsa-uti-2011
   section: Table 4; recommendation 6
   note: Dose read from Table 4 with low confidence; confirm in A9.
+- id: uti_cys_po
+  indication: uti
+  route: po
+  renal_band: crcl_15_29
+  amount: 500/125 mg
+  interval_hours: 12
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row GFR 10-30 mL/min: 500 mg or 250 mg every 12 hours depending on severity; the 875 mg dose must not be used when GFR <30 mL/min.'
+- id: uti_cys_po
+  indication: uti
+  route: po
+  renal_band: crcl_lt15
+  amount: 500/125 mg
+  interval_hours: 24
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row GFR <10 mL/min: 500 mg or 250 mg every 24 hours depending on severity.'
+- id: uti_cys_po
+  indication: uti
+  route: po
+  renal_band: hemodialysis
+  amount: 500/125 mg
+  interval_hours: 24
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row Hemodialysis: 500 mg or 250 mg every 24 hours; give an additional dose both during and at the end of dialysis.'
 - id: uti_po
   indication: uti
   route: po
@@ -78,6 +216,33 @@ doses:
   source: idsa-cuti-2025
   section: Table 3.1
   note: Table 3.1 gives every 8-12 h.
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: crcl_15_29
+  amount: 500/125 mg
+  interval_hours: 12
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row GFR 10-30 mL/min: 500 mg or 250 mg every 12 hours depending on severity; the 875 mg dose must not be used when GFR <30 mL/min.'
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: crcl_lt15
+  amount: 500/125 mg
+  interval_hours: 24
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row GFR <10 mL/min: 500 mg or 250 mg every 24 hours depending on severity.'
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: hemodialysis
+  amount: 500/125 mg
+  interval_hours: 24
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, Table 4'
+  note: 'Label row Hemodialysis: 500 mg or 250 mg every 24 hours; give an additional dose both during and at the end of dialysis.'
 adverse_effects:
 - hypersensitivity
 - gi_upset
@@ -89,3 +254,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-amoxicillin-clavulanate
+  section: 'US PI 2.4, 8.6; IV: UK SmPC 4.2'
+  note: 'No adjustment unless GFR <30 mL/min. Extended-release 2000/125 mg is contraindicated when CrCl <30 mL/min and in hemodialysis (label-amoxicillin-clavulanate-xr, US PI 4.3), so cap_po_2000 has no renal band.'

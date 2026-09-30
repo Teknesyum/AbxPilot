@@ -261,3 +261,405 @@
   url: https://titck.gov.tr/storage/Archive/2021/news/ErikinHastadaAntibiyotikKullanmnaAklcYaklamKitab_59e8dde2-295e-4d4e-b069-336da21f126d.pdf
   published: '2020-01-01'
   date_precision: year
+- id: label-amikacin
+  version: 1
+  kind: reference
+  citation: Amikacin Sulfate Injection (Sagent), US prescribing information (DailyMed setid f260ff2a-76a0-4672-9516-91c344b67890),
+    revised 2026-07
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f260ff2a-76a0-4672-9516-91c344b67890
+  published: '2026-07-27'
+  date_precision: day
+- id: label-amoxicillin
+  version: 1
+  kind: reference
+  citation: Amoxicillin capsules, tablets and oral suspension (USAntibiotics), US prescribing information (DailyMed setid
+    06e5c07d-d95c-4955-8d35-a4703ca2359e), revised 2026-07
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=06e5c07d-d95c-4955-8d35-a4703ca2359e
+  published: '2026-07-07'
+  date_precision: day
+- id: label-amoxicillin-clavulanate
+  version: 1
+  kind: reference
+  citation: AUGMENTIN (amoxicillin/clavulanate potassium) tablets and oral suspension, US prescribing information (DailyMed
+    setid 04a31a42-d79e-bbb4-e063-6394a90a63ee), revised 2024-05
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=04a31a42-d79e-bbb4-e063-6394a90a63ee
+  published: '2024-05-16'
+  date_precision: day
+- id: label-amoxicillin-clavulanate-xr
+  version: 1
+  kind: reference
+  citation: Amoxicillin and Clavulanate Potassium Extended Release Tablets (USAntibiotics), US prescribing information (DailyMed
+    setid 45c60b69-1b65-01ed-e063-6294a90a57be), revised 2026-07
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=45c60b69-1b65-01ed-e063-6294a90a57be
+  published: '2026-07-07'
+  date_precision: day
+- id: label-ampicillin-sulbactam
+  version: 1
+  kind: reference
+  citation: UNASYN (ampicillin sodium/sulbactam sodium) for injection (Pfizer), US prescribing information (DailyMed setid
+    12eeb72a-403d-41be-bae4-4cb930862884), revised 2026-07
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=12eeb72a-403d-41be-bae4-4cb930862884
+  published: '2026-07-09'
+  date_precision: day
+- id: label-aztreonam
+  version: 1
+  kind: reference
+  citation: AZACTAM (aztreonam for injection) (E.R. Squibb & Sons), US prescribing information (DailyMed setid 9a105eaf-ee77-4016-beeb-d425a5565db2),
+    revised 2025-12
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9a105eaf-ee77-4016-beeb-d425a5565db2
+  published: '2025-12-15'
+  date_precision: day
+- id: label-benzylpenicillin
+  version: 1
+  kind: reference
+  citation: Pfizerpen (penicillin G potassium) for injection (Pfizer), US prescribing information (DailyMed setid efef4846-9497-41af-8dd6-518f86eca7f2),
+    revised 2025-12
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=efef4846-9497-41af-8dd6-518f86eca7f2
+  published: '2025-12-16'
+  date_precision: day
+- id: label-cefadroxil
+  version: 1
+  kind: reference
+  citation: Cefadroxil tablets (Teva), US prescribing information (DailyMed setid 4674a05c-fdef-4737-a4b8-e3229bdada9d), revised
+    2024-12
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4674a05c-fdef-4737-a4b8-e3229bdada9d
+  published: '2024-12-30'
+  date_precision: day
+- id: label-cefazolin
+  version: 1
+  kind: reference
+  citation: Cefazolin for Injection (Hikma), US prescribing information (DailyMed setid 1dc9de56-e259-4546-a1db-23119a8a088e),
+    revised 2026-05
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1dc9de56-e259-4546-a1db-23119a8a088e
+  published: '2026-05-14'
+  date_precision: day
+- id: label-cefepime
+  version: 1
+  kind: reference
+  citation: Cefepime for Injection (WG Critical Care), US prescribing information (DailyMed setid 5fd857e5-591f-44ca-80cf-fd903660b03c),
+    revised 2026-06
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5fd857e5-591f-44ca-80cf-fd903660b03c
+  published: '2026-06-23'
+  date_precision: day
+- id: smpc-co-amoxiclav-iv
+  version: 1
+  kind: reference
+  citation: Co-amoxiclav 1000 mg/200 mg Powder for Solution for Injection/Infusion (Sandoz Limited), UK SmPC, revised 2023-10
+  url: https://www.medicines.org.uk/emc/product/7211/smpc
+  published: '2023-10-23'
+  date_precision: day
+- id: smpc-ampicillin
+  version: 1
+  kind: reference
+  citation: Ampicillin 500 mg powder for solution for injection (Chemidex Pharma Ltd), UK SmPC, revised 2024-08
+  url: https://www.medicines.org.uk/emc/product/12892/smpc
+  published: '2024-08-01'
+  date_precision: month
+- id: smpc-azithromycin
+  version: 1
+  kind: reference
+  citation: Zithromax 250 mg Capsules (Pfizer Limited), UK SmPC, revised 2026-07
+  url: https://www.medicines.org.uk/emc/product/1073/smpc
+  published: '2026-07-01'
+  date_precision: month
+- id: label-cefotaxime
+  version: 1
+  kind: reference
+  citation: Cefotaxime for injection (Hikma), US prescribing information (DailyMed setid ed23b6bc-32c7-4c50-a53d-313ae78e5623),
+    revised 2024-04
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ed23b6bc-32c7-4c50-a53d-313ae78e5623
+  published: '2024-04-11'
+  date_precision: day
+- id: label-cefoxitin
+  version: 1
+  kind: reference
+  citation: Cefoxitin for injection (Hikma), US prescribing information (DailyMed setid d2c449b9-5624-4166-95b1-d7813b3d0445),
+    revised 2024-04
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d2c449b9-5624-4166-95b1-d7813b3d0445
+  published: '2024-04-11'
+  date_precision: day
+- id: label-cefpodoxime
+  version: 1
+  kind: reference
+  citation: Cefpodoxime proxetil tablets (Sandoz), US prescribing information (DailyMed setid 8519a9d8-7106-4545-bc58-859ee9a6708e),
+    revised 2026-07
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8519a9d8-7106-4545-bc58-859ee9a6708e
+  published: '2026-07-30'
+  date_precision: day
+- id: label-ceftaroline
+  version: 1
+  kind: reference
+  citation: Teflaro (ceftaroline fosamil) for injection (Allergan), US prescribing information (DailyMed setid 3ecde48b-75a2-4beb-9999-369f3f61bb8a),
+    revised 2024-11
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3ecde48b-75a2-4beb-9999-369f3f61bb8a
+  published: '2024-11-20'
+  date_precision: day
+- id: label-ceftazidime
+  version: 1
+  kind: reference
+  citation: Tazicef (ceftazidime for injection) (Hospira), US prescribing information (DailyMed setid 40d48c5d-650e-461b-a67b-7e65772d1b92),
+    revised 2026-05
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=40d48c5d-650e-461b-a67b-7e65772d1b92
+  published: '2026-05-04'
+  date_precision: day
+- id: label-ceftriaxone
+  version: 1
+  kind: reference
+  citation: Ceftriaxone sodium for injection (Hospira), US prescribing information (DailyMed setid 03283208-8616-4117-9d2b-aa8046017a4f),
+    revised 2026-01
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=03283208-8616-4117-9d2b-aa8046017a4f
+  published: '2026-01-19'
+  date_precision: day
+- id: label-cefuroxime
+  version: 1
+  kind: reference
+  citation: Cefuroxime for injection (Sagent), US prescribing information (DailyMed setid 0a145288-733a-4966-b7ae-dc96eb103d8c),
+    revised 2025-03
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0a145288-733a-4966-b7ae-dc96eb103d8c
+  published: '2025-03-27'
+  date_precision: day
+- id: label-cefuroxime-axetil
+  version: 1
+  kind: reference
+  citation: Cefuroxime axetil tablets (Ascend), US prescribing information (DailyMed setid dd11e4b9-7730-4d3a-81ca-16f15de09759),
+    revised 2025-10
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=dd11e4b9-7730-4d3a-81ca-16f15de09759
+  published: '2025-10-03'
+  date_precision: day
+- id: label-cephalexin
+  version: 1
+  kind: reference
+  citation: Cephalexin capsules (Lupin), US prescribing information (DailyMed setid 1d3e6d33-5dc2-498e-8efa-e3c4fca15dff),
+    revised 2026-08
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1d3e6d33-5dc2-498e-8efa-e3c4fca15dff
+  published: '2026-08-24'
+  date_precision: day
+- id: label-ciprofloxacin
+  version: 1
+  kind: reference
+  citation: Cipro (ciprofloxacin) tablets (Bayer), US prescribing information (DailyMed setid 888dc7f9-ad9c-4c00-8d50-8ddfd9bd27c0),
+    revised 2026-03
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=888dc7f9-ad9c-4c00-8d50-8ddfd9bd27c0
+  published: '2026-03-02'
+  date_precision: day
+- id: label-ciprofloxacin-iv
+  version: 1
+  kind: reference
+  citation: Ciprofloxacin injection (Sagent), US prescribing information (DailyMed setid f406e796-17d9-4465-b8a7-00d966a4ba74),
+    revised 2026-08
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f406e796-17d9-4465-b8a7-00d966a4ba74
+  published: '2026-08-04'
+  date_precision: day
+- id: label-clarithromycin
+  version: 1
+  kind: reference
+  citation: Clarithromycin (Sandoz), US prescribing information (DailyMed setid 22457862-0f88-4be8-b507-1c8f264269f2), revised
+    2023-09
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=22457862-0f88-4be8-b507-1c8f264269f2
+  published: '2023-09-13'
+  date_precision: day
+- id: label-clindamycin
+  version: 1
+  kind: reference
+  citation: Cleocin Phosphate (clindamycin injection) (Pharmacia & Upjohn), US prescribing information (DailyMed setid 05a75685-0af5-407c-ac57-e380c882b49d),
+    revised 2026-07
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=05a75685-0af5-407c-ac57-e380c882b49d
+  published: '2026-07-29'
+  date_precision: day
+- id: smpc-clarithromycin-iv
+  version: 1
+  kind: reference
+  citation: Clarithromycin 500 mg powder for solution for infusion (Bowmed Ibisqus Limited, PL 31745/0027), UK SmPC, revised
+    2024-04
+  url: https://www.medicines.org.uk/emc/product/8825/smpc
+  published: '2024-04-23'
+  date_precision: day
+- id: label-dicloxacillin
+  version: 1
+  kind: reference
+  citation: Dicloxacillin sodium capsules (Aurobindo), US prescribing information (DailyMed setid 9074b5a6-850c-4144-9097-bb21073ee54d),
+    revised 2023-12
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9074b5a6-850c-4144-9097-bb21073ee54d
+  published: '2023-12-27'
+  date_precision: day
+- id: label-doxycycline-po
+  version: 1
+  kind: reference
+  citation: Doxycycline hyclate tablets (American Health Packaging), US prescribing information (DailyMed setid 10988250-b267-4f10-b264-5f127cc1ae18),
+    revised 2026-02
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=10988250-b267-4f10-b264-5f127cc1ae18
+  published: '2026-02-23'
+  date_precision: day
+- id: label-doxycycline-iv
+  version: 1
+  kind: reference
+  citation: Doxycycline for injection (Camber), US prescribing information (DailyMed setid 0faee97d-2707-48fe-a739-143cd1a1c4e3),
+    revised 2025-11
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0faee97d-2707-48fe-a739-143cd1a1c4e3
+  published: '2025-11-27'
+  date_precision: day
+- id: label-ertapenem
+  version: 1
+  kind: reference
+  citation: INVANZ (ertapenem) for injection, US prescribing information (DailyMed setid 33f3b99b-fa82-42e0-26bf-f49891ae3d22),
+    revised 2026-02
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=33f3b99b-fa82-42e0-26bf-f49891ae3d22
+  published: '2026-02-04'
+  date_precision: day
+- id: label-erythromycin-po
+  version: 1
+  kind: reference
+  citation: Erythromycin tablets USP (Zydus), US prescribing information (DailyMed setid 0277341c-8513-4317-9334-c242f97630c1),
+    revised 2024-03
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0277341c-8513-4317-9334-c242f97630c1
+  published: '2024-03-20'
+  date_precision: day
+- id: label-fosfomycin-po
+  version: 1
+  kind: reference
+  citation: Fosfomycin tromethamine granules for oral solution (Aurobindo), US prescribing information (DailyMed setid f8ec4771-3f8d-473a-a1d0-e42038f61a42),
+    revised 2025-11
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f8ec4771-3f8d-473a-a1d0-e42038f61a42
+  published: '2025-11-17'
+  date_precision: day
+- id: label-gentamicin
+  version: 1
+  kind: reference
+  citation: Gentamicin injection USP 40 mg/mL (Eugia), US prescribing information (DailyMed setid 60ca1487-392d-4721-aa45-3de38722896c),
+    revised 2026-01
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=60ca1487-392d-4721-aa45-3de38722896c
+  published: '2026-01-29'
+  date_precision: day
+- id: label-imipenem-cilastatin
+  version: 1
+  kind: reference
+  citation: PRIMAXIN IV (imipenem and cilastatin) for injection, US prescribing information (DailyMed setid f41d8abd-7792-4918-1b93-bd83ea01955e),
+    revised 2024-07
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f41d8abd-7792-4918-1b93-bd83ea01955e
+  published: '2024-07-05'
+  date_precision: day
+- id: label-levofloxacin-iv
+  version: 1
+  kind: reference
+  citation: Levofloxacin injection (Hospira), US prescribing information (DailyMed setid 5a1534af-aa1c-4f1d-ba9f-9415b14e1af2),
+    revised 2025-11
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5a1534af-aa1c-4f1d-ba9f-9415b14e1af2
+  published: '2025-11-04'
+  date_precision: day
+- id: label-levofloxacin-po
+  version: 1
+  kind: reference
+  citation: Levofloxacin tablets (Lupin), US prescribing information (DailyMed setid 4be13bd5-0c39-43c3-9232-b1226ccd4dbc),
+    revised 2024-07
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4be13bd5-0c39-43c3-9232-b1226ccd4dbc
+  published: '2024-07-10'
+  date_precision: day
+- id: label-linezolid
+  version: 1
+  kind: reference
+  citation: ZYVOX (linezolid) injection, tablets and oral suspension, US prescribing information (DailyMed setid 6e70e63b-bfd5-478d-a8ee-8ba22c9efabd),
+    revised 2026-06
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e70e63b-bfd5-478d-a8ee-8ba22c9efabd
+  published: '2026-06-23'
+  date_precision: day
+- id: label-meropenem
+  version: 1
+  kind: reference
+  citation: Meropenem for injection (Sandoz), US prescribing information (DailyMed setid 0d37e43b-ff8d-495d-b9af-4fd5fce53d56),
+    revised 2025-11
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0d37e43b-ff8d-495d-b9af-4fd5fce53d56
+  published: '2025-11-14'
+  date_precision: day
+- id: smpc-flucloxacillin-iv
+  version: 1
+  kind: reference
+  citation: Flucloxacillin 1000 mg powder for solution for injection or infusion (Esteve), UK SmPC, date of revision 05/03/2026
+  url: https://www.medicines.org.uk/emc/product/12396/smpc
+  published: '2026-03-05'
+  date_precision: day
+- id: smpc-flucloxacillin-po
+  version: 1
+  kind: reference
+  citation: Flucloxacillin Capsules 500 mg (Flamingo), UK SmPC, date of revision 12/12/2024
+  url: https://www.medicines.org.uk/emc/product/14151/smpc
+  published: '2024-12-12'
+  date_precision: day
+- id: label-metronidazole
+  version: 1
+  kind: reference
+  citation: Flagyl (metronidazole) tablets/capsules, US prescribing information (DailyMed setid a2883ca1-5a9a-4259-9d80-46ab67274384),
+    revised 2026-05
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a2883ca1-5a9a-4259-9d80-46ab67274384
+  published: '2026-05-22'
+  date_precision: day
+- id: label-moxifloxacin
+  version: 1
+  kind: reference
+  citation: Moxifloxacin hydrochloride injection (Mylan Institutional), US prescribing information (DailyMed setid c6fa4129-2f92-4179-ac5d-bb7b4a538789),
+    revised 2026-03
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c6fa4129-2f92-4179-ac5d-bb7b4a538789
+  published: '2026-03-16'
+  date_precision: day
+- id: label-nitrofurantoin
+  version: 1
+  kind: reference
+  citation: Macrobid (nitrofurantoin monohydrate/macrocrystals) capsules, US prescribing information (DailyMed setid 8f270a9f-12a1-44d4-bc7e-873613555801),
+    revised 2025-10
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8f270a9f-12a1-44d4-bc7e-873613555801
+  published: '2025-10-14'
+  date_precision: day
+- id: label-oseltamivir
+  version: 1
+  kind: reference
+  citation: Tamiflu (oseltamivir phosphate), US prescribing information (DailyMed setid ee3c9555-60f2-4f82-a760-11983c86e97b),
+    revised 2025-12
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ee3c9555-60f2-4f82-a760-11983c86e97b
+  published: '2025-12-15'
+  date_precision: day
+- id: label-piperacillin-tazobactam
+  version: 1
+  kind: reference
+  citation: Zosyn (piperacillin and tazobactam) injection, US prescribing information (DailyMed setid 8db6bd91-2106-4bfd-8cc8-38aaf1e18d17),
+    revised 2026-05
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8db6bd91-2106-4bfd-8cc8-38aaf1e18d17
+  published: '2026-05-15'
+  date_precision: day
+- id: label-pivmecillinam
+  version: 1
+  kind: reference
+  citation: Pivya (pivmecillinam) tablets, US prescribing information (DailyMed setid 440a5f17-ab11-0fc8-e063-6394a90a58e9),
+    revised 2025-10
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=440a5f17-ab11-0fc8-e063-6394a90a58e9
+  published: '2025-10-10'
+  date_precision: day
+- id: label-tigecycline
+  version: 1
+  kind: reference
+  citation: Tygacil (tigecycline) for injection, US prescribing information (DailyMed setid 2ccdb48e-c14a-4eeb-348c-4920ccfd7465),
+    revised 2025-11
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2ccdb48e-c14a-4eeb-348c-4920ccfd7465
+  published: '2025-11-18'
+  date_precision: day
+- id: label-tmp-smx
+  version: 1
+  kind: reference
+  citation: Bactrim / Bactrim DS (sulfamethoxazole and trimethoprim) tablets, US prescribing information (DailyMed setid f59d0c04-9c66-4d53-a0e1-cb55570deb62),
+    revised 2024-12
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f59d0c04-9c66-4d53-a0e1-cb55570deb62
+  published: '2024-12-30'
+  date_precision: day
+- id: label-vancomycin
+  version: 1
+  kind: reference
+  citation: Vancomycin injection (Xellia), US prescribing information (DailyMed setid 60bee69b-be70-412c-9e83-a24a0a8a5e7b),
+    revised 2023-03
+  url: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=60bee69b-be70-412c-9e83-a24a0a8a5e7b
+  published: '2023-03-23'
+  date_precision: day
+- id: label-teicoplanin
+  version: 1
+  kind: reference
+  citation: Targocid 200 mg powder for solution for injection/infusion, UK SmPC (Sanofi), revised 2025-12
+  url: https://www.medicines.org.uk/emc/product/2926/smpc
+  published: '2025-12-11'
+  date_precision: day

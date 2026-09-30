@@ -1,5 +1,5 @@
 id: uti
-version: 1
+version: 2
 source: idsa-cuti-2025
 section: 'Scope: adult cystitis and systemic urinary tract infection'
 source_date: '2025-07-17'
@@ -20,6 +20,7 @@ questions:
 - uti_setting
 - sepsis
 - pregnancy
+- renal
 - pen_allergy
 - qt_risk
 - local_tmp_smx_resistance

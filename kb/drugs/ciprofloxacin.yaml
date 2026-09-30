@@ -1,5 +1,5 @@
 id: ciprofloxacin
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -25,6 +25,24 @@ doses:
   source: ttd-2021
   section: Appendix 1
   note: TTD 2009 Table 8 gives 1500 mg/day for the same indication; the Appendix 1 line must be confirmed in A9.
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_15_29
+  amount: 400 mg
+  interval_hours: 24
+  source: label-ciprofloxacin-iv
+  section: 'US PI 2.3, Table 4'
+  note: 'IV label row CrCl 5-29 mL/min: 200-400 mg every 18-24 hours.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_lt15
+  amount: 400 mg
+  interval_hours: 24
+  source: label-ciprofloxacin-iv
+  section: 'US PI 2.3, Table 4'
+  note: 'IV label row CrCl 5-29 mL/min: 200-400 mg every 18-24 hours.'
 - id: uti_cys_po
   indication: uti
   route: po
@@ -34,6 +52,42 @@ doses:
   source: idsa-uti-2011
   section: Table 4; recommendation 5
   note: Dose read from Table 4 with low confidence; confirm in A9.
+- id: uti_cys_po
+  indication: uti
+  route: po
+  renal_band: crcl_30_59
+  amount: 250 mg
+  interval_hours: 12
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl 30-50 mL/min: 250-500 mg every 12 hours.'
+- id: uti_cys_po
+  indication: uti
+  route: po
+  renal_band: crcl_15_29
+  amount: 250 mg
+  interval_hours: 24
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl 5-29 mL/min: 250-500 mg every 18 hours; 18 h is not an allowed interval, 24 h used.'
+- id: uti_cys_po
+  indication: uti
+  route: po
+  renal_band: crcl_lt15
+  amount: 250 mg
+  interval_hours: 24
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl 5-29 mL/min: 250-500 mg every 18 hours; 18 h is not an allowed interval, 24 h used.'
+- id: uti_cys_po
+  indication: uti
+  route: po
+  renal_band: hemodialysis
+  amount: 250 mg
+  interval_hours: 24
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label: 250-500 mg every 24 hours after dialysis. Give after each dialysis session.'
 - id: uti_po
   indication: uti
   route: po
@@ -42,6 +96,42 @@ doses:
   interval_hours: 12
   source: idsa-uti-2011
   section: Recommendation 9
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: crcl_30_59
+  amount: 500 mg
+  interval_hours: 12
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl 30-50 mL/min: 250-500 mg every 12 hours.'
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 24
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl 5-29 mL/min: 250-500 mg every 18 hours; 18 h is not an allowed interval, 24 h used.'
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl 5-29 mL/min: 250-500 mg every 18 hours; 18 h is not an allowed interval, 24 h used.'
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: hemodialysis
+  amount: 500 mg
+  interval_hours: 24
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label: 250-500 mg every 24 hours after dialysis. Give after each dialysis session.'
 - id: uti_po_eau
   indication: uti
   route: po
@@ -50,6 +140,42 @@ doses:
   interval_hours: 12
   source: eau-uti-2026
   section: Table 5 (section 3.6.3)
+- id: uti_po_eau
+  indication: uti
+  route: po
+  renal_band: crcl_30_59
+  amount: 500 mg
+  interval_hours: 12
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl 30-50 mL/min: 250-500 mg every 12 hours.'
+- id: uti_po_eau
+  indication: uti
+  route: po
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 24
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl 5-29 mL/min: 250-500 mg every 18 hours; 18 h is not an allowed interval, 24 h used.'
+- id: uti_po_eau
+  indication: uti
+  route: po
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl 5-29 mL/min: 250-500 mg every 18 hours; 18 h is not an allowed interval, 24 h used.'
+- id: uti_po_eau
+  indication: uti
+  route: po
+  renal_band: hemodialysis
+  amount: 500 mg
+  interval_hours: 24
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Label: 250-500 mg every 24 hours after dialysis. Give after each dialysis session.'
 - id: uti_iv
   indication: uti
   route: iv
@@ -58,6 +184,24 @@ doses:
   interval_hours: 12
   source: eau-uti-2026
   section: Table 6 (section 3.6.3)
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 400 mg
+  interval_hours: 24
+  source: label-ciprofloxacin-iv
+  section: 'US PI 2.3, Table 4'
+  note: 'IV label row CrCl 5-29 mL/min: 200-400 mg every 18-24 hours.'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 400 mg
+  interval_hours: 24
+  source: label-ciprofloxacin-iv
+  section: 'US PI 2.3, Table 4'
+  note: 'IV label row CrCl 5-29 mL/min: 200-400 mg every 18-24 hours.'
 - id: iai_iv
   indication: iai
   route: iv
@@ -66,6 +210,24 @@ doses:
   interval_hours: 12
   source: sis-idsa-2010
   section: Table 6
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_15_29
+  amount: 400 mg
+  interval_hours: 24
+  source: label-ciprofloxacin-iv
+  section: 'US PI 2.3, Table 4'
+  note: 'IV label row CrCl 5-29 mL/min: 200-400 mg every 18-24 hours.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_lt15
+  amount: 400 mg
+  interval_hours: 24
+  source: label-ciprofloxacin-iv
+  section: 'US PI 2.3, Table 4'
+  note: 'IV label row CrCl 5-29 mL/min: 200-400 mg every 18-24 hours.'
 adverse_effects:
 - tendinopathy
 - aortic_aneurysm
@@ -84,3 +246,8 @@ pregnancy:
   category: avoid
   note_key: pregnancy.note.fluoroquinolone
 qt_risk: known
+renal:
+  adjust: bands
+  source: label-ciprofloxacin
+  section: 'US PI 2.3, Table 4'
+  note: 'Oral label: a 750 mg unit dose may be used in severe infection with severe renal impairment. IV label has no dialysis row and no adjustment above CrCl 30.'

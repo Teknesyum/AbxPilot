@@ -1,5 +1,5 @@
 id: cephalexin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -24,6 +24,24 @@ doses:
   interval_hours: 6
   source: idsa-ssti-2014
   section: Table 2
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: crcl_15_29
+  amount: 250 mg
+  interval_hours: 8
+  source: label-cephalexin
+  section: 'US PI 2.3, Table 1'
+  note: 'Label row CrCl 15-29 mL/min: 250 mg every 8 or 12 hours.'
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: crcl_lt15
+  amount: 250 mg
+  interval_hours: 24
+  source: label-cephalexin
+  section: 'US PI 2.3, Table 1'
+  note: 'Label row CrCl 5-14 mL/min not yet on dialysis; CrCl 1-4: 250 mg every 48 or 60 hours.'
 - id: phar_po
   indication: pharyngitis
   route: po
@@ -34,6 +52,24 @@ doses:
   source: idsa-gas-2012
   section: 'Table 2'
   note: 'Maximum 500 mg per dose.'
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_15_29
+  amount: 250 mg
+  interval_hours: 12
+  source: label-cephalexin
+  section: 'US PI 2.3, Table 1'
+  note: 'Label row CrCl 15-29 mL/min: 250 mg every 8 or 12 hours.'
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_lt15
+  amount: 250 mg
+  interval_hours: 24
+  source: label-cephalexin
+  section: 'US PI 2.3, Table 1'
+  note: 'Label row CrCl 5-14 mL/min not yet on dialysis; CrCl 1-4: 250 mg every 48 or 60 hours.'
 - id: phar_po_tr
   indication: pharyngitis
   route: po
@@ -44,6 +80,24 @@ doses:
   source: titck-akilci-2020
   section: 'Konu 3, Tablo 3.4'
   note: 'Maximum 500 mg per dose.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_15_29
+  amount: 250 mg
+  interval_hours: 12
+  source: label-cephalexin
+  section: 'US PI 2.3, Table 1'
+  note: 'Label row CrCl 15-29 mL/min: 250 mg every 8 or 12 hours.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_lt15
+  amount: 250 mg
+  interval_hours: 24
+  source: label-cephalexin
+  section: 'US PI 2.3, Table 1'
+  note: 'Label row CrCl 5-14 mL/min not yet on dialysis; CrCl 1-4: 250 mg every 48 or 60 hours.'
 adverse_effects:
 - hypersensitivity
 - gi_upset
@@ -51,3 +105,8 @@ interactions: []
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-cephalexin
+  section: 'US PI 2.3, Table 1'
+  note: 'Label: CrCl 30-59 mL/min needs no adjustment but the maximum daily dose is 1 g; insufficient information for hemodialysis.'

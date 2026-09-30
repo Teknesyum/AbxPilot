@@ -1,5 +1,5 @@
 id: iai
-version: 1
+version: 2
 source: sis-idsa-2010
 section: 'Scope: adult complicated extra-biliary intra-abdominal infection'
 source_date: '2010-01-15'
@@ -29,6 +29,7 @@ questions:
 - local_fq_resistance
 - pen_allergy
 - pregnancy
+- renal
 - qt_risk
 derived:
 - id: risk_esbl

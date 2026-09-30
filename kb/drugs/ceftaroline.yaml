@@ -1,5 +1,5 @@
 id: ceftaroline
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -25,6 +25,42 @@ doses:
   interval_hours: 12
   source: idsa-ats-2019
   section: Q8; Table 3
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_30_59
+  amount: 400 mg
+  interval_hours: 12
+  source: label-ceftaroline
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl >30 to <=50 mL/min; no adjustment above 50.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_15_29
+  amount: 300 mg
+  interval_hours: 12
+  source: label-ceftaroline
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl >=15 to <=30 mL/min.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_lt15
+  amount: 200 mg
+  interval_hours: 12
+  source: label-ceftaroline
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row end-stage renal disease (CrCl <15 mL/min).'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: hemodialysis
+  amount: 200 mg
+  interval_hours: 12
+  source: label-ceftaroline
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row end-stage renal disease including hemodialysis; give after hemodialysis on hemodialysis days.'
 - id: ssti_iv
   indication: ssti
   route: iv
@@ -33,6 +69,42 @@ doses:
   interval_hours: 12
   source: idsa-ssti-2014
   section: Table 2
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_30_59
+  amount: 400 mg
+  interval_hours: 12
+  source: label-ceftaroline
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl >30 to <=50 mL/min; no adjustment above 50.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 300 mg
+  interval_hours: 12
+  source: label-ceftaroline
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row CrCl >=15 to <=30 mL/min.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 200 mg
+  interval_hours: 12
+  source: label-ceftaroline
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row end-stage renal disease (CrCl <15 mL/min).'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: hemodialysis
+  amount: 200 mg
+  interval_hours: 12
+  source: label-ceftaroline
+  section: 'US PI 2.3, Table 4'
+  note: 'Label row end-stage renal disease including hemodialysis; give after hemodialysis on hemodialysis days.'
 adverse_effects:
 - hypersensitivity
 - positive_coombs
@@ -42,3 +114,7 @@ pregnancy:
   category: caution
   note_key: pregnancy.note.limited_data
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-ceftaroline
+  section: 'US PI 2.3, Table 4'

@@ -14,6 +14,9 @@ public sealed class GuidelineEngine : IGuidelineEngine
     private const string WithholdAction = "withhold";
     private const string MultiType = "multi";
     private const string BaselineRenalBand = "normal";
+    private const string RenalQuestion = "renal";
+    private const string RenalNone = "none";
+    private const string RenalMissingKey = "warn.renal_missing";
     private const string UnknownLicense = "unknown";
     private static readonly IReadOnlyList<string> Yes = ["yes"];
     private static readonly IReadOnlyList<string> No = ["no"];
@@ -408,11 +411,14 @@ public sealed class GuidelineEngine : IGuidelineEngine
                 }
 
                 var (demoted, warnings) = Soft(parts);
+                var components = parts.Select(Line).ToArray();
+                foreach (var component in components.Where(component => component.RenalMissing))
+                    warnings.Add(new TraceLine(RenalQuestion, RenalMissingKey, component.Source, component.DrugId));
                 if (demoted) demotedIds.Add(lineId);
                 foreach (var warning in warnings)
                     _trace.Add(new TraceLine(warning.RuleId, "engine.warning", warning.Source, $"{lineId}/{warning.Subject}"));
                 var days = regimen.DurationDays is { } own ? Math.Max(own, modifierDays ?? 0) : duration;
-                lines.Add(new RegimenLine(lineId, baseRow.Id, tier + 1, parts.Select(Line).ToArray(), days, lineSource, null)
+                lines.Add(new RegimenLine(lineId, baseRow.Id, tier + 1, components, days, lineSource, null)
                 {
                     Warnings = warnings
                 });
@@ -456,11 +462,17 @@ public sealed class GuidelineEngine : IGuidelineEngine
         private ComponentLine Line(Part part)
         {
             var drug = engine._drugs[part.Component.Drug];
+            var band = _values.TryGetValue(RenalQuestion, out var given) && given.Count > 0 ? given[0] : BaselineRenalBand;
             var dose = drug.Doses.Where(item => item.Id == part.Component.Dose)
-                .OrderBy(item => item.RenalBand == BaselineRenalBand ? 0 : 1)
+                .OrderBy(item => item.RenalBand == band ? 0 : item.RenalBand == BaselineRenalBand ? 1 : 2)
                 .First();
+            var missing = dose.RenalBand != band && drug.Renal?.Adjust != RenalNone;
             return new ComponentLine(drug.Id, part.Component.Role, dose.Id, dose.Amount, dose.Amount70Kg, dose.Loading,
-                dose.IntervalHours, dose.Route, part.AddedBy, engine.DoseSource(drug, dose));
+                dose.IntervalHours, dose.Route, part.AddedBy, engine.DoseSource(drug, dose))
+            {
+                RenalBand = dose.RenalBand,
+                RenalMissing = missing
+            };
         }
 
         private Violation? FirstViolation(IReadOnlyList<RegimenComponent> components, bool monotherapy)

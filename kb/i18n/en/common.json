@@ -181,5 +181,20 @@
   "indication.pharyngitis": "Acute pharyngitis",
   "guideline.idsa-2012.name": "IDSA GAS Pharyngitis 2012",
   "guideline.nice-ng84-2018.name": "NICE NG84 2018",
-  "guideline.titck-2020.name": "TITCK Rational Antibiotic Use 2020"
+  "guideline.titck-2020.name": "TITCK Rational Antibiotic Use 2020",
+  "question.renal.label": "Renal function (creatinine clearance, Cockcroft-Gault)",
+  "question.renal.option.normal": "Normal (≥60 mL/min)",
+  "question.renal.option.crcl_30_59": "30-59 mL/min",
+  "question.renal.option.crcl_15_29": "15-29 mL/min",
+  "question.renal.option.crcl_lt15": "<15 mL/min (no dialysis)",
+  "question.renal.option.hemodialysis": "Haemodialysis",
+  "question.renal.option.crrt": "Continuous renal replacement therapy (CRRT)",
+  "warn.renal_missing": "Warning: no label dose recorded for this renal band; the normal dose is shown, check the product label",
+  "exclude.renal": "Excluded: the label advises against use at this renal function",
+  "renal.band.crcl_30_59": "CrCl 30-59 dose",
+  "renal.band.crcl_15_29": "CrCl 15-29 dose",
+  "renal.band.crcl_lt15": "CrCl <15 dose",
+  "renal.band.hemodialysis": "Haemodialysis dose",
+  "renal.band.crrt": "CRRT dose",
+  "renal.none": "No renal adjustment (label)"
 }

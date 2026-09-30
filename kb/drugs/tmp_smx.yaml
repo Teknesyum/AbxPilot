@@ -1,5 +1,5 @@
 id: tmp_smx
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -22,6 +22,15 @@ doses:
   interval_hours: 12
   source: idsa-ssti-2014
   section: Table 2
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: crcl_15_29
+  amount: 1/2-1 DS tablet (80/400-160/800 mg)
+  interval_hours: 12
+  source: label-tmp-smx
+  section: 'US PI Dosage and Administration (renal table)'
+  note: 'Label row CrCl 15-30 mL/min: half the usual regimen.'
 - id: uti_po
   indication: uti
   route: po
@@ -30,6 +39,15 @@ doses:
   interval_hours: 12
   source: idsa-uti-2011
   section: Table 4; recommendations 2 and 11
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: crcl_15_29
+  amount: 80/400 mg
+  interval_hours: 12
+  source: label-tmp-smx
+  section: 'US PI Dosage and Administration (renal table)'
+  note: 'Label row CrCl 15-30 mL/min: half the usual regimen.'
 adverse_effects:
 - severe_skin_reaction
 - hyperkalemia
@@ -43,3 +61,8 @@ pregnancy:
   category: avoid
   note_key: pregnancy.note.tmp_smx
 qt_risk: conditional
+renal:
+  adjust: bands
+  source: label-tmp-smx
+  section: 'US PI Dosage and Administration (renal table)'
+  note: 'Label: use not recommended below CrCl 15 mL/min. CrCl above 30: usual regimen.'

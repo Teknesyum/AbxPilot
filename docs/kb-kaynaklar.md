@@ -46,6 +46,7 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `nice-ng84-2018` | NICE NG84, akut boğaz ağrısı: antimikrobiyal reçeteleme, 26.01.2018 | Gün |
 | `titck-akilci-2020` | TİTCK, Erişkin Hastada Antibiyotik Kullanımına Akılcı Yaklaşım, 2020, Konu 3 (Candevir Ulu A); ISBN 978-975-590-796-3 | Yıl |
 | `abxpilot-draft` | Proje taslağı, birincil kaynak yok | Gün |
+| `label-<ilaç>`, `smpc-<ilaç>` | İlaç başına ABD FDA etiketi (DailyMed) ya da AB/UK SmPC 4.2; böbrek dozu. 51 kayıt, `kb/sources.yaml`; etiket metni `docs/danisma/2026-09-30-bobrek/` | Gün |
 
 ## Kayıt Türüne Göre Kaynak
 

@@ -1,5 +1,5 @@
 id: cefuroxime
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -28,6 +28,24 @@ doses:
   source: nice-ng141-2019
   section: Table 1
   note: Table 1 gives three or four times daily.
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 750 mg
+  interval_hours: 24
+  source: label-cefuroxime
+  section: 'US PI Dosage and Administration, Table 2'
+  note: 'Label row CrCl <10 mL/min; CrCl 10-20: 750 mg every 12 hours; no adjustment above 20.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: hemodialysis
+  amount: 750 mg
+  interval_hours: 24
+  source: label-cefuroxime
+  section: 'US PI Dosage and Administration, Table 2'
+  note: 'Label: CrCl <10 row plus a further dose at the end of the dialysis. Give after each dialysis session.'
 - id: iai_iv
   indication: iai
   route: iv
@@ -36,6 +54,24 @@ doses:
   interval_hours: 8
   source: sis-idsa-2010
   section: Table 6
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_lt15
+  amount: 750 mg
+  interval_hours: 24
+  source: label-cefuroxime
+  section: 'US PI Dosage and Administration, Table 2'
+  note: 'Label row CrCl <10 mL/min; CrCl 10-20: 750 mg every 12 hours; no adjustment above 20.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: hemodialysis
+  amount: 750 mg
+  interval_hours: 24
+  source: label-cefuroxime
+  section: 'US PI Dosage and Administration, Table 2'
+  note: 'Label: CrCl <10 row plus a further dose at the end of the dialysis. Give after each dialysis session.'
 adverse_effects:
 - hypersensitivity
 - c_difficile
@@ -43,3 +79,8 @@ interactions: []
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-cefuroxime
+  section: 'US PI Dosage and Administration, Table 2'
+  note: 'Label row CrCl 10-20 mL/min (750 mg every 12 hours) is not mapped: most of crcl_15_29 lies in the no-adjustment row (>20).'

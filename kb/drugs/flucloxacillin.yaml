@@ -1,5 +1,5 @@
 id: flucloxacillin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -26,6 +26,24 @@ doses:
   source: nice-ng141-2019
   section: Table 1
   note: 1 g four times daily was off-label in the UK in 2019.
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: crcl_lt15
+  amount: up to 1 g
+  interval_hours: 8
+  source: smpc-flucloxacillin-po
+  section: SmPC 4.2
+  note: 'Label row: CrCl <10 mL/min; maximum 1 g every 8 to 12 hours.'
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: hemodialysis
+  amount: up to 1 g
+  interval_hours: 8
+  source: smpc-flucloxacillin-po
+  section: SmPC 4.2
+  note: 'Label row: CrCl <10 mL/min; maximum 1 g every 8 to 12 hours. Not significantly removed by dialysis; no supplementary dose.'
 - id: ssti_iv
   indication: ssti
   route: iv
@@ -34,6 +52,24 @@ doses:
   interval_hours: 6
   source: nice-ng141-2019
   section: Table 1
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_lt15
+  amount: up to 1 g
+  interval_hours: 8
+  source: smpc-flucloxacillin-iv
+  section: SmPC 4.2
+  note: 'Label row: CrCl <10 mL/min; maximum 1 g every 8 to 12 hours.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: hemodialysis
+  amount: up to 1 g
+  interval_hours: 8
+  source: smpc-flucloxacillin-iv
+  section: SmPC 4.2
+  note: 'Label row: CrCl <10 mL/min; maximum 1 g every 8 to 12 hours. Not significantly removed by dialysis; no supplementary dose.'
 adverse_effects:
 - hypersensitivity
 - hepatotoxicity
@@ -43,3 +79,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: smpc-flucloxacillin-iv
+  section: SmPC 4.2
+  note: No reduction usually needed; in severe renal failure (CrCl <10 mL/min) reduce the dose or extend the interval.

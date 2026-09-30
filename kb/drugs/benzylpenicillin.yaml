@@ -1,5 +1,5 @@
 id: benzylpenicillin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -26,6 +26,26 @@ doses:
   source: idsa-ssti-2014
   section: Table 2
   note: Table 2 gives every 4-6 h.
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 1-2 million units
+  loading: 2-4 million units
+  interval_hours: 4
+  source: label-benzylpenicillin
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row: uremic patients with CrCl >10 mL/min/1.73 m2, full loading dose then half of it every 4-5 hours.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 1-2 million units
+  loading: 2-4 million units
+  interval_hours: 8
+  source: label-benzylpenicillin
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row CrCl <10 mL/min/1.73 m2: full loading dose then half of it every 8-10 hours.'
 adverse_effects:
 - hypersensitivity
 - seizures
@@ -35,3 +55,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-benzylpenicillin
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Adjustment generally only in severe renal impairment. No hemodialysis row. Further reduce in combined hepatic and renal impairment.'

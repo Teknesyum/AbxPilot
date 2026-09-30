@@ -1,5 +1,5 @@
 id: cefoxitin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -25,6 +25,46 @@ doses:
   interval_hours: 6
   source: sis-idsa-2010
   section: Table 6
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_30_59
+  amount: 1-2 g
+  loading: 1-2 g
+  interval_hours: 8
+  source: label-cefoxitin
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 30-50 mL/min: 1-2 g every 8-12 hours.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_15_29
+  amount: 1-2 g
+  loading: 1-2 g
+  interval_hours: 12
+  source: label-cefoxitin
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 10-29 mL/min: 1-2 g every 12-24 hours.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_lt15
+  amount: 0.5-1 g
+  loading: 1-2 g
+  interval_hours: 12
+  source: label-cefoxitin
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 5-9 mL/min: 0.5-1 g every 12-24 hours; CrCl <5: 0.5-1 g every 24-48 hours.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: hemodialysis
+  amount: 0.5-1 g
+  loading: 1-2 g
+  interval_hours: 24
+  source: label-cefoxitin
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label: 1-2 g loading dose after each hemodialysis, maintenance per Table 4; CrCl <5 row used (0.5-1 g every 24-48 hours). Give after each dialysis session.'
 adverse_effects:
 - hypersensitivity
 - c_difficile
@@ -32,3 +72,8 @@ interactions: []
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-cefoxitin
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label allows an initial 1-2 g loading dose in renal insufficiency.'

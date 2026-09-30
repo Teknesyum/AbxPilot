@@ -117,6 +117,8 @@ internal sealed class CrossReferences(
             Record(item.Model, item.Source, "");
             for (var i = 0; i < item.Model.Doses.Count; i++)
                 SourceExists(sourceIds, item.Model.Doses[i].Source, item.Source, $"/doses/{i}/source");
+            if (item.Model.Renal is { } renal)
+                SourceExists(sourceIds, renal.Source, item.Source, "/renal/source");
         }
 
         foreach (var item in pathogens) Record(item.Model, item.Source, "");
@@ -171,11 +173,14 @@ internal sealed class CrossReferences(
             }
 
             var doseIds = new HashSet<string>(StringComparer.Ordinal);
+            var baseline = drug.Doses.Where(dose => dose.RenalBand == "normal").Select(dose => dose.Id).ToHashSet(StringComparer.Ordinal);
             for (var i = 0; i < drug.Doses.Count; i++)
             {
                 var dose = drug.Doses[i];
-                if (!doseIds.Add(dose.Id))
-                    Unknown(Codes.Duplicate, at, $"/doses/{i}/id", $"dose '{dose.Id}' is defined twice");
+                if (!doseIds.Add(dose.Id + "/" + dose.RenalBand))
+                    Unknown(Codes.Duplicate, at, $"/doses/{i}/id", $"dose '{dose.Id}' is defined twice for renal band '{dose.RenalBand}'");
+                if (!baseline.Contains(dose.Id))
+                    Unknown(Codes.Model, at, $"/doses/{i}/renal_band", $"dose '{dose.Id}' has no normal renal band entry");
                 if (!drug.Routes.Contains(dose.Route))
                     Unknown(Codes.Model, at, $"/doses/{i}/route", $"route '{dose.Route}' is not in the drug's routes");
                 Require("indication." + dose.Indication, at, $"/doses/{i}/indication");

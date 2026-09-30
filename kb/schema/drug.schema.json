@@ -157,6 +157,34 @@
         "conditional",
         "known"
       ]
+    },
+    "renal": {
+      "type": "object",
+      "description": "Renal dosing status from the product label. none = no adjustment; bands = adjusted doses are listed per renal_band.",
+      "required": [
+        "adjust",
+        "source",
+        "section"
+      ],
+      "properties": {
+        "adjust": {
+          "enum": [
+            "none",
+            "bands"
+          ]
+        },
+        "source": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "section": {
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
     }
   },
   "unevaluatedProperties": false,
@@ -206,7 +234,9 @@
             8,
             12,
             24,
-            48
+            36,
+            48,
+            72
           ]
         },
         "source": {

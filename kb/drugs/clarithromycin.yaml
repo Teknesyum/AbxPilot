@@ -1,5 +1,5 @@
 id: clarithromycin
-version: 3
+version: 4
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -22,6 +22,24 @@ doses:
   interval_hours: 12
   source: idsa-ats-2019
   section: Q7; Table 2
+- id: cap_po
+  indication: cap
+  route: po
+  renal_band: crcl_15_29
+  amount: 250 mg
+  interval_hours: 12
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Label: CrCl <30 mL/min, reduce the dosage by 50%.'
+- id: cap_po
+  indication: cap
+  route: po
+  renal_band: crcl_lt15
+  amount: 250 mg
+  interval_hours: 12
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Label: CrCl <30 mL/min, reduce the dosage by 50%.'
 - id: cap_iv
   indication: cap
   route: iv
@@ -32,6 +50,24 @@ doses:
   section: Appendix 1
   note: TTD 2021 gives 500 mg every 12 hours for both the parenteral and the oral form; IV clarithromycin is licensed
     in Turkey (TITCK 18.09.2026).
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_15_29
+  amount: 250 mg
+  interval_hours: 12
+  source: smpc-clarithromycin-iv
+  section: 'SmPC 4.2'
+  note: 'SmPC 4.2: CrCl <30 ml/min, reduce to one half of the normal recommended dose.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_lt15
+  amount: 250 mg
+  interval_hours: 12
+  source: smpc-clarithromycin-iv
+  section: 'SmPC 4.2'
+  note: 'SmPC 4.2: CrCl <30 ml/min, reduce to one half of the normal recommended dose.'
 - id: ssti_po
   indication: ssti
   route: po
@@ -40,6 +76,24 @@ doses:
   interval_hours: 12
   source: nice-ng141-2019
   section: Table 1
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: crcl_15_29
+  amount: 250 mg
+  interval_hours: 12
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Label: CrCl <30 mL/min, reduce the dosage by 50%.'
+- id: ssti_po
+  indication: ssti
+  route: po
+  renal_band: crcl_lt15
+  amount: 250 mg
+  interval_hours: 12
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Label: CrCl <30 mL/min, reduce the dosage by 50%.'
 - id: ssti_iv
   indication: ssti
   route: iv
@@ -48,6 +102,24 @@ doses:
   interval_hours: 12
   source: nice-ng141-2019
   section: Table 1
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 250 mg
+  interval_hours: 12
+  source: smpc-clarithromycin-iv
+  section: 'SmPC 4.2'
+  note: 'SmPC 4.2: CrCl <30 ml/min, reduce to one half of the normal recommended dose.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 250 mg
+  interval_hours: 12
+  source: smpc-clarithromycin-iv
+  section: 'SmPC 4.2'
+  note: 'SmPC 4.2: CrCl <30 ml/min, reduce to one half of the normal recommended dose.'
 - id: phar_po
   indication: pharyngitis
   route: po
@@ -58,6 +130,24 @@ doses:
   source: idsa-gas-2012
   section: 'Table 2'
   note: 'Maximum 250 mg per dose.'
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_15_29
+  amount: 125 mg
+  interval_hours: 12
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Label: CrCl <30 mL/min, reduce the dosage by 50%.'
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_lt15
+  amount: 125 mg
+  interval_hours: 12
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Label: CrCl <30 mL/min, reduce the dosage by 50%.'
 - id: phar_po_tr
   indication: pharyngitis
   route: po
@@ -68,6 +158,24 @@ doses:
   source: titck-akilci-2020
   section: 'Konu 3, Tablo 3.4'
   note: 'Maximum 250 mg per dose.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_15_29
+  amount: 125 mg
+  interval_hours: 12
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Label: CrCl <30 mL/min, reduce the dosage by 50%.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_lt15
+  amount: 125 mg
+  interval_hours: 12
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Label: CrCl <30 mL/min, reduce the dosage by 50%.'
 - id: phar_po_nice
   indication: pharyngitis
   route: po
@@ -77,6 +185,24 @@ doses:
   source: nice-ng84-2018
   section: 'Table 1'
   note: 'Penicillin allergy or intolerance, not pregnant; 5 days.'
+- id: phar_po_nice
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_15_29
+  amount: 125-250 mg
+  interval_hours: 12
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Label: CrCl <30 mL/min, reduce the dosage by 50%.'
+- id: phar_po_nice
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_lt15
+  amount: 125-250 mg
+  interval_hours: 12
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Label: CrCl <30 mL/min, reduce the dosage by 50%.'
 adverse_effects:
 - gi_upset
 - qt_prolongation
@@ -93,3 +219,8 @@ pregnancy:
   category: avoid
   note_key: pregnancy.note.clarithromycin
 qt_risk: known
+renal:
+  adjust: bands
+  source: label-clarithromycin
+  section: 'US PI 2.6, Table 2'
+  note: 'Also 50% at CrCl 30-60 and 75% at CrCl <30 with atazanavir or ritonavir. No dialysis dose in label.'

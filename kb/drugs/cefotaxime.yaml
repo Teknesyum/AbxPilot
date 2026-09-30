@@ -1,5 +1,5 @@
 id: cefotaxime
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -26,6 +26,15 @@ doses:
   interval_hours: 8
   source: idsa-ats-2019
   section: Q8; Table 3
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_lt15
+  amount: 0.5-1 g
+  interval_hours: 8
+  source: label-cefotaxime
+  section: 'US PI Precautions, General'
+  note: 'Label: halve the dose when CrCl <20 mL/min/1.73 m2; no band row for CrCl 20-29 or dialysis.'
 - id: uti_iv
   indication: uti
   route: iv
@@ -34,6 +43,15 @@ doses:
   interval_hours: 8
   source: idsa-cuti-2025
   section: Table 2.1
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 0.5-1 g
+  interval_hours: 8
+  source: label-cefotaxime
+  section: 'US PI Precautions, General'
+  note: 'Label: halve the dose when CrCl <20 mL/min/1.73 m2; no band row for CrCl 20-29 or dialysis.'
 - id: uti_iv_eau
   indication: uti
   route: iv
@@ -43,6 +61,15 @@ doses:
   source: eau-uti-2026
   section: Table 6 (section 3.6.3)
   note: Not studied as monotherapy.
+- id: uti_iv_eau
+  indication: uti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 1 g
+  interval_hours: 8
+  source: label-cefotaxime
+  section: 'US PI Precautions, General'
+  note: 'Label: halve the dose when CrCl <20 mL/min/1.73 m2; no band row for CrCl 20-29 or dialysis.'
 - id: iai_iv
   indication: iai
   route: iv
@@ -52,6 +79,15 @@ doses:
   source: sis-idsa-2010
   section: Table 6
   note: Table 6 gives every 6-8 h.
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_lt15
+  amount: 0.5-1 g
+  interval_hours: 8
+  source: label-cefotaxime
+  section: 'US PI Precautions, General'
+  note: 'Label: halve the dose when CrCl <20 mL/min/1.73 m2; no band row for CrCl 20-29 or dialysis.'
 adverse_effects:
 - hypersensitivity
 - c_difficile
@@ -59,3 +95,8 @@ interactions: []
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-cefotaxime
+  section: 'US PI Precautions, General'
+  note: 'Label halves the dose below CrCl 20 mL/min/1.73 m2 only; it gives no dialysis dose.'

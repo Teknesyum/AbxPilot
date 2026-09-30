@@ -1,5 +1,5 @@
 id: meropenem
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -24,6 +24,33 @@ doses:
   interval_hours: 8
   source: idsa-ats-2019
   section: Q10; Table 3
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_30_59
+  amount: 1 g
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 26-50 mL/min. CrCl >50 mL/min keeps 1 g every 8 h.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 10-25 mL/min (one-half recommended dose).'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl <10 mL/min (one-half recommended dose). CrCl 10-14 falls in the 500 mg every 12 h row.'
 - id: ssti_iv
   indication: ssti
   route: iv
@@ -32,6 +59,33 @@ doses:
   interval_hours: 8
   source: idsa-ssti-2014
   section: Table 4
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_30_59
+  amount: 1 g
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 26-50 mL/min. CrCl >50 mL/min keeps 1 g every 8 h.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 10-25 mL/min (one-half recommended dose).'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl <10 mL/min (one-half recommended dose). CrCl 10-14 falls in the 500 mg every 12 h row.'
 - id: uti_iv
   indication: uti
   route: iv
@@ -41,6 +95,33 @@ doses:
   source: idsa-cuti-2025
   section: Table 2.1
   note: EAU 2026 Table 6 gives the same dose.
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_30_59
+  amount: 1 g
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 26-50 mL/min. CrCl >50 mL/min keeps 1 g every 8 h.'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 10-25 mL/min (one-half recommended dose).'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl <10 mL/min (one-half recommended dose). CrCl 10-14 falls in the 500 mg every 12 h row.'
 - id: iai_iv
   indication: iai
   route: iv
@@ -49,6 +130,33 @@ doses:
   interval_hours: 8
   source: sis-idsa-2010
   section: Table 6
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_30_59
+  amount: 1 g
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 26-50 mL/min. CrCl >50 mL/min keeps 1 g every 8 h.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 10-25 mL/min (one-half recommended dose).'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl <10 mL/min (one-half recommended dose). CrCl 10-14 falls in the 500 mg every 12 h row.'
 adverse_effects:
 - hypersensitivity
 - c_difficile
@@ -59,3 +167,8 @@ pregnancy:
   category: caution
   note_key: pregnancy.note.limited_data
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: Dose reduction when CrCl <=50 mL/min. Inadequate information for hemodialysis or peritoneal dialysis.

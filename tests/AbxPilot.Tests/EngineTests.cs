@@ -46,6 +46,68 @@ public sealed class EngineTests
         Assert.Contains(unknown.Trace, line => line.MessageKey == "engine.region_missing");
     }
 
+    public static TheoryData<string, string> RenalCases()
+    {
+        var data = new TheoryData<string, string>();
+        foreach (var syndrome in Kb.Syndromes)
+        foreach (var band in new[] { "normal", "crcl_30_59", "crcl_15_29", "crcl_lt15", "hemodialysis", "crrt" })
+            data.Add(syndrome.Id, band);
+        return data;
+    }
+
+    [Theory]
+    [MemberData(nameof(RenalCases))]
+    public void EveryComponentTakesItsRenalBandDoseOrWarns(string syndromeId, string band)
+    {
+        var drugs = Kb.Drugs.ToDictionary(drug => drug.Id);
+        foreach (var set in Kb.GuidelineSets.Where(item => Kb.GuidelineRows.Any(row => row.Set == item.Id && row.Syndrome == syndromeId)))
+        {
+            var result = Engine.Evaluate(GuidelineContext.Create(syndromeId, "tr", set.Id, ("renal", [band])));
+            foreach (var line in result.Alternatives.Prepend(result.FirstChoice).OfType<RegimenLine>())
+            foreach (var component in line.Components)
+            {
+                var drug = drugs[component.DrugId];
+                var own = drug.Doses.SingleOrDefault(dose => dose.Id == component.DoseId && dose.RenalBand == band);
+                if (own is not null)
+                {
+                    Assert.Equal(band, component.RenalBand);
+                    Assert.Equal(own.Amount, component.Amount);
+                    Assert.Equal(own.IntervalHours, component.IntervalHours);
+                    Assert.False(component.RenalMissing);
+                    continue;
+                }
+
+                Assert.Equal("normal", component.RenalBand);
+                var expectWarning = band != "normal" && drug.Renal?.Adjust != "none";
+                Assert.Equal(expectWarning, component.RenalMissing);
+                Assert.Equal(expectWarning, line.Warnings.Any(warning => warning.MessageKey == "warn.renal_missing" && warning.Subject == drug.Id));
+            }
+        }
+    }
+
+    [Fact]
+    public void RenalContraindicationExcludesTheDrug()
+    {
+        const string set = "idsa-2011-2025";
+        var normal = Engine.Evaluate(GuidelineContext.Create("uti", "tr", set));
+        Assert.Contains(normal.Alternatives.Prepend(normal.FirstChoice).OfType<RegimenLine>(), line => line.DrugIds.Contains("nitrofurantoin"));
+
+        var impaired = Engine.Evaluate(GuidelineContext.Create("uti", "tr", set, ("renal", ["crcl_30_59"])));
+        Assert.DoesNotContain(impaired.Alternatives.Prepend(impaired.FirstChoice).OfType<RegimenLine>(), line => line.DrugIds.Contains("nitrofurantoin"));
+        Assert.Contains(impaired.Excluded, item => item.RuleId == "renal_nitrofurantoin");
+    }
+
+    [Fact]
+    public void EveryRenalBandDoseCitesALabel()
+    {
+        foreach (var drug in Kb.Drugs)
+        foreach (var dose in drug.Doses.Where(item => item.RenalBand != "normal"))
+        {
+            Assert.True(dose.Source.StartsWith("label-") || dose.Source.StartsWith("smpc-"), $"{drug.Id}.{dose.Id}/{dose.RenalBand}: {dose.Source}");
+            Assert.Equal("bands", drug.Renal?.Adjust);
+        }
+    }
+
     [Fact]
     public void InvalidAnswerFallsBackToDefault()
     {

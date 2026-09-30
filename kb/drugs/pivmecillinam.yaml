@@ -1,5 +1,5 @@
 id: pivmecillinam
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -43,3 +43,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: none
+  source: label-pivmecillinam
+  section: 'US PI 8.6'
+  note: 'US label (Pivya 185 mg three times daily) states safety data do not suggest a need for dosage adjustment.'

@@ -1,5 +1,5 @@
 id: linezolid
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -68,3 +68,8 @@ pregnancy:
   category: caution
   note_key: pregnancy.note.limited_data
 qt_risk: none
+renal:
+  adjust: none
+  source: label-linezolid
+  section: US PI 12.3
+  note: Metabolites accumulate in renal impairment; give after hemodialysis. Thrombocytopenia more frequent in severe renal impairment.

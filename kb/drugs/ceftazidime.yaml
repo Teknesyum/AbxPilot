@@ -1,5 +1,5 @@
 id: ceftazidime
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -26,6 +26,46 @@ doses:
   interval_hours: 8
   source: idsa-ats-2019
   section: Q10; Table 3
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_30_59
+  amount: 1 g
+  loading: 1 g
+  interval_hours: 12
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 31-50 mL/min.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_15_29
+  amount: 1 g
+  loading: 1 g
+  interval_hours: 24
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 16-30 mL/min.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  loading: 1 g
+  interval_hours: 24
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 6-15 mL/min; CrCl <5: 500 mg every 48 hours.'
+- id: cap_iv
+  indication: cap
+  route: iv
+  renal_band: hemodialysis
+  amount: 1 g
+  loading: 1 g
+  interval_hours: 48
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label: 1 g loading dose, then 1 g after each hemodialysis period. Give after each dialysis session.'
 - id: uti_iv
   indication: uti
   route: iv
@@ -34,6 +74,46 @@ doses:
   interval_hours: 8
   source: idsa-cuti-2025
   section: Table 2.1
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_30_59
+  amount: 1 g
+  loading: 1 g
+  interval_hours: 12
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 31-50 mL/min.'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 1 g
+  loading: 1 g
+  interval_hours: 24
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 16-30 mL/min.'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  loading: 1 g
+  interval_hours: 24
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 6-15 mL/min; CrCl <5: 500 mg every 48 hours.'
+- id: uti_iv
+  indication: uti
+  route: iv
+  renal_band: hemodialysis
+  amount: 1 g
+  loading: 1 g
+  interval_hours: 48
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label: 1 g loading dose, then 1 g after each hemodialysis period. Give after each dialysis session.'
 - id: iai_iv
   indication: iai
   route: iv
@@ -42,6 +122,46 @@ doses:
   interval_hours: 8
   source: sis-idsa-2010
   section: Table 6
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_30_59
+  amount: 1 g
+  loading: 1 g
+  interval_hours: 12
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 31-50 mL/min.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_15_29
+  amount: 1 g
+  loading: 1 g
+  interval_hours: 24
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 16-30 mL/min.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  loading: 1 g
+  interval_hours: 24
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label row CrCl 6-15 mL/min; CrCl <5: 500 mg every 48 hours.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: hemodialysis
+  amount: 1 g
+  loading: 1 g
+  interval_hours: 48
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label: 1 g loading dose, then 1 g after each hemodialysis period. Give after each dialysis session.'
 adverse_effects:
 - hypersensitivity
 - neurotoxicity
@@ -50,3 +170,8 @@ interactions: []
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-ceftazidime
+  section: 'US PI Dosage and Administration, Table 4'
+  note: 'Label: reduce dose when GFR <50 mL/min; in severe infection the unit dose may be increased by 50%. If the usual dose is lower than the renal dose, use the lower dose.'

@@ -67,7 +67,12 @@ public sealed record ComponentLine(
     int IntervalHours,
     string Route,
     string? AddedByRule,
-    SourceRef Source);
+    SourceRef Source)
+{
+    public string RenalBand { get; init; } = "normal";
+
+    public bool RenalMissing { get; init; }
+}
 
 public sealed record ExcludedRegimen(
     string RegimenId,

@@ -1,5 +1,5 @@
 id: cefadroxil
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -24,6 +24,36 @@ doses:
   interval_hours: 12
   source: eau-uti-2026
   section: Table 3 (section 3.4.4)
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: crcl_30_59
+  amount: 500 mg
+  loading: 1000 mg
+  interval_hours: 12
+  source: label-cefadroxil
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row CrCl 25-50 mL/min/1.73 m2; over 50 mL/min dose as normal.'
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: crcl_15_29
+  amount: 500 mg
+  loading: 1000 mg
+  interval_hours: 24
+  source: label-cefadroxil
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row CrCl 10-25 mL/min/1.73 m2.'
+- id: uti_po
+  indication: uti
+  route: po
+  renal_band: crcl_lt15
+  amount: 500 mg
+  loading: 1000 mg
+  interval_hours: 36
+  source: label-cefadroxil
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row CrCl 0-10 mL/min/1.73 m2.'
 - id: phar_po
   indication: pharyngitis
   route: po
@@ -34,6 +64,36 @@ doses:
   source: idsa-gas-2012
   section: 'Table 2'
   note: 'Maximum 1 g.'
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_30_59
+  amount: 500 mg
+  loading: 1000 mg
+  interval_hours: 12
+  source: label-cefadroxil
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row CrCl 25-50 mL/min/1.73 m2; over 50 mL/min dose as normal.'
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_15_29
+  amount: 500 mg
+  loading: 1000 mg
+  interval_hours: 24
+  source: label-cefadroxil
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row CrCl 10-25 mL/min/1.73 m2.'
+- id: phar_po
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_lt15
+  amount: 500 mg
+  loading: 1000 mg
+  interval_hours: 36
+  source: label-cefadroxil
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row CrCl 0-10 mL/min/1.73 m2.'
 - id: phar_po_tr
   indication: pharyngitis
   route: po
@@ -44,6 +104,36 @@ doses:
   source: titck-akilci-2020
   section: 'Konu 3, Tablo 3.4'
   note: 'Maximum 1 g.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_30_59
+  amount: 500 mg
+  loading: 1000 mg
+  interval_hours: 12
+  source: label-cefadroxil
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row CrCl 25-50 mL/min/1.73 m2; over 50 mL/min dose as normal.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_15_29
+  amount: 500 mg
+  loading: 1000 mg
+  interval_hours: 24
+  source: label-cefadroxil
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row CrCl 10-25 mL/min/1.73 m2.'
+- id: phar_po_tr
+  indication: pharyngitis
+  route: po
+  renal_band: crcl_lt15
+  amount: 500 mg
+  loading: 1000 mg
+  interval_hours: 36
+  source: label-cefadroxil
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Label row CrCl 0-10 mL/min/1.73 m2.'
 adverse_effects:
 - hypersensitivity
 - gi_upset
@@ -51,3 +141,8 @@ interactions: []
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-cefadroxil
+  section: 'US PI Dosage and Administration, Renal Impairment'
+  note: 'Adult schedule: initial 1000 mg, then 500 mg at the listed interval. No hemodialysis row.'

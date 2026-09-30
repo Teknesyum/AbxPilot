@@ -1,5 +1,5 @@
 id: cefazolin
-version: 1
+version: 2
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -25,6 +25,24 @@ doses:
   interval_hours: 8
   source: idsa-ssti-2014
   section: Table 2
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 12
+  source: label-cefazolin
+  section: 'US PI Dosage and Administration, Dosage Adjustment for Patients with Reduced Renal Function'
+  note: 'Label row CrCl 11-34 mL/min: half the usual dose every 12 hours, after a loading dose appropriate to severity.'
+- id: ssti_iv
+  indication: ssti
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-cefazolin
+  section: 'US PI Dosage and Administration, Dosage Adjustment for Patients with Reduced Renal Function'
+  note: 'Label row CrCl 10 mL/min or less: half the usual dose every 18-24 hours, after a loading dose appropriate to severity.'
 - id: iai_iv
   indication: iai
   route: iv
@@ -33,6 +51,24 @@ doses:
   interval_hours: 8
   source: sis-idsa-2010
   section: Table 6
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_15_29
+  amount: 0.5-1 g
+  interval_hours: 12
+  source: label-cefazolin
+  section: 'US PI Dosage and Administration, Dosage Adjustment for Patients with Reduced Renal Function'
+  note: 'Label row CrCl 11-34 mL/min: half the usual dose every 12 hours, after a loading dose appropriate to severity.'
+- id: iai_iv
+  indication: iai
+  route: iv
+  renal_band: crcl_lt15
+  amount: 0.5-1 g
+  interval_hours: 24
+  source: label-cefazolin
+  section: 'US PI Dosage and Administration, Dosage Adjustment for Patients with Reduced Renal Function'
+  note: 'Label row CrCl 10 mL/min or less: half the usual dose every 18-24 hours, after a loading dose appropriate to severity.'
 adverse_effects:
 - hypersensitivity
 - c_difficile
@@ -41,3 +77,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: bands
+  source: label-cefazolin
+  section: 'US PI Dosage and Administration, Dosage Adjustment for Patients with Reduced Renal Function'
+  note: 'Label row CrCl 35-54 mL/min: full dose at intervals of at least 8 hours (no change for an 8-hour regimen). No hemodialysis row.'

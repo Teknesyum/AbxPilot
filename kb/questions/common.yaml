@@ -73,3 +73,20 @@
   - ge10
   default: ge10
   default_from: eco_fq
+- id: renal
+  version: 1
+  source: product-labels
+  section: Dosage in renal impairment (creatinine clearance by Cockcroft-Gault)
+  source_date: '2024-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: Creatinine clearance band. Doses come from each drug's label; normal is the baseline patient.
+  type: single
+  options:
+  - normal
+  - crcl_30_59
+  - crcl_15_29
+  - crcl_lt15
+  - hemodialysis
+  - crrt
+  default: normal

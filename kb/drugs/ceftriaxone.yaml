@@ -1,5 +1,5 @@
 id: ceftriaxone
-version: 2
+version: 3
 source: product-labels
 section: SmPC 4.3-4.8 (contraindications, interactions, pregnancy, adverse effects)
 source_date: '2024-01-01'
@@ -88,3 +88,8 @@ interactions:
 pregnancy:
   category: compatible
 qt_risk: none
+renal:
+  adjust: none
+  source: label-ceftriaxone
+  section: 'US PI Dosage and Administration; Precautions'
+  note: 'Not removed by dialysis. With both hepatic dysfunction and significant renal disease, do not exceed 2 g daily.'
