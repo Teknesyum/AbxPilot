@@ -52,7 +52,7 @@ public partial class MainView : UserControl
         DetachedFromVisualTree += (_, e) =>
         {
             _sweep?.Cancel();
-            (e.Root as TopLevel)?.RemoveHandler(KeyDownEvent, OnShortcut);
+            (e.RootVisual as TopLevel)?.RemoveHandler(KeyDownEvent, OnShortcut);
         };
     }
 
