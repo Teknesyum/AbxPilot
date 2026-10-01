@@ -110,5 +110,9 @@
   "tip.keys": "Ctrl+F ara · Ctrl+1…9 tablo aç · Ctrl+R yanıtları sıfırla · Ctrl+Shift+C özeti kopyala · Esc kapat · Ctrl +/− ölçek",
   "tip.dismiss": "Anladım",
   "shortcuts.title": "Kısayollar",
-  "shortcuts.list": "Ctrl+F ara · Ctrl+1…9 listedeki tabloyu aç · Ctrl+R yanıtları sıfırla · Ctrl+Shift+C özeti kopyala · Esc paneli kapat · Ctrl +/−/0 ölçek"
+  "shortcuts.list": "Ctrl+F ara · Ctrl+1…9 listedeki tabloyu aç · Ctrl+R yanıtları sıfırla · Ctrl+Shift+C özeti kopyala · Ctrl+P yazdır / PDF · Esc paneli kapat · Ctrl +/−/0 ölçek",
+  "summary.print": "Yazdır",
+  "summary.printTip": "Özeti tarayıcıda yazdırma sayfası olarak açar; oradan yazıcıya ya da PDF'e (Ctrl+P)",
+  "summary.printFailed": "Yazdırılamadı",
+  "summary.printFailedTip": "Özet sayfası açılamadı. Varsayılan tarayıcıyı denetleyip yeniden deneyin."
 }

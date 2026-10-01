@@ -41,7 +41,7 @@ What it adds:
 - It does not diagnose.
 - It does not score or rank with a model; there is no LLM and no machine learning.
 - It does not replace local antibiograms or infectious disease consultation.
-- It does not dose for children, pregnancy or renal failure beyond what the guideline states.
+- It does not dose for children or pregnancy beyond what the guideline states. Renal doses come only from the product label (US FDA, or EU/UK SmPC); where the label gives none, it says so.
 
 ## Installation
 
@@ -53,8 +53,6 @@ What it adds:
 Base is not code-signed yet, so Windows SmartScreen may warn on first launch: choose *More info*, then *Run anyway*. More: [Teknesyum Base](https://github.com/Teknesyum/Teknesyum-Base).
 
 **Or install manually.**
-
-The program is at stage A0: the shell runs, the knowledge base is empty.
 
 Windows (x64, no admin rights, no .NET SDK or Git needed): download `Kur.bat` and
 `kur-abxpilot.ps1` from the [latest release](https://github.com/Teknesyum/AbxPilot/releases)
@@ -83,11 +81,25 @@ Get-Content .\AbxPilot-win-x64-v0.1.0-onizleme.zip.sha256
 
 The two hashes must match (case does not matter).
 
-From source, with the .NET 10 SDK:
+**From source.** Get the code with `git clone https://github.com/Teknesyum/AbxPilot.git`
+(or *Code → Download ZIP* on GitHub). Then, in the repository folder:
 
-```
-dotnet run --project src/AbxPilot.Desktop
-```
+1. Install the .NET 10 SDK once: `winget install Microsoft.DotNet.SDK.10` (or from
+   [dot.net](https://dot.net)). `global.json` picks the right version.
+2. Run it straight away:
+
+   ```
+   dotnet run --project src/AbxPilot.Desktop
+   ```
+
+3. Or install it like a release, with Start menu and desktop shortcuts, under
+   `%LOCALAPPDATA%\Programs\AbxPilot` (no admin rights):
+
+   ```
+   powershell -ExecutionPolicy Bypass -File tools/publish-desktop.ps1
+   ```
+
+   Run the same line again after `git pull` to update.
 
 ## How it works
 

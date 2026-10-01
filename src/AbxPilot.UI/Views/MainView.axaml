@@ -104,11 +104,19 @@
                           </Border>
                         </Panel>
                       </StackPanel>
-                      <Button x:Name="CopyButton" Grid.Column="1" HorizontalAlignment="Right"
-                              Theme="{StaticResource HeaderButton}"
-                              Content="{loc:Text summary.copy}"
-                              ToolTip.Tip="{loc:Text summary.copyTip}"
-                              auto:AutomationProperties.Name="{loc:Text summary.copy}"/>
+                      <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"
+                                  Spacing="{StaticResource Space2}">
+                        <Button x:Name="PrintButton"
+                                Theme="{StaticResource HeaderButton}"
+                                Content="{loc:Text summary.print}"
+                                ToolTip.Tip="{loc:Text summary.printTip}"
+                                auto:AutomationProperties.Name="{loc:Text summary.print}"/>
+                        <Button x:Name="CopyButton"
+                                Theme="{StaticResource HeaderButton}"
+                                Content="{loc:Text summary.copy}"
+                                ToolTip.Tip="{loc:Text summary.copyTip}"
+                                auto:AutomationProperties.Name="{loc:Text summary.copy}"/>
+                      </StackPanel>
                       <TextBlock x:Name="ChangeTag" Grid.Row="1" Grid.ColumnSpan="2" Classes="tag" Theme="{StaticResource Label}"
                                  auto:AutomationProperties.LiveSetting="Polite"
                                  Foreground="{StaticResource Renk1}"

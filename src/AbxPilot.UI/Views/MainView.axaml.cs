@@ -3,6 +3,7 @@ using AbxPilot.UI.Choreography;
 using AbxPilot.UI.Controls;
 using AbxPilot.UI.ViewModels;
 using Avalonia;
+using Avalonia.Platform.Storage;
 using Avalonia.Animation;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -37,6 +38,7 @@ public partial class MainView : UserControl
         EmptyAction.Click += OnEmptyAction;
         GuidelineButton.Click += OnSourceLink;
         CopyButton.Click += (_, _) => CopySummary();
+        PrintButton.Click += (_, _) => PrintSummary();
         DrawerScrim.PointerPressed += (_, _) => _vm?.CloseDrawerCommand.Execute(null);
         AddHandler(PointerPressedEvent, OnScorePointerPressed);
         AddHandler(PointerMovedEvent, OnScorePointerMoved);
@@ -68,6 +70,7 @@ public partial class MainView : UserControl
             SearchBox.SelectAll();
         }
         else if (ctrl && shift && e.Key == Key.C) CopySummary();
+        else if (ctrl && !shift && e.Key == Key.P) PrintSummary();
         else if (ctrl && !shift && e.Key == Key.R && _vm.ResetAnswersCommand.CanExecute(null)) _vm.ResetAnswersCommand.Execute(null);
         else if (ctrl && !shift && e.Key is >= Key.D1 and <= Key.D9) _vm.FocusSyndromeCommand.Execute(((int)(e.Key - Key.D0)).ToString());
         else if (!ctrl && e.Key == Key.Escape && (_vm.IsSettingsOpen || _vm.IsDrawerOpen || _vm.IsTraceOpen)) _vm.CloseOverlaysCommand.Execute(null);
@@ -82,6 +85,25 @@ public partial class MainView : UserControl
         CopyButton.Content = Localization.Localizer.Get("summary.copied");
         await Task.Delay(Tokens.Time("ToastLife"));
         CopyButton.Content = Localization.Localizer.Get("summary.copy");
+    }
+
+    private async void PrintSummary()
+    {
+        if (_vm is not { HasCard: true } || TopLevel.GetTopLevel(this)?.Launcher is not { } launcher) return;
+        var opened = false;
+        try
+        {
+            var file = Printing.PrintSheet.Write(_vm.SummaryParts(), Localization.Localizer.Language);
+            opened = await launcher.LaunchFileInfoAsync(file);
+        }
+        catch (IOException)
+        {
+        }
+        catch (UnauthorizedAccessException)
+        {
+        }
+        PrintButton.Content = Localization.Localizer.Get(opened ? "summary.print" : "summary.printFailed");
+        ToolTip.SetTip(PrintButton, Localization.Localizer.Get(opened ? "summary.printTip" : "summary.printFailedTip"));
     }
 
     private void OnScorePointerPressed(object? sender, PointerPressedEventArgs e)

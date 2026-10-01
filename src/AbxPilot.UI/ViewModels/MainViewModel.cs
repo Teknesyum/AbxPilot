@@ -7,6 +7,7 @@ using AbxPilot.Core.Engine;
 using AbxPilot.Core.Knowledge;
 using AbxPilot.Data;
 using AbxPilot.UI.Localization;
+using AbxPilot.UI.Printing;
 using AbxPilot.UI.Settings;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -1059,33 +1060,42 @@ public sealed partial class MainViewModel : ObservableObject
             ? Localizer.Get(card.IsOn ? "history.yes" : "history.no")
             : string.Join(", ", card.Options.Where(option => option.IsSelected).Select(option => option.Label));
 
-    public string BuildSummary()
+    public IReadOnlyList<SummaryPart> SummaryParts()
     {
-        var lines = new List<string>
+        var parts = new List<SummaryPart>
         {
-            $"{SyndromeTitle} — {GuidelineName}",
-            Headline
+            new(SummaryKind.Title, $"{SyndromeTitle} — {GuidelineName}"),
+            new(SummaryKind.Headline, Headline)
         };
         foreach (var slot in Slots)
-            lines.Add($"• {slot.DrugName}: {slot.Amount} {slot.Route} {slot.Schedule}{(slot.HasExtra ? " (" + slot.Extra + ")" : "")}");
-        if (HasFirstChoice) lines.Add(DurationText);
-        lines.Add(OutcomeText);
-        lines.Add(ConsultText);
+            parts.Add(new(SummaryKind.Dose, $"{slot.DrugName}: {slot.Amount} {slot.Route} {slot.Schedule}{(slot.HasExtra ? " (" + slot.Extra + ")" : "")}"));
+        if (HasFirstChoice) parts.Add(new(SummaryKind.Note, DurationText));
+        parts.Add(new(SummaryKind.Note, OutcomeText));
+        parts.Add(new(SummaryKind.Note, ConsultText));
         foreach (var warning in Warnings)
-            lines.Add("! " + (warning.Detail.Length > 0 ? warning.Detail + ": " : "") + warning.Text);
+            parts.Add(new(SummaryKind.Warning, (warning.Detail.Length > 0 ? warning.Detail + ": " : "") + warning.Text));
         var chosen = Questions.Where(card => card.IsVisible && card.IsChanged).ToArray();
         if (chosen.Length > 0)
         {
-            lines.Add(Localizer.Get("summary.answers"));
+            parts.Add(new(SummaryKind.Heading, Localizer.Get("summary.answers")));
             foreach (var card in chosen)
-                lines.Add($"  {card.Label}: {AnswerText(card)}");
+                parts.Add(new(SummaryKind.Answer, $"{card.Label}: {AnswerText(card)}"));
         }
-        lines.Add(SourceText);
-        lines.Add(ReviewText);
-        lines.Add(DataVersion + " · AbxPilot " + Update.GitHubUpdater.Label);
-        lines.Add(Localizer.Get("footer.disclaimer"));
-        return string.Join(Environment.NewLine, lines.Where(line => !string.IsNullOrWhiteSpace(line)));
+        parts.Add(new(SummaryKind.Meta, SourceText));
+        parts.Add(new(SummaryKind.Meta, ReviewText));
+        parts.Add(new(SummaryKind.Meta, DataVersion + " · AbxPilot " + Update.GitHubUpdater.Label));
+        parts.Add(new(SummaryKind.Disclaimer, Localizer.Get("footer.disclaimer")));
+        return parts.Where(part => !string.IsNullOrWhiteSpace(part.Text)).ToArray();
     }
+
+    public string BuildSummary() =>
+        string.Join(Environment.NewLine, SummaryParts().Select(part => part.Kind switch
+        {
+            SummaryKind.Dose => "• " + part.Text,
+            SummaryKind.Warning => "! " + part.Text,
+            SummaryKind.Answer => "  " + part.Text,
+            _ => part.Text
+        }));
 
     private string RegimenName(string regimenId, string? drugId)
     {

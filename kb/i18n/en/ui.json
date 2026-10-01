@@ -110,5 +110,9 @@
   "tip.keys": "Ctrl+F search · Ctrl+1…9 open syndrome · Ctrl+R reset answers · Ctrl+Shift+C copy summary · Esc close · Ctrl +/− scale",
   "tip.dismiss": "Got it",
   "shortcuts.title": "Shortcuts",
-  "shortcuts.list": "Ctrl+F search · Ctrl+1…9 open listed syndrome · Ctrl+R reset answers · Ctrl+Shift+C copy summary · Esc close panel · Ctrl +/−/0 scale"
+  "shortcuts.list": "Ctrl+F search · Ctrl+1…9 open listed syndrome · Ctrl+R reset answers · Ctrl+Shift+C copy summary · Ctrl+P print / PDF · Esc close panel · Ctrl +/−/0 scale",
+  "summary.print": "Print",
+  "summary.printTip": "Opens the summary as a print page in your browser; print it or save it as PDF (Ctrl+P)",
+  "summary.printFailed": "Could not print",
+  "summary.printFailedTip": "The summary page could not be opened. Check the default browser and try again."
 }

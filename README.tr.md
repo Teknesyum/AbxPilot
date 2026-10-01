@@ -39,7 +39,7 @@ Yapıyor: kaynak kılavuzdur, AbxPilot kendi tıbbi bilgisini eklemez. Eklediği
 - Tanı koymaz.
 - Bir modelle puanlamaz ya da sıralamaz; LLM ve makine öğrenmesi yoktur.
 - Yerel antibiyogramın ya da enfeksiyon hastalıkları konsültasyonunun yerini tutmaz.
-- Çocuk, gebelik ya da böbrek yetmezliği dozunu kılavuzun söylediğinin ötesinde vermez.
+- Çocuk ya da gebelik dozunu kılavuzun söylediğinin ötesinde vermez. Böbrek dozu yalnız ürün etiketinden (ABD FDA ya da AB/UK SmPC) gelir; etikette yoksa bunu söyler.
 
 ## Kurulum
 
@@ -51,8 +51,6 @@ Yapıyor: kaynak kılavuzdur, AbxPilot kendi tıbbi bilgisini eklemez. Eklediği
 Base henüz imzalı değil; Windows SmartScreen ilk açılışta uyarabilir: *Diğer bilgiler*'i, sonra *Yine de çalıştır*'ı seçin. Ayrıntı: [Teknesyum Base](https://github.com/Teknesyum/Teknesyum-Base).
 
 **Ya da elle kurun.**
-
-Program A0 aşamasında: kabuk çalışır, bilgi tabanı boştur.
 
 Windows (x64, yönetici yetkisi, .NET SDK ya da Git gerekmez): `Kur.bat` ile
 `kur-abxpilot.ps1` dosyalarını [son sürümden](https://github.com/Teknesyum/AbxPilot/releases)
@@ -81,11 +79,25 @@ Get-Content .\AbxPilot-win-x64-v0.1.0-onizleme.zip.sha256
 
 İki özet aynı olmalı (büyük/küçük harf fark etmez).
 
-Kaynaktan, .NET 10 SDK ile:
+**Kaynaktan.** Kodu `git clone https://github.com/Teknesyum/AbxPilot.git` ile alın (ya da
+GitHub'da *Code → Download ZIP*). Sonra depo klasöründe:
 
-```
-dotnet run --project src/AbxPilot.Desktop
-```
+1. .NET 10 SDK'yı bir kez kurun: `winget install Microsoft.DotNet.SDK.10` (ya da
+   [dot.net](https://dot.net)). Doğru sürümü `global.json` seçer.
+2. Hemen çalıştırın:
+
+   ```
+   dotnet run --project src/AbxPilot.Desktop
+   ```
+
+3. Ya da sürüm gibi kurun; Başlat menüsü ve masaüstü kısayoluyla,
+   `%LOCALAPPDATA%\Programs\AbxPilot` altına (yönetici hakkı gerekmez):
+
+   ```
+   powershell -ExecutionPolicy Bypass -File tools/publish-desktop.ps1
+   ```
+
+   `git pull` sonrası aynı satırı yeniden çalıştırmak günceller.
 
 ## Nasıl çalışır
 

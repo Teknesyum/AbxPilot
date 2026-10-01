@@ -394,6 +394,16 @@ public class EkranTests
         Assert.Contains(vm.SourceText, ozet);
         Assert.Contains(vm.Questions.First(kart => kart.Id == "setting").Label, ozet);
 
+        var sayfa = AbxPilot.UI.Printing.PrintSheet.Html(vm.SummaryParts(), "tr", new DateTime(2026, 10, 1, 9, 30, 0));
+        Assert.StartsWith("<!doctype html>", sayfa);
+        Assert.Contains(System.Net.WebUtility.HtmlEncode(vm.Headline), sayfa);
+        Assert.Contains("<li class=\"dose\">", sayfa);
+        Assert.Contains("2026-10-01 09:30", sayfa);
+        Assert.Contains("color:#000000", sayfa);
+        Assert.Contains("background:#ffffff", sayfa);
+        Assert.Contains("print()", sayfa);
+        File.WriteAllText(Path.Combine(Klasor, "yazdir-ozet.html"), sayfa);
+
         Bitir(vm.SelectSyndromeAsync("uti"));
         Assert.False(vm.HasHistory);
         Bitir(vm.SelectSyndromeAsync("cap"));
