@@ -53,6 +53,26 @@ doses:
   source: label-gentamicin
   section: US PI Dosage and Administration (Patients with Impaired Renal Function)
   note: Give after each dialysis session. Dose by serum levels.
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 5 mg/kg
+  amount_70kg: 350 mg
+  interval_hours: 24
+  source: swab-2020
+  section: Table 11; Recommendation 46
+  note: 'Stop within two days; immediate drug level monitoring. 6-7 mg/kg may be indicated in sepsis due to Enterobacterales.'
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: hemodialysis
+  amount: 1-1.7 mg/kg
+  amount_70kg: 70-119 mg
+  interval_hours: 48
+  source: label-gentamicin
+  section: US PI Dosage and Administration (Patients with Impaired Renal Function)
+  note: Give after each dialysis session. Dose by serum levels.
 adverse_effects:
 - nephrotoxicity
 - ototoxicity

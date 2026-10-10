@@ -1,0 +1,5 @@
+id,version,stage,action,role,sepsis_3gcr_risk,candidates,duration_days,rationale_key,source,section,source_date,reviewed_at,review_status,note
+low,1,base,select,,low,swab_cro_iv;swab_tzp_iv|swab_cxm_cip_iv|swab_cxm_gen_iv,7,sepsis.swab.low,swab-2020,Recommendation 16; Table 6,2020-01-01,,unreviewed,First choice a third-generation cephalosporin; the second tier lists the alternatives.
+increased,1,base,select,,increased,swab_cxm_gen_iv|swab_cro_gen_iv|swab_mem_iv|swab_ipm_iv;swab_cxm_cip_iv|swab_cro_cip_iv,7,sepsis.swab.increased,swab-2020,Recommendation 24; Table 7,2020-01-01,,unreviewed,Aminoglycoside combination and carbapenem are equivalent first options.
+high,1,base,select,,high,swab_mem_iv|swab_ipm_iv;swab_cxm_gen_iv|swab_cro_gen_iv,7,sepsis.swab.high,swab-2020,Recommendation 23; Table 7,2020-01-01,,unreviewed,
+single_agent,1,modifier,note,,*,,,sepsis.swab.no_double,swab-2020,Recommendation 12,2020-01-01,,unreviewed,

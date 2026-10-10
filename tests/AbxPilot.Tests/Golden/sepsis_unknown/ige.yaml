@@ -9,3 +9,15 @@ expect:
   status: selected
   first_choice: sep_ctx_amk_iv
   drugs: [cefotaxime, amikacin]
+expect_by_set:
+  dsg-s3-2025:
+    first_choice: s3_ctx_iv
+    drugs: [cefotaxime]
+    excluded: [s3_tzp_iv]
+  jsscg-2024:
+    first_choice: js_cro_iv
+    drugs: [ceftriaxone]
+  swab-2020:
+    first_choice: swab_cro_iv
+    drugs: [ceftriaxone]
+    excluded: [swab_tzp_iv]

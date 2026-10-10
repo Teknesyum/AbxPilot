@@ -223,3 +223,18 @@ Amaç: odak bilinmediğinde seçilecek altıncı sendrom; içinde servis ve yoğ
 - **Kullanılmayan:** Hacettepe kurumsal algoritması (doz yok, başka kuruma aynen taşınmaz, tarihi belirsiz).
 - **Uzman sorusu:** `docs/uzman-inceleme.md` satır 69-72.
 - **Test:** 15 altın vaka `tests/AbxPilot.Tests/Golden/sepsis_unknown/`.
+
+## Odağı Belirsiz Sepsis İçin Seçilebilir Kılavuz Setleri — 2026-10-10
+
+Amaç: Ayarlar'daki "Kılavuz seti" seçiminde bu sendrom için birden çok kılavuz; varsayılan DSÖ.
+
+- **Kaynak taraması:** birebir alıntılar `docs/danisma/2026-10-10-sepsis-ek-kilavuz-setleri.md`.
+- **Eklenen setler:** SWAB 2020 (Hollanda), J-SSCG 2024 (Japonya), DSG S3 2025 (Almanya).
+- **Eklenmeyen:** Sanford ve UpToDate (ücretli, telifli; içerik gömülmez). PEG 2018 (süresi dolmuş),
+  SWAB 2026 (taslak), Hacettepe (kurumsal, doz yok).
+- **Varsayılan:** set kaydına `preferred: true` alanı. Sıra: kayıtlı seçim, bölgenin ulusal seti,
+  `preferred` uluslararası set, ilk uluslararası set.
+- **Yeni sorular:** edinim yeri (toplum, sağlık bakımı), 3. kuşak sefalosporin direnç riski (düşük, artmış, yüksek).
+- **Ödünç değerler:** DSG S3 doz ve süre vermez, J-SSCG vankomisin dozu vermez; alınan değerler
+  kendi kaynağıyla kayıtlı ve `docs/uzman-inceleme.md` satır 73-78'de soruldu.
+- **Test:** 23 altın vaka, her biri dört sette; ekran testi varsayılan seti ve set değişimini doğrular.

@@ -160,6 +160,77 @@ doses:
   source: label-piperacillin-tazobactam
   section: 'US PI 2.4, Table 1'
   note: 'Label row hemodialysis. Plus 0.75 g after each dialysis session on dialysis days.'
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 4.5 g
+  interval_hours: 6
+  source: swab-2020
+  section: Table 11
+  note: '4.5 g three times daily when Pseudomonas is not involved; prolonged or continuous infusion strongly recommended.'
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_15_29
+  amount: 3.375 g
+  interval_hours: 6
+  source: label-piperacillin-tazobactam
+  section: 'US PI 2.4, Table 1'
+  note: 'Label row CrCl 20-40 mL/min. Nosocomial pneumonia column (4.5 g q6h regimen).'
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_lt15
+  amount: 2.25 g
+  interval_hours: 6
+  source: label-piperacillin-tazobactam
+  section: 'US PI 2.4, Table 1'
+  note: 'Label row CrCl <20 mL/min. Nosocomial pneumonia column (4.5 g q6h regimen).'
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: hemodialysis
+  amount: 2.25 g
+  interval_hours: 8
+  source: label-piperacillin-tazobactam
+  section: 'US PI 2.4, Table 1'
+  note: 'Label row hemodialysis. Plus 0.75 g after each dialysis session on dialysis days. Nosocomial pneumonia column (4.5 g q6h regimen).'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 4.5 g
+  interval_hours: 8
+  source: jsscg-2024
+  section: Additional file 1 (Unknown or systemic source)
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_15_29
+  amount: 2.25 g
+  interval_hours: 6
+  source: label-piperacillin-tazobactam
+  section: 'US PI 2.4, Table 1'
+  note: 'Label row CrCl 20-40 mL/min. No 4.5 g q8h regimen in the label; row of the 3.375 g q6h regimen (same 13.5 g daily).'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_lt15
+  amount: 2.25 g
+  interval_hours: 8
+  source: label-piperacillin-tazobactam
+  section: 'US PI 2.4, Table 1'
+  note: 'Label row CrCl <20 mL/min. No 4.5 g q8h regimen in the label; row of the 3.375 g q6h regimen (same 13.5 g daily).'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: hemodialysis
+  amount: 2.25 g
+  interval_hours: 12
+  source: label-piperacillin-tazobactam
+  section: 'US PI 2.4, Table 1'
+  note: 'Label row hemodialysis. Plus 0.75 g after each dialysis session on dialysis days. No 4.5 g q8h regimen in the label; row of the 3.375 g q6h regimen (same 13.5 g daily).'
 adverse_effects:
 - hypersensitivity
 - c_difficile

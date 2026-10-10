@@ -32,6 +32,9 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `eau-uti-2026` | EAU Ürolojik Enfeksiyonlar kılavuzu 2026 | Yıl |
 | `who-aware-book-2022` | DSÖ AWaRe antibiyotik kitabı, 2022 (Bölüm 24, erişkinde sepsis) | Gün |
 | `ssc-2021` | Surviving Sepsis Campaign 2021 (ilaç adı vermez; zamanlama ve kapsama ilkesi) | Gün |
+| `swab-2020` | SWAB (Hollanda) erişkinde sepsis ampirik tedavi kılavuzu, 2020 | Yıl |
+| `jsscg-2024` | Japonya sepsis ve septik şok kılavuzu 2024 (J Intensive Care 2025;13:15, Ek dosya 1) | Ay |
+| `dsg-s3-2025` | Alman Sepsis Derneği S3 kılavuzu, sürüm 4.0, 2025 (AWMF 079-001) | Gün |
 | `sis-idsa-2010` | Solomkin JS ve ark. SIS/IDSA komplike intraabdominal enfeksiyon, CID 2010;50(2):133-164 | Gün |
 | `sis-2017` | Mazuski JE ve ark. SIS intraabdominal enfeksiyon kılavuzu revizyonu, Surg Infect 2017;18(1):1-76 | Ay |
 | `sis-2024` | SIS intraabdominal enfeksiyon kılavuzu 2024 güncellemesi; okunmadı, yalnız kayıt | Ay |
@@ -72,6 +75,9 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `guidelines/idsa-2014`, `nice-ng141-2019` / `ssti.csv` | 19 satır | `idsa-ssti-2014` Şekil 1, Tablo 1-2; `nice-ng141-2019` Tablo 1 |
 | `guidelines/idsa-2011-2025`, `eau-2026` / `uti.csv` | 22 satır | `idsa-uti-2011` Tablo 4, `idsa-cuti-2025`; `eau-uti-2026` Bölüm 3.4-3.7 |
 | `guidelines/who-aware-2022` / `sepsis_unknown.csv` | 8 satır | `who-aware-book-2022` Tablo 24.7; notlar `ssc-2021` Ö12, 14, 17, 19 |
+| `guidelines/swab-2020` / `sepsis_unknown.csv` | 4 satır | `swab-2020` Öneri 12, 16, 23, 24; Tablo 6, 7, 11 |
+| `guidelines/jsscg-2024` / `sepsis_unknown.csv` | 3 satır | `jsscg-2024` Ek dosya 1; CQ2-4, CQ2-12 |
+| `guidelines/dsg-s3-2025` / `sepsis_unknown.csv` | 8 satır | `dsg-s3-2025` Tablo 2, "Unbekannt" satırı, dipnot 1, 2, 7, 10 |
 | `guidelines/ekmud-2016`, `sis-2017`, `sis-idsa-2010` / `iai.csv` | 30 satır | `ekmud-iai-2016`, `sis-2017`, `sis-idsa-2010` |
 | `spectrum/{ssti,uti,iai}.csv` | 22×6, 19×6, 21×8 | `eucast-expected-2023` ile uyumlu; diğer hücreler `abxpilot-draft` |
 | `regions/TR.yaml` v3 | TMP-SMX, FQ, GSBL eşik bayrakları; yeni ruhsat satırları | `cinislioglu-2024`, `who-caesar`; ruhsat `titck-2026` |

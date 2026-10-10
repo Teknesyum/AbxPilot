@@ -201,6 +201,51 @@ doses:
   source: label-cefepime
   section: 'US PI 2.3, Table 2'
   note: 'Label row Hemodialysis: 1 g on day 1, then 500 mg every 24 hours. Give after each dialysis session.'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 2 g
+  interval_hours: 8
+  source: jsscg-2024
+  section: Additional file 1 (Unknown or systemic source)
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_30_59
+  amount: 2 g
+  interval_hours: 12
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl 30-60 mL/min for the 2 g q8h regimen.'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_15_29
+  amount: 2 g
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl 11-29 mL/min for the 2 g q8h regimen.'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_lt15
+  amount: 1 g
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row CrCl <11 mL/min for the 2 g q8h regimen.'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: hemodialysis
+  amount: 500 mg
+  loading: 1 g on day 1
+  interval_hours: 24
+  source: label-cefepime
+  section: 'US PI 2.3, Table 2'
+  note: 'Label row Hemodialysis: 1 g on day 1, then 500 mg every 24 hours. Give after each dialysis session.'
 adverse_effects:
 - hypersensitivity
 - neurotoxicity

@@ -157,6 +157,77 @@ doses:
   source: label-meropenem
   section: US PI 2.2, Table 1
   note: 'Label row: CrCl <10 mL/min (one-half recommended dose). CrCl 10-14 falls in the 500 mg every 12 h row.'
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 1 g
+  interval_hours: 8
+  source: swab-2020
+  section: Table 11
+  note: 'Higher doses optional up to 6 g per 24 h.'
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_30_59
+  amount: 1 g
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 26-50 mL/min. CrCl >50 mL/min keeps 1 g every 8 h.'
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 10-25 mL/min (one-half recommended dose).'
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl <10 mL/min (one-half recommended dose). CrCl 10-14 falls in the 500 mg every 12 h row.'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 1 g
+  interval_hours: 8
+  source: jsscg-2024
+  section: Additional file 1 (Unknown or systemic source)
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_30_59
+  amount: 1 g
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 26-50 mL/min. CrCl >50 mL/min keeps 1 g every 8 h.'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_15_29
+  amount: 500 mg
+  interval_hours: 12
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl 10-25 mL/min (one-half recommended dose).'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_lt15
+  amount: 500 mg
+  interval_hours: 24
+  source: label-meropenem
+  section: US PI 2.2, Table 1
+  note: 'Label row: CrCl <10 mL/min (one-half recommended dose). CrCl 10-14 falls in the 500 mg every 12 h row.'
 adverse_effects:
 - hypersensitivity
 - c_difficile

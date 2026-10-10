@@ -1,0 +1,8 @@
+id: swab-2020
+version: 1
+source: swab-2020
+section: Recommendations 1, 2, 16, 23, 24, 42, 46; Tables 6, 7, 11
+source_date: '2020-01-01'
+reviewed_at: null
+review_status: unreviewed
+note: 'Branches by the risk of third-generation cephalosporin resistant Enterobacterales, not by shock or care location. No MRSA branch: the source relies on the low Dutch MRSA rate. Standard-dose cefotaxime is left out because Table 11 lists no dose for it.'

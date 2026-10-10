@@ -1,0 +1,27 @@
+id: sep_healthcare_pregnant
+title: "Sepsis of unknown source: healthcare pregnant"
+source: jsscg-2024
+section: 'Additional file 1'
+region: tr
+answers:
+  sepsis_acquisition: healthcare
+  pregnancy: 'yes'
+expect:
+  status: no_candidate
+  excluded: [sep_cro_amk_iv, sep_cro_gen_iv, sep_ctx_amk_iv, sep_ctx_gen_iv]
+expect_by_set:
+  dsg-s3-2025:
+    status: selected
+    first_choice: s3_tzp_iv
+    drugs: [piperacillin_tazobactam]
+    excluded: []
+  jsscg-2024:
+    status: selected
+    first_choice: js_fep_van_iv
+    drugs: [cefepime, vancomycin]
+    excluded: []
+  swab-2020:
+    status: selected
+    first_choice: swab_cro_iv
+    drugs: [ceftriaxone]
+    excluded: [swab_cxm_cip_iv, swab_cxm_gen_iv]

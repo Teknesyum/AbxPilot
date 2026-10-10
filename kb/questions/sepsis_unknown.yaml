@@ -48,3 +48,29 @@
   - 'yes'
   - 'no'
   default: 'no'
+- id: sepsis_acquisition
+  version: 1
+  source: jsscg-2024
+  section: Additional file 1 (community-acquired, healthcare-associated); DSG S3 2025 Tabelle 2 (ambulant, nosokomial)
+  source_date: '2025-03-14'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - community
+  - healthcare
+  default: community
+- id: sepsis_3gcr_risk
+  version: 1
+  source: swab-2020
+  section: Recommendations 1, 2; Table 7
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'High: infection or colonisation with third-generation cephalosporin resistant Enterobacterales in the prior year. Increased: individual risk without prior culture (local prevalence, healthcare-associated onset, broad-spectrum antibiotics or hospitalisation abroad in the prior 2 months, travel to a highly endemic country in the prior 3 months).'
+  type: single
+  options:
+  - low
+  - increased
+  - high
+  default: low

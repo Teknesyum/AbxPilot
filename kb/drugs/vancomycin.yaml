@@ -56,6 +56,16 @@ doses:
   source: sis-idsa-2010
   section: Table 6
   note: Table 6 gives every 8-12 h.
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 15-20 mg/kg
+  amount_70kg: 1050-1400 mg
+  interval_hours: 12
+  source: swab-2020
+  section: Table 11
+  note: 'Two to three times daily after a 25-30 mg/kg loading dose; dose by drug levels.'
 adverse_effects:
 - nephrotoxicity
 - infusion_reaction

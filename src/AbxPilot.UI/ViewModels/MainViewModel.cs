@@ -653,6 +653,7 @@ public sealed partial class MainViewModel : ObservableObject
             .Select(id => _knowledge!.GuidelineSets.First(set => set.Id == id))
             .ToArray();
         var chosen = sets.FirstOrDefault(set => string.Equals(set.Region, _region, StringComparison.OrdinalIgnoreCase))
+                     ?? sets.FirstOrDefault(set => set.Region is null && set.Preferred == true)
                      ?? sets.FirstOrDefault(set => set.Region is null)
                      ?? sets.FirstOrDefault();
         return chosen?.Id ?? "";

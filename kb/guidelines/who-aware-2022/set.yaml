@@ -6,3 +6,4 @@ source_date: '2022-12-09'
 reviewed_at: null
 review_status: unreviewed
 note: Regimen from the WHO AWaRe book; timing and coverage notes from Surviving Sepsis Campaign 2021, which names no drugs.
+preferred: true

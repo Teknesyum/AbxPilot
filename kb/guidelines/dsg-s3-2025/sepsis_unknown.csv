@@ -1,0 +1,9 @@
+id,version,stage,action,role,sepsis_acquisition,septic_shock,risk_mrsa,risk_esbl,candidates,duration_days,rationale_key,source,section,source_date,reviewed_at,review_status,note
+com_sepsis,1,base,select,,community,no,*,*,s3_tzp_iv|s3_ctx_iv,7,sepsis.s3.com_sepsis,dsg-s3-2025,Tabelle 2 row Unbekannt (ambulant; Sepsis),2025-04-30,,unreviewed,The table gives no duration; 7 days is taken from the WHO AWaRe book 2022.
+com_shock,1,base,select,,community,yes,*,*,s3_tzp_iv|s3_fep_iv|s3_mem_iv,7,sepsis.s3.com_shock,dsg-s3-2025,Tabelle 2 row Unbekannt (ambulant; septischer Schock),2025-04-30,,unreviewed,The table gives no duration; 7 days is taken from the WHO AWaRe book 2022.
+nos_sepsis,1,base,select,,healthcare,no,*,*,s3_tzp_iv,7,sepsis.s3.nos_sepsis,dsg-s3-2025,Tabelle 2 row Unbekannt (nosokomial; Sepsis),2025-04-30,,unreviewed,The table gives no duration; 7 days is taken from the WHO AWaRe book 2022.
+nos_shock,1,base,select,,healthcare,yes,*,*,s3_tzp_lzd_iv|s3_fep_lzd_iv|s3_mem_lzd_iv,7,sepsis.s3.nos_shock,dsg-s3-2025,Tabelle 2 row Unbekannt (nosokomial; septischer Schock),2025-04-30,,unreviewed,Linezolid is part of the row; the daptomycin option is not modelled. The table gives no duration; 7 days is taken from the WHO AWaRe book 2022.
+mrsa_com,1,modifier,add,,community,*,yes,*,s3_add_lzd_iv|s3_add_van_iv,,sepsis.s3.mrsa,dsg-s3-2025,Tabelle 2 footnotes 2 and 7,2025-04-30,,unreviewed,
+mrsa_nos,1,modifier,add,,healthcare,no,yes,*,s3_add_lzd_iv|s3_add_van_iv,,sepsis.s3.mrsa,dsg-s3-2025,Tabelle 2 footnotes 2 and 7,2025-04-30,,unreviewed,
+mrgn,1,modifier,add,,*,yes,*,yes,s3_add_cip_iv,,sepsis.s3.mrgn,dsg-s3-2025,Tabelle 2 footnotes 1 and 10,2025-04-30,,unreviewed,Levofloxacin and fosfomycin options are not modelled.
+consensus,1,modifier,note,,*,*,*,*,,,sepsis.s3.consensus,dsg-s3-2025,Text below Tabelle 2,2025-04-30,,unreviewed,

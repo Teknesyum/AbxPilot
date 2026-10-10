@@ -1,0 +1,8 @@
+id: dsg-s3-2025
+version: 1
+source: dsg-s3-2025
+section: Tabelle 2, row Unbekannt; footnotes 1, 2, 7, 10
+source_date: '2025-04-30'
+reviewed_at: null
+review_status: unreviewed
+note: 'Expert consensus table without doses or duration; the 7 day duration is taken from the WHO AWaRe book 2022. Doses come from other records (SWAB 2020 Table 11, J-SSCG 2024, WHO AWaRe book 2022, IDSA 2014 for linezolid) and each dose carries its own source. Daptomycin, fosfomycin and levofloxacin options are not modelled.'

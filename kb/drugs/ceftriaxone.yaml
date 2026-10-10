@@ -87,6 +87,23 @@ doses:
   interval_hours: 24
   source: who-aware-book-2022
   section: Table 24.7
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 2 g
+  interval_hours: 24
+  source: swab-2020
+  section: Table 11
+  note: '2 g twice daily when S. aureus is involved.'
+- id: sepsis_jsscg_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 2 g
+  interval_hours: 24
+  source: jsscg-2024
+  section: Additional file 1 (Unknown or systemic source)
 adverse_effects:
 - hypersensitivity
 - biliary_sludge

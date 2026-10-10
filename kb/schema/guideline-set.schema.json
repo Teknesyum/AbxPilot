@@ -17,6 +17,10 @@
     "region": {
       "$ref": "common.schema.json#/$defs/id",
       "description": "Region whose national set this is. With that region selected, the app offers it first for the syndromes it covers; a set without a region is international."
+    },
+    "preferred": {
+      "type": "boolean",
+      "description": "Default among the international sets of a syndrome when no national set matches the region."
     }
   },
   "unevaluatedProperties": false

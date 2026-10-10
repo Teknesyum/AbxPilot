@@ -100,6 +100,7 @@ public sealed record GuidelineSet : KbRecord
 {
     public string? Extends { get; init; }
     public string? Region { get; init; }
+    public bool? Preferred { get; init; }
 }
 
 public sealed record GuidelineRow : KbRecord

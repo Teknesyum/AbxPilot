@@ -9,7 +9,7 @@ Avalonia shared UI: App, MainWindow, MainView, view models, theme, title bar.
 - Disclaimer: title bar middle on desktop (`FitNotice`), inline above the card when compact or without MainWindow.
 - `Choreography/`: token access (`Tokens`), dose counter, drug-name nudge, converters.
 - `Settings/`: local settings file (guideline set per syndrome, language, region, score toggle; no patient data).
-- Guideline set: only sets with rows for the syndrome; saved choice, else the region's national set, else the first international one.
+- Guideline set: only sets with rows for the syndrome; saved choice, else the region's national set, else the international set marked `preferred`, else the first international one.
 - Engine runs off the UI thread (`Task.Run`); never call it synchronously from a view.
 - Title bar: template `teknesyum-ui/ustcubuk` (`scaffold.js ustcubuk`, linked as `Kabuk/`), slots `Orta` (notice) and `Ek` (version button, languages); `UygulamaOlcegi` scales the window (Ctrl +/-/0). Window opens maximized.
 - Updates: `teknesyum-ui/durum/SurumDugmesi.cs` shows the app version; `Update/GitHubUpdater` checks GitHub releases and runs the release's `kur-abxpilot.ps1`. Setting `ConfirmUpdate` asks first. Data version sits in settings.

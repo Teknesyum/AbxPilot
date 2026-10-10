@@ -58,3 +58,287 @@
     dose: sepsis_iv
     role: aminoglycoside
   duration_days: 7
+- id: swab_cro_iv
+  version: 1
+  source: swab-2020
+  section: Table 6 (unknown source); Table 11
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: sepsis_swab_iv
+    role: beta_lactam
+  duration_days: 7
+- id: swab_tzp_iv
+  version: 1
+  source: swab-2020
+  section: Table 6 (unknown source); Table 11
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: sepsis_swab_iv
+    role: beta_lactam
+  duration_days: 7
+- id: swab_cxm_cip_iv
+  version: 1
+  source: swab-2020
+  section: Table 6 (unknown source); Table 11; Table 7
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefuroxime
+    dose: sepsis_swab_iv
+    role: beta_lactam
+  - drug: ciprofloxacin
+    dose: sepsis_swab_iv
+    role: fluoroquinolone
+  duration_days: 7
+- id: swab_cxm_gen_iv
+  version: 1
+  source: swab-2020
+  section: Table 6 (unknown source); Table 11; Table 7
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefuroxime
+    dose: sepsis_swab_iv
+    role: beta_lactam
+  - drug: gentamicin
+    dose: sepsis_swab_iv
+    role: aminoglycoside
+  duration_days: 7
+- id: swab_cro_gen_iv
+  version: 1
+  source: swab-2020
+  section: Table 7; Table 11
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: sepsis_swab_iv
+    role: beta_lactam
+  - drug: gentamicin
+    dose: sepsis_swab_iv
+    role: aminoglycoside
+  duration_days: 7
+- id: swab_cro_cip_iv
+  version: 1
+  source: swab-2020
+  section: Table 7; Table 11
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: sepsis_swab_iv
+    role: beta_lactam
+  - drug: ciprofloxacin
+    dose: sepsis_swab_iv
+    role: fluoroquinolone
+  duration_days: 7
+- id: swab_mem_iv
+  version: 1
+  source: swab-2020
+  section: Table 7; Table 11
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: sepsis_swab_iv
+    role: beta_lactam
+  duration_days: 7
+- id: swab_ipm_iv
+  version: 1
+  source: swab-2020
+  section: Table 7; Table 11
+  source_date: '2020-01-01'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: imipenem_cilastatin
+    dose: sepsis_swab_iv
+    role: beta_lactam
+  duration_days: 7
+- id: js_cro_iv
+  version: 1
+  source: jsscg-2024
+  section: Additional file 1 (Unknown or systemic source)
+  source_date: '2025-03-14'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: sepsis_jsscg_iv
+    role: beta_lactam
+  duration_days: 7
+- id: js_fep_van_iv
+  version: 1
+  source: jsscg-2024
+  section: Additional file 1 (Unknown or systemic source)
+  source_date: '2025-03-14'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: sepsis_jsscg_iv
+    role: beta_lactam
+  - drug: vancomycin
+    dose: sepsis_swab_iv
+    role: anti_mrsa
+  duration_days: 7
+- id: js_tzp_van_iv
+  version: 1
+  source: jsscg-2024
+  section: Additional file 1 (Unknown or systemic source)
+  source_date: '2025-03-14'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: sepsis_jsscg_iv
+    role: beta_lactam
+  - drug: vancomycin
+    dose: sepsis_swab_iv
+    role: anti_mrsa
+  duration_days: 7
+- id: js_mem_van_iv
+  version: 1
+  source: jsscg-2024
+  section: Additional file 1 (Unknown or systemic source)
+  source_date: '2025-03-14'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: sepsis_jsscg_iv
+    role: beta_lactam
+  - drug: vancomycin
+    dose: sepsis_swab_iv
+    role: anti_mrsa
+  duration_days: 7
+- id: s3_tzp_iv
+  version: 1
+  source: dsg-s3-2025
+  section: Tabelle 2, row Unbekannt
+  source_date: '2025-04-30'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: sepsis_swab_iv
+    role: beta_lactam
+- id: s3_ctx_iv
+  version: 1
+  source: dsg-s3-2025
+  section: Tabelle 2, row Unbekannt
+  source_date: '2025-04-30'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefotaxime
+    dose: sepsis_iv
+    role: beta_lactam
+- id: s3_fep_iv
+  version: 1
+  source: dsg-s3-2025
+  section: Tabelle 2, row Unbekannt
+  source_date: '2025-04-30'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: sepsis_jsscg_iv
+    role: beta_lactam
+- id: s3_mem_iv
+  version: 1
+  source: dsg-s3-2025
+  section: Tabelle 2, row Unbekannt
+  source_date: '2025-04-30'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: sepsis_swab_iv
+    role: beta_lactam
+- id: s3_tzp_lzd_iv
+  version: 1
+  source: dsg-s3-2025
+  section: Tabelle 2, row Unbekannt
+  source_date: '2025-04-30'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: piperacillin_tazobactam
+    dose: sepsis_swab_iv
+    role: beta_lactam
+  - drug: linezolid
+    dose: sepsis_iv
+    role: anti_mrsa
+- id: s3_fep_lzd_iv
+  version: 1
+  source: dsg-s3-2025
+  section: Tabelle 2, row Unbekannt
+  source_date: '2025-04-30'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefepime
+    dose: sepsis_jsscg_iv
+    role: beta_lactam
+  - drug: linezolid
+    dose: sepsis_iv
+    role: anti_mrsa
+- id: s3_mem_lzd_iv
+  version: 1
+  source: dsg-s3-2025
+  section: Tabelle 2, row Unbekannt
+  source_date: '2025-04-30'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: meropenem
+    dose: sepsis_swab_iv
+    role: beta_lactam
+  - drug: linezolid
+    dose: sepsis_iv
+    role: anti_mrsa
+- id: s3_add_lzd_iv
+  version: 1
+  source: dsg-s3-2025
+  section: Tabelle 2, row Unbekannt; footnote 2
+  source_date: '2025-04-30'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: linezolid
+    dose: sepsis_iv
+    role: anti_mrsa
+- id: s3_add_van_iv
+  version: 1
+  source: dsg-s3-2025
+  section: Tabelle 2, row Unbekannt; footnote 7
+  source_date: '2025-04-30'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: vancomycin
+    dose: sepsis_swab_iv
+    role: anti_mrsa
+- id: s3_add_cip_iv
+  version: 1
+  source: dsg-s3-2025
+  section: Tabelle 2, row Unbekannt; footnote 1
+  source_date: '2025-04-30'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ciprofloxacin
+    dose: sepsis_swab_iv
+    role: fluoroquinolone

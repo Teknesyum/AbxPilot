@@ -1,0 +1,4 @@
+id,version,stage,action,role,sepsis_acquisition,candidates,duration_days,rationale_key,source,section,source_date,reviewed_at,review_status,note
+community,1,base,select,,community,js_cro_iv,7,sepsis.jsscg.community,jsscg-2024,Additional file 1 (Unknown or systemic source); CQ2-12,2025-03-14,,unreviewed,
+healthcare,1,base,select,,healthcare,js_fep_van_iv|js_tzp_van_iv|js_mem_van_iv,7,sepsis.jsscg.healthcare,jsscg-2024,Additional file 1 (Unknown or systemic source); CQ2-12,2025-03-14,,unreviewed,Vancomycin is part of the row without a separate MRSA risk question.
+carbapenem,1,modifier,note,,healthcare,,,sepsis.jsscg.carbapenem,jsscg-2024,CQ2-4,2025-03-14,,unreviewed,

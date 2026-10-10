@@ -212,6 +212,26 @@ public class EkranTests
         pencere.GetVisualDescendants().OfType<Border>().Where(b => b.Classes.Contains("qcard") && b.IsEffectivelyVisible).ToList();
 
     [AvaloniaFact]
+    public void SepsisOpensOnThePreferredSetAndOffersTheOthers()
+    {
+        var (_, vm) = Ac(1280, 800);
+        Bitir(vm.SelectSyndromeAsync("sepsis_unknown"));
+        Assert.Equal("who-aware-2022", vm.GuidelineSet);
+        Assert.Equal(
+            ["dsg-s3-2025", "jsscg-2024", "swab-2020", "who-aware-2022"],
+            vm.GuidelineSets.Select(item => item.Code).Order(StringComparer.Ordinal));
+
+        foreach (var set in new[] { "swab-2020", "jsscg-2024", "dsg-s3-2025" })
+        {
+            vm.SelectGuidelineSetCommand.Execute(vm.GuidelineSets.First(item => item.Code == set));
+            Bitir(vm.Idle);
+            Assert.Equal(set, vm.GuidelineSet);
+            Assert.True(vm.IsReady, vm.State.ToString());
+            Assert.True(vm.HasFirstChoice);
+        }
+    }
+
+    [AvaloniaFact]
     public void CapturesTheNewSyndromes()
     {
         var olcumler = Olcumler();

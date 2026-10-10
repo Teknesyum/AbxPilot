@@ -1,5 +1,5 @@
 id: sepsis_unknown
-version: 1
+version: 2
 source: who-aware-book-2022
 section: 'Chapter 24, Sepsis in adults (including septic shock); Table 24.7, row Clinical sepsis of unknown origin'
 source_date: '2022-12-09'
@@ -22,6 +22,8 @@ questions:
 - septic_shock
 - sepsis_mrsa_risk
 - sepsis_mdr_risk
+- sepsis_acquisition
+- sepsis_3gcr_risk
 - pen_allergy
 - pregnancy
 - renal

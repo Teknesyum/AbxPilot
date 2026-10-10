@@ -1,0 +1,22 @@
+id: sep_resist_high_renal
+title: "Sepsis of unknown source: resist high renal"
+source: swab-2020
+section: 'Recommendation 23; Table 7'
+region: tr
+answers:
+  sepsis_3gcr_risk: high
+  renal: crcl_15_29
+expect:
+  status: selected
+  first_choice: sep_ctx_amk_iv
+  drugs: [cefotaxime, amikacin]
+expect_by_set:
+  dsg-s3-2025:
+    first_choice: s3_tzp_iv
+    drugs: [piperacillin_tazobactam]
+  jsscg-2024:
+    first_choice: js_cro_iv
+    drugs: [ceftriaxone]
+  swab-2020:
+    first_choice: swab_mem_iv
+    drugs: [meropenem]

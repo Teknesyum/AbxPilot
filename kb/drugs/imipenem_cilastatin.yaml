@@ -159,6 +159,15 @@ doses:
   source: label-imipenem-cilastatin
   section: US PI 2.4
   note: Give after each dialysis session; intervals timed from the end of the session. Label uses the CrCl 15 to <30 mL/min row. Use only when benefit outweighs seizure risk.
+- id: sepsis_swab_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 1 g
+  interval_hours: 6
+  source: swab-2020
+  section: Table 11
+  note: '500 mg four times daily optional when Pseudomonas is not involved.'
 adverse_effects:
 - hypersensitivity
 - c_difficile
