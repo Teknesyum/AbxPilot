@@ -315,33 +315,11 @@ public partial class MainView : UserControl
         }
         if (_vm is { ChangeText.Length: > 0 }) Blink(ChangeTag);
         else Hide(ChangeTag);
-        if (_vm is { NoEffectText.Length: > 0 } && e.Trigger is { } trigger && Card(trigger) is { } row) Beside(row);
-        else Hide(NoEffectHint);
         if (!Tokens.Animate || diff is null || diff.IsEmpty) return;
         foreach (var id in diff.QuestionsShown)
             if (Card(id) is { } shown) Enter(shown, 0, -Resource<double>("EntryOffset"));
         if (diff.DurationChanged) Pulse(DurationGlow);
         if (diff.FirstChoiceChanged || diff.StatusChanged) Pulse(CardGlow);
-    }
-
-    private void Beside(Control row)
-    {
-        if (row.GetVisualDescendants().OfType<QuestionRow>().FirstOrDefault() is not { Children.Count: > 1 } line) return;
-        var label = line.Children[0];
-        var control = line.Children[1];
-        if (row.TranslatePoint(default, HintLayer) is not { } origin) return;
-        if (label.TranslatePoint(default, HintLayer) is not { } labelAt) return;
-        if (control.TranslatePoint(default, HintLayer) is not { } controlAt) return;
-        NoEffectHint.Measure(Size.Infinity);
-        var size = NoEffectHint.DesiredSize;
-        var gap = Resource<double>("Space1");
-        var edge = line.IsStacked ? origin.X + row.Bounds.Width : controlAt.X - gap;
-        var left = Math.Clamp(edge - size.Width, Math.Max(0, labelAt.X), Math.Max(0, HintLayer.Bounds.Width - size.Width));
-        var middle = line.IsStacked ? labelAt.Y + label.Bounds.Height / 2 : origin.Y + row.Bounds.Height / 2;
-        var top = Math.Clamp(middle - size.Height / 2, 0, Math.Max(0, HintLayer.Bounds.Height - size.Height));
-        Canvas.SetLeft(NoEffectHint, left);
-        Canvas.SetTop(NoEffectHint, top);
-        Blink(NoEffectHint);
     }
 
     private void Blink(Control target)

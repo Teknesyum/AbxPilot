@@ -72,7 +72,6 @@
   "change.duration": "{question} → duration changed",
   "change.alternatives": "{question} → alternatives changed",
   "change.spectrum": "{question} → spectrum changed",
-  "change.noEffect": "Did not change the recommendation here",
   "settings.title": "Settings",
   "settings.guideline": "Guideline set",
   "settings.language": "Language",

@@ -249,9 +249,6 @@ public sealed partial class MainViewModel : ObservableObject
     private string changeText = "";
 
     [ObservableProperty]
-    private string noEffectText = "";
-
-    [ObservableProperty]
     private bool isComposite;
 
     public bool IsLoading => State == ScreenState.Loading;
@@ -746,7 +743,6 @@ public sealed partial class MainViewModel : ObservableObject
         if (diff is null || card is null)
         {
             ChangeText = "";
-            NoEffectText = "";
             return;
         }
 
@@ -759,7 +755,6 @@ public sealed partial class MainViewModel : ObservableObject
             : diff.SpectrumChanges.Count > 0 ? "change.spectrum"
             : null;
         ChangeText = key is null ? "" : Localizer.Format(key, ("question", card.Label));
-        NoEffectText = key is null ? Localizer.Get("change.noEffect") : "";
         History.Insert(0, new TextRow(
             Localizer.Format("history.answer", ("question", card.Label), ("answer", AnswerText(card))),
             key is null ? Localizer.Get("history.noEffect") : ChangeText));

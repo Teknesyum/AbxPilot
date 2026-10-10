@@ -72,13 +72,8 @@ namespace AbxPilot.UI.Kabuk
             kancali = true;
             Control.LoadedEvent.AddClassHandler<PopupRoot>((kok, _) =>
             {
-                if (kok.Content is LayoutTransformControl || kok.Content is not Control ic) return;
-                var sarmal = new LayoutTransformControl();
-                kok.Content = null;
-                sarmal.Child = ic;
-                kok.Content = sarmal;
-                sarmal.LayoutTransform = new ScaleTransform(deger, deger);
-                Action<double> uygula = d => sarmal.LayoutTransform = new ScaleTransform(d, d);
+                kok.Transform = new ScaleTransform(deger, deger);
+                Action<double> uygula = d => kok.Transform = new ScaleTransform(d, d);
                 Degisti += uygula;
                 kok.Closed += (_, _) => Degisti -= uygula;
             });

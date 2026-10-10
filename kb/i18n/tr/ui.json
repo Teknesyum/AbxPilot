@@ -72,7 +72,6 @@
   "change.duration": "{question} → süre değişti",
   "change.alternatives": "{question} → alternatifler değişti",
   "change.spectrum": "{question} → spektrum değişti",
-  "change.noEffect": "Bu durumda öneriyi değiştirmedi",
   "settings.title": "Ayarlar",
   "settings.guideline": "Kılavuz seti",
   "settings.language": "Dil",

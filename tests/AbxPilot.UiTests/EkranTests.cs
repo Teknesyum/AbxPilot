@@ -170,7 +170,7 @@ public class EkranTests
         var etkisiz = vm.Questions.First(item => item.Id == "severe_minor");
         vm.ChooseCommand.Execute(etkisiz.Options.First(option => option.Code != "lt3"));
         Bitir(vm.Idle);
-        Assert.True(vm.NoEffectText.Length > 0 != vm.ChangeText.Length > 0);
+        Assert.DoesNotContain(pencere.GetVisualDescendants().OfType<Control>(), item => item.Name == "NoEffectHint");
 
         foreach (var id in new[] { "severe_vasopressor", "prior_mrsa" })
         {

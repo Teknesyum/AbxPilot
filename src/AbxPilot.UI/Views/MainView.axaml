@@ -716,11 +716,5 @@
 
       </Panel>
 
-    <Canvas x:Name="HintLayer" IsHitTestVisible="False">
-      <Border x:Name="NoEffectHint" Theme="{StaticResource Badge}" Background="{StaticResource Surface}" Opacity="0">
-        <TextBlock Theme="{StaticResource Hint}" Text="{Binding NoEffectText}"/>
-      </Border>
-    </Canvas>
-
   </Panel>
 </UserControl>
