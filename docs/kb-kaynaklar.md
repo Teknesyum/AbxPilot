@@ -30,6 +30,8 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `idsa-uti-2011` | Gupta K ve ark. IDSA/ESCMID akut komplike olmayan sistit ve piyelonefrit, CID 2011;52(5):e103-e120 | Ay |
 | `idsa-cuti-2025` | IDSA komplike idrar yolu enfeksiyonu kılavuzu, 2025 | Gün |
 | `eau-uti-2026` | EAU Ürolojik Enfeksiyonlar kılavuzu 2026 | Yıl |
+| `who-aware-book-2022` | DSÖ AWaRe antibiyotik kitabı, 2022 (Bölüm 24, erişkinde sepsis) | Gün |
+| `ssc-2021` | Surviving Sepsis Campaign 2021 (ilaç adı vermez; zamanlama ve kapsama ilkesi) | Gün |
 | `sis-idsa-2010` | Solomkin JS ve ark. SIS/IDSA komplike intraabdominal enfeksiyon, CID 2010;50(2):133-164 | Gün |
 | `sis-2017` | Mazuski JE ve ark. SIS intraabdominal enfeksiyon kılavuzu revizyonu, Surg Infect 2017;18(1):1-76 | Ay |
 | `sis-2024` | SIS intraabdominal enfeksiyon kılavuzu 2024 güncellemesi; okunmadı, yalnız kayıt | Ay |
@@ -69,6 +71,7 @@ Kaynaklar `kb/sources.yaml` içindedir.
 | `drugs/*.yaml` | A5/A6 ile 22 yeni ilaç (toplam 45); sendrom dozları `ssti_*`, `uti_*`, `iai_*` kimlikli | İlgili kılavuz tabloları; tabloda yoksa `product-labels` |
 | `guidelines/idsa-2014`, `nice-ng141-2019` / `ssti.csv` | 19 satır | `idsa-ssti-2014` Şekil 1, Tablo 1-2; `nice-ng141-2019` Tablo 1 |
 | `guidelines/idsa-2011-2025`, `eau-2026` / `uti.csv` | 22 satır | `idsa-uti-2011` Tablo 4, `idsa-cuti-2025`; `eau-uti-2026` Bölüm 3.4-3.7 |
+| `guidelines/who-aware-2022` / `sepsis_unknown.csv` | 8 satır | `who-aware-book-2022` Tablo 24.7; notlar `ssc-2021` Ö12, 14, 17, 19 |
 | `guidelines/ekmud-2016`, `sis-2017`, `sis-idsa-2010` / `iai.csv` | 30 satır | `ekmud-iai-2016`, `sis-2017`, `sis-idsa-2010` |
 | `spectrum/{ssti,uti,iai}.csv` | 22×6, 19×6, 21×8 | `eucast-expected-2023` ile uyumlu; diğer hücreler `abxpilot-draft` |
 | `regions/TR.yaml` v3 | TMP-SMX, FQ, GSBL eşik bayrakları; yeni ruhsat satırları | `cinislioglu-2024`, `who-caesar`; ruhsat `titck-2026` |

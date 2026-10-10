@@ -1,0 +1,12 @@
+id: sep_mrsa_mdr
+title: "Sepsis of unknown source: mrsa mdr"
+source: who-aware-book-2022
+section: 'Table 24.7'
+region: tr
+answers:
+  sepsis_mrsa_risk: 'yes'
+  sepsis_mdr_risk: 'yes'
+expect:
+  status: selected
+  first_choice: sep_ctx_amk_iv
+  drugs: [cefotaxime, amikacin]

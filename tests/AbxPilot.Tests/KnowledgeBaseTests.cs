@@ -96,7 +96,7 @@ public sealed class KnowledgeBaseTests
         Assert.Equal(compiled.Version, embedded.Version);
         Assert.Equal(compiled.Drugs.Count, embedded.Drugs.Count);
         Assert.Equal(compiled.GuidelineRows.Count, embedded.GuidelineRows.Count);
-        Assert.Equal(["cap", "iai", "pharyngitis", "ssti", "uti"], embedded.Syndromes.Select(item => item.Id).Order());
+        Assert.Equal(["cap", "iai", "pharyngitis", "sepsis_unknown", "ssti", "uti"], embedded.Syndromes.Select(item => item.Id).Order());
 
         var vancomycin = embedded.Drugs.Single(item => item.Id == "vancomycin").Doses.Single(dose => dose.Id == "cap_iv");
         Assert.Equal("15 mg/kg", vancomycin.Amount);

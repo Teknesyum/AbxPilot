@@ -88,6 +88,23 @@ doses:
   source: label-cefotaxime
   section: 'US PI Precautions, General'
   note: 'Label: halve the dose when CrCl <20 mL/min/1.73 m2; no band row for CrCl 20-29 or dialysis.'
+- id: sepsis_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 2 g
+  interval_hours: 8
+  source: who-aware-book-2022
+  section: Table 24.7
+- id: sepsis_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: crcl_lt15
+  amount: 1 g
+  interval_hours: 8
+  source: label-cefotaxime
+  section: 'US PI Precautions, General'
+  note: 'Label: halve the dose when CrCl <20 mL/min/1.73 m2; no band row for CrCl 20-29 or dialysis.'
 adverse_effects:
 - hypersensitivity
 - c_difficile

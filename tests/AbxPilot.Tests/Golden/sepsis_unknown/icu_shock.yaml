@@ -1,0 +1,12 @@
+id: sep_icu_shock
+title: "Sepsis of unknown source: icu shock"
+source: who-aware-book-2022
+section: 'Table 24.7'
+region: tr
+answers:
+  sepsis_setting: icu
+  septic_shock: 'yes'
+expect:
+  status: selected
+  first_choice: sep_ctx_amk_iv
+  drugs: [cefotaxime, amikacin]

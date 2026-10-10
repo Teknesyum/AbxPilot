@@ -1,0 +1,9 @@
+id: sep_default
+title: "Sepsis of unknown source: default"
+source: who-aware-book-2022
+section: 'Table 24.7'
+region: tr
+expect:
+  status: selected
+  first_choice: sep_ctx_amk_iv
+  drugs: [cefotaxime, amikacin]

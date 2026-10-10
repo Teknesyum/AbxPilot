@@ -79,6 +79,14 @@ doses:
   source: sis-idsa-2010
   section: Table 6
   note: Table 6 gives every 12-24 h.
+- id: sepsis_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 2 g
+  interval_hours: 24
+  source: who-aware-book-2022
+  section: Table 24.7
 adverse_effects:
 - hypersensitivity
 - biliary_sludge

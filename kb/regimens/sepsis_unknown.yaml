@@ -1,0 +1,60 @@
+- id: sep_ctx_amk_iv
+  version: 1
+  source: who-aware-book-2022
+  section: Table 24.7, Clinical sepsis of unknown origin
+  source_date: '2022-12-09'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefotaxime
+    dose: sepsis_iv
+    role: beta_lactam
+  - drug: amikacin
+    dose: sepsis_iv
+    role: aminoglycoside
+  duration_days: 7
+- id: sep_ctx_gen_iv
+  version: 1
+  source: who-aware-book-2022
+  section: Table 24.7, Clinical sepsis of unknown origin
+  source_date: '2022-12-09'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: cefotaxime
+    dose: sepsis_iv
+    role: beta_lactam
+  - drug: gentamicin
+    dose: sepsis_iv
+    role: aminoglycoside
+  duration_days: 7
+- id: sep_cro_amk_iv
+  version: 1
+  source: who-aware-book-2022
+  section: Table 24.7, Clinical sepsis of unknown origin
+  source_date: '2022-12-09'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: sepsis_iv
+    role: beta_lactam
+  - drug: amikacin
+    dose: sepsis_iv
+    role: aminoglycoside
+  duration_days: 7
+- id: sep_cro_gen_iv
+  version: 1
+  source: who-aware-book-2022
+  section: Table 24.7, Clinical sepsis of unknown origin
+  source_date: '2022-12-09'
+  reviewed_at: null
+  review_status: unreviewed
+  components:
+  - drug: ceftriaxone
+    dose: sepsis_iv
+    role: beta_lactam
+  - drug: gentamicin
+    dose: sepsis_iv
+    role: aminoglycoside
+  duration_days: 7

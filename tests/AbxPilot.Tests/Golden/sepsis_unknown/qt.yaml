@@ -1,0 +1,11 @@
+id: sep_qt
+title: "Sepsis of unknown source: qt"
+source: who-aware-book-2022
+section: 'Table 24.7'
+region: tr
+answers:
+  qt_risk: 'yes'
+expect:
+  status: selected
+  first_choice: sep_ctx_amk_iv
+  drugs: [cefotaxime, amikacin]

@@ -663,3 +663,17 @@
   url: https://www.medicines.org.uk/emc/product/2926/smpc
   published: '2025-12-11'
   date_precision: day
+- id: who-aware-book-2022
+  version: 1
+  kind: guideline
+  citation: 'World Health Organization. The WHO AWaRe (Access, Watch, Reserve) antibiotic book. Geneva: WHO; 2022. ISBN 978-92-4-006238-2.'
+  url: https://iris.who.int/handle/10665/365237
+  published: '2022-12-09'
+  date_precision: day
+- id: ssc-2021
+  version: 1
+  kind: guideline
+  citation: 'Evans L, Rhodes A, Alhazzani W, et al. Surviving sepsis campaign: international guidelines for management of sepsis and septic shock 2021. Intensive Care Med. 2021;47(11):1181-1247.'
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8486643/
+  published: '2021-10-02'
+  date_precision: day

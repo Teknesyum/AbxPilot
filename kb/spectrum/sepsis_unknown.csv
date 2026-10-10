@@ -1,0 +1,5 @@
+drug,version,e_coli,enterobacterales,mssa,s_pneumoniae,beta_strep,esbl_enterobacterales,mrsa,p_aeruginosa,source,section,source_date,reviewed_at,review_status,note
+amikacin,1,reliable,reliable,none,none,none,reliable,none,reliable,abxpilot-draft,Draft carried over from the CAP and SSTI and UTI spectrum tables; aminoglycosides not relied on alone for Gram-positives,2026-09-24,,unreviewed,
+cefotaxime,1,variable,variable,variable,reliable,reliable,none,none,none,abxpilot-draft,Draft carried over from the CAP and SSTI and UTI spectrum tables; aminoglycosides not relied on alone for Gram-positives,2026-09-24,,unreviewed,
+ceftriaxone,1,variable,variable,variable,reliable,reliable,none,none,none,abxpilot-draft,Draft carried over from the CAP and SSTI and UTI spectrum tables; aminoglycosides not relied on alone for Gram-positives,2026-09-24,,unreviewed,
+gentamicin,1,variable,variable,none,none,none,variable,none,variable,abxpilot-draft,Draft carried over from the CAP and SSTI and UTI spectrum tables; aminoglycosides not relied on alone for Gram-positives,2026-09-24,,unreviewed,

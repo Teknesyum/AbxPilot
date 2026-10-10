@@ -208,3 +208,18 @@ dönmesi. Temel hasta değişmez; böbrek işlevi yalnız bir soru olarak ekleni
 - **Arayüz:** soru ortak sorularda; kartta bant rozeti; özet metnine bant yazılır.
 - **Test:** şema, bant seçimi, eksik bant uyarısı, kaçınma kuralı, altın vaka (sefepim CrCl 15-29).
 - Hasta hesabı (Cockcroft-Gault hesaplayıcı) sonraya: kullanıcı bandı kendisi seçer.
+
+
+## Odağı Belirsiz Sepsis ("Bilinmiyor") — 2026-10-10
+
+Amaç: odak bilinmediğinde seçilecek altıncı sendrom; içinde servis ve yoğun bakım ayrımı.
+
+- **Kaynak taraması:** birebir alıntılar `docs/danisma/2026-10-10-kaynagi-bilinmeyen-sepsis.md`.
+- **Rejim:** dozuyla veren tek birincil kaynak DSÖ AWaRe kitabı 2022, Tablo 24.7.
+  Sefotaksim ya da seftriakson + amikasin ya da gentamisin, 7 gün. Dört eş seçenek.
+- **Sorular:** tedavi yeri (servis, yoğun bakım), septik şok, yüksek MRSA riski, yüksek dirençli bakteri riski.
+- **Yoğun bakım ve şok:** hiçbir birincil kılavuz rejimi değiştirmiyor. Bu cevaplar yalnız not gösterir
+  (SSC 2021: şokta 1 saat, şoksuz 3 saat; MRSA ve dirençli bakteri riski ilkesi). İlaç eklenmez.
+- **Kullanılmayan:** Hacettepe kurumsal algoritması (doz yok, başka kuruma aynen taşınmaz, tarihi belirsiz).
+- **Uzman sorusu:** `docs/uzman-inceleme.md` satır 69-72.
+- **Test:** 15 altın vaka `tests/AbxPilot.Tests/Golden/sepsis_unknown/`.

@@ -1,0 +1,50 @@
+- id: sepsis_setting
+  version: 1
+  source: abxpilot-draft
+  section: Care location; no primary guideline changes the regimen by location
+  source_date: '2026-09-24'
+  reviewed_at: null
+  review_status: unreviewed
+  type: single
+  options:
+  - ward
+  - icu
+  default: ward
+- id: septic_shock
+  version: 1
+  source: ssc-2021
+  section: Recommendations 12, 14
+  source_date: '2021-10-02'
+  reviewed_at: null
+  review_status: unreviewed
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: sepsis_mrsa_risk
+  version: 1
+  source: ssc-2021
+  section: Recommendations 17, 18
+  source_date: '2021-10-02'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'Prior MRSA infection or colonisation, recent IV antibiotics, recurrent skin infections or chronic wounds, invasive devices, haemodialysis, recent hospital admission, severity of illness.'
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'
+- id: sepsis_mdr_risk
+  version: 1
+  source: ssc-2021
+  section: Recommendations 19, 20; WHO AWaRe book 2022 chapter 24 (high-risk patients)
+  source_date: '2021-10-02'
+  reviewed_at: null
+  review_status: unreviewed
+  note: 'WHO: major comorbidity, immunocompromise, or previous colonisation or infection with a resistant pathogen.'
+  type: boolean
+  options:
+  - 'yes'
+  - 'no'
+  default: 'no'

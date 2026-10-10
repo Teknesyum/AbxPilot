@@ -1,0 +1,8 @@
+id,version,stage,action,role,sepsis_setting,septic_shock,risk_mrsa,risk_esbl,candidates,duration_days,rationale_key,source,section,source_date,reviewed_at,review_status,note
+unknown,1,base,select,,*,*,*,*,sep_ctx_amk_iv|sep_ctx_gen_iv|sep_cro_amk_iv|sep_cro_gen_iv,7,sepsis.who.unknown,who-aware-book-2022,Table 24.7; Clinical sepsis of unknown origin,2022-12-09,,unreviewed,"Options are equal; listed alphabetically in the source. Duration depends on underlying disease, pathogen and progress."
+time_shock,1,modifier,note,,*,yes,*,*,,,sepsis.ssc.time_shock,ssc-2021,Recommendation 12,2021-10-02,,unreviewed,
+time_no_shock,1,modifier,note,,*,no,*,*,,,sepsis.ssc.time_no_shock,ssc-2021,Recommendation 14,2021-10-02,,unreviewed,
+shock_dose,1,modifier,note,,*,yes,*,*,,,sepsis.who.shock_dose,who-aware-book-2022,Table 24.7 (note),2022-12-09,,unreviewed,
+mrsa,1,modifier,note,,*,*,yes,*,,,sepsis.ssc.mrsa,ssc-2021,Recommendation 17,2021-10-02,,unreviewed,The WHO row adds no anti-MRSA agent; no drug is added here.
+mdr,1,modifier,note,,*,*,*,yes,,,sepsis.ssc.mdr,ssc-2021,Recommendation 19; WHO AWaRe book 2022 Table 24.7 footnote c,2021-10-02,,unreviewed,
+icu,1,modifier,note,,icu,*,*,*,,,sepsis.note.icu,abxpilot-draft,Scope note,2026-09-24,,unreviewed,No primary guideline gives a separate intensive care regimen.

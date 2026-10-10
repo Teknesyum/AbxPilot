@@ -23,6 +23,15 @@ doses:
   interval_hours: 24
   source: eau-uti-2026
   section: Table 6 (section 3.6.3)
+- id: sepsis_iv
+  indication: sepsis_unknown
+  route: iv
+  renal_band: normal
+  amount: 15 mg/kg
+  amount_70kg: 1050 mg
+  interval_hours: 24
+  source: who-aware-book-2022
+  section: Table 24.7
 adverse_effects:
 - nephrotoxicity
 - ototoxicity

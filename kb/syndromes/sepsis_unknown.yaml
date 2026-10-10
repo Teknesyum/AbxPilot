@@ -1,0 +1,41 @@
+id: sepsis_unknown
+version: 1
+source: who-aware-book-2022
+section: 'Chapter 24, Sepsis in adults (including septic shock); Table 24.7, row Clinical sepsis of unknown origin'
+source_date: '2022-12-09'
+reviewed_at: null
+review_status: unreviewed
+note: 'Baseline patient: healthy 70 kg adult with normal renal function. The table covers community-acquired sepsis only and
+  does not separate ward from intensive care; once the source is found the infection-specific syndrome applies. The pathogen
+  list is a project draft for the spectrum bars and awaits expert review.'
+pathogens:
+- e_coli
+- enterobacterales
+- mssa
+- s_pneumoniae
+- beta_strep
+- esbl_enterobacterales
+- mrsa
+- p_aeruginosa
+questions:
+- sepsis_setting
+- septic_shock
+- sepsis_mrsa_risk
+- sepsis_mdr_risk
+- pen_allergy
+- pregnancy
+- renal
+- qt_risk
+derived:
+- id: risk_mrsa
+  risk: mrsa
+  pathogen: mrsa
+  when:
+    question: sepsis_mrsa_risk
+    eq: 'yes'
+- id: risk_esbl
+  risk: esbl
+  pathogen: esbl_enterobacterales
+  when:
+    question: sepsis_mdr_risk
+    eq: 'yes'

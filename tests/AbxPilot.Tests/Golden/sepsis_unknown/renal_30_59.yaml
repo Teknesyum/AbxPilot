@@ -1,0 +1,11 @@
+id: sep_renal_30_59
+title: "Sepsis of unknown source: renal 30 59"
+source: who-aware-book-2022
+section: 'Table 24.7'
+region: tr
+answers:
+  renal: crcl_30_59
+expect:
+  status: selected
+  first_choice: sep_ctx_amk_iv
+  drugs: [cefotaxime, amikacin]
